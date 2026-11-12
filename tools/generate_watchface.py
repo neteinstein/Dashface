@@ -40,7 +40,7 @@ ARC_R = ARC_D / 2
 GAP = 6  # degrees kept free on each side of 12/3/6/9 o'clock
 SPAN = 90 - 2 * GAP  # 78 degrees per corner arc
 
-PROVIDER_PKG = "com.neteinstein.dashface.provider"
+PROVIDER_PKG = "org.neteinstein.dashface.provider"
 
 
 @dataclass(frozen=True)

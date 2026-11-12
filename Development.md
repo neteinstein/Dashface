@@ -233,7 +233,7 @@ Not yet run on hardware (no emulator in the build environment). Please check:
    it needs on Wear OS 6 (`health.READ_SKIN_TEMPERATURE` is assumed). Some vendors keep the
    sensor private to their own apps; then the thermometer stays hidden.
 6. **Battery.** Leave the face on for an hour with the screen off, then check
-   `adb shell dumpsys batterystats --charged com.neteinstein.dashface.provider` for zero
+   `adb shell dumpsys batterystats --charged org.neteinstein.dashface.provider` for zero
    wakeups from the companion.
 
 See [`NOTICE.md`](NOTICE.md) for third-party assets.

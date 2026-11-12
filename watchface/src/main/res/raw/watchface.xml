@@ -2885,7 +2885,7 @@
     </ComplicationSlot>
     <ComplicationSlot slotId="2" name="stress_bl" displayName="slot_stress_bl" x="0" y="0" width="450" height="450" supportedTypes="RANGED_VALUE EMPTY" isCustomizable="TRUE">
       <BoundingArc centerX="225" centerY="225" width="420" height="420" thickness="40" startAngle="186" endAngle="264" isRoundEdge="TRUE"/>
-      <DefaultProviderPolicy defaultSystemProvider="EMPTY" defaultSystemProviderType="EMPTY" primaryProvider="com.neteinstein.dashface.provider/com.neteinstein.dashface.provider.stress.StressDataSourceService" primaryProviderType="RANGED_VALUE"/>
+      <DefaultProviderPolicy defaultSystemProvider="EMPTY" defaultSystemProviderType="EMPTY" primaryProvider="org.neteinstein.dashface.provider/org.neteinstein.dashface.provider.stress.StressDataSourceService" primaryProviderType="RANGED_VALUE"/>
       <Variant mode="AMBIENT" target="alpha" value="0"/>
       <Complication type="RANGED_VALUE">
         <Group name="stress_bl_root" x="0" y="0" width="450" height="450">
@@ -3309,7 +3309,7 @@
     </Group>
     <ComplicationSlot slotId="10" name="meeting_1" displayName="slot_meeting_1" x="88" y="270" width="274" height="30" supportedTypes="LONG_TEXT SHORT_TEXT EMPTY" isCustomizable="TRUE">
       <BoundingBox x="0" y="0" width="274" height="30"/>
-      <DefaultProviderPolicy defaultSystemProvider="NEXT_EVENT" defaultSystemProviderType="LONG_TEXT" primaryProvider="com.neteinstein.dashface.provider/com.neteinstein.dashface.provider.calendar.NextMeetingDataSourceService" primaryProviderType="LONG_TEXT"/>
+      <DefaultProviderPolicy defaultSystemProvider="NEXT_EVENT" defaultSystemProviderType="LONG_TEXT" primaryProvider="org.neteinstein.dashface.provider/org.neteinstein.dashface.provider.calendar.NextMeetingDataSourceService" primaryProviderType="LONG_TEXT"/>
       <Variant mode="AMBIENT" target="alpha" value="0"/>
       <Complication type="LONG_TEXT">
         <Group name="meeting_10_long" x="0" y="0" width="274" height="30">
@@ -3374,7 +3374,7 @@
     </ComplicationSlot>
     <ComplicationSlot slotId="11" name="meeting_2" displayName="slot_meeting_2" x="88" y="304" width="274" height="30" supportedTypes="LONG_TEXT SHORT_TEXT EMPTY" isCustomizable="TRUE">
       <BoundingBox x="0" y="0" width="274" height="30"/>
-      <DefaultProviderPolicy defaultSystemProvider="NEXT_EVENT" defaultSystemProviderType="SHORT_TEXT" primaryProvider="com.neteinstein.dashface.provider/com.neteinstein.dashface.provider.calendar.SecondMeetingDataSourceService" primaryProviderType="LONG_TEXT"/>
+      <DefaultProviderPolicy defaultSystemProvider="NEXT_EVENT" defaultSystemProviderType="SHORT_TEXT" primaryProvider="org.neteinstein.dashface.provider/org.neteinstein.dashface.provider.calendar.SecondMeetingDataSourceService" primaryProviderType="LONG_TEXT"/>
       <Variant mode="AMBIENT" target="alpha" value="0"/>
       <Complication type="LONG_TEXT">
         <Group name="meeting_11_long" x="0" y="0" width="274" height="30">
@@ -3457,7 +3457,7 @@
     </ComplicationSlot>
     <ComplicationSlot slotId="12" name="skin_temperature" displayName="slot_skin_temperature" x="135" y="342" width="180" height="28" supportedTypes="RANGED_VALUE SHORT_TEXT EMPTY" isCustomizable="TRUE">
       <BoundingBox x="0" y="0" width="180" height="28"/>
-      <DefaultProviderPolicy defaultSystemProvider="EMPTY" defaultSystemProviderType="EMPTY" primaryProvider="com.neteinstein.dashface.provider/com.neteinstein.dashface.provider.skin.SkinTemperatureDataSourceService" primaryProviderType="RANGED_VALUE"/>
+      <DefaultProviderPolicy defaultSystemProvider="EMPTY" defaultSystemProviderType="EMPTY" primaryProvider="org.neteinstein.dashface.provider/org.neteinstein.dashface.provider.skin.SkinTemperatureDataSourceService" primaryProviderType="RANGED_VALUE"/>
       <Variant mode="AMBIENT" target="alpha" value="0"/>
       <Complication type="RANGED_VALUE">
         <Group name="thermo_ranged" x="0" y="0" width="180" height="28">

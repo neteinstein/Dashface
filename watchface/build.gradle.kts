@@ -4,11 +4,11 @@ plugins {
 }
 
 android {
-    namespace = "com.neteinstein.dashface"
+    namespace = "org.neteinstein.dashface"
     compileSdk = 36
 
     defaultConfig {
-        applicationId = "com.neteinstein.dashface"
+        applicationId = "org.neteinstein.dashface"
         // Weather data sources need Watch Face Format v2 => Wear OS 5 (API 34)+.
         minSdk = 34
         targetSdk = 36
@@ -76,7 +76,7 @@ val validateWatchFace by tasks.registering(JavaExec::class) {
     inputs.file(xsd)
     inputs.file(xml)
     classpath = validatorRuntime
-    mainClass.set("com.neteinstein.dashface.validator.MainKt")
+    mainClass.set("org.neteinstein.dashface.validator.MainKt")
     args(xsd.asFile.absolutePath, xml.asFile.absolutePath)
 }
 
