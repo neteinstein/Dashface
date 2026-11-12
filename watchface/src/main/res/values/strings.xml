@@ -1,0 +1,44 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+    <string name="watch_face_name">Dashface</string>
+
+    <!-- Corner arc pickers -->
+    <string name="cfg_arc_tl">Top-left bar</string>
+    <string name="cfg_arc_tr">Top-right bar</string>
+    <string name="cfg_arc_bl">Bottom-left bar</string>
+    <string name="cfg_arc_br">Bottom-right bar</string>
+    <string name="metric_battery">Battery</string>
+    <string name="metric_steps">Steps</string>
+    <string name="metric_stress">Stress</string>
+    <string name="metric_heart">Heart rate</string>
+
+    <!-- Colors -->
+    <string name="cfg_color_mode">Color mode</string>
+    <string name="color_mode_multi">Multicolor</string>
+    <string name="color_mode_single">Single color</string>
+    <string name="cfg_accent">Accent color</string>
+    <string name="accent_cyan">Cyan</string>
+    <string name="accent_white">White</string>
+    <string name="accent_green">Green</string>
+    <string name="accent_amber">Amber</string>
+    <string name="accent_purple">Purple</string>
+
+    <!-- Content -->
+    <string name="cfg_show_weather">Show weather</string>
+    <string name="cfg_meeting_rows">Meetings shown</string>
+    <string name="meeting_rows_one">Next meeting only</string>
+    <string name="meeting_rows_two">Next two meetings</string>
+
+    <!-- Presets -->
+    <string name="flavor_default">Classic</string>
+    <string name="flavor_mirrored">Mirrored</string>
+    <string name="flavor_health_top">Health on top</string>
+
+    <!-- Complication slots (shown in the system editor) -->
+    <string name="slot_stress_tl">Stress source (top-left)</string>
+    <string name="slot_stress_tr">Stress source (top-right)</string>
+    <string name="slot_stress_bl">Stress source (bottom-left)</string>
+    <string name="slot_stress_br">Stress source (bottom-right)</string>
+    <string name="slot_meeting_1">Next meeting</string>
+    <string name="slot_meeting_2">Following meeting</string>
+</resources>

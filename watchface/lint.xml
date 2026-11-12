@@ -1,0 +1,8 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<lint>
+    <!-- Strings and drawables are referenced by name from res/raw/watchface.xml, which lint
+         cannot see, so they look unused. -->
+    <issue id="UnusedResources" severity="ignore" />
+    <!-- WFF packages have no launcher activity, so no app icon is needed. -->
+    <issue id="MissingApplicationIcon" severity="ignore" />
+</lint>

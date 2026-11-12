@@ -1,0 +1,43 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+    <string name="app_name">Dashface data</string>
+
+    <!-- Complication data source names (shown in the complication picker) -->
+    <string name="source_next_meeting">Next meeting</string>
+    <string name="source_second_meeting">Following meeting</string>
+    <string name="source_stress">Stress (heart-rate estimate)</string>
+
+    <!-- Meetings -->
+    <string name="no_more_meetings">No more meetings today</string>
+    <string name="meeting_now">Now</string>
+    <string name="untitled_meeting">(No title)</string>
+    <string name="meeting_description">%1$s %2$s</string>
+    <string name="tap_to_allow_calendar">Tap to show meetings</string>
+
+    <!-- Stress -->
+    <string name="stress_title">Stress</string>
+    <string name="stress_description">Estimated stress %1$d of 100</string>
+    <string name="tap_short">Tap</string>
+    <string name="tap_to_allow_stress">Tap to allow heart-rate access for the stress estimate</string>
+
+    <!-- Permission flow -->
+    <string name="perm_calendar_title">Show your meetings</string>
+    <string name="perm_calendar_body">Dashface reads the calendar synced to this watch to show your next meetings under the time. Events never leave the watch.</string>
+    <string name="perm_stress_title">Estimate stress</string>
+    <string name="perm_stress_body">Dashface uses heart-rate readings the watch already takes to estimate stress. It is a wellness hint, not a medical measurement, and data never leaves the watch.</string>
+    <string name="perm_background_title">Keep it up to date</string>
+    <string name="perm_background_body">Allow access all the time so the estimate keeps updating while the screen is off. No extra sensor use: it only reuses readings the watch already takes.</string>
+    <string name="perm_denied_title">Access is off</string>
+    <string name="perm_denied_body">You chose not to be asked again. You can turn access on in the app settings.</string>
+    <string name="perm_allow">Allow</string>
+    <string name="perm_not_now">Not now</string>
+    <string name="perm_open_settings">Open settings</string>
+
+    <!-- Home -->
+    <string name="home_body">Provides next meetings and an optional stress estimate to the Dashface watch face.</string>
+    <string name="home_calendar_on">Calendar: allowed</string>
+    <string name="home_calendar_off">Calendar: tap to allow</string>
+    <string name="home_stress_on">Stress estimate: allowed</string>
+    <string name="home_stress_off">Stress estimate: tap to allow</string>
+    <string name="privacy_note">Privacy: no internet access, no analytics. Calendar and heart-rate data stay on the watch.</string>
+</resources>
