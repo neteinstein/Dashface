@@ -188,6 +188,15 @@ node tools/render_previews.js     # needs Playwright; updates docs/screenshots +
 ./gradlew :watchface:validateWatchFace
 ```
 
+After a visual change, also refresh the Play graphics and the README video. The video is drawn
+with the same preview renderer; its scenes, captions and timing are in
+`tools/video/make_frames.py`, and the soundtrack is `tools/video/soundtrack.m4a`.
+
+```bash
+node store-listing/tools/render_store_assets.js
+python3 tools/video/make_frames.py && node tools/video/render_video.js   # needs ffmpeg (libx264)
+```
+
 ### Memory footprint (Play requirement)
 
 Google's evaluator lives in [google/watchface](https://github.com/google/watchface)
