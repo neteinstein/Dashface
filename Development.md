@@ -64,8 +64,11 @@ flowchart LR
   (`SkinTemperature.isSkinTemperatureSensor`). Without one it returns `NO_DATA`, which matches
   no `<Complication>` in the slot, so the thermometer simply isn't drawn. Readings outside
   20–45 °C are dropped as noise, and a cached reading is shown for at most 2 h. The thermometer
-  is a `RoundRectangle` whose `width` is transformed by the normalized ranged value, under a
-  static `LinearGradient`; the bulb takes the color of the current third of the range.
+  is a `RoundRectangle` whose `width` is transformed by the normalized ranged value. Its color
+  comes from wrist-skin bands on the raw value in °C (`THERMO_BANDS` in the generator: blue
+  below 32 °C, orange to 35.5 °C, red above), one `Condition` branch per band, so track, liquid
+  and bulb switch color together. The bands assume °C, which the companion always sends; a
+  third-party provider in another unit would get the wrong colors.
 
 ## Battery & performance
 
@@ -87,6 +90,9 @@ flowchart LR
 - **Cheap colors.** The fading colors are a static `SweepGradient` across the whole arc. The
   fill's sweep follows the value, so the color at the tip reflects it, with no color math at
   draw time. In single-color mode only the fill's alpha changes.
+- **Segmented battery.** Battery (`segments=10` in the generator) is drawn as 10 short arcs,
+  each with a static color from light (low) to darker (full). Bar *i* is shown when the level is
+  above *i*/10 through an `alpha` transform, so 1–10 % lights the first bar. No knob.
 - **Ambient mode** keeps only the time, date and next meeting. All bars, the weather, the
   thermometer and gradients are hidden.
 - **Small assets.** Weather icons are 48 px, metric icons 24 px, and the images that can be
