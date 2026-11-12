@@ -13,5 +13,5 @@ dependencies {
 }
 
 application {
-    mainClass.set("com.neteinstein.dashface.validator.MainKt")
+    mainClass.set("org.neteinstein.dashface.validator.MainKt")
 }

@@ -1,8 +1,8 @@
 # Play Console answers
 
 Ready-made answers for every form in the Play Console, for both apps. Fill in the same answers for
-**Dashface** (`com.neteinstein.dashface`) and **Dashface data**
-(`com.neteinstein.dashface.provider`) unless a section says otherwise.
+**Dashface** (`org.neteinstein.dashface`) and **Dashface data**
+(`org.neteinstein.dashface.provider`) unless a section says otherwise.
 
 They are based on what the code does:
 

@@ -5,11 +5,11 @@ plugins {
 }
 
 android {
-    namespace = "com.neteinstein.dashface.provider"
+    namespace = "org.neteinstein.dashface.provider"
     compileSdk = 36
 
     defaultConfig {
-        applicationId = "com.neteinstein.dashface.provider"
+        applicationId = "org.neteinstein.dashface.provider"
         minSdk = 34
         targetSdk = 36
         // Overridden by the release workflow (GitHub Actions run number) so every release gets a

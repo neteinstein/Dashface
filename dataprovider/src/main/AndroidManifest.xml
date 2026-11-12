@@ -70,7 +70,7 @@
                 android:value="3600" />
             <meta-data
                 android:name="android.support.wearable.complications.SAFE_WATCH_FACES"
-                android:value="com.neteinstein.dashface" />
+                android:value="org.neteinstein.dashface" />
             <meta-data
                 android:name="android.support.wearable.complications.SAFE_WATCH_FACE_SUPPORTED_TYPES"
                 android:value="LONG_TEXT,SHORT_TEXT" />
@@ -93,7 +93,7 @@
                 android:value="3600" />
             <meta-data
                 android:name="android.support.wearable.complications.SAFE_WATCH_FACES"
-                android:value="com.neteinstein.dashface" />
+                android:value="org.neteinstein.dashface" />
             <meta-data
                 android:name="android.support.wearable.complications.SAFE_WATCH_FACE_SUPPORTED_TYPES"
                 android:value="LONG_TEXT,SHORT_TEXT" />
@@ -135,7 +135,7 @@
                 android:value="0" />
             <meta-data
                 android:name="android.support.wearable.complications.SAFE_WATCH_FACES"
-                android:value="com.neteinstein.dashface" />
+                android:value="org.neteinstein.dashface" />
             <meta-data
                 android:name="android.support.wearable.complications.SAFE_WATCH_FACE_SUPPORTED_TYPES"
                 android:value="RANGED_VALUE" />
@@ -175,7 +175,7 @@
                 android:value="900" />
             <meta-data
                 android:name="android.support.wearable.complications.SAFE_WATCH_FACES"
-                android:value="com.neteinstein.dashface" />
+                android:value="org.neteinstein.dashface" />
             <meta-data
                 android:name="android.support.wearable.complications.SAFE_WATCH_FACE_SUPPORTED_TYPES"
                 android:value="RANGED_VALUE" />

@@ -6,8 +6,8 @@ Dashface is **two apps**, so it needs **two Play listings**:
 
 | | Package | What it is |
 |---|---|---|
-| **Dashface** | `com.neteinstein.dashface` | The watch face (Watch Face Format, no code) |
-| **Dashface data** | `com.neteinstein.dashface.provider` | Companion that provides meetings, stress and skin temperature |
+| **Dashface** | `org.neteinstein.dashface` | The watch face (Watch Face Format, no code) |
+| **Dashface data** | `org.neteinstein.dashface.provider` | Companion that provides meetings, stress and skin temperature |
 
 A Watch Face Format bundle can't contain code, and Play rejects a bundle that mixes a watch face
 with app code. So the two can't be merged into one listing.
@@ -311,12 +311,12 @@ working on Google's side.
 The listing text and images can be pushed without clicking through the Console:
 
 ```bash
-fastlane supply --json_key play-service-account.json --package_name com.neteinstein.dashface \
+fastlane supply --json_key play-service-account.json --package_name org.neteinstein.dashface \
   --metadata_path store-listing/watchface --skip_upload_apk true --skip_upload_aab true --skip_upload_changelogs true
 ```
 
 ```bash
-fastlane supply --json_key play-service-account.json --package_name com.neteinstein.dashface.provider \
+fastlane supply --json_key play-service-account.json --package_name org.neteinstein.dashface.provider \
   --metadata_path store-listing/dataprovider --skip_upload_apk true --skip_upload_aab true --skip_upload_changelogs true
 ```
 

@@ -4,8 +4,8 @@
 
 This policy covers two Wear OS apps published together:
 
-- **Dashface** (`com.neteinstein.dashface`), the watch face
-- **Dashface data** (`com.neteinstein.dashface.provider`), its companion app
+- **Dashface** (`org.neteinstein.dashface`), the watch face
+- **Dashface data** (`org.neteinstein.dashface.provider`), its companion app
 
 In this policy, "we" means the Dashface developer.
 
