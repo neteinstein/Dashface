@@ -1,0 +1,37 @@
+Dashface data is the free companion for the Dashface watch face on Wear OS. It adds four complications to your watch:
+
+• Next meeting: the next event from the calendar synced to your watch, "Now" while it runs, or "No more meetings today"
+• Following meeting: the event after that
+• Stress (heart-rate estimate): how far your heart rate is above your usual resting rate, from 0 to 100
+• Skin temperature: your wrist skin temperature in °C or °F, on watches with a skin temperature sensor
+
+They are made for Dashface, and also work as complications on other watch faces that accept long text, short text or ranged values.
+
+HOW TO USE IT
+1. Install Dashface data and the Dashface watch face on your watch.
+2. Pick Dashface as your watch face. Its meeting rows, stress bar and thermometer use these complications.
+3. Tap a row or bar that says "Tap" to allow access. You can also open Dashface data from the app list to see and grant everything in one place.
+
+EASY ON THE BATTERY
+• Meetings: the whole day is handed to the watch at once, and the watch switches rows when meetings start and end. The app never wakes on a timer for them.
+• Stress: reuses heart-rate readings the watch already takes, and only while stress is on your watch face.
+• Skin temperature: one quick reading every 15 minutes at most, only while the watch face is showing.
+
+PRIVATE BY DESIGN
+• No internet access and no analytics
+• Your calendar, heart rate and temperature never leave the watch
+• Each permission is explained before it is asked, and only when you tap
+
+PERMISSIONS
+• Calendar: to show your next meetings
+• Heart rate (body sensors): for the stress estimate
+• Skin temperature (body sensors): for the thermometer
+• Health data in the background (optional): to keep the stress estimate and thermometer up to date while the screen is off
+• Run at startup: to resume the stress estimate after a restart, only if you use it
+
+REQUIREMENTS
+Wear OS 5 or later. Skin temperature needs a watch with a skin temperature sensor; some watch makers keep the sensor private to their own apps.
+
+The stress estimate and skin temperature are wellness hints, not medical measurements. Exercise raises the stress estimate too. Dashface data is not a medical device and does not diagnose, treat or prevent any condition.
+
+Dashface is open source: github.com/neteinstein/Dashface

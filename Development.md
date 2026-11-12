@@ -144,8 +144,28 @@ adb logcat --pid=$(adb shell pidof -s com.google.wear.watchface.runtime)
 ```
 
 Both APKs must be signed with the **same key** so the watch face can default to the
-companion's complications (see `SAFE_WATCH_FACES` in the companion manifest). Replace the
-debug signing configs before publishing.
+companion's complications (see `SAFE_WATCH_FACES` in the companion manifest). Release builds are
+signed with the key named by the `KEYSTORE_FILE`, `KEYSTORE_PASSWORD`, `KEY_ALIAS` and
+`KEY_PASSWORD` env vars, and fall back to the debug key when they're not set.
+
+### Releases
+
+Every push to `main` runs `.github/workflows/release.yml`. It validates and tests the commit,
+builds both apps signed with the release key from repo secrets, and publishes a GitHub Release
+`v1.0.<run number>` with:
+
+- both APKs, to install directly with `adb`
+- both App Bundles, for the Play Console
+- the companion's R8 mapping file
+
+If the `ANDROID_PUBLISHER_CREDENTIALS` secret is set, it also uploads both bundles to the Play
+Console with [Gradle Play Publisher](https://github.com/Triple-T/gradle-play-publisher):
+`./gradlew :watchface:publishReleaseBundle :dataprovider:publishReleaseBundle`, to the internal
+track unless the `PLAY_TRACK` variable says otherwise.
+
+The Play listings (text, icon, feature graphic, screenshots), the answers for the Play Console
+forms, and the step-by-step submission guide are in [`store-listing/`](store-listing/SUBMISSION_GUIDE.md).
+The privacy policy is [`PRIVACY_POLICY.md`](PRIVACY_POLICY.md).
 
 ### Changing the design
 

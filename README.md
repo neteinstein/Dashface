@@ -122,8 +122,9 @@ Dashface is two small apps that go on your watch:
    temperature. Without it, the meeting rows fall back to the watch's own *Next event*, and the
    stress bar and thermometer stay empty.
 
-Install both on a Wear OS 5 or later watch (see [Development](Development.md) for building and
-installing them). Then long-press your current watch face and choose **Dashface**.
+Install both on a Wear OS 5 or later watch. Each [GitHub Release](https://github.com/neteinstein/Dashface/releases)
+has both signed APKs, ready for `adb install`. See [Development](Development.md) to build them
+yourself. Then long-press your current watch face and choose **Dashface**.
 
 ### First run
 
@@ -181,3 +182,4 @@ watch's weather app once and check that it has a location.
   checking on a real watch.
 - [The original prompt](docs/WATCHFACE_PROMPT.md) the watch face was built from.
 - [Third-party material](NOTICE.md): the weather icons and the Watch Face Format schema.
+- [Privacy policy](PRIVACY_POLICY.md) and [publishing on Google Play](store-listing/SUBMISSION_GUIDE.md).

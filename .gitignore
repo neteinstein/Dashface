@@ -6,3 +6,8 @@ local.properties
 .DS_Store
 .kotlin/
 captures/
+
+# Release signing keys and Play service account keys: never commit.
+*.jks
+*.keystore
+play-service-account*.json

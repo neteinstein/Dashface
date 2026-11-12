@@ -1,0 +1,4 @@
+First release of Dashface data:
+• Next meeting and following meeting complications
+• Stress estimate from the heart rate your watch already measures
+• Skin temperature on watches with the sensor
