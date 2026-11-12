@@ -416,7 +416,11 @@ def draw_knob(x: Xml, corner: Corner, metric: Metric) -> None:
 
 
 BADGE_R = 170
-BADGE_W, BADGE_H = 48, 42
+BADGE_ICON = 20  # metric icon, px
+BADGE_TEXT = 20  # value under the icon, px. Wide enough for 5-digit step counts at this size.
+BADGE_TEXT_Y = BADGE_ICON + 2
+BADGE_TEXT_H = BADGE_TEXT + 6
+BADGE_W, BADGE_H = 64, BADGE_TEXT_Y + BADGE_TEXT_H
 
 
 def badge_origin(corner: Corner) -> tuple[float, float]:
@@ -432,7 +436,8 @@ def draw_badge(x: Xml, corner: Corner, metric: Metric, single: bool, placeholder
 
     def icon(tint: str) -> callable:
         def render() -> None:
-            x.open("PartImage", x=(BADGE_W - 20) / 2, y=0, width=20, height=20, tintColor=tint)
+            x.open("PartImage", x=(BADGE_W - BADGE_ICON) / 2, y=0, width=BADGE_ICON, height=BADGE_ICON,
+                   tintColor=tint)
             x.leaf("Image", resource=metric.icon)
             x.close("PartImage")
         return render
@@ -450,11 +455,11 @@ def draw_badge(x: Xml, corner: Corner, metric: Metric, single: bool, placeholder
         ], icon(cols[2]))
 
     if placeholder:
-        text_part(x, px=0, py=22, w=BADGE_W, h=22, template="--", params=[], size=16,
-                  color="#FF9E9E9E", weight="SEMI_BOLD")
+        text_part(x, px=0, py=BADGE_TEXT_Y, w=BADGE_W, h=BADGE_TEXT_H, template="--", params=[],
+                  size=BADGE_TEXT, color="#FF9E9E9E", weight="SEMI_BOLD")
     else:
-        text_part(x, px=0, py=22, w=BADGE_W, h=22, template=metric.text_format,
-                  params=[metric.text], size=16, weight="SEMI_BOLD")
+        text_part(x, px=0, py=BADGE_TEXT_Y, w=BADGE_W, h=BADGE_TEXT_H, template=metric.text_format,
+                  params=[metric.text], size=BADGE_TEXT, weight="SEMI_BOLD")
     x.close("Group")
 
 
@@ -1204,9 +1209,10 @@ def build_preview_svg(layout: dict[str, str], single_accent: str | None = None,
             bx, by = badge_origin(corner)
             icol = hex6(accent[2]) if single_accent else lerp_color(metric.colors, min(v, 0.999))
             parts.append(
-                f'<image x="{bx + (BADGE_W - 20) / 2}" y="{by}" width="20" height="20" '
-                f'href="{icons_dir}{metric.icon}_{icol[1:]}.png"/>')
-            parts.append(f'<text x="{bx + BADGE_W / 2}" y="{by + 38}" fill="#fff" font-size="16" '
+                f'<image x="{bx + (BADGE_W - BADGE_ICON) / 2}" y="{by}" width="{BADGE_ICON}" '
+                f'height="{BADGE_ICON}" href="{icons_dir}{metric.icon}_{icol[1:]}.png"/>')
+            parts.append(f'<text x="{bx + BADGE_W / 2}" y="{by + BADGE_TEXT_Y + BADGE_TEXT}" fill="#fff" '
+                         f'font-size="{BADGE_TEXT}" '
                          f'font-weight="600" text-anchor="middle">{metric.preview_text}</text>')
         # Weather
         for i, (pid, label, *_r, night) in enumerate(PERIODS):
