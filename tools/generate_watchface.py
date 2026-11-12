@@ -82,6 +82,7 @@ class Metric:
     text_format: str
     preview_value: float
     preview_text: str
+    segments: int = 0  # > 0: drawn as that many separate bars instead of a continuous fill
 
 
 COMP_NORM = (
@@ -96,9 +97,10 @@ COMP_NORM = (
 METRICS = {
     "battery": Metric(
         "battery", "Battery", "ic_metric_battery",
-        ("#FF1E4E6B", "#FF29B6F6"),
+        # Battery cells: the first (low) bars are light, the last (full) bars darker.
+        ("#FFB3E5FC", "#FF4FC3F7", "#FF1E88E5"),
         "clamp([BATTERY_PERCENT], 0, 100) / 100",
-        "[BATTERY_PERCENT]", "%s%%", 0.98, "98%",
+        "[BATTERY_PERCENT]", "%s%%", 0.72, "72%", segments=10,
     ),
     "steps": Metric(
         "steps", "Steps", "ic_metric_steps",
@@ -291,6 +293,51 @@ def draw_fill(x: Xml, corner: Corner, metric: Metric, single: bool) -> None:
     x.close("PartDraw")
 
 
+SEGMENT_GAP = 2.2  # degrees between battery bars
+
+
+def segment_angles(corner: Corner, i: int, n: int) -> tuple[float, float]:
+    """Clockwise (start, end) of bar i of n, counted from the corner's anchor."""
+    seg = SPAN / n
+    near, far = i * seg + SEGMENT_GAP / 2, (i + 1) * seg - SEGMENT_GAP / 2
+    if corner.anchor_at_end:
+        return corner.anchor - far, corner.anchor - near
+    return corner.anchor + near, corner.anchor + far
+
+
+def segment_color(metric: Metric, i: int) -> str:
+    """Bar i's color along the metric's colors (first bar = first color, last = last)."""
+    n = metric.segments
+    return "#FF" + lerp_color(metric.colors, i / (n - 1) if n > 1 else 1)[1:]
+
+
+def draw_segments(x: Xml, corner: Corner, metric: Metric, single: bool, placeholder: bool) -> None:
+    """Segmented bar: a dim track per bar, and each bar lights up once the value reaches it.
+
+    Bar i (of n) is lit when the value is above i/n, so 1-10 % lights the first of ten bars.
+    Lit bars have static colors; only their alpha depends on the value (no color math).
+    """
+    n = metric.segments
+    for i in range(n):
+        a0, a1 = segment_angles(corner, i, n)
+        x.open("PartDraw", x=0, y=0, width=SIZE, height=SIZE)
+        x.open("Arc", **arc_box(), startAngle=a0, endAngle=a1)
+        x.leaf("Stroke", color="#26FFFFFF" if single else with_alpha(metric.colors[0], 0x2E),
+               thickness=STROKE, cap="BUTT")
+        x.close("Arc")
+        x.close("PartDraw")
+        if placeholder:
+            continue
+        lit = "[CONFIGURATION.accent.0]" if single else segment_color(metric, i)
+        on = f"(90 + 165 * ({metric.value}))" if single else "255"
+        x.open("PartDraw", x=0, y=0, width=SIZE, height=SIZE)
+        x.leaf("Transform", target="alpha", value=f"({metric.value}) > {i / n:g} ? {on} : 0")
+        x.open("Arc", **arc_box(), startAngle=a0, endAngle=a1)
+        x.leaf("Stroke", color=lit, thickness=STROKE, cap="BUTT")
+        x.close("Arc")
+        x.close("PartDraw")
+
+
 def draw_knob(x: Xml, corner: Corner, metric: Metric) -> None:
     x.open("PartDraw", x=0, y=0, width=SIZE, height=SIZE)
     k = 10
@@ -352,11 +399,14 @@ def draw_metric(x: Xml, corner: Corner, metric: Metric, placeholder: bool = Fals
         single = mode == "single"
         x.open("ListOption", id=mode)
         full_group(x, f"{corner.id}_{metric.id}_{mode}")
-        track = "#26FFFFFF" if single else with_alpha(metric.colors[-1], 0x33)
-        draw_track(x, corner, track)
-        if not placeholder:
-            draw_fill(x, corner, metric, single)
-            draw_knob(x, corner, metric)
+        if metric.segments:
+            draw_segments(x, corner, metric, single, placeholder)
+        else:
+            track = "#26FFFFFF" if single else with_alpha(metric.colors[-1], 0x33)
+            draw_track(x, corner, track)
+            if not placeholder:
+                draw_fill(x, corner, metric, single)
+                draw_knob(x, corner, metric)
         draw_badge(x, corner, metric, single, placeholder)
         x.close("Group")
         x.close("ListOption")
@@ -531,8 +581,8 @@ def draw_meeting_slot(x: Xml, slot_id: int, y: int, second: bool) -> None:
            defaultSystemProviderType="SHORT_TEXT" if second else "LONG_TEXT",
            primaryProvider=f"{PROVIDER_PKG}/{PROVIDER_PKG}.calendar.{service}",
            primaryProviderType="LONG_TEXT")
-    if second:
-        x.leaf("Variant", mode="AMBIENT", target="alpha", value=0)
+    # Ambient shows the battery bar in this place instead (see draw_ambient_battery).
+    x.leaf("Variant", mode="AMBIENT", target="alpha", value=0)
     size = 19 if second else 22
     title_color = "[CONFIGURATION.accent.0]"
     text_alpha = "#99FFFFFF" if second else "#FFFFFFFF"
@@ -582,6 +632,47 @@ def draw_meeting_slot(x: Xml, slot_id: int, y: int, second: bool) -> None:
 
 
 # --------------------------------------------------------------------------------------
+# Ambient battery bar (in place of the next meeting)
+# --------------------------------------------------------------------------------------
+AMB_BATT_ICON = 20
+AMB_BATT_SEG_X, AMB_BATT_SEG_W, AMB_BATT_SEG_GAP, AMB_BATT_SEG_H = 28, 17, 2, 12
+AMB_BATT_TEXT_X = AMB_BATT_SEG_X + 10 * (AMB_BATT_SEG_W + AMB_BATT_SEG_GAP) + 6
+AMB_BATT_ALPHA = 200  # a little dimmer than the time, like the rest of ambient
+
+
+def draw_ambient_battery(x: Xml) -> None:
+    """Battery as 10 small bars + percentage, shown only in ambient where the meeting row is.
+
+    Hidden (alpha 0) in interactive mode; the AMBIENT variant brings it in. It uses the same
+    light (low) -> darker (full) colors as the battery arc.
+    """
+    battery = METRICS["battery"]
+    n = battery.segments or 10
+    x.open("Group", name="ambient_battery", x=MEET_X, y=MEET1_Y, width=MEET_W, height=MEET_H, alpha=0)
+    x.leaf("Variant", mode="AMBIENT", target="alpha", value=AMB_BATT_ALPHA)
+    x.open("PartImage", x=0, y=(MEET_H - AMB_BATT_ICON) / 2, width=AMB_BATT_ICON, height=AMB_BATT_ICON,
+           tintColor="#FFBDBDBD")
+    x.leaf("Image", resource=battery.icon)
+    x.close("PartImage")
+    seg_y = (MEET_H - AMB_BATT_SEG_H) / 2
+    r = 2
+    for i in range(n):
+        sx = AMB_BATT_SEG_X + i * (AMB_BATT_SEG_W + AMB_BATT_SEG_GAP)
+        for lit in (False, True):
+            x.open("PartDraw", x=sx, y=seg_y, width=AMB_BATT_SEG_W, height=AMB_BATT_SEG_H)
+            if lit:
+                x.leaf("Transform", target="alpha", value=f"({battery.value}) > {i / n:g} ? 255 : 0")
+            x.open("RoundRectangle", x=0, y=0, width=AMB_BATT_SEG_W, height=AMB_BATT_SEG_H,
+                   cornerRadiusX=r, cornerRadiusY=r)
+            x.leaf("Fill", color=segment_color(battery, i) if lit else "#33FFFFFF")
+            x.close("RoundRectangle")
+            x.close("PartDraw")
+    text_part(x, px=AMB_BATT_TEXT_X, py=0, w=MEET_W - AMB_BATT_TEXT_X, h=MEET_H, template=battery.text_format,
+              params=[battery.text], size=20, weight="SEMI_BOLD", align="START")
+    x.close("Group")
+
+
+# --------------------------------------------------------------------------------------
 # Skin temperature thermometer (under the meetings)
 # --------------------------------------------------------------------------------------
 THERMO_SLOT = 12
@@ -589,9 +680,23 @@ THERMO_X, THERMO_Y, THERMO_W, THERMO_H = 135, 342, 180, 28
 BULB_D = 20
 TUBE_X, TUBE_Y, TUBE_W, TUBE_H = 12, 9, 96, 10
 THERMO_TEXT_X = TUBE_X + TUBE_W + 8
-# Cool -> neutral -> warm, ordered empty -> full like the metric gradients.
-THERMO_COLORS = ("#FF29B6F6", "#FF66BB6A", "#FFFFA726")
-THERMO_PREVIEW = (0.56, "33.6°")
+# The whole thermometer takes one color from the reading (°C, as sent by the companion),
+# benchmarked on wrist skin, which runs several degrees cooler than the body core:
+#   below 32 °C   cool blue    cooler than usual wrist skin (cold room, poor circulation)
+#   32 - 35.5 °C  warm orange  the usual range for wrist skin under a watch strap
+#   35.5 °C and up  red        above the usual wrist range: heat, exercise or possibly fever
+# (upper bound in °C, color); the last band has no upper bound.
+THERMO_BANDS = (
+    (32.0, "#FF29B6F6"),
+    (35.5, "#FFFF9800"),
+    (None, "#FFF44336"),
+)
+THERMO_PREVIEW = (33.6, "33.6°")
+THERMO_MIN_C, THERMO_MAX_C = 28.0, 38.0  # must match SkinTemperature.MIN_C / MAX_C
+
+
+def thermo_band_color(celsius: float) -> str:
+    return next(c for upper, c in THERMO_BANDS if upper is None or celsius < upper)
 
 
 def draw_thermometer_slot(x: Xml) -> None:
@@ -631,30 +736,33 @@ def draw_thermometer_slot(x: Xml) -> None:
         text_part(x, px=THERMO_TEXT_X, py=0, w=THERMO_W - THERMO_TEXT_X, h=THERMO_H, template="%s",
                   params=["[COMPLICATION.TEXT]"], size=18, weight="SEMI_BOLD", align="START")
 
+    def thermometer(track: str, color: str) -> callable:
+        """Track, liquid and bulb, all in one color. The liquid is the same rounded tube with
+        its width following the value; it starts under the bulb, so even a low reading looks
+        attached."""
+        def render() -> None:
+            x.open("PartDraw", x=0, y=0, width=THERMO_W, height=THERMO_H)
+            tube(track)
+            x.open("RoundRectangle", x=TUBE_X, y=TUBE_Y, width=TUBE_W, height=TUBE_H,
+                   cornerRadiusX=tube_r, cornerRadiusY=tube_r)
+            x.leaf("Fill", color=color)
+            x.leaf("Transform", target="width",
+                   value=f"{tube_r * 2:g} + {TUBE_W - tube_r * 2:g} * ({COMP_NORM})")
+            x.close("RoundRectangle")
+            x.close("PartDraw")
+            bulb(color)()
+        return render
+
     def ranged(single: bool) -> None:
-        x.open("PartDraw", x=0, y=0, width=THERMO_W, height=THERMO_H)
-        tube("#26FFFFFF" if single else with_alpha(THERMO_COLORS[-1], 0x33))
-        # Liquid: the same rounded tube, its width following the value. It starts under the
-        # bulb, so even an empty reading looks attached.
-        x.open("RoundRectangle", x=TUBE_X, y=TUBE_Y, width=TUBE_W, height=TUBE_H,
-               cornerRadiusX=tube_r, cornerRadiusY=tube_r)
         if single:
-            x.leaf("Fill", color="[CONFIGURATION.accent.0]")
+            thermometer("#26FFFFFF", "[CONFIGURATION.accent.0]")()
         else:
-            x.open("Fill", color="#FFFFFFFF")
-            x.leaf("LinearGradient", startX=TUBE_X, startY=0, endX=TUBE_X + TUBE_W, endY=0,
-                   colors=" ".join(THERMO_COLORS), positions="0 0.5 1")
-            x.close("Fill")
-        x.leaf("Transform", target="width", value=f"{tube_r * 2:g} + {TUBE_W - tube_r * 2:g} * ({COMP_NORM})")
-        x.close("RoundRectangle")
-        x.close("PartDraw")
-        if single:
-            bulb("[CONFIGURATION.accent.0]")()
-        else:
-            condition(x, [
-                (f"({COMP_NORM}) < 0.34", bulb(THERMO_COLORS[0])),
-                (f"({COMP_NORM}) < 0.67", bulb(THERMO_COLORS[1])),
-            ], bulb(THERMO_COLORS[2]))
+            # One cheap branch per band: the whole thermometer switches color at once.
+            value = "[COMPLICATION.RANGED_VALUE_VALUE]"
+            bands = [(f"{value} < {upper:g}", thermometer(with_alpha(color, 0x33), color))
+                     for upper, color in THERMO_BANDS if upper is not None]
+            last = THERMO_BANDS[-1][1]
+            condition(x, bands, thermometer(with_alpha(last, 0x33), last))
         value_text()
 
     x.open("Complication", type="RANGED_VALUE")
@@ -784,6 +892,7 @@ def build_xml() -> str:
     draw_meeting_slot(x, 10, MEET1_Y, second=False)
     draw_meeting_slot(x, 11, MEET2_Y, second=True)
     draw_thermometer_slot(x)
+    draw_ambient_battery(x)
     x.close("Scene")
     x.close("WatchFace")
     return x.text()
@@ -874,6 +983,30 @@ def lerp_color(colors: tuple[str, ...], t: float) -> str:
     return "#%02X%02X%02X" % tuple(round(a[i] + (b[i] - a[i]) * lt) for i in range(3))
 
 
+def preview_continuous(corner: Corner, metric: Metric, v: float, track: str, tip_col: str | None,
+                       fill_opacity: float, single_accent: str | None) -> list[str]:
+    parts = [f'<path d="{svg_arc(corner.start, corner.end, ARC_R)}" stroke="{track}" '
+             f'stroke-opacity="{0.2 if not single_accent else 1}" stroke-width="{STROKE}" '
+             f'fill="none" stroke-linecap="round"/>']
+    tip = corner.anchor - SPAN * v if corner.anchor_at_end else corner.anchor + SPAN * v
+    # Approximate the sweep gradient with short segments (one path in single color mode).
+    steps = 1 if single_accent else max(2, int(SPAN * v / 2))
+    for i in range(steps):
+        t0, t1 = i / steps, (i + 1) / steps
+        a0 = corner.anchor + (tip - corner.anchor) * t0
+        a1 = corner.anchor + (tip - corner.anchor) * t1
+        frac = (abs(a0 - corner.anchor) / SPAN)
+        col = tip_col or lerp_color(metric.colors, frac)
+        lo, hi = min(a0, a1), max(a0, a1)
+        cap = "round" if (i in (0, steps - 1)) else "butt"
+        parts.append(f'<path d="{svg_arc(lo, hi + 0.3, ARC_R)}" stroke="{col}" '
+                     f'stroke-opacity="{fill_opacity:.2f}" stroke-width="{STROKE}" fill="none" '
+                     f'stroke-linecap="{cap}"/>')
+    kx, ky = polar(tip, ARC_R)
+    parts.append(f'<circle cx="{kx:.1f}" cy="{ky:.1f}" r="5" fill="#fff"/>')
+    return parts
+
+
 def build_preview_svg(layout: dict[str, str], single_accent: str | None = None,
                       ambient: bool = False, meetings: tuple[tuple[str, str], ...] | None = None,
                       icons_dir: str = "") -> str:
@@ -894,25 +1027,19 @@ def build_preview_svg(layout: dict[str, str], single_accent: str | None = None,
                 track = hex6(metric.colors[-1])
                 tip_col = None
                 fill_opacity = 1
-            parts.append(f'<path d="{svg_arc(corner.start, corner.end, ARC_R)}" stroke="{track}" '
-                         f'stroke-opacity="{0.2 if not single_accent else 1}" stroke-width="{STROKE}" '
-                         f'fill="none" stroke-linecap="round"/>')
-            tip = corner.anchor - SPAN * v if corner.anchor_at_end else corner.anchor + SPAN * v
-            # Approximate the sweep gradient with short segments (one path in single color mode).
-            steps = 1 if single_accent else max(2, int(SPAN * v / 2))
-            for i in range(steps):
-                t0, t1 = i / steps, (i + 1) / steps
-                a0 = corner.anchor + (tip - corner.anchor) * t0
-                a1 = corner.anchor + (tip - corner.anchor) * t1
-                frac = (abs(a0 - corner.anchor) / SPAN)
-                col = tip_col or lerp_color(metric.colors, frac)
-                lo, hi = min(a0, a1), max(a0, a1)
-                cap = "round" if (i in (0, steps - 1)) else "butt"
-                parts.append(f'<path d="{svg_arc(lo, hi + 0.3, ARC_R)}" stroke="{col}" '
-                             f'stroke-opacity="{fill_opacity:.2f}" stroke-width="{STROKE}" fill="none" '
-                             f'stroke-linecap="{cap}"/>')
-            kx, ky = polar(tip, ARC_R)
-            parts.append(f'<circle cx="{kx:.1f}" cy="{ky:.1f}" r="5" fill="#fff"/>')
+            if metric.segments:
+                n = metric.segments
+                for k in range(n):
+                    a0, a1 = segment_angles(corner, k, n)
+                    dim = ("#FFFFFF", 0.15) if single_accent else (hex6(metric.colors[0]), 0.18)
+                    parts.append(f'<path d="{svg_arc(a0, a1, ARC_R)}" stroke="{dim[0]}" stroke-opacity="{dim[1]}" '
+                                 f'stroke-width="{STROKE}" fill="none"/>')
+                    if v > k / n:
+                        col = tip_col or hex6(segment_color(metric, k))
+                        parts.append(f'<path d="{svg_arc(a0, a1, ARC_R)}" stroke="{col}" '
+                                     f'stroke-opacity="{fill_opacity:.2f}" stroke-width="{STROKE}" fill="none"/>')
+            else:
+                parts.extend(preview_continuous(corner, metric, v, track, tip_col, fill_opacity, single_accent))
             bx, by = badge_origin(corner)
             icol = hex6(accent[2]) if single_accent else lerp_color(metric.colors, min(v, 0.999))
             parts.append(
@@ -939,7 +1066,9 @@ def build_preview_svg(layout: dict[str, str], single_accent: str | None = None,
                  f'text-anchor="end" letter-spacing="-3">10</text>'
                  f'<text x="225" y="{TIME_Y + 84}" fill="#BDBDBD" font-size="88" font-weight="700" text-anchor="middle">:</text>'
                  f'<text x="240" y="{TIME_Y + 92}" fill="#fff" font-size="96" font-weight="700" letter-spacing="-3">08</text></g>')
-    rows = meetings[:1] if ambient else meetings
+    if ambient:
+        parts.append(preview_ambient_battery(icons_dir))
+    rows = () if ambient else meetings
     for i, (t, title) in enumerate(rows):
         y = (MEET1_Y if i == 0 else MEET2_Y) + 22
         size = 22 if i == 0 else 19
@@ -958,22 +1087,36 @@ def build_preview_svg(layout: dict[str, str], single_accent: str | None = None,
     return "\n".join(parts)
 
 
+def preview_ambient_battery(icons_dir: str) -> str:
+    battery = METRICS["battery"]
+    n, v = battery.segments or 10, battery.preview_value
+    ox, oy = MEET_X, MEET1_Y
+    out = [f'<g opacity="{AMB_BATT_ALPHA / 255:.2f}">',
+           f'<image x="{ox}" y="{oy + (MEET_H - AMB_BATT_ICON) / 2}" width="{AMB_BATT_ICON}" '
+           f'height="{AMB_BATT_ICON}" href="{icons_dir}{battery.icon}_BDBDBD.png"/>']
+    for i in range(n):
+        sx = ox + AMB_BATT_SEG_X + i * (AMB_BATT_SEG_W + AMB_BATT_SEG_GAP)
+        lit = v > i / n
+        col = hex6(segment_color(battery, i)) if lit else "#FFFFFF"
+        op = 1 if lit else 0.2
+        out.append(f'<rect x="{sx}" y="{oy + (MEET_H - AMB_BATT_SEG_H) / 2}" width="{AMB_BATT_SEG_W}" '
+                   f'height="{AMB_BATT_SEG_H}" rx="2" fill="{col}" fill-opacity="{op}"/>')
+    out.append(f'<text x="{ox + AMB_BATT_TEXT_X}" y="{oy + 22}" fill="#fff" font-size="20" '
+               f'font-weight="600">{battery.preview_text}</text></g>')
+    return "".join(out)
+
+
 def preview_thermometer(single: str | None) -> str:
-    v, label = THERMO_PREVIEW
+    celsius, label = THERMO_PREVIEW
+    v = (celsius - THERMO_MIN_C) / (THERMO_MAX_C - THERMO_MIN_C)
     ox, oy = THERMO_X, THERMO_Y
     r = TUBE_H / 2
-    track = "rgba(255,255,255,0.15)" if single else hex6(THERMO_COLORS[-1])
+    color = single or hex6(thermo_band_color(celsius))
+    track = "rgba(255,255,255,0.15)" if single else color
     track_op = 1 if single else 0.2
     fill_w = TUBE_H + (TUBE_W - TUBE_H) * v
-    if single:
-        liquid, bulb = single, single
-    else:
-        liquid = "url(#thermo)"
-        bulb = hex6(THERMO_COLORS[0 if v < 0.34 else 1 if v < 0.67 else 2])
-    stops = "".join(f'<stop offset="{i / 2:g}" stop-color="{hex6(c)}"/>' for i, c in enumerate(THERMO_COLORS))
+    liquid = bulb = color
     return (
-        f'<defs><linearGradient id="thermo" gradientUnits="userSpaceOnUse" x1="{ox + TUBE_X}" y1="0" '
-        f'x2="{ox + TUBE_X + TUBE_W}" y2="0">{stops}</linearGradient></defs>'
         f'<rect x="{ox + TUBE_X}" y="{oy + TUBE_Y}" width="{TUBE_W}" height="{TUBE_H}" rx="{r}" '
         f'fill="{track}" fill-opacity="{track_op}"/>'
         f'<rect x="{ox + TUBE_X}" y="{oy + TUBE_Y}" width="{fill_w:.1f}" height="{TUBE_H}" rx="{r}" fill="{liquid}"/>'
@@ -992,7 +1135,8 @@ def write_previews() -> None:
     # Pre-tinted copies of metric icons for the SVG preview.
     for metric in METRICS.values():
         base = Image.open(drawables / f"{metric.icon}.png").convert("RGBA")
-        cols = {lerp_color(metric.colors, min(metric.preview_value, 0.999))} | {hex6(a[2]) for a in ACCENTS}
+        cols = ({lerp_color(metric.colors, min(metric.preview_value, 0.999))} | {hex6(a[2]) for a in ACCENTS}
+                | {"#BDBDBD"})
         for col in cols:
             r, g, b = (int(col[i:i + 2], 16) for i in (1, 3, 5))
             tinted = Image.new("RGBA", base.size, (r, g, b, 255))

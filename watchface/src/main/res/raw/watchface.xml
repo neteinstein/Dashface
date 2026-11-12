@@ -114,23 +114,114 @@
               <ListOption id="multi">
                 <Group name="tl_battery_multi" x="0" y="0" width="450" height="450">
                   <PartDraw x="0" y="0" width="450" height="450">
-                    <Arc centerX="225" centerY="225" width="420" height="420" startAngle="276" endAngle="354">
-                      <Stroke color="#3329B6F6" thickness="14" cap="ROUND"/>
+                    <Arc centerX="225" centerY="225" width="420" height="420" startAngle="347.3" endAngle="352.9">
+                      <Stroke color="#2EB3E5FC" thickness="14" cap="BUTT"/>
                     </Arc>
                   </PartDraw>
                   <PartDraw x="0" y="0" width="450" height="450">
-                    <Arc centerX="225" centerY="225" width="420" height="420" startAngle="276" endAngle="354">
-                      <Stroke color="#FFFFFFFF" thickness="14" cap="ROUND">
-                        <SweepGradient centerX="225" centerY="225" startAngle="276" endAngle="354" colors="#FF29B6F6 #FF1E4E6B" positions="0 1"/>
-                      </Stroke>
-                      <Transform target="startAngle" value="354 - 78 * (clamp([BATTERY_PERCENT], 0, 100) / 100)"/>
+                    <Transform target="alpha" value="(clamp([BATTERY_PERCENT], 0, 100) / 100) &gt; 0 ? 255 : 0"/>
+                    <Arc centerX="225" centerY="225" width="420" height="420" startAngle="347.3" endAngle="352.9">
+                      <Stroke color="#FFB3E5FC" thickness="14" cap="BUTT"/>
                     </Arc>
                   </PartDraw>
                   <PartDraw x="0" y="0" width="450" height="450">
-                    <Ellipse x="220" y="10" width="10" height="10">
-                      <Fill color="#FFFFFFFF"/>
-                    </Ellipse>
-                    <Transform target="angle" value="354 - 78 * (clamp([BATTERY_PERCENT], 0, 100) / 100)"/>
+                    <Arc centerX="225" centerY="225" width="420" height="420" startAngle="339.5" endAngle="345.1">
+                      <Stroke color="#2EB3E5FC" thickness="14" cap="BUTT"/>
+                    </Arc>
+                  </PartDraw>
+                  <PartDraw x="0" y="0" width="450" height="450">
+                    <Transform target="alpha" value="(clamp([BATTERY_PERCENT], 0, 100) / 100) &gt; 0.1 ? 255 : 0"/>
+                    <Arc centerX="225" centerY="225" width="420" height="420" startAngle="339.5" endAngle="345.1">
+                      <Stroke color="#FF9DDDFB" thickness="14" cap="BUTT"/>
+                    </Arc>
+                  </PartDraw>
+                  <PartDraw x="0" y="0" width="450" height="450">
+                    <Arc centerX="225" centerY="225" width="420" height="420" startAngle="331.7" endAngle="337.3">
+                      <Stroke color="#2EB3E5FC" thickness="14" cap="BUTT"/>
+                    </Arc>
+                  </PartDraw>
+                  <PartDraw x="0" y="0" width="450" height="450">
+                    <Transform target="alpha" value="(clamp([BATTERY_PERCENT], 0, 100) / 100) &gt; 0.2 ? 255 : 0"/>
+                    <Arc centerX="225" centerY="225" width="420" height="420" startAngle="331.7" endAngle="337.3">
+                      <Stroke color="#FF87D6FA" thickness="14" cap="BUTT"/>
+                    </Arc>
+                  </PartDraw>
+                  <PartDraw x="0" y="0" width="450" height="450">
+                    <Arc centerX="225" centerY="225" width="420" height="420" startAngle="323.9" endAngle="329.5">
+                      <Stroke color="#2EB3E5FC" thickness="14" cap="BUTT"/>
+                    </Arc>
+                  </PartDraw>
+                  <PartDraw x="0" y="0" width="450" height="450">
+                    <Transform target="alpha" value="(clamp([BATTERY_PERCENT], 0, 100) / 100) &gt; 0.3 ? 255 : 0"/>
+                    <Arc centerX="225" centerY="225" width="420" height="420" startAngle="323.9" endAngle="329.5">
+                      <Stroke color="#FF70CEF9" thickness="14" cap="BUTT"/>
+                    </Arc>
+                  </PartDraw>
+                  <PartDraw x="0" y="0" width="450" height="450">
+                    <Arc centerX="225" centerY="225" width="420" height="420" startAngle="316.1" endAngle="321.7">
+                      <Stroke color="#2EB3E5FC" thickness="14" cap="BUTT"/>
+                    </Arc>
+                  </PartDraw>
+                  <PartDraw x="0" y="0" width="450" height="450">
+                    <Transform target="alpha" value="(clamp([BATTERY_PERCENT], 0, 100) / 100) &gt; 0.4 ? 255 : 0"/>
+                    <Arc centerX="225" centerY="225" width="420" height="420" startAngle="316.1" endAngle="321.7">
+                      <Stroke color="#FF5AC7F8" thickness="14" cap="BUTT"/>
+                    </Arc>
+                  </PartDraw>
+                  <PartDraw x="0" y="0" width="450" height="450">
+                    <Arc centerX="225" centerY="225" width="420" height="420" startAngle="308.3" endAngle="313.9">
+                      <Stroke color="#2EB3E5FC" thickness="14" cap="BUTT"/>
+                    </Arc>
+                  </PartDraw>
+                  <PartDraw x="0" y="0" width="450" height="450">
+                    <Transform target="alpha" value="(clamp([BATTERY_PERCENT], 0, 100) / 100) &gt; 0.5 ? 255 : 0"/>
+                    <Arc centerX="225" centerY="225" width="420" height="420" startAngle="308.3" endAngle="313.9">
+                      <Stroke color="#FF4ABCF5" thickness="14" cap="BUTT"/>
+                    </Arc>
+                  </PartDraw>
+                  <PartDraw x="0" y="0" width="450" height="450">
+                    <Arc centerX="225" centerY="225" width="420" height="420" startAngle="300.5" endAngle="306.1">
+                      <Stroke color="#2EB3E5FC" thickness="14" cap="BUTT"/>
+                    </Arc>
+                  </PartDraw>
+                  <PartDraw x="0" y="0" width="450" height="450">
+                    <Transform target="alpha" value="(clamp([BATTERY_PERCENT], 0, 100) / 100) &gt; 0.6 ? 255 : 0"/>
+                    <Arc centerX="225" centerY="225" width="420" height="420" startAngle="300.5" endAngle="306.1">
+                      <Stroke color="#FF3FAFF1" thickness="14" cap="BUTT"/>
+                    </Arc>
+                  </PartDraw>
+                  <PartDraw x="0" y="0" width="450" height="450">
+                    <Arc centerX="225" centerY="225" width="420" height="420" startAngle="292.7" endAngle="298.3">
+                      <Stroke color="#2EB3E5FC" thickness="14" cap="BUTT"/>
+                    </Arc>
+                  </PartDraw>
+                  <PartDraw x="0" y="0" width="450" height="450">
+                    <Transform target="alpha" value="(clamp([BATTERY_PERCENT], 0, 100) / 100) &gt; 0.7 ? 255 : 0"/>
+                    <Arc centerX="225" centerY="225" width="420" height="420" startAngle="292.7" endAngle="298.3">
+                      <Stroke color="#FF34A2ED" thickness="14" cap="BUTT"/>
+                    </Arc>
+                  </PartDraw>
+                  <PartDraw x="0" y="0" width="450" height="450">
+                    <Arc centerX="225" centerY="225" width="420" height="420" startAngle="284.9" endAngle="290.5">
+                      <Stroke color="#2EB3E5FC" thickness="14" cap="BUTT"/>
+                    </Arc>
+                  </PartDraw>
+                  <PartDraw x="0" y="0" width="450" height="450">
+                    <Transform target="alpha" value="(clamp([BATTERY_PERCENT], 0, 100) / 100) &gt; 0.8 ? 255 : 0"/>
+                    <Arc centerX="225" centerY="225" width="420" height="420" startAngle="284.9" endAngle="290.5">
+                      <Stroke color="#FF2995E9" thickness="14" cap="BUTT"/>
+                    </Arc>
+                  </PartDraw>
+                  <PartDraw x="0" y="0" width="450" height="450">
+                    <Arc centerX="225" centerY="225" width="420" height="420" startAngle="277.1" endAngle="282.7">
+                      <Stroke color="#2EB3E5FC" thickness="14" cap="BUTT"/>
+                    </Arc>
+                  </PartDraw>
+                  <PartDraw x="0" y="0" width="450" height="450">
+                    <Transform target="alpha" value="(clamp([BATTERY_PERCENT], 0, 100) / 100) &gt; 0.9 ? 255 : 0"/>
+                    <Arc centerX="225" centerY="225" width="420" height="420" startAngle="277.1" endAngle="282.7">
+                      <Stroke color="#FF1E88E5" thickness="14" cap="BUTT"/>
+                    </Arc>
                   </PartDraw>
                   <Group name="badge_tl_battery" x="37" y="160" width="48" height="42">
                     <Condition>
@@ -139,17 +230,17 @@
                         <Expression name="c1"><![CDATA[(clamp([BATTERY_PERCENT], 0, 100) / 100) < 0.67]]></Expression>
                       </Expressions>
                       <Compare expression="c0">
-                        <PartImage x="14" y="0" width="20" height="20" tintColor="#FF1E4E6B">
+                        <PartImage x="14" y="0" width="20" height="20" tintColor="#FFB3E5FC">
                           <Image resource="ic_metric_battery"/>
                         </PartImage>
                       </Compare>
                       <Compare expression="c1">
-                        <PartImage x="14" y="0" width="20" height="20" tintColor="#FF1E4E6B">
+                        <PartImage x="14" y="0" width="20" height="20" tintColor="#FF4FC3F7">
                           <Image resource="ic_metric_battery"/>
                         </PartImage>
                       </Compare>
                       <Default>
-                        <PartImage x="14" y="0" width="20" height="20" tintColor="#FF29B6F6">
+                        <PartImage x="14" y="0" width="20" height="20" tintColor="#FF1E88E5">
                           <Image resource="ic_metric_battery"/>
                         </PartImage>
                       </Default>
@@ -170,22 +261,114 @@
               <ListOption id="single">
                 <Group name="tl_battery_single" x="0" y="0" width="450" height="450">
                   <PartDraw x="0" y="0" width="450" height="450">
-                    <Arc centerX="225" centerY="225" width="420" height="420" startAngle="276" endAngle="354">
-                      <Stroke color="#26FFFFFF" thickness="14" cap="ROUND"/>
+                    <Arc centerX="225" centerY="225" width="420" height="420" startAngle="347.3" endAngle="352.9">
+                      <Stroke color="#26FFFFFF" thickness="14" cap="BUTT"/>
                     </Arc>
                   </PartDraw>
                   <PartDraw x="0" y="0" width="450" height="450">
-                    <Transform target="alpha" value="90 + 165 * (clamp([BATTERY_PERCENT], 0, 100) / 100)"/>
-                    <Arc centerX="225" centerY="225" width="420" height="420" startAngle="276" endAngle="354">
-                      <Stroke color="[CONFIGURATION.accent.0]" thickness="14" cap="ROUND"/>
-                      <Transform target="startAngle" value="354 - 78 * (clamp([BATTERY_PERCENT], 0, 100) / 100)"/>
+                    <Transform target="alpha" value="(clamp([BATTERY_PERCENT], 0, 100) / 100) &gt; 0 ? (90 + 165 * (clamp([BATTERY_PERCENT], 0, 100) / 100)) : 0"/>
+                    <Arc centerX="225" centerY="225" width="420" height="420" startAngle="347.3" endAngle="352.9">
+                      <Stroke color="[CONFIGURATION.accent.0]" thickness="14" cap="BUTT"/>
                     </Arc>
                   </PartDraw>
                   <PartDraw x="0" y="0" width="450" height="450">
-                    <Ellipse x="220" y="10" width="10" height="10">
-                      <Fill color="#FFFFFFFF"/>
-                    </Ellipse>
-                    <Transform target="angle" value="354 - 78 * (clamp([BATTERY_PERCENT], 0, 100) / 100)"/>
+                    <Arc centerX="225" centerY="225" width="420" height="420" startAngle="339.5" endAngle="345.1">
+                      <Stroke color="#26FFFFFF" thickness="14" cap="BUTT"/>
+                    </Arc>
+                  </PartDraw>
+                  <PartDraw x="0" y="0" width="450" height="450">
+                    <Transform target="alpha" value="(clamp([BATTERY_PERCENT], 0, 100) / 100) &gt; 0.1 ? (90 + 165 * (clamp([BATTERY_PERCENT], 0, 100) / 100)) : 0"/>
+                    <Arc centerX="225" centerY="225" width="420" height="420" startAngle="339.5" endAngle="345.1">
+                      <Stroke color="[CONFIGURATION.accent.0]" thickness="14" cap="BUTT"/>
+                    </Arc>
+                  </PartDraw>
+                  <PartDraw x="0" y="0" width="450" height="450">
+                    <Arc centerX="225" centerY="225" width="420" height="420" startAngle="331.7" endAngle="337.3">
+                      <Stroke color="#26FFFFFF" thickness="14" cap="BUTT"/>
+                    </Arc>
+                  </PartDraw>
+                  <PartDraw x="0" y="0" width="450" height="450">
+                    <Transform target="alpha" value="(clamp([BATTERY_PERCENT], 0, 100) / 100) &gt; 0.2 ? (90 + 165 * (clamp([BATTERY_PERCENT], 0, 100) / 100)) : 0"/>
+                    <Arc centerX="225" centerY="225" width="420" height="420" startAngle="331.7" endAngle="337.3">
+                      <Stroke color="[CONFIGURATION.accent.0]" thickness="14" cap="BUTT"/>
+                    </Arc>
+                  </PartDraw>
+                  <PartDraw x="0" y="0" width="450" height="450">
+                    <Arc centerX="225" centerY="225" width="420" height="420" startAngle="323.9" endAngle="329.5">
+                      <Stroke color="#26FFFFFF" thickness="14" cap="BUTT"/>
+                    </Arc>
+                  </PartDraw>
+                  <PartDraw x="0" y="0" width="450" height="450">
+                    <Transform target="alpha" value="(clamp([BATTERY_PERCENT], 0, 100) / 100) &gt; 0.3 ? (90 + 165 * (clamp([BATTERY_PERCENT], 0, 100) / 100)) : 0"/>
+                    <Arc centerX="225" centerY="225" width="420" height="420" startAngle="323.9" endAngle="329.5">
+                      <Stroke color="[CONFIGURATION.accent.0]" thickness="14" cap="BUTT"/>
+                    </Arc>
+                  </PartDraw>
+                  <PartDraw x="0" y="0" width="450" height="450">
+                    <Arc centerX="225" centerY="225" width="420" height="420" startAngle="316.1" endAngle="321.7">
+                      <Stroke color="#26FFFFFF" thickness="14" cap="BUTT"/>
+                    </Arc>
+                  </PartDraw>
+                  <PartDraw x="0" y="0" width="450" height="450">
+                    <Transform target="alpha" value="(clamp([BATTERY_PERCENT], 0, 100) / 100) &gt; 0.4 ? (90 + 165 * (clamp([BATTERY_PERCENT], 0, 100) / 100)) : 0"/>
+                    <Arc centerX="225" centerY="225" width="420" height="420" startAngle="316.1" endAngle="321.7">
+                      <Stroke color="[CONFIGURATION.accent.0]" thickness="14" cap="BUTT"/>
+                    </Arc>
+                  </PartDraw>
+                  <PartDraw x="0" y="0" width="450" height="450">
+                    <Arc centerX="225" centerY="225" width="420" height="420" startAngle="308.3" endAngle="313.9">
+                      <Stroke color="#26FFFFFF" thickness="14" cap="BUTT"/>
+                    </Arc>
+                  </PartDraw>
+                  <PartDraw x="0" y="0" width="450" height="450">
+                    <Transform target="alpha" value="(clamp([BATTERY_PERCENT], 0, 100) / 100) &gt; 0.5 ? (90 + 165 * (clamp([BATTERY_PERCENT], 0, 100) / 100)) : 0"/>
+                    <Arc centerX="225" centerY="225" width="420" height="420" startAngle="308.3" endAngle="313.9">
+                      <Stroke color="[CONFIGURATION.accent.0]" thickness="14" cap="BUTT"/>
+                    </Arc>
+                  </PartDraw>
+                  <PartDraw x="0" y="0" width="450" height="450">
+                    <Arc centerX="225" centerY="225" width="420" height="420" startAngle="300.5" endAngle="306.1">
+                      <Stroke color="#26FFFFFF" thickness="14" cap="BUTT"/>
+                    </Arc>
+                  </PartDraw>
+                  <PartDraw x="0" y="0" width="450" height="450">
+                    <Transform target="alpha" value="(clamp([BATTERY_PERCENT], 0, 100) / 100) &gt; 0.6 ? (90 + 165 * (clamp([BATTERY_PERCENT], 0, 100) / 100)) : 0"/>
+                    <Arc centerX="225" centerY="225" width="420" height="420" startAngle="300.5" endAngle="306.1">
+                      <Stroke color="[CONFIGURATION.accent.0]" thickness="14" cap="BUTT"/>
+                    </Arc>
+                  </PartDraw>
+                  <PartDraw x="0" y="0" width="450" height="450">
+                    <Arc centerX="225" centerY="225" width="420" height="420" startAngle="292.7" endAngle="298.3">
+                      <Stroke color="#26FFFFFF" thickness="14" cap="BUTT"/>
+                    </Arc>
+                  </PartDraw>
+                  <PartDraw x="0" y="0" width="450" height="450">
+                    <Transform target="alpha" value="(clamp([BATTERY_PERCENT], 0, 100) / 100) &gt; 0.7 ? (90 + 165 * (clamp([BATTERY_PERCENT], 0, 100) / 100)) : 0"/>
+                    <Arc centerX="225" centerY="225" width="420" height="420" startAngle="292.7" endAngle="298.3">
+                      <Stroke color="[CONFIGURATION.accent.0]" thickness="14" cap="BUTT"/>
+                    </Arc>
+                  </PartDraw>
+                  <PartDraw x="0" y="0" width="450" height="450">
+                    <Arc centerX="225" centerY="225" width="420" height="420" startAngle="284.9" endAngle="290.5">
+                      <Stroke color="#26FFFFFF" thickness="14" cap="BUTT"/>
+                    </Arc>
+                  </PartDraw>
+                  <PartDraw x="0" y="0" width="450" height="450">
+                    <Transform target="alpha" value="(clamp([BATTERY_PERCENT], 0, 100) / 100) &gt; 0.8 ? (90 + 165 * (clamp([BATTERY_PERCENT], 0, 100) / 100)) : 0"/>
+                    <Arc centerX="225" centerY="225" width="420" height="420" startAngle="284.9" endAngle="290.5">
+                      <Stroke color="[CONFIGURATION.accent.0]" thickness="14" cap="BUTT"/>
+                    </Arc>
+                  </PartDraw>
+                  <PartDraw x="0" y="0" width="450" height="450">
+                    <Arc centerX="225" centerY="225" width="420" height="420" startAngle="277.1" endAngle="282.7">
+                      <Stroke color="#26FFFFFF" thickness="14" cap="BUTT"/>
+                    </Arc>
+                  </PartDraw>
+                  <PartDraw x="0" y="0" width="450" height="450">
+                    <Transform target="alpha" value="(clamp([BATTERY_PERCENT], 0, 100) / 100) &gt; 0.9 ? (90 + 165 * (clamp([BATTERY_PERCENT], 0, 100) / 100)) : 0"/>
+                    <Arc centerX="225" centerY="225" width="420" height="420" startAngle="277.1" endAngle="282.7">
+                      <Stroke color="[CONFIGURATION.accent.0]" thickness="14" cap="BUTT"/>
+                    </Arc>
                   </PartDraw>
                   <Group name="badge_tl_battery" x="37" y="160" width="48" height="42">
                     <PartImage x="14" y="0" width="20" height="20" tintColor="[CONFIGURATION.accent.0]">
@@ -470,23 +653,114 @@
               <ListOption id="multi">
                 <Group name="tr_battery_multi" x="0" y="0" width="450" height="450">
                   <PartDraw x="0" y="0" width="450" height="450">
-                    <Arc centerX="225" centerY="225" width="420" height="420" startAngle="6" endAngle="84">
-                      <Stroke color="#3329B6F6" thickness="14" cap="ROUND"/>
+                    <Arc centerX="225" centerY="225" width="420" height="420" startAngle="7.1" endAngle="12.7">
+                      <Stroke color="#2EB3E5FC" thickness="14" cap="BUTT"/>
                     </Arc>
                   </PartDraw>
                   <PartDraw x="0" y="0" width="450" height="450">
-                    <Arc centerX="225" centerY="225" width="420" height="420" startAngle="6" endAngle="84">
-                      <Stroke color="#FFFFFFFF" thickness="14" cap="ROUND">
-                        <SweepGradient centerX="225" centerY="225" startAngle="6" endAngle="84" colors="#FF1E4E6B #FF29B6F6" positions="0 1"/>
-                      </Stroke>
-                      <Transform target="endAngle" value="6 + 78 * (clamp([BATTERY_PERCENT], 0, 100) / 100)"/>
+                    <Transform target="alpha" value="(clamp([BATTERY_PERCENT], 0, 100) / 100) &gt; 0 ? 255 : 0"/>
+                    <Arc centerX="225" centerY="225" width="420" height="420" startAngle="7.1" endAngle="12.7">
+                      <Stroke color="#FFB3E5FC" thickness="14" cap="BUTT"/>
                     </Arc>
                   </PartDraw>
                   <PartDraw x="0" y="0" width="450" height="450">
-                    <Ellipse x="220" y="10" width="10" height="10">
-                      <Fill color="#FFFFFFFF"/>
-                    </Ellipse>
-                    <Transform target="angle" value="6 + 78 * (clamp([BATTERY_PERCENT], 0, 100) / 100)"/>
+                    <Arc centerX="225" centerY="225" width="420" height="420" startAngle="14.9" endAngle="20.5">
+                      <Stroke color="#2EB3E5FC" thickness="14" cap="BUTT"/>
+                    </Arc>
+                  </PartDraw>
+                  <PartDraw x="0" y="0" width="450" height="450">
+                    <Transform target="alpha" value="(clamp([BATTERY_PERCENT], 0, 100) / 100) &gt; 0.1 ? 255 : 0"/>
+                    <Arc centerX="225" centerY="225" width="420" height="420" startAngle="14.9" endAngle="20.5">
+                      <Stroke color="#FF9DDDFB" thickness="14" cap="BUTT"/>
+                    </Arc>
+                  </PartDraw>
+                  <PartDraw x="0" y="0" width="450" height="450">
+                    <Arc centerX="225" centerY="225" width="420" height="420" startAngle="22.7" endAngle="28.3">
+                      <Stroke color="#2EB3E5FC" thickness="14" cap="BUTT"/>
+                    </Arc>
+                  </PartDraw>
+                  <PartDraw x="0" y="0" width="450" height="450">
+                    <Transform target="alpha" value="(clamp([BATTERY_PERCENT], 0, 100) / 100) &gt; 0.2 ? 255 : 0"/>
+                    <Arc centerX="225" centerY="225" width="420" height="420" startAngle="22.7" endAngle="28.3">
+                      <Stroke color="#FF87D6FA" thickness="14" cap="BUTT"/>
+                    </Arc>
+                  </PartDraw>
+                  <PartDraw x="0" y="0" width="450" height="450">
+                    <Arc centerX="225" centerY="225" width="420" height="420" startAngle="30.5" endAngle="36.1">
+                      <Stroke color="#2EB3E5FC" thickness="14" cap="BUTT"/>
+                    </Arc>
+                  </PartDraw>
+                  <PartDraw x="0" y="0" width="450" height="450">
+                    <Transform target="alpha" value="(clamp([BATTERY_PERCENT], 0, 100) / 100) &gt; 0.3 ? 255 : 0"/>
+                    <Arc centerX="225" centerY="225" width="420" height="420" startAngle="30.5" endAngle="36.1">
+                      <Stroke color="#FF70CEF9" thickness="14" cap="BUTT"/>
+                    </Arc>
+                  </PartDraw>
+                  <PartDraw x="0" y="0" width="450" height="450">
+                    <Arc centerX="225" centerY="225" width="420" height="420" startAngle="38.3" endAngle="43.9">
+                      <Stroke color="#2EB3E5FC" thickness="14" cap="BUTT"/>
+                    </Arc>
+                  </PartDraw>
+                  <PartDraw x="0" y="0" width="450" height="450">
+                    <Transform target="alpha" value="(clamp([BATTERY_PERCENT], 0, 100) / 100) &gt; 0.4 ? 255 : 0"/>
+                    <Arc centerX="225" centerY="225" width="420" height="420" startAngle="38.3" endAngle="43.9">
+                      <Stroke color="#FF5AC7F8" thickness="14" cap="BUTT"/>
+                    </Arc>
+                  </PartDraw>
+                  <PartDraw x="0" y="0" width="450" height="450">
+                    <Arc centerX="225" centerY="225" width="420" height="420" startAngle="46.1" endAngle="51.7">
+                      <Stroke color="#2EB3E5FC" thickness="14" cap="BUTT"/>
+                    </Arc>
+                  </PartDraw>
+                  <PartDraw x="0" y="0" width="450" height="450">
+                    <Transform target="alpha" value="(clamp([BATTERY_PERCENT], 0, 100) / 100) &gt; 0.5 ? 255 : 0"/>
+                    <Arc centerX="225" centerY="225" width="420" height="420" startAngle="46.1" endAngle="51.7">
+                      <Stroke color="#FF4ABCF5" thickness="14" cap="BUTT"/>
+                    </Arc>
+                  </PartDraw>
+                  <PartDraw x="0" y="0" width="450" height="450">
+                    <Arc centerX="225" centerY="225" width="420" height="420" startAngle="53.9" endAngle="59.5">
+                      <Stroke color="#2EB3E5FC" thickness="14" cap="BUTT"/>
+                    </Arc>
+                  </PartDraw>
+                  <PartDraw x="0" y="0" width="450" height="450">
+                    <Transform target="alpha" value="(clamp([BATTERY_PERCENT], 0, 100) / 100) &gt; 0.6 ? 255 : 0"/>
+                    <Arc centerX="225" centerY="225" width="420" height="420" startAngle="53.9" endAngle="59.5">
+                      <Stroke color="#FF3FAFF1" thickness="14" cap="BUTT"/>
+                    </Arc>
+                  </PartDraw>
+                  <PartDraw x="0" y="0" width="450" height="450">
+                    <Arc centerX="225" centerY="225" width="420" height="420" startAngle="61.7" endAngle="67.3">
+                      <Stroke color="#2EB3E5FC" thickness="14" cap="BUTT"/>
+                    </Arc>
+                  </PartDraw>
+                  <PartDraw x="0" y="0" width="450" height="450">
+                    <Transform target="alpha" value="(clamp([BATTERY_PERCENT], 0, 100) / 100) &gt; 0.7 ? 255 : 0"/>
+                    <Arc centerX="225" centerY="225" width="420" height="420" startAngle="61.7" endAngle="67.3">
+                      <Stroke color="#FF34A2ED" thickness="14" cap="BUTT"/>
+                    </Arc>
+                  </PartDraw>
+                  <PartDraw x="0" y="0" width="450" height="450">
+                    <Arc centerX="225" centerY="225" width="420" height="420" startAngle="69.5" endAngle="75.1">
+                      <Stroke color="#2EB3E5FC" thickness="14" cap="BUTT"/>
+                    </Arc>
+                  </PartDraw>
+                  <PartDraw x="0" y="0" width="450" height="450">
+                    <Transform target="alpha" value="(clamp([BATTERY_PERCENT], 0, 100) / 100) &gt; 0.8 ? 255 : 0"/>
+                    <Arc centerX="225" centerY="225" width="420" height="420" startAngle="69.5" endAngle="75.1">
+                      <Stroke color="#FF2995E9" thickness="14" cap="BUTT"/>
+                    </Arc>
+                  </PartDraw>
+                  <PartDraw x="0" y="0" width="450" height="450">
+                    <Arc centerX="225" centerY="225" width="420" height="420" startAngle="77.3" endAngle="82.9">
+                      <Stroke color="#2EB3E5FC" thickness="14" cap="BUTT"/>
+                    </Arc>
+                  </PartDraw>
+                  <PartDraw x="0" y="0" width="450" height="450">
+                    <Transform target="alpha" value="(clamp([BATTERY_PERCENT], 0, 100) / 100) &gt; 0.9 ? 255 : 0"/>
+                    <Arc centerX="225" centerY="225" width="420" height="420" startAngle="77.3" endAngle="82.9">
+                      <Stroke color="#FF1E88E5" thickness="14" cap="BUTT"/>
+                    </Arc>
                   </PartDraw>
                   <Group name="badge_tr_battery" x="365" y="160" width="48" height="42">
                     <Condition>
@@ -495,17 +769,17 @@
                         <Expression name="c1"><![CDATA[(clamp([BATTERY_PERCENT], 0, 100) / 100) < 0.67]]></Expression>
                       </Expressions>
                       <Compare expression="c0">
-                        <PartImage x="14" y="0" width="20" height="20" tintColor="#FF1E4E6B">
+                        <PartImage x="14" y="0" width="20" height="20" tintColor="#FFB3E5FC">
                           <Image resource="ic_metric_battery"/>
                         </PartImage>
                       </Compare>
                       <Compare expression="c1">
-                        <PartImage x="14" y="0" width="20" height="20" tintColor="#FF1E4E6B">
+                        <PartImage x="14" y="0" width="20" height="20" tintColor="#FF4FC3F7">
                           <Image resource="ic_metric_battery"/>
                         </PartImage>
                       </Compare>
                       <Default>
-                        <PartImage x="14" y="0" width="20" height="20" tintColor="#FF29B6F6">
+                        <PartImage x="14" y="0" width="20" height="20" tintColor="#FF1E88E5">
                           <Image resource="ic_metric_battery"/>
                         </PartImage>
                       </Default>
@@ -526,22 +800,114 @@
               <ListOption id="single">
                 <Group name="tr_battery_single" x="0" y="0" width="450" height="450">
                   <PartDraw x="0" y="0" width="450" height="450">
-                    <Arc centerX="225" centerY="225" width="420" height="420" startAngle="6" endAngle="84">
-                      <Stroke color="#26FFFFFF" thickness="14" cap="ROUND"/>
+                    <Arc centerX="225" centerY="225" width="420" height="420" startAngle="7.1" endAngle="12.7">
+                      <Stroke color="#26FFFFFF" thickness="14" cap="BUTT"/>
                     </Arc>
                   </PartDraw>
                   <PartDraw x="0" y="0" width="450" height="450">
-                    <Transform target="alpha" value="90 + 165 * (clamp([BATTERY_PERCENT], 0, 100) / 100)"/>
-                    <Arc centerX="225" centerY="225" width="420" height="420" startAngle="6" endAngle="84">
-                      <Stroke color="[CONFIGURATION.accent.0]" thickness="14" cap="ROUND"/>
-                      <Transform target="endAngle" value="6 + 78 * (clamp([BATTERY_PERCENT], 0, 100) / 100)"/>
+                    <Transform target="alpha" value="(clamp([BATTERY_PERCENT], 0, 100) / 100) &gt; 0 ? (90 + 165 * (clamp([BATTERY_PERCENT], 0, 100) / 100)) : 0"/>
+                    <Arc centerX="225" centerY="225" width="420" height="420" startAngle="7.1" endAngle="12.7">
+                      <Stroke color="[CONFIGURATION.accent.0]" thickness="14" cap="BUTT"/>
                     </Arc>
                   </PartDraw>
                   <PartDraw x="0" y="0" width="450" height="450">
-                    <Ellipse x="220" y="10" width="10" height="10">
-                      <Fill color="#FFFFFFFF"/>
-                    </Ellipse>
-                    <Transform target="angle" value="6 + 78 * (clamp([BATTERY_PERCENT], 0, 100) / 100)"/>
+                    <Arc centerX="225" centerY="225" width="420" height="420" startAngle="14.9" endAngle="20.5">
+                      <Stroke color="#26FFFFFF" thickness="14" cap="BUTT"/>
+                    </Arc>
+                  </PartDraw>
+                  <PartDraw x="0" y="0" width="450" height="450">
+                    <Transform target="alpha" value="(clamp([BATTERY_PERCENT], 0, 100) / 100) &gt; 0.1 ? (90 + 165 * (clamp([BATTERY_PERCENT], 0, 100) / 100)) : 0"/>
+                    <Arc centerX="225" centerY="225" width="420" height="420" startAngle="14.9" endAngle="20.5">
+                      <Stroke color="[CONFIGURATION.accent.0]" thickness="14" cap="BUTT"/>
+                    </Arc>
+                  </PartDraw>
+                  <PartDraw x="0" y="0" width="450" height="450">
+                    <Arc centerX="225" centerY="225" width="420" height="420" startAngle="22.7" endAngle="28.3">
+                      <Stroke color="#26FFFFFF" thickness="14" cap="BUTT"/>
+                    </Arc>
+                  </PartDraw>
+                  <PartDraw x="0" y="0" width="450" height="450">
+                    <Transform target="alpha" value="(clamp([BATTERY_PERCENT], 0, 100) / 100) &gt; 0.2 ? (90 + 165 * (clamp([BATTERY_PERCENT], 0, 100) / 100)) : 0"/>
+                    <Arc centerX="225" centerY="225" width="420" height="420" startAngle="22.7" endAngle="28.3">
+                      <Stroke color="[CONFIGURATION.accent.0]" thickness="14" cap="BUTT"/>
+                    </Arc>
+                  </PartDraw>
+                  <PartDraw x="0" y="0" width="450" height="450">
+                    <Arc centerX="225" centerY="225" width="420" height="420" startAngle="30.5" endAngle="36.1">
+                      <Stroke color="#26FFFFFF" thickness="14" cap="BUTT"/>
+                    </Arc>
+                  </PartDraw>
+                  <PartDraw x="0" y="0" width="450" height="450">
+                    <Transform target="alpha" value="(clamp([BATTERY_PERCENT], 0, 100) / 100) &gt; 0.3 ? (90 + 165 * (clamp([BATTERY_PERCENT], 0, 100) / 100)) : 0"/>
+                    <Arc centerX="225" centerY="225" width="420" height="420" startAngle="30.5" endAngle="36.1">
+                      <Stroke color="[CONFIGURATION.accent.0]" thickness="14" cap="BUTT"/>
+                    </Arc>
+                  </PartDraw>
+                  <PartDraw x="0" y="0" width="450" height="450">
+                    <Arc centerX="225" centerY="225" width="420" height="420" startAngle="38.3" endAngle="43.9">
+                      <Stroke color="#26FFFFFF" thickness="14" cap="BUTT"/>
+                    </Arc>
+                  </PartDraw>
+                  <PartDraw x="0" y="0" width="450" height="450">
+                    <Transform target="alpha" value="(clamp([BATTERY_PERCENT], 0, 100) / 100) &gt; 0.4 ? (90 + 165 * (clamp([BATTERY_PERCENT], 0, 100) / 100)) : 0"/>
+                    <Arc centerX="225" centerY="225" width="420" height="420" startAngle="38.3" endAngle="43.9">
+                      <Stroke color="[CONFIGURATION.accent.0]" thickness="14" cap="BUTT"/>
+                    </Arc>
+                  </PartDraw>
+                  <PartDraw x="0" y="0" width="450" height="450">
+                    <Arc centerX="225" centerY="225" width="420" height="420" startAngle="46.1" endAngle="51.7">
+                      <Stroke color="#26FFFFFF" thickness="14" cap="BUTT"/>
+                    </Arc>
+                  </PartDraw>
+                  <PartDraw x="0" y="0" width="450" height="450">
+                    <Transform target="alpha" value="(clamp([BATTERY_PERCENT], 0, 100) / 100) &gt; 0.5 ? (90 + 165 * (clamp([BATTERY_PERCENT], 0, 100) / 100)) : 0"/>
+                    <Arc centerX="225" centerY="225" width="420" height="420" startAngle="46.1" endAngle="51.7">
+                      <Stroke color="[CONFIGURATION.accent.0]" thickness="14" cap="BUTT"/>
+                    </Arc>
+                  </PartDraw>
+                  <PartDraw x="0" y="0" width="450" height="450">
+                    <Arc centerX="225" centerY="225" width="420" height="420" startAngle="53.9" endAngle="59.5">
+                      <Stroke color="#26FFFFFF" thickness="14" cap="BUTT"/>
+                    </Arc>
+                  </PartDraw>
+                  <PartDraw x="0" y="0" width="450" height="450">
+                    <Transform target="alpha" value="(clamp([BATTERY_PERCENT], 0, 100) / 100) &gt; 0.6 ? (90 + 165 * (clamp([BATTERY_PERCENT], 0, 100) / 100)) : 0"/>
+                    <Arc centerX="225" centerY="225" width="420" height="420" startAngle="53.9" endAngle="59.5">
+                      <Stroke color="[CONFIGURATION.accent.0]" thickness="14" cap="BUTT"/>
+                    </Arc>
+                  </PartDraw>
+                  <PartDraw x="0" y="0" width="450" height="450">
+                    <Arc centerX="225" centerY="225" width="420" height="420" startAngle="61.7" endAngle="67.3">
+                      <Stroke color="#26FFFFFF" thickness="14" cap="BUTT"/>
+                    </Arc>
+                  </PartDraw>
+                  <PartDraw x="0" y="0" width="450" height="450">
+                    <Transform target="alpha" value="(clamp([BATTERY_PERCENT], 0, 100) / 100) &gt; 0.7 ? (90 + 165 * (clamp([BATTERY_PERCENT], 0, 100) / 100)) : 0"/>
+                    <Arc centerX="225" centerY="225" width="420" height="420" startAngle="61.7" endAngle="67.3">
+                      <Stroke color="[CONFIGURATION.accent.0]" thickness="14" cap="BUTT"/>
+                    </Arc>
+                  </PartDraw>
+                  <PartDraw x="0" y="0" width="450" height="450">
+                    <Arc centerX="225" centerY="225" width="420" height="420" startAngle="69.5" endAngle="75.1">
+                      <Stroke color="#26FFFFFF" thickness="14" cap="BUTT"/>
+                    </Arc>
+                  </PartDraw>
+                  <PartDraw x="0" y="0" width="450" height="450">
+                    <Transform target="alpha" value="(clamp([BATTERY_PERCENT], 0, 100) / 100) &gt; 0.8 ? (90 + 165 * (clamp([BATTERY_PERCENT], 0, 100) / 100)) : 0"/>
+                    <Arc centerX="225" centerY="225" width="420" height="420" startAngle="69.5" endAngle="75.1">
+                      <Stroke color="[CONFIGURATION.accent.0]" thickness="14" cap="BUTT"/>
+                    </Arc>
+                  </PartDraw>
+                  <PartDraw x="0" y="0" width="450" height="450">
+                    <Arc centerX="225" centerY="225" width="420" height="420" startAngle="77.3" endAngle="82.9">
+                      <Stroke color="#26FFFFFF" thickness="14" cap="BUTT"/>
+                    </Arc>
+                  </PartDraw>
+                  <PartDraw x="0" y="0" width="450" height="450">
+                    <Transform target="alpha" value="(clamp([BATTERY_PERCENT], 0, 100) / 100) &gt; 0.9 ? (90 + 165 * (clamp([BATTERY_PERCENT], 0, 100) / 100)) : 0"/>
+                    <Arc centerX="225" centerY="225" width="420" height="420" startAngle="77.3" endAngle="82.9">
+                      <Stroke color="[CONFIGURATION.accent.0]" thickness="14" cap="BUTT"/>
+                    </Arc>
                   </PartDraw>
                   <Group name="badge_tr_battery" x="365" y="160" width="48" height="42">
                     <PartImage x="14" y="0" width="20" height="20" tintColor="[CONFIGURATION.accent.0]">
@@ -826,23 +1192,114 @@
               <ListOption id="multi">
                 <Group name="bl_battery_multi" x="0" y="0" width="450" height="450">
                   <PartDraw x="0" y="0" width="450" height="450">
-                    <Arc centerX="225" centerY="225" width="420" height="420" startAngle="186" endAngle="264">
-                      <Stroke color="#3329B6F6" thickness="14" cap="ROUND"/>
+                    <Arc centerX="225" centerY="225" width="420" height="420" startAngle="187.1" endAngle="192.7">
+                      <Stroke color="#2EB3E5FC" thickness="14" cap="BUTT"/>
                     </Arc>
                   </PartDraw>
                   <PartDraw x="0" y="0" width="450" height="450">
-                    <Arc centerX="225" centerY="225" width="420" height="420" startAngle="186" endAngle="264">
-                      <Stroke color="#FFFFFFFF" thickness="14" cap="ROUND">
-                        <SweepGradient centerX="225" centerY="225" startAngle="186" endAngle="264" colors="#FF1E4E6B #FF29B6F6" positions="0 1"/>
-                      </Stroke>
-                      <Transform target="endAngle" value="186 + 78 * (clamp([BATTERY_PERCENT], 0, 100) / 100)"/>
+                    <Transform target="alpha" value="(clamp([BATTERY_PERCENT], 0, 100) / 100) &gt; 0 ? 255 : 0"/>
+                    <Arc centerX="225" centerY="225" width="420" height="420" startAngle="187.1" endAngle="192.7">
+                      <Stroke color="#FFB3E5FC" thickness="14" cap="BUTT"/>
                     </Arc>
                   </PartDraw>
                   <PartDraw x="0" y="0" width="450" height="450">
-                    <Ellipse x="220" y="10" width="10" height="10">
-                      <Fill color="#FFFFFFFF"/>
-                    </Ellipse>
-                    <Transform target="angle" value="186 + 78 * (clamp([BATTERY_PERCENT], 0, 100) / 100)"/>
+                    <Arc centerX="225" centerY="225" width="420" height="420" startAngle="194.9" endAngle="200.5">
+                      <Stroke color="#2EB3E5FC" thickness="14" cap="BUTT"/>
+                    </Arc>
+                  </PartDraw>
+                  <PartDraw x="0" y="0" width="450" height="450">
+                    <Transform target="alpha" value="(clamp([BATTERY_PERCENT], 0, 100) / 100) &gt; 0.1 ? 255 : 0"/>
+                    <Arc centerX="225" centerY="225" width="420" height="420" startAngle="194.9" endAngle="200.5">
+                      <Stroke color="#FF9DDDFB" thickness="14" cap="BUTT"/>
+                    </Arc>
+                  </PartDraw>
+                  <PartDraw x="0" y="0" width="450" height="450">
+                    <Arc centerX="225" centerY="225" width="420" height="420" startAngle="202.7" endAngle="208.3">
+                      <Stroke color="#2EB3E5FC" thickness="14" cap="BUTT"/>
+                    </Arc>
+                  </PartDraw>
+                  <PartDraw x="0" y="0" width="450" height="450">
+                    <Transform target="alpha" value="(clamp([BATTERY_PERCENT], 0, 100) / 100) &gt; 0.2 ? 255 : 0"/>
+                    <Arc centerX="225" centerY="225" width="420" height="420" startAngle="202.7" endAngle="208.3">
+                      <Stroke color="#FF87D6FA" thickness="14" cap="BUTT"/>
+                    </Arc>
+                  </PartDraw>
+                  <PartDraw x="0" y="0" width="450" height="450">
+                    <Arc centerX="225" centerY="225" width="420" height="420" startAngle="210.5" endAngle="216.1">
+                      <Stroke color="#2EB3E5FC" thickness="14" cap="BUTT"/>
+                    </Arc>
+                  </PartDraw>
+                  <PartDraw x="0" y="0" width="450" height="450">
+                    <Transform target="alpha" value="(clamp([BATTERY_PERCENT], 0, 100) / 100) &gt; 0.3 ? 255 : 0"/>
+                    <Arc centerX="225" centerY="225" width="420" height="420" startAngle="210.5" endAngle="216.1">
+                      <Stroke color="#FF70CEF9" thickness="14" cap="BUTT"/>
+                    </Arc>
+                  </PartDraw>
+                  <PartDraw x="0" y="0" width="450" height="450">
+                    <Arc centerX="225" centerY="225" width="420" height="420" startAngle="218.3" endAngle="223.9">
+                      <Stroke color="#2EB3E5FC" thickness="14" cap="BUTT"/>
+                    </Arc>
+                  </PartDraw>
+                  <PartDraw x="0" y="0" width="450" height="450">
+                    <Transform target="alpha" value="(clamp([BATTERY_PERCENT], 0, 100) / 100) &gt; 0.4 ? 255 : 0"/>
+                    <Arc centerX="225" centerY="225" width="420" height="420" startAngle="218.3" endAngle="223.9">
+                      <Stroke color="#FF5AC7F8" thickness="14" cap="BUTT"/>
+                    </Arc>
+                  </PartDraw>
+                  <PartDraw x="0" y="0" width="450" height="450">
+                    <Arc centerX="225" centerY="225" width="420" height="420" startAngle="226.1" endAngle="231.7">
+                      <Stroke color="#2EB3E5FC" thickness="14" cap="BUTT"/>
+                    </Arc>
+                  </PartDraw>
+                  <PartDraw x="0" y="0" width="450" height="450">
+                    <Transform target="alpha" value="(clamp([BATTERY_PERCENT], 0, 100) / 100) &gt; 0.5 ? 255 : 0"/>
+                    <Arc centerX="225" centerY="225" width="420" height="420" startAngle="226.1" endAngle="231.7">
+                      <Stroke color="#FF4ABCF5" thickness="14" cap="BUTT"/>
+                    </Arc>
+                  </PartDraw>
+                  <PartDraw x="0" y="0" width="450" height="450">
+                    <Arc centerX="225" centerY="225" width="420" height="420" startAngle="233.9" endAngle="239.5">
+                      <Stroke color="#2EB3E5FC" thickness="14" cap="BUTT"/>
+                    </Arc>
+                  </PartDraw>
+                  <PartDraw x="0" y="0" width="450" height="450">
+                    <Transform target="alpha" value="(clamp([BATTERY_PERCENT], 0, 100) / 100) &gt; 0.6 ? 255 : 0"/>
+                    <Arc centerX="225" centerY="225" width="420" height="420" startAngle="233.9" endAngle="239.5">
+                      <Stroke color="#FF3FAFF1" thickness="14" cap="BUTT"/>
+                    </Arc>
+                  </PartDraw>
+                  <PartDraw x="0" y="0" width="450" height="450">
+                    <Arc centerX="225" centerY="225" width="420" height="420" startAngle="241.7" endAngle="247.3">
+                      <Stroke color="#2EB3E5FC" thickness="14" cap="BUTT"/>
+                    </Arc>
+                  </PartDraw>
+                  <PartDraw x="0" y="0" width="450" height="450">
+                    <Transform target="alpha" value="(clamp([BATTERY_PERCENT], 0, 100) / 100) &gt; 0.7 ? 255 : 0"/>
+                    <Arc centerX="225" centerY="225" width="420" height="420" startAngle="241.7" endAngle="247.3">
+                      <Stroke color="#FF34A2ED" thickness="14" cap="BUTT"/>
+                    </Arc>
+                  </PartDraw>
+                  <PartDraw x="0" y="0" width="450" height="450">
+                    <Arc centerX="225" centerY="225" width="420" height="420" startAngle="249.5" endAngle="255.1">
+                      <Stroke color="#2EB3E5FC" thickness="14" cap="BUTT"/>
+                    </Arc>
+                  </PartDraw>
+                  <PartDraw x="0" y="0" width="450" height="450">
+                    <Transform target="alpha" value="(clamp([BATTERY_PERCENT], 0, 100) / 100) &gt; 0.8 ? 255 : 0"/>
+                    <Arc centerX="225" centerY="225" width="420" height="420" startAngle="249.5" endAngle="255.1">
+                      <Stroke color="#FF2995E9" thickness="14" cap="BUTT"/>
+                    </Arc>
+                  </PartDraw>
+                  <PartDraw x="0" y="0" width="450" height="450">
+                    <Arc centerX="225" centerY="225" width="420" height="420" startAngle="257.3" endAngle="262.9">
+                      <Stroke color="#2EB3E5FC" thickness="14" cap="BUTT"/>
+                    </Arc>
+                  </PartDraw>
+                  <PartDraw x="0" y="0" width="450" height="450">
+                    <Transform target="alpha" value="(clamp([BATTERY_PERCENT], 0, 100) / 100) &gt; 0.9 ? 255 : 0"/>
+                    <Arc centerX="225" centerY="225" width="420" height="420" startAngle="257.3" endAngle="262.9">
+                      <Stroke color="#FF1E88E5" thickness="14" cap="BUTT"/>
+                    </Arc>
                   </PartDraw>
                   <Group name="badge_bl_battery" x="37" y="248" width="48" height="42">
                     <Condition>
@@ -851,17 +1308,17 @@
                         <Expression name="c1"><![CDATA[(clamp([BATTERY_PERCENT], 0, 100) / 100) < 0.67]]></Expression>
                       </Expressions>
                       <Compare expression="c0">
-                        <PartImage x="14" y="0" width="20" height="20" tintColor="#FF1E4E6B">
+                        <PartImage x="14" y="0" width="20" height="20" tintColor="#FFB3E5FC">
                           <Image resource="ic_metric_battery"/>
                         </PartImage>
                       </Compare>
                       <Compare expression="c1">
-                        <PartImage x="14" y="0" width="20" height="20" tintColor="#FF1E4E6B">
+                        <PartImage x="14" y="0" width="20" height="20" tintColor="#FF4FC3F7">
                           <Image resource="ic_metric_battery"/>
                         </PartImage>
                       </Compare>
                       <Default>
-                        <PartImage x="14" y="0" width="20" height="20" tintColor="#FF29B6F6">
+                        <PartImage x="14" y="0" width="20" height="20" tintColor="#FF1E88E5">
                           <Image resource="ic_metric_battery"/>
                         </PartImage>
                       </Default>
@@ -882,22 +1339,114 @@
               <ListOption id="single">
                 <Group name="bl_battery_single" x="0" y="0" width="450" height="450">
                   <PartDraw x="0" y="0" width="450" height="450">
-                    <Arc centerX="225" centerY="225" width="420" height="420" startAngle="186" endAngle="264">
-                      <Stroke color="#26FFFFFF" thickness="14" cap="ROUND"/>
+                    <Arc centerX="225" centerY="225" width="420" height="420" startAngle="187.1" endAngle="192.7">
+                      <Stroke color="#26FFFFFF" thickness="14" cap="BUTT"/>
                     </Arc>
                   </PartDraw>
                   <PartDraw x="0" y="0" width="450" height="450">
-                    <Transform target="alpha" value="90 + 165 * (clamp([BATTERY_PERCENT], 0, 100) / 100)"/>
-                    <Arc centerX="225" centerY="225" width="420" height="420" startAngle="186" endAngle="264">
-                      <Stroke color="[CONFIGURATION.accent.0]" thickness="14" cap="ROUND"/>
-                      <Transform target="endAngle" value="186 + 78 * (clamp([BATTERY_PERCENT], 0, 100) / 100)"/>
+                    <Transform target="alpha" value="(clamp([BATTERY_PERCENT], 0, 100) / 100) &gt; 0 ? (90 + 165 * (clamp([BATTERY_PERCENT], 0, 100) / 100)) : 0"/>
+                    <Arc centerX="225" centerY="225" width="420" height="420" startAngle="187.1" endAngle="192.7">
+                      <Stroke color="[CONFIGURATION.accent.0]" thickness="14" cap="BUTT"/>
                     </Arc>
                   </PartDraw>
                   <PartDraw x="0" y="0" width="450" height="450">
-                    <Ellipse x="220" y="10" width="10" height="10">
-                      <Fill color="#FFFFFFFF"/>
-                    </Ellipse>
-                    <Transform target="angle" value="186 + 78 * (clamp([BATTERY_PERCENT], 0, 100) / 100)"/>
+                    <Arc centerX="225" centerY="225" width="420" height="420" startAngle="194.9" endAngle="200.5">
+                      <Stroke color="#26FFFFFF" thickness="14" cap="BUTT"/>
+                    </Arc>
+                  </PartDraw>
+                  <PartDraw x="0" y="0" width="450" height="450">
+                    <Transform target="alpha" value="(clamp([BATTERY_PERCENT], 0, 100) / 100) &gt; 0.1 ? (90 + 165 * (clamp([BATTERY_PERCENT], 0, 100) / 100)) : 0"/>
+                    <Arc centerX="225" centerY="225" width="420" height="420" startAngle="194.9" endAngle="200.5">
+                      <Stroke color="[CONFIGURATION.accent.0]" thickness="14" cap="BUTT"/>
+                    </Arc>
+                  </PartDraw>
+                  <PartDraw x="0" y="0" width="450" height="450">
+                    <Arc centerX="225" centerY="225" width="420" height="420" startAngle="202.7" endAngle="208.3">
+                      <Stroke color="#26FFFFFF" thickness="14" cap="BUTT"/>
+                    </Arc>
+                  </PartDraw>
+                  <PartDraw x="0" y="0" width="450" height="450">
+                    <Transform target="alpha" value="(clamp([BATTERY_PERCENT], 0, 100) / 100) &gt; 0.2 ? (90 + 165 * (clamp([BATTERY_PERCENT], 0, 100) / 100)) : 0"/>
+                    <Arc centerX="225" centerY="225" width="420" height="420" startAngle="202.7" endAngle="208.3">
+                      <Stroke color="[CONFIGURATION.accent.0]" thickness="14" cap="BUTT"/>
+                    </Arc>
+                  </PartDraw>
+                  <PartDraw x="0" y="0" width="450" height="450">
+                    <Arc centerX="225" centerY="225" width="420" height="420" startAngle="210.5" endAngle="216.1">
+                      <Stroke color="#26FFFFFF" thickness="14" cap="BUTT"/>
+                    </Arc>
+                  </PartDraw>
+                  <PartDraw x="0" y="0" width="450" height="450">
+                    <Transform target="alpha" value="(clamp([BATTERY_PERCENT], 0, 100) / 100) &gt; 0.3 ? (90 + 165 * (clamp([BATTERY_PERCENT], 0, 100) / 100)) : 0"/>
+                    <Arc centerX="225" centerY="225" width="420" height="420" startAngle="210.5" endAngle="216.1">
+                      <Stroke color="[CONFIGURATION.accent.0]" thickness="14" cap="BUTT"/>
+                    </Arc>
+                  </PartDraw>
+                  <PartDraw x="0" y="0" width="450" height="450">
+                    <Arc centerX="225" centerY="225" width="420" height="420" startAngle="218.3" endAngle="223.9">
+                      <Stroke color="#26FFFFFF" thickness="14" cap="BUTT"/>
+                    </Arc>
+                  </PartDraw>
+                  <PartDraw x="0" y="0" width="450" height="450">
+                    <Transform target="alpha" value="(clamp([BATTERY_PERCENT], 0, 100) / 100) &gt; 0.4 ? (90 + 165 * (clamp([BATTERY_PERCENT], 0, 100) / 100)) : 0"/>
+                    <Arc centerX="225" centerY="225" width="420" height="420" startAngle="218.3" endAngle="223.9">
+                      <Stroke color="[CONFIGURATION.accent.0]" thickness="14" cap="BUTT"/>
+                    </Arc>
+                  </PartDraw>
+                  <PartDraw x="0" y="0" width="450" height="450">
+                    <Arc centerX="225" centerY="225" width="420" height="420" startAngle="226.1" endAngle="231.7">
+                      <Stroke color="#26FFFFFF" thickness="14" cap="BUTT"/>
+                    </Arc>
+                  </PartDraw>
+                  <PartDraw x="0" y="0" width="450" height="450">
+                    <Transform target="alpha" value="(clamp([BATTERY_PERCENT], 0, 100) / 100) &gt; 0.5 ? (90 + 165 * (clamp([BATTERY_PERCENT], 0, 100) / 100)) : 0"/>
+                    <Arc centerX="225" centerY="225" width="420" height="420" startAngle="226.1" endAngle="231.7">
+                      <Stroke color="[CONFIGURATION.accent.0]" thickness="14" cap="BUTT"/>
+                    </Arc>
+                  </PartDraw>
+                  <PartDraw x="0" y="0" width="450" height="450">
+                    <Arc centerX="225" centerY="225" width="420" height="420" startAngle="233.9" endAngle="239.5">
+                      <Stroke color="#26FFFFFF" thickness="14" cap="BUTT"/>
+                    </Arc>
+                  </PartDraw>
+                  <PartDraw x="0" y="0" width="450" height="450">
+                    <Transform target="alpha" value="(clamp([BATTERY_PERCENT], 0, 100) / 100) &gt; 0.6 ? (90 + 165 * (clamp([BATTERY_PERCENT], 0, 100) / 100)) : 0"/>
+                    <Arc centerX="225" centerY="225" width="420" height="420" startAngle="233.9" endAngle="239.5">
+                      <Stroke color="[CONFIGURATION.accent.0]" thickness="14" cap="BUTT"/>
+                    </Arc>
+                  </PartDraw>
+                  <PartDraw x="0" y="0" width="450" height="450">
+                    <Arc centerX="225" centerY="225" width="420" height="420" startAngle="241.7" endAngle="247.3">
+                      <Stroke color="#26FFFFFF" thickness="14" cap="BUTT"/>
+                    </Arc>
+                  </PartDraw>
+                  <PartDraw x="0" y="0" width="450" height="450">
+                    <Transform target="alpha" value="(clamp([BATTERY_PERCENT], 0, 100) / 100) &gt; 0.7 ? (90 + 165 * (clamp([BATTERY_PERCENT], 0, 100) / 100)) : 0"/>
+                    <Arc centerX="225" centerY="225" width="420" height="420" startAngle="241.7" endAngle="247.3">
+                      <Stroke color="[CONFIGURATION.accent.0]" thickness="14" cap="BUTT"/>
+                    </Arc>
+                  </PartDraw>
+                  <PartDraw x="0" y="0" width="450" height="450">
+                    <Arc centerX="225" centerY="225" width="420" height="420" startAngle="249.5" endAngle="255.1">
+                      <Stroke color="#26FFFFFF" thickness="14" cap="BUTT"/>
+                    </Arc>
+                  </PartDraw>
+                  <PartDraw x="0" y="0" width="450" height="450">
+                    <Transform target="alpha" value="(clamp([BATTERY_PERCENT], 0, 100) / 100) &gt; 0.8 ? (90 + 165 * (clamp([BATTERY_PERCENT], 0, 100) / 100)) : 0"/>
+                    <Arc centerX="225" centerY="225" width="420" height="420" startAngle="249.5" endAngle="255.1">
+                      <Stroke color="[CONFIGURATION.accent.0]" thickness="14" cap="BUTT"/>
+                    </Arc>
+                  </PartDraw>
+                  <PartDraw x="0" y="0" width="450" height="450">
+                    <Arc centerX="225" centerY="225" width="420" height="420" startAngle="257.3" endAngle="262.9">
+                      <Stroke color="#26FFFFFF" thickness="14" cap="BUTT"/>
+                    </Arc>
+                  </PartDraw>
+                  <PartDraw x="0" y="0" width="450" height="450">
+                    <Transform target="alpha" value="(clamp([BATTERY_PERCENT], 0, 100) / 100) &gt; 0.9 ? (90 + 165 * (clamp([BATTERY_PERCENT], 0, 100) / 100)) : 0"/>
+                    <Arc centerX="225" centerY="225" width="420" height="420" startAngle="257.3" endAngle="262.9">
+                      <Stroke color="[CONFIGURATION.accent.0]" thickness="14" cap="BUTT"/>
+                    </Arc>
                   </PartDraw>
                   <Group name="badge_bl_battery" x="37" y="248" width="48" height="42">
                     <PartImage x="14" y="0" width="20" height="20" tintColor="[CONFIGURATION.accent.0]">
@@ -1182,23 +1731,114 @@
               <ListOption id="multi">
                 <Group name="br_battery_multi" x="0" y="0" width="450" height="450">
                   <PartDraw x="0" y="0" width="450" height="450">
-                    <Arc centerX="225" centerY="225" width="420" height="420" startAngle="96" endAngle="174">
-                      <Stroke color="#3329B6F6" thickness="14" cap="ROUND"/>
+                    <Arc centerX="225" centerY="225" width="420" height="420" startAngle="167.3" endAngle="172.9">
+                      <Stroke color="#2EB3E5FC" thickness="14" cap="BUTT"/>
                     </Arc>
                   </PartDraw>
                   <PartDraw x="0" y="0" width="450" height="450">
-                    <Arc centerX="225" centerY="225" width="420" height="420" startAngle="96" endAngle="174">
-                      <Stroke color="#FFFFFFFF" thickness="14" cap="ROUND">
-                        <SweepGradient centerX="225" centerY="225" startAngle="96" endAngle="174" colors="#FF29B6F6 #FF1E4E6B" positions="0 1"/>
-                      </Stroke>
-                      <Transform target="startAngle" value="174 - 78 * (clamp([BATTERY_PERCENT], 0, 100) / 100)"/>
+                    <Transform target="alpha" value="(clamp([BATTERY_PERCENT], 0, 100) / 100) &gt; 0 ? 255 : 0"/>
+                    <Arc centerX="225" centerY="225" width="420" height="420" startAngle="167.3" endAngle="172.9">
+                      <Stroke color="#FFB3E5FC" thickness="14" cap="BUTT"/>
                     </Arc>
                   </PartDraw>
                   <PartDraw x="0" y="0" width="450" height="450">
-                    <Ellipse x="220" y="10" width="10" height="10">
-                      <Fill color="#FFFFFFFF"/>
-                    </Ellipse>
-                    <Transform target="angle" value="174 - 78 * (clamp([BATTERY_PERCENT], 0, 100) / 100)"/>
+                    <Arc centerX="225" centerY="225" width="420" height="420" startAngle="159.5" endAngle="165.1">
+                      <Stroke color="#2EB3E5FC" thickness="14" cap="BUTT"/>
+                    </Arc>
+                  </PartDraw>
+                  <PartDraw x="0" y="0" width="450" height="450">
+                    <Transform target="alpha" value="(clamp([BATTERY_PERCENT], 0, 100) / 100) &gt; 0.1 ? 255 : 0"/>
+                    <Arc centerX="225" centerY="225" width="420" height="420" startAngle="159.5" endAngle="165.1">
+                      <Stroke color="#FF9DDDFB" thickness="14" cap="BUTT"/>
+                    </Arc>
+                  </PartDraw>
+                  <PartDraw x="0" y="0" width="450" height="450">
+                    <Arc centerX="225" centerY="225" width="420" height="420" startAngle="151.7" endAngle="157.3">
+                      <Stroke color="#2EB3E5FC" thickness="14" cap="BUTT"/>
+                    </Arc>
+                  </PartDraw>
+                  <PartDraw x="0" y="0" width="450" height="450">
+                    <Transform target="alpha" value="(clamp([BATTERY_PERCENT], 0, 100) / 100) &gt; 0.2 ? 255 : 0"/>
+                    <Arc centerX="225" centerY="225" width="420" height="420" startAngle="151.7" endAngle="157.3">
+                      <Stroke color="#FF87D6FA" thickness="14" cap="BUTT"/>
+                    </Arc>
+                  </PartDraw>
+                  <PartDraw x="0" y="0" width="450" height="450">
+                    <Arc centerX="225" centerY="225" width="420" height="420" startAngle="143.9" endAngle="149.5">
+                      <Stroke color="#2EB3E5FC" thickness="14" cap="BUTT"/>
+                    </Arc>
+                  </PartDraw>
+                  <PartDraw x="0" y="0" width="450" height="450">
+                    <Transform target="alpha" value="(clamp([BATTERY_PERCENT], 0, 100) / 100) &gt; 0.3 ? 255 : 0"/>
+                    <Arc centerX="225" centerY="225" width="420" height="420" startAngle="143.9" endAngle="149.5">
+                      <Stroke color="#FF70CEF9" thickness="14" cap="BUTT"/>
+                    </Arc>
+                  </PartDraw>
+                  <PartDraw x="0" y="0" width="450" height="450">
+                    <Arc centerX="225" centerY="225" width="420" height="420" startAngle="136.1" endAngle="141.7">
+                      <Stroke color="#2EB3E5FC" thickness="14" cap="BUTT"/>
+                    </Arc>
+                  </PartDraw>
+                  <PartDraw x="0" y="0" width="450" height="450">
+                    <Transform target="alpha" value="(clamp([BATTERY_PERCENT], 0, 100) / 100) &gt; 0.4 ? 255 : 0"/>
+                    <Arc centerX="225" centerY="225" width="420" height="420" startAngle="136.1" endAngle="141.7">
+                      <Stroke color="#FF5AC7F8" thickness="14" cap="BUTT"/>
+                    </Arc>
+                  </PartDraw>
+                  <PartDraw x="0" y="0" width="450" height="450">
+                    <Arc centerX="225" centerY="225" width="420" height="420" startAngle="128.3" endAngle="133.9">
+                      <Stroke color="#2EB3E5FC" thickness="14" cap="BUTT"/>
+                    </Arc>
+                  </PartDraw>
+                  <PartDraw x="0" y="0" width="450" height="450">
+                    <Transform target="alpha" value="(clamp([BATTERY_PERCENT], 0, 100) / 100) &gt; 0.5 ? 255 : 0"/>
+                    <Arc centerX="225" centerY="225" width="420" height="420" startAngle="128.3" endAngle="133.9">
+                      <Stroke color="#FF4ABCF5" thickness="14" cap="BUTT"/>
+                    </Arc>
+                  </PartDraw>
+                  <PartDraw x="0" y="0" width="450" height="450">
+                    <Arc centerX="225" centerY="225" width="420" height="420" startAngle="120.5" endAngle="126.1">
+                      <Stroke color="#2EB3E5FC" thickness="14" cap="BUTT"/>
+                    </Arc>
+                  </PartDraw>
+                  <PartDraw x="0" y="0" width="450" height="450">
+                    <Transform target="alpha" value="(clamp([BATTERY_PERCENT], 0, 100) / 100) &gt; 0.6 ? 255 : 0"/>
+                    <Arc centerX="225" centerY="225" width="420" height="420" startAngle="120.5" endAngle="126.1">
+                      <Stroke color="#FF3FAFF1" thickness="14" cap="BUTT"/>
+                    </Arc>
+                  </PartDraw>
+                  <PartDraw x="0" y="0" width="450" height="450">
+                    <Arc centerX="225" centerY="225" width="420" height="420" startAngle="112.7" endAngle="118.3">
+                      <Stroke color="#2EB3E5FC" thickness="14" cap="BUTT"/>
+                    </Arc>
+                  </PartDraw>
+                  <PartDraw x="0" y="0" width="450" height="450">
+                    <Transform target="alpha" value="(clamp([BATTERY_PERCENT], 0, 100) / 100) &gt; 0.7 ? 255 : 0"/>
+                    <Arc centerX="225" centerY="225" width="420" height="420" startAngle="112.7" endAngle="118.3">
+                      <Stroke color="#FF34A2ED" thickness="14" cap="BUTT"/>
+                    </Arc>
+                  </PartDraw>
+                  <PartDraw x="0" y="0" width="450" height="450">
+                    <Arc centerX="225" centerY="225" width="420" height="420" startAngle="104.9" endAngle="110.5">
+                      <Stroke color="#2EB3E5FC" thickness="14" cap="BUTT"/>
+                    </Arc>
+                  </PartDraw>
+                  <PartDraw x="0" y="0" width="450" height="450">
+                    <Transform target="alpha" value="(clamp([BATTERY_PERCENT], 0, 100) / 100) &gt; 0.8 ? 255 : 0"/>
+                    <Arc centerX="225" centerY="225" width="420" height="420" startAngle="104.9" endAngle="110.5">
+                      <Stroke color="#FF2995E9" thickness="14" cap="BUTT"/>
+                    </Arc>
+                  </PartDraw>
+                  <PartDraw x="0" y="0" width="450" height="450">
+                    <Arc centerX="225" centerY="225" width="420" height="420" startAngle="97.1" endAngle="102.7">
+                      <Stroke color="#2EB3E5FC" thickness="14" cap="BUTT"/>
+                    </Arc>
+                  </PartDraw>
+                  <PartDraw x="0" y="0" width="450" height="450">
+                    <Transform target="alpha" value="(clamp([BATTERY_PERCENT], 0, 100) / 100) &gt; 0.9 ? 255 : 0"/>
+                    <Arc centerX="225" centerY="225" width="420" height="420" startAngle="97.1" endAngle="102.7">
+                      <Stroke color="#FF1E88E5" thickness="14" cap="BUTT"/>
+                    </Arc>
                   </PartDraw>
                   <Group name="badge_br_battery" x="365" y="248" width="48" height="42">
                     <Condition>
@@ -1207,17 +1847,17 @@
                         <Expression name="c1"><![CDATA[(clamp([BATTERY_PERCENT], 0, 100) / 100) < 0.67]]></Expression>
                       </Expressions>
                       <Compare expression="c0">
-                        <PartImage x="14" y="0" width="20" height="20" tintColor="#FF1E4E6B">
+                        <PartImage x="14" y="0" width="20" height="20" tintColor="#FFB3E5FC">
                           <Image resource="ic_metric_battery"/>
                         </PartImage>
                       </Compare>
                       <Compare expression="c1">
-                        <PartImage x="14" y="0" width="20" height="20" tintColor="#FF1E4E6B">
+                        <PartImage x="14" y="0" width="20" height="20" tintColor="#FF4FC3F7">
                           <Image resource="ic_metric_battery"/>
                         </PartImage>
                       </Compare>
                       <Default>
-                        <PartImage x="14" y="0" width="20" height="20" tintColor="#FF29B6F6">
+                        <PartImage x="14" y="0" width="20" height="20" tintColor="#FF1E88E5">
                           <Image resource="ic_metric_battery"/>
                         </PartImage>
                       </Default>
@@ -1238,22 +1878,114 @@
               <ListOption id="single">
                 <Group name="br_battery_single" x="0" y="0" width="450" height="450">
                   <PartDraw x="0" y="0" width="450" height="450">
-                    <Arc centerX="225" centerY="225" width="420" height="420" startAngle="96" endAngle="174">
-                      <Stroke color="#26FFFFFF" thickness="14" cap="ROUND"/>
+                    <Arc centerX="225" centerY="225" width="420" height="420" startAngle="167.3" endAngle="172.9">
+                      <Stroke color="#26FFFFFF" thickness="14" cap="BUTT"/>
                     </Arc>
                   </PartDraw>
                   <PartDraw x="0" y="0" width="450" height="450">
-                    <Transform target="alpha" value="90 + 165 * (clamp([BATTERY_PERCENT], 0, 100) / 100)"/>
-                    <Arc centerX="225" centerY="225" width="420" height="420" startAngle="96" endAngle="174">
-                      <Stroke color="[CONFIGURATION.accent.0]" thickness="14" cap="ROUND"/>
-                      <Transform target="startAngle" value="174 - 78 * (clamp([BATTERY_PERCENT], 0, 100) / 100)"/>
+                    <Transform target="alpha" value="(clamp([BATTERY_PERCENT], 0, 100) / 100) &gt; 0 ? (90 + 165 * (clamp([BATTERY_PERCENT], 0, 100) / 100)) : 0"/>
+                    <Arc centerX="225" centerY="225" width="420" height="420" startAngle="167.3" endAngle="172.9">
+                      <Stroke color="[CONFIGURATION.accent.0]" thickness="14" cap="BUTT"/>
                     </Arc>
                   </PartDraw>
                   <PartDraw x="0" y="0" width="450" height="450">
-                    <Ellipse x="220" y="10" width="10" height="10">
-                      <Fill color="#FFFFFFFF"/>
-                    </Ellipse>
-                    <Transform target="angle" value="174 - 78 * (clamp([BATTERY_PERCENT], 0, 100) / 100)"/>
+                    <Arc centerX="225" centerY="225" width="420" height="420" startAngle="159.5" endAngle="165.1">
+                      <Stroke color="#26FFFFFF" thickness="14" cap="BUTT"/>
+                    </Arc>
+                  </PartDraw>
+                  <PartDraw x="0" y="0" width="450" height="450">
+                    <Transform target="alpha" value="(clamp([BATTERY_PERCENT], 0, 100) / 100) &gt; 0.1 ? (90 + 165 * (clamp([BATTERY_PERCENT], 0, 100) / 100)) : 0"/>
+                    <Arc centerX="225" centerY="225" width="420" height="420" startAngle="159.5" endAngle="165.1">
+                      <Stroke color="[CONFIGURATION.accent.0]" thickness="14" cap="BUTT"/>
+                    </Arc>
+                  </PartDraw>
+                  <PartDraw x="0" y="0" width="450" height="450">
+                    <Arc centerX="225" centerY="225" width="420" height="420" startAngle="151.7" endAngle="157.3">
+                      <Stroke color="#26FFFFFF" thickness="14" cap="BUTT"/>
+                    </Arc>
+                  </PartDraw>
+                  <PartDraw x="0" y="0" width="450" height="450">
+                    <Transform target="alpha" value="(clamp([BATTERY_PERCENT], 0, 100) / 100) &gt; 0.2 ? (90 + 165 * (clamp([BATTERY_PERCENT], 0, 100) / 100)) : 0"/>
+                    <Arc centerX="225" centerY="225" width="420" height="420" startAngle="151.7" endAngle="157.3">
+                      <Stroke color="[CONFIGURATION.accent.0]" thickness="14" cap="BUTT"/>
+                    </Arc>
+                  </PartDraw>
+                  <PartDraw x="0" y="0" width="450" height="450">
+                    <Arc centerX="225" centerY="225" width="420" height="420" startAngle="143.9" endAngle="149.5">
+                      <Stroke color="#26FFFFFF" thickness="14" cap="BUTT"/>
+                    </Arc>
+                  </PartDraw>
+                  <PartDraw x="0" y="0" width="450" height="450">
+                    <Transform target="alpha" value="(clamp([BATTERY_PERCENT], 0, 100) / 100) &gt; 0.3 ? (90 + 165 * (clamp([BATTERY_PERCENT], 0, 100) / 100)) : 0"/>
+                    <Arc centerX="225" centerY="225" width="420" height="420" startAngle="143.9" endAngle="149.5">
+                      <Stroke color="[CONFIGURATION.accent.0]" thickness="14" cap="BUTT"/>
+                    </Arc>
+                  </PartDraw>
+                  <PartDraw x="0" y="0" width="450" height="450">
+                    <Arc centerX="225" centerY="225" width="420" height="420" startAngle="136.1" endAngle="141.7">
+                      <Stroke color="#26FFFFFF" thickness="14" cap="BUTT"/>
+                    </Arc>
+                  </PartDraw>
+                  <PartDraw x="0" y="0" width="450" height="450">
+                    <Transform target="alpha" value="(clamp([BATTERY_PERCENT], 0, 100) / 100) &gt; 0.4 ? (90 + 165 * (clamp([BATTERY_PERCENT], 0, 100) / 100)) : 0"/>
+                    <Arc centerX="225" centerY="225" width="420" height="420" startAngle="136.1" endAngle="141.7">
+                      <Stroke color="[CONFIGURATION.accent.0]" thickness="14" cap="BUTT"/>
+                    </Arc>
+                  </PartDraw>
+                  <PartDraw x="0" y="0" width="450" height="450">
+                    <Arc centerX="225" centerY="225" width="420" height="420" startAngle="128.3" endAngle="133.9">
+                      <Stroke color="#26FFFFFF" thickness="14" cap="BUTT"/>
+                    </Arc>
+                  </PartDraw>
+                  <PartDraw x="0" y="0" width="450" height="450">
+                    <Transform target="alpha" value="(clamp([BATTERY_PERCENT], 0, 100) / 100) &gt; 0.5 ? (90 + 165 * (clamp([BATTERY_PERCENT], 0, 100) / 100)) : 0"/>
+                    <Arc centerX="225" centerY="225" width="420" height="420" startAngle="128.3" endAngle="133.9">
+                      <Stroke color="[CONFIGURATION.accent.0]" thickness="14" cap="BUTT"/>
+                    </Arc>
+                  </PartDraw>
+                  <PartDraw x="0" y="0" width="450" height="450">
+                    <Arc centerX="225" centerY="225" width="420" height="420" startAngle="120.5" endAngle="126.1">
+                      <Stroke color="#26FFFFFF" thickness="14" cap="BUTT"/>
+                    </Arc>
+                  </PartDraw>
+                  <PartDraw x="0" y="0" width="450" height="450">
+                    <Transform target="alpha" value="(clamp([BATTERY_PERCENT], 0, 100) / 100) &gt; 0.6 ? (90 + 165 * (clamp([BATTERY_PERCENT], 0, 100) / 100)) : 0"/>
+                    <Arc centerX="225" centerY="225" width="420" height="420" startAngle="120.5" endAngle="126.1">
+                      <Stroke color="[CONFIGURATION.accent.0]" thickness="14" cap="BUTT"/>
+                    </Arc>
+                  </PartDraw>
+                  <PartDraw x="0" y="0" width="450" height="450">
+                    <Arc centerX="225" centerY="225" width="420" height="420" startAngle="112.7" endAngle="118.3">
+                      <Stroke color="#26FFFFFF" thickness="14" cap="BUTT"/>
+                    </Arc>
+                  </PartDraw>
+                  <PartDraw x="0" y="0" width="450" height="450">
+                    <Transform target="alpha" value="(clamp([BATTERY_PERCENT], 0, 100) / 100) &gt; 0.7 ? (90 + 165 * (clamp([BATTERY_PERCENT], 0, 100) / 100)) : 0"/>
+                    <Arc centerX="225" centerY="225" width="420" height="420" startAngle="112.7" endAngle="118.3">
+                      <Stroke color="[CONFIGURATION.accent.0]" thickness="14" cap="BUTT"/>
+                    </Arc>
+                  </PartDraw>
+                  <PartDraw x="0" y="0" width="450" height="450">
+                    <Arc centerX="225" centerY="225" width="420" height="420" startAngle="104.9" endAngle="110.5">
+                      <Stroke color="#26FFFFFF" thickness="14" cap="BUTT"/>
+                    </Arc>
+                  </PartDraw>
+                  <PartDraw x="0" y="0" width="450" height="450">
+                    <Transform target="alpha" value="(clamp([BATTERY_PERCENT], 0, 100) / 100) &gt; 0.8 ? (90 + 165 * (clamp([BATTERY_PERCENT], 0, 100) / 100)) : 0"/>
+                    <Arc centerX="225" centerY="225" width="420" height="420" startAngle="104.9" endAngle="110.5">
+                      <Stroke color="[CONFIGURATION.accent.0]" thickness="14" cap="BUTT"/>
+                    </Arc>
+                  </PartDraw>
+                  <PartDraw x="0" y="0" width="450" height="450">
+                    <Arc centerX="225" centerY="225" width="420" height="420" startAngle="97.1" endAngle="102.7">
+                      <Stroke color="#26FFFFFF" thickness="14" cap="BUTT"/>
+                    </Arc>
+                  </PartDraw>
+                  <PartDraw x="0" y="0" width="450" height="450">
+                    <Transform target="alpha" value="(clamp([BATTERY_PERCENT], 0, 100) / 100) &gt; 0.9 ? (90 + 165 * (clamp([BATTERY_PERCENT], 0, 100) / 100)) : 0"/>
+                    <Arc centerX="225" centerY="225" width="420" height="420" startAngle="97.1" endAngle="102.7">
+                      <Stroke color="[CONFIGURATION.accent.0]" thickness="14" cap="BUTT"/>
+                    </Arc>
                   </PartDraw>
                   <Group name="badge_br_battery" x="365" y="248" width="48" height="42">
                     <PartImage x="14" y="0" width="20" height="20" tintColor="[CONFIGURATION.accent.0]">
@@ -2206,6 +2938,7 @@
     <ComplicationSlot slotId="10" name="meeting_1" displayName="slot_meeting_1" x="88" y="270" width="274" height="30" supportedTypes="LONG_TEXT SHORT_TEXT EMPTY" isCustomizable="TRUE">
       <BoundingBox x="0" y="0" width="274" height="30"/>
       <DefaultProviderPolicy defaultSystemProvider="NEXT_EVENT" defaultSystemProviderType="LONG_TEXT" primaryProvider="com.neteinstein.dashface.provider/com.neteinstein.dashface.provider.calendar.NextMeetingDataSourceService" primaryProviderType="LONG_TEXT"/>
+      <Variant mode="AMBIENT" target="alpha" value="0"/>
       <Complication type="LONG_TEXT">
         <Group name="meeting_10_long" x="0" y="0" width="274" height="30">
           <Condition>
@@ -2359,23 +3092,21 @@
           <ListConfiguration id="color_mode">
             <ListOption id="multi">
               <Group name="thermo_ranged_multi" x="0" y="0" width="180" height="28">
-                <PartDraw x="0" y="0" width="180" height="28">
-                  <RoundRectangle x="12" y="9" width="96" height="10" cornerRadiusX="5" cornerRadiusY="5">
-                    <Fill color="#33FFA726"/>
-                  </RoundRectangle>
-                  <RoundRectangle x="12" y="9" width="96" height="10" cornerRadiusX="5" cornerRadiusY="5">
-                    <Fill color="#FFFFFFFF">
-                      <LinearGradient startX="12" startY="0" endX="108" endY="0" colors="#FF29B6F6 #FF66BB6A #FFFFA726" positions="0 0.5 1"/>
-                    </Fill>
-                    <Transform target="width" value="10 + 86 * (clamp(([COMPLICATION.RANGED_VALUE_VALUE] - [COMPLICATION.RANGED_VALUE_MIN]) / (([COMPLICATION.RANGED_VALUE_MAX] - [COMPLICATION.RANGED_VALUE_MIN]) == 0 ? 1 : ([COMPLICATION.RANGED_VALUE_MAX] - [COMPLICATION.RANGED_VALUE_MIN])), 0, 1))"/>
-                  </RoundRectangle>
-                </PartDraw>
                 <Condition>
                   <Expressions>
-                    <Expression name="c0"><![CDATA[(clamp(([COMPLICATION.RANGED_VALUE_VALUE] - [COMPLICATION.RANGED_VALUE_MIN]) / (([COMPLICATION.RANGED_VALUE_MAX] - [COMPLICATION.RANGED_VALUE_MIN]) == 0 ? 1 : ([COMPLICATION.RANGED_VALUE_MAX] - [COMPLICATION.RANGED_VALUE_MIN])), 0, 1)) < 0.34]]></Expression>
-                    <Expression name="c1"><![CDATA[(clamp(([COMPLICATION.RANGED_VALUE_VALUE] - [COMPLICATION.RANGED_VALUE_MIN]) / (([COMPLICATION.RANGED_VALUE_MAX] - [COMPLICATION.RANGED_VALUE_MIN]) == 0 ? 1 : ([COMPLICATION.RANGED_VALUE_MAX] - [COMPLICATION.RANGED_VALUE_MIN])), 0, 1)) < 0.67]]></Expression>
+                    <Expression name="c0"><![CDATA[[COMPLICATION.RANGED_VALUE_VALUE] < 32]]></Expression>
+                    <Expression name="c1"><![CDATA[[COMPLICATION.RANGED_VALUE_VALUE] < 35.5]]></Expression>
                   </Expressions>
                   <Compare expression="c0">
+                    <PartDraw x="0" y="0" width="180" height="28">
+                      <RoundRectangle x="12" y="9" width="96" height="10" cornerRadiusX="5" cornerRadiusY="5">
+                        <Fill color="#3329B6F6"/>
+                      </RoundRectangle>
+                      <RoundRectangle x="12" y="9" width="96" height="10" cornerRadiusX="5" cornerRadiusY="5">
+                        <Fill color="#FF29B6F6"/>
+                        <Transform target="width" value="10 + 86 * (clamp(([COMPLICATION.RANGED_VALUE_VALUE] - [COMPLICATION.RANGED_VALUE_MIN]) / (([COMPLICATION.RANGED_VALUE_MAX] - [COMPLICATION.RANGED_VALUE_MIN]) == 0 ? 1 : ([COMPLICATION.RANGED_VALUE_MAX] - [COMPLICATION.RANGED_VALUE_MIN])), 0, 1))"/>
+                      </RoundRectangle>
+                    </PartDraw>
                     <PartDraw x="0" y="0" width="20" height="28">
                       <Ellipse x="0" y="4" width="20" height="20">
                         <Fill color="#FF29B6F6"/>
@@ -2383,16 +3114,34 @@
                     </PartDraw>
                   </Compare>
                   <Compare expression="c1">
+                    <PartDraw x="0" y="0" width="180" height="28">
+                      <RoundRectangle x="12" y="9" width="96" height="10" cornerRadiusX="5" cornerRadiusY="5">
+                        <Fill color="#33FF9800"/>
+                      </RoundRectangle>
+                      <RoundRectangle x="12" y="9" width="96" height="10" cornerRadiusX="5" cornerRadiusY="5">
+                        <Fill color="#FFFF9800"/>
+                        <Transform target="width" value="10 + 86 * (clamp(([COMPLICATION.RANGED_VALUE_VALUE] - [COMPLICATION.RANGED_VALUE_MIN]) / (([COMPLICATION.RANGED_VALUE_MAX] - [COMPLICATION.RANGED_VALUE_MIN]) == 0 ? 1 : ([COMPLICATION.RANGED_VALUE_MAX] - [COMPLICATION.RANGED_VALUE_MIN])), 0, 1))"/>
+                      </RoundRectangle>
+                    </PartDraw>
                     <PartDraw x="0" y="0" width="20" height="28">
                       <Ellipse x="0" y="4" width="20" height="20">
-                        <Fill color="#FF66BB6A"/>
+                        <Fill color="#FFFF9800"/>
                       </Ellipse>
                     </PartDraw>
                   </Compare>
                   <Default>
+                    <PartDraw x="0" y="0" width="180" height="28">
+                      <RoundRectangle x="12" y="9" width="96" height="10" cornerRadiusX="5" cornerRadiusY="5">
+                        <Fill color="#33F44336"/>
+                      </RoundRectangle>
+                      <RoundRectangle x="12" y="9" width="96" height="10" cornerRadiusX="5" cornerRadiusY="5">
+                        <Fill color="#FFF44336"/>
+                        <Transform target="width" value="10 + 86 * (clamp(([COMPLICATION.RANGED_VALUE_VALUE] - [COMPLICATION.RANGED_VALUE_MIN]) / (([COMPLICATION.RANGED_VALUE_MAX] - [COMPLICATION.RANGED_VALUE_MIN]) == 0 ? 1 : ([COMPLICATION.RANGED_VALUE_MAX] - [COMPLICATION.RANGED_VALUE_MIN])), 0, 1))"/>
+                      </RoundRectangle>
+                    </PartDraw>
                     <PartDraw x="0" y="0" width="20" height="28">
                       <Ellipse x="0" y="4" width="20" height="20">
-                        <Fill color="#FFFFA726"/>
+                        <Fill color="#FFF44336"/>
                       </Ellipse>
                     </PartDraw>
                   </Default>
@@ -2468,5 +3217,131 @@
         <Group name="thermo_empty" x="0" y="0" width="1" height="1"/>
       </Complication>
     </ComplicationSlot>
+    <Group name="ambient_battery" x="88" y="270" width="274" height="30" alpha="0">
+      <Variant mode="AMBIENT" target="alpha" value="200"/>
+      <PartImage x="0" y="5" width="20" height="20" tintColor="#FFBDBDBD">
+        <Image resource="ic_metric_battery"/>
+      </PartImage>
+      <PartDraw x="28" y="9" width="17" height="12">
+        <RoundRectangle x="0" y="0" width="17" height="12" cornerRadiusX="2" cornerRadiusY="2">
+          <Fill color="#33FFFFFF"/>
+        </RoundRectangle>
+      </PartDraw>
+      <PartDraw x="28" y="9" width="17" height="12">
+        <Transform target="alpha" value="(clamp([BATTERY_PERCENT], 0, 100) / 100) &gt; 0 ? 255 : 0"/>
+        <RoundRectangle x="0" y="0" width="17" height="12" cornerRadiusX="2" cornerRadiusY="2">
+          <Fill color="#FFB3E5FC"/>
+        </RoundRectangle>
+      </PartDraw>
+      <PartDraw x="47" y="9" width="17" height="12">
+        <RoundRectangle x="0" y="0" width="17" height="12" cornerRadiusX="2" cornerRadiusY="2">
+          <Fill color="#33FFFFFF"/>
+        </RoundRectangle>
+      </PartDraw>
+      <PartDraw x="47" y="9" width="17" height="12">
+        <Transform target="alpha" value="(clamp([BATTERY_PERCENT], 0, 100) / 100) &gt; 0.1 ? 255 : 0"/>
+        <RoundRectangle x="0" y="0" width="17" height="12" cornerRadiusX="2" cornerRadiusY="2">
+          <Fill color="#FF9DDDFB"/>
+        </RoundRectangle>
+      </PartDraw>
+      <PartDraw x="66" y="9" width="17" height="12">
+        <RoundRectangle x="0" y="0" width="17" height="12" cornerRadiusX="2" cornerRadiusY="2">
+          <Fill color="#33FFFFFF"/>
+        </RoundRectangle>
+      </PartDraw>
+      <PartDraw x="66" y="9" width="17" height="12">
+        <Transform target="alpha" value="(clamp([BATTERY_PERCENT], 0, 100) / 100) &gt; 0.2 ? 255 : 0"/>
+        <RoundRectangle x="0" y="0" width="17" height="12" cornerRadiusX="2" cornerRadiusY="2">
+          <Fill color="#FF87D6FA"/>
+        </RoundRectangle>
+      </PartDraw>
+      <PartDraw x="85" y="9" width="17" height="12">
+        <RoundRectangle x="0" y="0" width="17" height="12" cornerRadiusX="2" cornerRadiusY="2">
+          <Fill color="#33FFFFFF"/>
+        </RoundRectangle>
+      </PartDraw>
+      <PartDraw x="85" y="9" width="17" height="12">
+        <Transform target="alpha" value="(clamp([BATTERY_PERCENT], 0, 100) / 100) &gt; 0.3 ? 255 : 0"/>
+        <RoundRectangle x="0" y="0" width="17" height="12" cornerRadiusX="2" cornerRadiusY="2">
+          <Fill color="#FF70CEF9"/>
+        </RoundRectangle>
+      </PartDraw>
+      <PartDraw x="104" y="9" width="17" height="12">
+        <RoundRectangle x="0" y="0" width="17" height="12" cornerRadiusX="2" cornerRadiusY="2">
+          <Fill color="#33FFFFFF"/>
+        </RoundRectangle>
+      </PartDraw>
+      <PartDraw x="104" y="9" width="17" height="12">
+        <Transform target="alpha" value="(clamp([BATTERY_PERCENT], 0, 100) / 100) &gt; 0.4 ? 255 : 0"/>
+        <RoundRectangle x="0" y="0" width="17" height="12" cornerRadiusX="2" cornerRadiusY="2">
+          <Fill color="#FF5AC7F8"/>
+        </RoundRectangle>
+      </PartDraw>
+      <PartDraw x="123" y="9" width="17" height="12">
+        <RoundRectangle x="0" y="0" width="17" height="12" cornerRadiusX="2" cornerRadiusY="2">
+          <Fill color="#33FFFFFF"/>
+        </RoundRectangle>
+      </PartDraw>
+      <PartDraw x="123" y="9" width="17" height="12">
+        <Transform target="alpha" value="(clamp([BATTERY_PERCENT], 0, 100) / 100) &gt; 0.5 ? 255 : 0"/>
+        <RoundRectangle x="0" y="0" width="17" height="12" cornerRadiusX="2" cornerRadiusY="2">
+          <Fill color="#FF4ABCF5"/>
+        </RoundRectangle>
+      </PartDraw>
+      <PartDraw x="142" y="9" width="17" height="12">
+        <RoundRectangle x="0" y="0" width="17" height="12" cornerRadiusX="2" cornerRadiusY="2">
+          <Fill color="#33FFFFFF"/>
+        </RoundRectangle>
+      </PartDraw>
+      <PartDraw x="142" y="9" width="17" height="12">
+        <Transform target="alpha" value="(clamp([BATTERY_PERCENT], 0, 100) / 100) &gt; 0.6 ? 255 : 0"/>
+        <RoundRectangle x="0" y="0" width="17" height="12" cornerRadiusX="2" cornerRadiusY="2">
+          <Fill color="#FF3FAFF1"/>
+        </RoundRectangle>
+      </PartDraw>
+      <PartDraw x="161" y="9" width="17" height="12">
+        <RoundRectangle x="0" y="0" width="17" height="12" cornerRadiusX="2" cornerRadiusY="2">
+          <Fill color="#33FFFFFF"/>
+        </RoundRectangle>
+      </PartDraw>
+      <PartDraw x="161" y="9" width="17" height="12">
+        <Transform target="alpha" value="(clamp([BATTERY_PERCENT], 0, 100) / 100) &gt; 0.7 ? 255 : 0"/>
+        <RoundRectangle x="0" y="0" width="17" height="12" cornerRadiusX="2" cornerRadiusY="2">
+          <Fill color="#FF34A2ED"/>
+        </RoundRectangle>
+      </PartDraw>
+      <PartDraw x="180" y="9" width="17" height="12">
+        <RoundRectangle x="0" y="0" width="17" height="12" cornerRadiusX="2" cornerRadiusY="2">
+          <Fill color="#33FFFFFF"/>
+        </RoundRectangle>
+      </PartDraw>
+      <PartDraw x="180" y="9" width="17" height="12">
+        <Transform target="alpha" value="(clamp([BATTERY_PERCENT], 0, 100) / 100) &gt; 0.8 ? 255 : 0"/>
+        <RoundRectangle x="0" y="0" width="17" height="12" cornerRadiusX="2" cornerRadiusY="2">
+          <Fill color="#FF2995E9"/>
+        </RoundRectangle>
+      </PartDraw>
+      <PartDraw x="199" y="9" width="17" height="12">
+        <RoundRectangle x="0" y="0" width="17" height="12" cornerRadiusX="2" cornerRadiusY="2">
+          <Fill color="#33FFFFFF"/>
+        </RoundRectangle>
+      </PartDraw>
+      <PartDraw x="199" y="9" width="17" height="12">
+        <Transform target="alpha" value="(clamp([BATTERY_PERCENT], 0, 100) / 100) &gt; 0.9 ? 255 : 0"/>
+        <RoundRectangle x="0" y="0" width="17" height="12" cornerRadiusX="2" cornerRadiusY="2">
+          <Fill color="#FF1E88E5"/>
+        </RoundRectangle>
+      </PartDraw>
+      <PartText x="224" y="0" width="50" height="30">
+        <Text align="START">
+          <Font family="SYNC_TO_DEVICE" size="20" color="#FFFFFFFF" weight="SEMI_BOLD">
+            <Template>
+              <![CDATA[%s%%]]>
+              <Parameter expression="[BATTERY_PERCENT]"/>
+            </Template>
+          </Font>
+        </Text>
+      </PartText>
+    </Group>
   </Scene>
 </WatchFace>

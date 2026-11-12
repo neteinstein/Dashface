@@ -48,8 +48,8 @@ your **skin temperature** on watches that measure it.
 <b>Free afternoon.</b> When the calendar is clear, it says so.
 </td>
 <td width="33%" align="center" valign="top">
-<img src="docs/screenshots/preview_ambient.png" width="220" alt="Ambient mode: only date, time and the next meeting"><br>
-<b>Ambient.</b> Only the date, time and next meeting, to save battery.
+<img src="docs/screenshots/preview_ambient.png" width="220" alt="Ambient mode: date, time and a battery bar"><br>
+<b>Ambient.</b> Just the date, time and how much battery is left.
 </td>
 </tr>
 </table>
@@ -60,7 +60,7 @@ your **skin temperature** on watches that measure it.
 
 | Where | What | Colors |
 |---|---|---|
-| 🔋 Top-left bar | Battery | Dim blue when low → vivid cyan when full |
+| 🔋 Top-left bar | Battery, as 10 bars that light up as it charges | Light blue for the low bars → darker blue for the full ones |
 | 👣 Top-right bar | Steps toward your daily goal | Red → yellow → green as you walk |
 | 〰️ Bottom-left bar | Stress | Green → yellow → red |
 | ❤️ Bottom-right bar | Heart rate (40–180 bpm) | Calm red → urgent red |
@@ -68,19 +68,28 @@ your **skin temperature** on watches that measure it.
 | 📅 Under it | Weekday and day, `THU 12` | Weekday in your accent color |
 | 🕙 Center | The time, in 12 or 24 h like your watch | – |
 | 🗓️ Under the time | Your next meeting and the one after it: `10:30  Team standup`, `Now` while it runs, or *No more meetings today* | Time in your accent color |
-| 🌡️ At the bottom | **Skin temperature** as a thermometer, e.g. `33.6°` | Cool blue → green → warm orange |
+| 🔋 Ambient only | In place of the meetings: a battery bar and the percentage | Light → darker blue |
+| 🌡️ At the bottom | **Skin temperature** as a thermometer, e.g. `33.6°` | Cool blue → warm orange → red, by wrist temperature |
 
-Each bar has a white dot at its tip and a small icon with the value next to it. The icon takes
+Each continuous bar has a white dot at its tip and a small icon with the value next to it. The icon takes
 the color of the bar.
 
 ### Skin temperature
 
 The thermometer appears only on watches with a **skin temperature sensor**. On other watches
-nothing is drawn there. It shows °C or °F, following your watch's settings, and the bar spans
-28–38 °C (82–100 °F), where wrist skin usually sits.
+nothing is drawn there. It shows °C or °F, following your watch's settings. The bar grows
+from 28 to 38 °C (82–100 °F), and the whole thermometer changes color with the reading:
 
-It's a wellness hint, not a medical measurement: wrist skin is cooler than your body, and it
-changes with the room, exercise and how tight the strap is. The first time, tap the thermometer
+| Color | Wrist skin temperature | What it usually means |
+|---|---|---|
+| 🔵 Cool blue | below 32 °C (89.6 °F) | Cooler than usual: a cold room, or less blood flow to the hands |
+| 🟠 Warm orange | 32–35.5 °C (89.6–95.9 °F) | The usual range for wrist skin under a watch strap |
+| 🔴 Red | 35.5 °C (95.9 °F) and up | Above the usual wrist range: heat, exercise, or possibly a fever |
+
+These are wrist benchmarks, not body temperature. Wrist skin runs several degrees below your
+core temperature (about 37 °C / 98.6 °F), so a fever shows up there as a smaller rise.
+
+It's a wellness hint, not a medical measurement: wrist skin changes with the room, exercise and how tight the strap is. The first time, tap the thermometer
 (it says **Tap**) to allow access to the sensor.
 
 ### Stress
@@ -146,7 +155,8 @@ Dashface is built to sip power:
   your face.
 - **Skin temperature takes one quick reading every 15 minutes at most**, only while the face is
   showing, and lets go of the sensor right away.
-- **Ambient mode** hides the bars, weather and thermometer.
+- **Ambient mode** shows only the date, time and a small battery bar. The bezel bars, weather,
+  meetings and thermometer are hidden.
 
 ## Common questions
 
