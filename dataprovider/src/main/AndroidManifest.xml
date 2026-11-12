@@ -1,0 +1,172 @@
+<?xml version="1.0" encoding="utf-8"?>
+<manifest xmlns:android="http://schemas.android.com/apk/res/android">
+
+    <uses-feature android:name="android.hardware.type.watch" />
+
+    <!-- Next meetings: the watch's synced calendar (WearableCalendarContract). -->
+    <uses-permission android:name="android.permission.READ_CALENDAR" />
+
+    <!--
+        Stress estimate (optional). Only requested when the user picks this app as the
+        stress source and taps the "Tap to allow" state.
+        Wear OS 5 and older use BODY_SENSORS(+_BACKGROUND); Wear OS 6 (API 36) uses the
+        granular health permissions.
+    -->
+    <uses-permission
+        android:name="android.permission.BODY_SENSORS"
+        android:maxSdkVersion="35" />
+    <uses-permission
+        android:name="android.permission.BODY_SENSORS_BACKGROUND"
+        android:maxSdkVersion="35" />
+    <uses-permission android:name="android.permission.health.READ_HEART_RATE" />
+    <uses-permission android:name="android.permission.health.READ_HEALTH_DATA_IN_BACKGROUND" />
+
+    <!-- Re-register passive heart-rate monitoring after a reboot (only if stress is in use). -->
+    <uses-permission android:name="android.permission.RECEIVE_BOOT_COMPLETED" />
+
+    <!-- Lets us find the watch's calendar app for the "open calendar" tap action. -->
+    <queries>
+        <intent>
+            <action android:name="android.intent.action.MAIN" />
+            <category android:name="android.intent.category.APP_CALENDAR" />
+        </intent>
+    </queries>
+
+    <application
+        android:allowBackup="false"
+        android:dataExtractionRules="@xml/data_extraction_rules"
+        android:icon="@drawable/ic_dashface"
+        android:label="@string/app_name"
+        android:theme="@android:style/Theme.DeviceDefault">
+
+        <meta-data
+            android:name="com.google.android.wearable.standalone"
+            android:value="true" />
+
+        <!-- ============================ Calendar ============================ -->
+        <service
+            android:name=".calendar.NextMeetingDataSourceService"
+            android:exported="true"
+            android:icon="@drawable/ic_calendar"
+            android:label="@string/source_next_meeting"
+            android:permission="com.google.android.wearable.permission.BIND_COMPLICATION_PROVIDER">
+            <intent-filter>
+                <action android:name="android.support.wearable.complications.ACTION_COMPLICATION_UPDATE_REQUEST" />
+            </intent-filter>
+            <meta-data
+                android:name="android.support.wearable.complications.SUPPORTED_TYPES"
+                android:value="LONG_TEXT,SHORT_TEXT" />
+            <!--
+                Data is published as a timeline that already contains every change for the
+                next 36 h, so the system swaps entries at meeting boundaries without waking us.
+                The hourly period is only a safety net for calendar syncs we were not told about;
+                the system skips it while the screen is off and batches it with other work.
+            -->
+            <meta-data
+                android:name="android.support.wearable.complications.UPDATE_PERIOD_SECONDS"
+                android:value="3600" />
+            <meta-data
+                android:name="android.support.wearable.complications.SAFE_WATCH_FACES"
+                android:value="com.neteinstein.dashface" />
+            <meta-data
+                android:name="android.support.wearable.complications.SAFE_WATCH_FACE_SUPPORTED_TYPES"
+                android:value="LONG_TEXT,SHORT_TEXT" />
+        </service>
+
+        <service
+            android:name=".calendar.SecondMeetingDataSourceService"
+            android:exported="true"
+            android:icon="@drawable/ic_calendar"
+            android:label="@string/source_second_meeting"
+            android:permission="com.google.android.wearable.permission.BIND_COMPLICATION_PROVIDER">
+            <intent-filter>
+                <action android:name="android.support.wearable.complications.ACTION_COMPLICATION_UPDATE_REQUEST" />
+            </intent-filter>
+            <meta-data
+                android:name="android.support.wearable.complications.SUPPORTED_TYPES"
+                android:value="LONG_TEXT,SHORT_TEXT" />
+            <meta-data
+                android:name="android.support.wearable.complications.UPDATE_PERIOD_SECONDS"
+                android:value="3600" />
+            <meta-data
+                android:name="android.support.wearable.complications.SAFE_WATCH_FACES"
+                android:value="com.neteinstein.dashface" />
+            <meta-data
+                android:name="android.support.wearable.complications.SAFE_WATCH_FACE_SUPPORTED_TYPES"
+                android:value="LONG_TEXT,SHORT_TEXT" />
+        </service>
+
+        <receiver
+            android:name=".calendar.CalendarChangeReceiver"
+            android:exported="true">
+            <!-- Fired by the Wear calendar provider after a sync from the phone. -->
+            <intent-filter>
+                <action android:name="android.intent.action.PROVIDER_CHANGED" />
+                <data
+                    android:host="com.google.android.wearable.provider.calendar"
+                    android:scheme="content" />
+            </intent-filter>
+            <intent-filter>
+                <action android:name="android.intent.action.TIME_SET" />
+                <action android:name="android.intent.action.TIMEZONE_CHANGED" />
+                <action android:name="android.intent.action.LOCALE_CHANGED" />
+            </intent-filter>
+        </receiver>
+
+        <!-- ============================= Stress ============================= -->
+        <service
+            android:name=".stress.StressDataSourceService"
+            android:exported="true"
+            android:icon="@drawable/ic_stress"
+            android:label="@string/source_stress"
+            android:permission="com.google.android.wearable.permission.BIND_COMPLICATION_PROVIDER">
+            <intent-filter>
+                <action android:name="android.support.wearable.complications.ACTION_COMPLICATION_UPDATE_REQUEST" />
+            </intent-filter>
+            <meta-data
+                android:name="android.support.wearable.complications.SUPPORTED_TYPES"
+                android:value="RANGED_VALUE,SHORT_TEXT" />
+            <!-- 0 = push only: the passive heart-rate listener requests updates on change. -->
+            <meta-data
+                android:name="android.support.wearable.complications.UPDATE_PERIOD_SECONDS"
+                android:value="0" />
+            <meta-data
+                android:name="android.support.wearable.complications.SAFE_WATCH_FACES"
+                android:value="com.neteinstein.dashface" />
+            <meta-data
+                android:name="android.support.wearable.complications.SAFE_WATCH_FACE_SUPPORTED_TYPES"
+                android:value="RANGED_VALUE" />
+        </service>
+
+        <service
+            android:name=".stress.StressPassiveService"
+            android:exported="true"
+            android:permission="com.google.android.wearable.healthservices.permission.PASSIVE_DATA_BINDING" />
+
+        <receiver
+            android:name=".stress.BootReceiver"
+            android:exported="false">
+            <intent-filter>
+                <action android:name="android.intent.action.BOOT_COMPLETED" />
+                <action android:name="android.intent.action.MY_PACKAGE_REPLACED" />
+            </intent-filter>
+        </receiver>
+
+        <!-- ========================== Permissions =========================== -->
+        <activity
+            android:name=".permissions.PermissionActivity"
+            android:exported="false"
+            android:taskAffinity=""
+            android:excludeFromRecents="true" />
+
+        <!-- Launcher entry: explains what the app does and lets the user grant access. -->
+        <activity
+            android:name=".permissions.HomeActivity"
+            android:exported="true">
+            <intent-filter>
+                <action android:name="android.intent.action.MAIN" />
+                <category android:name="android.intent.category.LAUNCHER" />
+            </intent-filter>
+        </activity>
+    </application>
+</manifest>

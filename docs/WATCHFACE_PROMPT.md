@@ -31,8 +31,9 @@ Data flow:
 - **Never wake the CPU on a timer.** Calendar provider must be a
   *timeline* complication data source: publish the whole day's entries with
   `validTimeRange`s so the system swaps "next meeting" at event boundaries without
-  waking our process. Re-query only on `ACTION_PROVIDER_CHANGED` for the calendar
-  (or when the system requests an update) — set `UPDATE_PERIOD_SECONDS` to 0.
+  waking our process. Re-query on `ACTION_PROVIDER_CHANGED` for the calendar, time/zone
+  changes, and at most an hourly safety refresh (`UPDATE_PERIOD_SECONDS` = 3600; the
+  system batches it and skips it while the screen is off).
 - No wakelocks, no foreground services, no polling, no AlarmManager exact alarms.
 - Health data: rely on WFF native sources (system-batched). If we provide stress
   ourselves, use Health Services **passive** monitoring only — never active sensors.
@@ -52,8 +53,9 @@ Reference: four thick rounded arcs hugging the bezel, separated by small gaps at
 
 Top → bottom center column:
 1. **Weather row** – 3 small icons with tiny labels: **Morning · Afternoon · Night**
-   (e.g. forecast at ~09:00, ~15:00, ~21:00 of today; once a period has passed, show
-   the next day's equivalent). Optional temp under each. If `[WEATHER.IS_AVAILABLE]`
+   (current conditions while inside the period; otherwise the hourly forecast for
+   ~09:00 / ~15:00 / ~21:00 when it is within the 8 hours WFF exposes
+   (`WEATHER.HOURS.1..8`), else the daily day/night forecast). Optional temp next to each. If `[WEATHER.IS_AVAILABLE]`
    is false, hide the row (no placeholder clutter).
 2. **Date** – `THU 12`: weekday in accent cyan (#29B6F6), day number white, bold, ~34 sp.
 3. **Time** – `HH:mm` (respect 12/24h system setting), huge white rounded bold font
@@ -95,7 +97,9 @@ Implementation of fading colors (cheap, no per-frame color math):
 - **Show weather row** (Boolean), **Meetings rows: 1 / 2** (List),
   **Show values on arcs** (Boolean).
 - Stress slot is a real complication slot, so the user can pick any RANGED_VALUE provider
-  in the system editor.
+  in the system editor. Note: `ComplicationSlot` is only allowed at the top level of the
+  `Scene` (not inside a `ListConfiguration`), so to let Stress move between corners use one
+  slot per corner and render it only when that corner is set to Stress.
 - Ship sensible defaults; all options must also apply to the ambient variant.
 
 # 6. Permissions (handle properly, least privilege)
