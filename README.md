@@ -1,6 +1,6 @@
 <div align="center">
 
-<a href="docs/video/dashface.mp4"><img src="docs/video/dashface.gif" width="720" alt="Dashface in 22 seconds: health bars sweep in around the bezel; the next meetings switch to Now and then No more meetings today; the layout and accent colors change; the skin temperature thermometer turns from blue to orange to red; ambient mode"></a>
+<a href="docs/video/dashface.mp4"><img src="docs/video/dashface.gif" width="720" alt="Dashface in 22 seconds: battery bars, a trail of footprints, stress weather icons and a heartbeat line light up around the bezel; the next meetings switch to Now and then No more meetings today; the layout and accent colors change; the skin temperature thermometer turns from blue to orange to red; ambient mode"></a>
 
 <sub>Plays on its own, without sound. <a href="docs/video/dashface.mp4">Watch with sound (MP4)</a>.</sub>
 
