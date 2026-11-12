@@ -582,6 +582,113 @@ def draw_meeting_slot(x: Xml, slot_id: int, y: int, second: bool) -> None:
 
 
 # --------------------------------------------------------------------------------------
+# Skin temperature thermometer (under the meetings)
+# --------------------------------------------------------------------------------------
+THERMO_SLOT = 12
+THERMO_X, THERMO_Y, THERMO_W, THERMO_H = 135, 342, 180, 28
+BULB_D = 20
+TUBE_X, TUBE_Y, TUBE_W, TUBE_H = 12, 9, 96, 10
+THERMO_TEXT_X = TUBE_X + TUBE_W + 8
+# Cool -> neutral -> warm, ordered empty -> full like the metric gradients.
+THERMO_COLORS = ("#FF29B6F6", "#FF66BB6A", "#FFFFA726")
+THERMO_PREVIEW = (0.56, "33.6°")
+
+
+def draw_thermometer_slot(x: Xml) -> None:
+    """Skin temperature: a horizontal thermometer whose liquid follows a RANGED_VALUE.
+
+    Wear OS has no platform skin-temperature source, so this is a complication. The default
+    provider is the companion's sensor reader; it returns NO_DATA on watches without a skin
+    temperature sensor, and nothing is drawn (NO_DATA matches no <Complication> below).
+    """
+    x.open("ComplicationSlot", slotId=THERMO_SLOT, name="skin_temperature",
+           displayName="slot_skin_temperature", x=THERMO_X, y=THERMO_Y, width=THERMO_W,
+           height=THERMO_H, supportedTypes="RANGED_VALUE SHORT_TEXT EMPTY", isCustomizable="TRUE")
+    x.leaf("BoundingBox", x=0, y=0, width=THERMO_W, height=THERMO_H)
+    x.leaf("DefaultProviderPolicy", defaultSystemProvider="EMPTY",
+           defaultSystemProviderType="EMPTY",
+           primaryProvider=f"{PROVIDER_PKG}/{PROVIDER_PKG}.skin.SkinTemperatureDataSourceService",
+           primaryProviderType="RANGED_VALUE")
+    x.leaf("Variant", mode="AMBIENT", target="alpha", value=0)
+    tube_r = TUBE_H / 2
+
+    def tube(color: str) -> None:
+        x.open("RoundRectangle", x=TUBE_X, y=TUBE_Y, width=TUBE_W, height=TUBE_H,
+               cornerRadiusX=tube_r, cornerRadiusY=tube_r)
+        x.leaf("Fill", color=color)
+        x.close("RoundRectangle")
+
+    def bulb(color: str) -> callable:
+        def render() -> None:
+            x.open("PartDraw", x=0, y=0, width=BULB_D, height=THERMO_H)
+            x.open("Ellipse", x=0, y=(THERMO_H - BULB_D) / 2, width=BULB_D, height=BULB_D)
+            x.leaf("Fill", color=color)
+            x.close("Ellipse")
+            x.close("PartDraw")
+        return render
+
+    def value_text() -> None:
+        text_part(x, px=THERMO_TEXT_X, py=0, w=THERMO_W - THERMO_TEXT_X, h=THERMO_H, template="%s",
+                  params=["[COMPLICATION.TEXT]"], size=18, weight="SEMI_BOLD", align="START")
+
+    def ranged(single: bool) -> None:
+        x.open("PartDraw", x=0, y=0, width=THERMO_W, height=THERMO_H)
+        tube("#26FFFFFF" if single else with_alpha(THERMO_COLORS[-1], 0x33))
+        # Liquid: the same rounded tube, its width following the value. It starts under the
+        # bulb, so even an empty reading looks attached.
+        x.open("RoundRectangle", x=TUBE_X, y=TUBE_Y, width=TUBE_W, height=TUBE_H,
+               cornerRadiusX=tube_r, cornerRadiusY=tube_r)
+        if single:
+            x.leaf("Fill", color="[CONFIGURATION.accent.0]")
+        else:
+            x.open("Fill", color="#FFFFFFFF")
+            x.leaf("LinearGradient", startX=TUBE_X, startY=0, endX=TUBE_X + TUBE_W, endY=0,
+                   colors=" ".join(THERMO_COLORS), positions="0 0.5 1")
+            x.close("Fill")
+        x.leaf("Transform", target="width", value=f"{tube_r * 2:g} + {TUBE_W - tube_r * 2:g} * ({COMP_NORM})")
+        x.close("RoundRectangle")
+        x.close("PartDraw")
+        if single:
+            bulb("[CONFIGURATION.accent.0]")()
+        else:
+            condition(x, [
+                (f"({COMP_NORM}) < 0.34", bulb(THERMO_COLORS[0])),
+                (f"({COMP_NORM}) < 0.67", bulb(THERMO_COLORS[1])),
+            ], bulb(THERMO_COLORS[2]))
+        value_text()
+
+    x.open("Complication", type="RANGED_VALUE")
+    full_thermo = dict(x=0, y=0, width=THERMO_W, height=THERMO_H)
+    x.open("Group", name="thermo_ranged", **full_thermo)
+    x.open("ListConfiguration", id="color_mode")
+    for mode in ("multi", "single"):
+        x.open("ListOption", id=mode)
+        x.open("Group", name=f"thermo_ranged_{mode}", **full_thermo)
+        ranged(mode == "single")
+        x.close("Group")
+        x.close("ListOption")
+    x.close("ListConfiguration")
+    x.close("Group")
+    x.close("Complication")
+
+    # Other providers may only offer text: an empty tube + the value.
+    x.open("Complication", type="SHORT_TEXT")
+    x.open("Group", name="thermo_short", **full_thermo)
+    x.open("PartDraw", x=0, y=0, width=THERMO_W, height=THERMO_H)
+    tube("#26FFFFFF")
+    x.close("PartDraw")
+    bulb("[CONFIGURATION.accent.0]")()
+    value_text()
+    x.close("Group")
+    x.close("Complication")
+
+    x.open("Complication", type="EMPTY")
+    empty_group(x, "thermo_empty")
+    x.close("Complication")
+    x.close("ComplicationSlot")
+
+
+# --------------------------------------------------------------------------------------
 # User configuration
 # --------------------------------------------------------------------------------------
 FLAVORS = [
@@ -676,6 +783,7 @@ def build_xml() -> str:
     draw_time(x)
     draw_meeting_slot(x, 10, MEET1_Y, second=False)
     draw_meeting_slot(x, 11, MEET2_Y, second=True)
+    draw_thermometer_slot(x)
     x.close("Scene")
     x.close("WatchFace")
     return x.text()
@@ -844,8 +952,34 @@ def build_preview_svg(layout: dict[str, str], single_accent: str | None = None,
                      f'text-anchor="end">{escape(t)}</text>'
                      f'<text x="{MEET_X + MEET_TEXT_X}" y="{y}" fill="#fff" fill-opacity="{alpha}" '
                      f'font-size="{size}">{escape(title)}</text>')
+    if not ambient:
+        parts.append(preview_thermometer(single_accent and acc))
     parts.append("</svg>")
     return "\n".join(parts)
+
+
+def preview_thermometer(single: str | None) -> str:
+    v, label = THERMO_PREVIEW
+    ox, oy = THERMO_X, THERMO_Y
+    r = TUBE_H / 2
+    track = "rgba(255,255,255,0.15)" if single else hex6(THERMO_COLORS[-1])
+    track_op = 1 if single else 0.2
+    fill_w = TUBE_H + (TUBE_W - TUBE_H) * v
+    if single:
+        liquid, bulb = single, single
+    else:
+        liquid = "url(#thermo)"
+        bulb = hex6(THERMO_COLORS[0 if v < 0.34 else 1 if v < 0.67 else 2])
+    stops = "".join(f'<stop offset="{i / 2:g}" stop-color="{hex6(c)}"/>' for i, c in enumerate(THERMO_COLORS))
+    return (
+        f'<defs><linearGradient id="thermo" gradientUnits="userSpaceOnUse" x1="{ox + TUBE_X}" y1="0" '
+        f'x2="{ox + TUBE_X + TUBE_W}" y2="0">{stops}</linearGradient></defs>'
+        f'<rect x="{ox + TUBE_X}" y="{oy + TUBE_Y}" width="{TUBE_W}" height="{TUBE_H}" rx="{r}" '
+        f'fill="{track}" fill-opacity="{track_op}"/>'
+        f'<rect x="{ox + TUBE_X}" y="{oy + TUBE_Y}" width="{fill_w:.1f}" height="{TUBE_H}" rx="{r}" fill="{liquid}"/>'
+        f'<circle cx="{ox + BULB_D / 2}" cy="{oy + THERMO_H / 2}" r="{BULB_D / 2}" fill="{bulb}"/>'
+        f'<text x="{ox + THERMO_TEXT_X}" y="{oy + 21}" fill="#fff" font-size="18" font-weight="600">{label}</text>'
+    )
 
 
 def write_previews() -> None:

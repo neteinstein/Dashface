@@ -14,6 +14,7 @@ import androidx.activity.result.contract.ActivityResultContracts
 import androidx.lifecycle.lifecycleScope
 import com.neteinstein.dashface.provider.R
 import com.neteinstein.dashface.provider.calendar.MeetingComplications
+import com.neteinstein.dashface.provider.skin.SkinTemperatureDataSourceService
 import com.neteinstein.dashface.provider.stress.StressMonitoring
 import kotlinx.coroutines.launch
 
@@ -68,13 +69,28 @@ class PermissionActivity : ComponentActivity() {
         step = next
         when (next) {
             Step.FOREGROUND -> {
-                title.setText(if (feature == Feature.CALENDAR) R.string.perm_calendar_title else R.string.perm_stress_title)
-                body.setText(if (feature == Feature.CALENDAR) R.string.perm_calendar_body else R.string.perm_stress_body)
+                title.setText(
+                    when (feature) {
+                        Feature.CALENDAR -> R.string.perm_calendar_title
+                        Feature.STRESS -> R.string.perm_stress_title
+                        Feature.SKIN_TEMPERATURE -> R.string.perm_skin_title
+                    },
+                )
+                body.setText(
+                    when (feature) {
+                        Feature.CALENDAR -> R.string.perm_calendar_body
+                        Feature.STRESS -> R.string.perm_stress_body
+                        Feature.SKIN_TEMPERATURE -> R.string.perm_skin_body
+                    },
+                )
                 primary.setText(R.string.perm_allow)
             }
             Step.BACKGROUND -> {
                 title.setText(R.string.perm_background_title)
-                body.setText(R.string.perm_background_body)
+                body.setText(
+                    if (feature == Feature.SKIN_TEMPERATURE) R.string.perm_skin_background_body
+                    else R.string.perm_background_body,
+                )
                 primary.setText(R.string.perm_allow)
             }
             Step.SETTINGS -> {
@@ -116,6 +132,7 @@ class PermissionActivity : ComponentActivity() {
                     StressMonitoring.sync(applicationContext)
                     StressMonitoring.requestComplicationUpdate(applicationContext)
                 }
+                Feature.SKIN_TEMPERATURE -> SkinTemperatureDataSourceService.requestUpdate(applicationContext)
             }
             finish()
         }

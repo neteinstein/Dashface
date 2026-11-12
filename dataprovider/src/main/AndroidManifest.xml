@@ -20,6 +20,9 @@
         android:maxSdkVersion="35" />
     <uses-permission android:name="android.permission.health.READ_HEART_RATE" />
     <uses-permission android:name="android.permission.health.READ_HEALTH_DATA_IN_BACKGROUND" />
+    <!-- Skin temperature (optional, only on watches with the sensor). Wear OS 6 permission;
+         older versions use BODY_SENSORS above. -->
+    <uses-permission android:name="android.permission.health.READ_SKIN_TEMPERATURE" />
 
     <!-- Re-register passive heart-rate monitoring after a reboot (only if stress is in use). -->
     <uses-permission android:name="android.permission.RECEIVE_BOOT_COMPLETED" />
@@ -151,6 +154,32 @@
                 <action android:name="android.intent.action.MY_PACKAGE_REPLACED" />
             </intent-filter>
         </receiver>
+
+        <!-- ======================== Skin temperature ======================== -->
+        <service
+            android:name=".skin.SkinTemperatureDataSourceService"
+            android:exported="true"
+            android:icon="@drawable/ic_thermometer"
+            android:label="@string/source_skin_temperature"
+            android:permission="com.google.android.wearable.permission.BIND_COMPLICATION_PROVIDER">
+            <intent-filter>
+                <action android:name="android.support.wearable.complications.ACTION_COMPLICATION_UPDATE_REQUEST" />
+            </intent-filter>
+            <meta-data
+                android:name="android.support.wearable.complications.SUPPORTED_TYPES"
+                android:value="RANGED_VALUE,SHORT_TEXT" />
+            <!-- Skin temperature drifts slowly: one sample every 15 min (the platform minimum
+                 for periodic updates), only while the watch face is visible. -->
+            <meta-data
+                android:name="android.support.wearable.complications.UPDATE_PERIOD_SECONDS"
+                android:value="900" />
+            <meta-data
+                android:name="android.support.wearable.complications.SAFE_WATCH_FACES"
+                android:value="com.neteinstein.dashface" />
+            <meta-data
+                android:name="android.support.wearable.complications.SAFE_WATCH_FACE_SUPPORTED_TYPES"
+                android:value="RANGED_VALUE" />
+        </service>
 
         <!-- ========================== Permissions =========================== -->
         <activity

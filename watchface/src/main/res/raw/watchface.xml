@@ -2350,5 +2350,123 @@
         <Group name="meeting_11_empty" x="0" y="0" width="1" height="1"/>
       </Complication>
     </ComplicationSlot>
+    <ComplicationSlot slotId="12" name="skin_temperature" displayName="slot_skin_temperature" x="135" y="342" width="180" height="28" supportedTypes="RANGED_VALUE SHORT_TEXT EMPTY" isCustomizable="TRUE">
+      <BoundingBox x="0" y="0" width="180" height="28"/>
+      <DefaultProviderPolicy defaultSystemProvider="EMPTY" defaultSystemProviderType="EMPTY" primaryProvider="com.neteinstein.dashface.provider/com.neteinstein.dashface.provider.skin.SkinTemperatureDataSourceService" primaryProviderType="RANGED_VALUE"/>
+      <Variant mode="AMBIENT" target="alpha" value="0"/>
+      <Complication type="RANGED_VALUE">
+        <Group name="thermo_ranged" x="0" y="0" width="180" height="28">
+          <ListConfiguration id="color_mode">
+            <ListOption id="multi">
+              <Group name="thermo_ranged_multi" x="0" y="0" width="180" height="28">
+                <PartDraw x="0" y="0" width="180" height="28">
+                  <RoundRectangle x="12" y="9" width="96" height="10" cornerRadiusX="5" cornerRadiusY="5">
+                    <Fill color="#33FFA726"/>
+                  </RoundRectangle>
+                  <RoundRectangle x="12" y="9" width="96" height="10" cornerRadiusX="5" cornerRadiusY="5">
+                    <Fill color="#FFFFFFFF">
+                      <LinearGradient startX="12" startY="0" endX="108" endY="0" colors="#FF29B6F6 #FF66BB6A #FFFFA726" positions="0 0.5 1"/>
+                    </Fill>
+                    <Transform target="width" value="10 + 86 * (clamp(([COMPLICATION.RANGED_VALUE_VALUE] - [COMPLICATION.RANGED_VALUE_MIN]) / (([COMPLICATION.RANGED_VALUE_MAX] - [COMPLICATION.RANGED_VALUE_MIN]) == 0 ? 1 : ([COMPLICATION.RANGED_VALUE_MAX] - [COMPLICATION.RANGED_VALUE_MIN])), 0, 1))"/>
+                  </RoundRectangle>
+                </PartDraw>
+                <Condition>
+                  <Expressions>
+                    <Expression name="c0"><![CDATA[(clamp(([COMPLICATION.RANGED_VALUE_VALUE] - [COMPLICATION.RANGED_VALUE_MIN]) / (([COMPLICATION.RANGED_VALUE_MAX] - [COMPLICATION.RANGED_VALUE_MIN]) == 0 ? 1 : ([COMPLICATION.RANGED_VALUE_MAX] - [COMPLICATION.RANGED_VALUE_MIN])), 0, 1)) < 0.34]]></Expression>
+                    <Expression name="c1"><![CDATA[(clamp(([COMPLICATION.RANGED_VALUE_VALUE] - [COMPLICATION.RANGED_VALUE_MIN]) / (([COMPLICATION.RANGED_VALUE_MAX] - [COMPLICATION.RANGED_VALUE_MIN]) == 0 ? 1 : ([COMPLICATION.RANGED_VALUE_MAX] - [COMPLICATION.RANGED_VALUE_MIN])), 0, 1)) < 0.67]]></Expression>
+                  </Expressions>
+                  <Compare expression="c0">
+                    <PartDraw x="0" y="0" width="20" height="28">
+                      <Ellipse x="0" y="4" width="20" height="20">
+                        <Fill color="#FF29B6F6"/>
+                      </Ellipse>
+                    </PartDraw>
+                  </Compare>
+                  <Compare expression="c1">
+                    <PartDraw x="0" y="0" width="20" height="28">
+                      <Ellipse x="0" y="4" width="20" height="20">
+                        <Fill color="#FF66BB6A"/>
+                      </Ellipse>
+                    </PartDraw>
+                  </Compare>
+                  <Default>
+                    <PartDraw x="0" y="0" width="20" height="28">
+                      <Ellipse x="0" y="4" width="20" height="20">
+                        <Fill color="#FFFFA726"/>
+                      </Ellipse>
+                    </PartDraw>
+                  </Default>
+                </Condition>
+                <PartText x="116" y="0" width="64" height="28">
+                  <Text align="START">
+                    <Font family="SYNC_TO_DEVICE" size="18" color="#FFFFFFFF" weight="SEMI_BOLD">
+                      <Template>
+                        <![CDATA[%s]]>
+                        <Parameter expression="[COMPLICATION.TEXT]"/>
+                      </Template>
+                    </Font>
+                  </Text>
+                </PartText>
+              </Group>
+            </ListOption>
+            <ListOption id="single">
+              <Group name="thermo_ranged_single" x="0" y="0" width="180" height="28">
+                <PartDraw x="0" y="0" width="180" height="28">
+                  <RoundRectangle x="12" y="9" width="96" height="10" cornerRadiusX="5" cornerRadiusY="5">
+                    <Fill color="#26FFFFFF"/>
+                  </RoundRectangle>
+                  <RoundRectangle x="12" y="9" width="96" height="10" cornerRadiusX="5" cornerRadiusY="5">
+                    <Fill color="[CONFIGURATION.accent.0]"/>
+                    <Transform target="width" value="10 + 86 * (clamp(([COMPLICATION.RANGED_VALUE_VALUE] - [COMPLICATION.RANGED_VALUE_MIN]) / (([COMPLICATION.RANGED_VALUE_MAX] - [COMPLICATION.RANGED_VALUE_MIN]) == 0 ? 1 : ([COMPLICATION.RANGED_VALUE_MAX] - [COMPLICATION.RANGED_VALUE_MIN])), 0, 1))"/>
+                  </RoundRectangle>
+                </PartDraw>
+                <PartDraw x="0" y="0" width="20" height="28">
+                  <Ellipse x="0" y="4" width="20" height="20">
+                    <Fill color="[CONFIGURATION.accent.0]"/>
+                  </Ellipse>
+                </PartDraw>
+                <PartText x="116" y="0" width="64" height="28">
+                  <Text align="START">
+                    <Font family="SYNC_TO_DEVICE" size="18" color="#FFFFFFFF" weight="SEMI_BOLD">
+                      <Template>
+                        <![CDATA[%s]]>
+                        <Parameter expression="[COMPLICATION.TEXT]"/>
+                      </Template>
+                    </Font>
+                  </Text>
+                </PartText>
+              </Group>
+            </ListOption>
+          </ListConfiguration>
+        </Group>
+      </Complication>
+      <Complication type="SHORT_TEXT">
+        <Group name="thermo_short" x="0" y="0" width="180" height="28">
+          <PartDraw x="0" y="0" width="180" height="28">
+            <RoundRectangle x="12" y="9" width="96" height="10" cornerRadiusX="5" cornerRadiusY="5">
+              <Fill color="#26FFFFFF"/>
+            </RoundRectangle>
+          </PartDraw>
+          <PartDraw x="0" y="0" width="20" height="28">
+            <Ellipse x="0" y="4" width="20" height="20">
+              <Fill color="[CONFIGURATION.accent.0]"/>
+            </Ellipse>
+          </PartDraw>
+          <PartText x="116" y="0" width="64" height="28">
+            <Text align="START">
+              <Font family="SYNC_TO_DEVICE" size="18" color="#FFFFFFFF" weight="SEMI_BOLD">
+                <Template>
+                  <![CDATA[%s]]>
+                  <Parameter expression="[COMPLICATION.TEXT]"/>
+                </Template>
+              </Font>
+            </Text>
+          </PartText>
+        </Group>
+      </Complication>
+      <Complication type="EMPTY">
+        <Group name="thermo_empty" x="0" y="0" width="1" height="1"/>
+      </Complication>
+    </ComplicationSlot>
   </Scene>
 </WatchFace>
