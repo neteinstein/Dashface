@@ -1,6 +1,6 @@
 <div align="center">
 
-<a href="docs/video/dashface.mp4"><img src="docs/video/dashface.gif" width="720" alt="Dashface in 22 seconds: battery bars, a trail of footprints, stress weather icons and a heartbeat line light up around the bezel; the next meetings switch to Now and then No more meetings today; the layout and accent colors change; the skin temperature thermometer turns from blue to orange to red; ambient mode"></a>
+<a href="docs/video/dashface.mp4"><img src="docs/video/dashface.gif" width="720" alt="Dashface in 22 seconds: battery bars, footprints, a heartbeat line and stress weather fill in around the bezel; the next meetings switch to Now and then No more meetings today; the layout and accent colors change; the skin temperature thermometer turns from blue to orange to red; ambient mode"></a>
 
 <sub>Plays on its own, without sound. <a href="docs/video/dashface.mp4">Watch with sound (MP4)</a>.</sub>
 
@@ -28,7 +28,7 @@ your **skin temperature** on watches that measure it.
 <table>
 <tr>
 <td width="33%" align="center" valign="top">
-<img src="docs/screenshots/preview.png" width="220" alt="Default look: multicolor bars"><br>
+<img src="docs/screenshots/preview.png" width="220" alt="Default look: battery bars, footprints, heartbeat line and stress weather"><br>
 <b>Multicolor.</b> Each bar fades through its own colors as it fills.
 </td>
 <td width="33%" align="center" valign="top">
