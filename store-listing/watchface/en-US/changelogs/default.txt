@@ -1,0 +1,6 @@
+First release of Dashface:
+• Battery, steps, stress and heart rate as color bars around the edge
+• Morning, afternoon and night weather
+• Your next two meetings under the time
+• Skin temperature on watches that measure it
+• Three layouts, multicolor or five accent colors, and a minimal ambient mode

@@ -1,0 +1,42 @@
+Your day at a glance, on your wrist.
+
+Dashface is a battery-friendly watch face for Wear OS. Battery, steps, stress and heart rate hug the edge of the screen. The center shows the weather for the rest of the day, the time, your next meetings and your skin temperature.
+
+WHAT IT SHOWS
+• Battery: 10 bars that light up as it charges
+• Steps: toward your daily goal, from red to yellow to green
+• Stress: from green to yellow to red
+• Heart rate: 40–180 bpm
+• Weather: icon and temperature for morning, afternoon and night
+• Date: weekday and day, in your accent color
+• Time: large and clear, in 12 or 24 h like your watch
+• Meetings: your next meeting and the one after it, "Now" while it runs, or "No more meetings today"
+• Skin temperature: a thermometer that turns from cool blue to warm orange to red, on watches with a skin temperature sensor
+
+MAKE IT YOURS
+Long-press the watch face and tap Customize:
+• Put Battery, Steps, Stress or Heart rate in any corner, or pick a preset: Classic, Mirrored or Health on top
+• Multicolor bars, or a single accent: cyan, white, green, amber or purple
+• Show or hide the weather
+• Show the next meeting, or the next two
+• Complications: the meeting rows, the stress bar and the thermometer accept data from other compatible apps
+
+COMPANION APP: DASHFACE DATA
+Meetings, the stress estimate and skin temperature come from the free companion app "Dashface data", installed on the watch. Without it, the meeting rows use your watch's own next event, and the stress bar and thermometer stay empty. On Galaxy watches you can also pick Samsung Health's stress complication if it's offered.
+
+EASY ON THE BATTERY
+• Made with the Watch Face Format: the watch draws it, and the time updates once a minute
+• Meetings never wake the watch on a timer
+• Ambient mode shows only the date, the time and a small battery bar
+
+PRIVATE BY DESIGN
+• No internet access and no analytics
+• Your calendar, heart rate and temperature never leave your watch
+• It asks only for what it uses, and only when you tap
+
+REQUIREMENTS
+Wear OS 5 or later. The skin temperature thermometer needs a watch with a skin temperature sensor. Weather comes from your watch's own weather service.
+
+Stress and skin temperature are wellness hints, not medical measurements. Dashface is not a medical device and does not diagnose, treat or prevent any condition.
+
+Dashface is open source: github.com/neteinstein/Dashface
