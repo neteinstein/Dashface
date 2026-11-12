@@ -48,8 +48,8 @@ your **skin temperature** on watches that measure it.
 <b>Free afternoon.</b> When the calendar is clear, it says so.
 </td>
 <td width="33%" align="center" valign="top">
-<img src="docs/screenshots/preview_ambient.png" width="220" alt="Ambient mode: only date, time and the next meeting"><br>
-<b>Ambient.</b> Only the date, time and next meeting, to save battery.
+<img src="docs/screenshots/preview_ambient.png" width="220" alt="Ambient mode: date, time and a battery bar"><br>
+<b>Ambient.</b> Just the date, time and how much battery is left.
 </td>
 </tr>
 </table>
@@ -68,6 +68,7 @@ your **skin temperature** on watches that measure it.
 | 📅 Under it | Weekday and day, `THU 12` | Weekday in your accent color |
 | 🕙 Center | The time, in 12 or 24 h like your watch | – |
 | 🗓️ Under the time | Your next meeting and the one after it: `10:30  Team standup`, `Now` while it runs, or *No more meetings today* | Time in your accent color |
+| 🔋 Ambient only | In place of the meetings: a battery bar and the percentage | Light → darker blue |
 | 🌡️ At the bottom | **Skin temperature** as a thermometer, e.g. `33.6°` | Cool blue → warm orange → red, by wrist temperature |
 
 Each continuous bar has a white dot at its tip and a small icon with the value next to it. The icon takes
@@ -154,7 +155,8 @@ Dashface is built to sip power:
   your face.
 - **Skin temperature takes one quick reading every 15 minutes at most**, only while the face is
   showing, and lets go of the sensor right away.
-- **Ambient mode** hides the bars, weather and thermometer.
+- **Ambient mode** shows only the date, time and a small battery bar. The bezel bars, weather,
+  meetings and thermometer are hidden.
 
 ## Common questions
 

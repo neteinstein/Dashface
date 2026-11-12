@@ -93,8 +93,11 @@ flowchart LR
 - **Segmented battery.** Battery (`segments=10` in the generator) is drawn as 10 short arcs,
   each with a static color from light (low) to darker (full). Bar *i* is shown when the level is
   above *i*/10 through an `alpha` transform, so 1–10 % lights the first bar. No knob.
-- **Ambient mode** keeps only the time, date and next meeting. All bars, the weather, the
-  thermometer and gradients are hidden.
+- **Ambient mode** keeps only the time, the date and a small battery bar (10 rounded bars and
+  the percentage) in the first meeting row's place. Both meeting rows, the bezel bars, the
+  weather, the thermometer and gradients are hidden. The battery bar is a top-level group with
+  `alpha="0"` and an `AMBIENT` variant that brings it to 200, so it costs nothing while
+  interactive.
 - **Small assets.** Weather icons are 48 px, metric icons 24 px, and the images that can be
   on screen total well under 1 MB.
 

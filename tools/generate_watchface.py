@@ -581,8 +581,8 @@ def draw_meeting_slot(x: Xml, slot_id: int, y: int, second: bool) -> None:
            defaultSystemProviderType="SHORT_TEXT" if second else "LONG_TEXT",
            primaryProvider=f"{PROVIDER_PKG}/{PROVIDER_PKG}.calendar.{service}",
            primaryProviderType="LONG_TEXT")
-    if second:
-        x.leaf("Variant", mode="AMBIENT", target="alpha", value=0)
+    # Ambient shows the battery bar in this place instead (see draw_ambient_battery).
+    x.leaf("Variant", mode="AMBIENT", target="alpha", value=0)
     size = 19 if second else 22
     title_color = "[CONFIGURATION.accent.0]"
     text_alpha = "#99FFFFFF" if second else "#FFFFFFFF"
@@ -629,6 +629,47 @@ def draw_meeting_slot(x: Xml, slot_id: int, y: int, second: bool) -> None:
     empty_group(x, f"meeting_{slot_id}_empty")
     x.close("Complication")
     x.close("ComplicationSlot")
+
+
+# --------------------------------------------------------------------------------------
+# Ambient battery bar (in place of the next meeting)
+# --------------------------------------------------------------------------------------
+AMB_BATT_ICON = 20
+AMB_BATT_SEG_X, AMB_BATT_SEG_W, AMB_BATT_SEG_GAP, AMB_BATT_SEG_H = 28, 17, 2, 12
+AMB_BATT_TEXT_X = AMB_BATT_SEG_X + 10 * (AMB_BATT_SEG_W + AMB_BATT_SEG_GAP) + 6
+AMB_BATT_ALPHA = 200  # a little dimmer than the time, like the rest of ambient
+
+
+def draw_ambient_battery(x: Xml) -> None:
+    """Battery as 10 small bars + percentage, shown only in ambient where the meeting row is.
+
+    Hidden (alpha 0) in interactive mode; the AMBIENT variant brings it in. It uses the same
+    light (low) -> darker (full) colors as the battery arc.
+    """
+    battery = METRICS["battery"]
+    n = battery.segments or 10
+    x.open("Group", name="ambient_battery", x=MEET_X, y=MEET1_Y, width=MEET_W, height=MEET_H, alpha=0)
+    x.leaf("Variant", mode="AMBIENT", target="alpha", value=AMB_BATT_ALPHA)
+    x.open("PartImage", x=0, y=(MEET_H - AMB_BATT_ICON) / 2, width=AMB_BATT_ICON, height=AMB_BATT_ICON,
+           tintColor="#FFBDBDBD")
+    x.leaf("Image", resource=battery.icon)
+    x.close("PartImage")
+    seg_y = (MEET_H - AMB_BATT_SEG_H) / 2
+    r = 2
+    for i in range(n):
+        sx = AMB_BATT_SEG_X + i * (AMB_BATT_SEG_W + AMB_BATT_SEG_GAP)
+        for lit in (False, True):
+            x.open("PartDraw", x=sx, y=seg_y, width=AMB_BATT_SEG_W, height=AMB_BATT_SEG_H)
+            if lit:
+                x.leaf("Transform", target="alpha", value=f"({battery.value}) > {i / n:g} ? 255 : 0")
+            x.open("RoundRectangle", x=0, y=0, width=AMB_BATT_SEG_W, height=AMB_BATT_SEG_H,
+                   cornerRadiusX=r, cornerRadiusY=r)
+            x.leaf("Fill", color=segment_color(battery, i) if lit else "#33FFFFFF")
+            x.close("RoundRectangle")
+            x.close("PartDraw")
+    text_part(x, px=AMB_BATT_TEXT_X, py=0, w=MEET_W - AMB_BATT_TEXT_X, h=MEET_H, template=battery.text_format,
+              params=[battery.text], size=20, weight="SEMI_BOLD", align="START")
+    x.close("Group")
 
 
 # --------------------------------------------------------------------------------------
@@ -851,6 +892,7 @@ def build_xml() -> str:
     draw_meeting_slot(x, 10, MEET1_Y, second=False)
     draw_meeting_slot(x, 11, MEET2_Y, second=True)
     draw_thermometer_slot(x)
+    draw_ambient_battery(x)
     x.close("Scene")
     x.close("WatchFace")
     return x.text()
@@ -1024,7 +1066,9 @@ def build_preview_svg(layout: dict[str, str], single_accent: str | None = None,
                  f'text-anchor="end" letter-spacing="-3">10</text>'
                  f'<text x="225" y="{TIME_Y + 84}" fill="#BDBDBD" font-size="88" font-weight="700" text-anchor="middle">:</text>'
                  f'<text x="240" y="{TIME_Y + 92}" fill="#fff" font-size="96" font-weight="700" letter-spacing="-3">08</text></g>')
-    rows = meetings[:1] if ambient else meetings
+    if ambient:
+        parts.append(preview_ambient_battery(icons_dir))
+    rows = () if ambient else meetings
     for i, (t, title) in enumerate(rows):
         y = (MEET1_Y if i == 0 else MEET2_Y) + 22
         size = 22 if i == 0 else 19
@@ -1041,6 +1085,25 @@ def build_preview_svg(layout: dict[str, str], single_accent: str | None = None,
         parts.append(preview_thermometer(single_accent and acc))
     parts.append("</svg>")
     return "\n".join(parts)
+
+
+def preview_ambient_battery(icons_dir: str) -> str:
+    battery = METRICS["battery"]
+    n, v = battery.segments or 10, battery.preview_value
+    ox, oy = MEET_X, MEET1_Y
+    out = [f'<g opacity="{AMB_BATT_ALPHA / 255:.2f}">',
+           f'<image x="{ox}" y="{oy + (MEET_H - AMB_BATT_ICON) / 2}" width="{AMB_BATT_ICON}" '
+           f'height="{AMB_BATT_ICON}" href="{icons_dir}{battery.icon}_BDBDBD.png"/>']
+    for i in range(n):
+        sx = ox + AMB_BATT_SEG_X + i * (AMB_BATT_SEG_W + AMB_BATT_SEG_GAP)
+        lit = v > i / n
+        col = hex6(segment_color(battery, i)) if lit else "#FFFFFF"
+        op = 1 if lit else 0.2
+        out.append(f'<rect x="{sx}" y="{oy + (MEET_H - AMB_BATT_SEG_H) / 2}" width="{AMB_BATT_SEG_W}" '
+                   f'height="{AMB_BATT_SEG_H}" rx="2" fill="{col}" fill-opacity="{op}"/>')
+    out.append(f'<text x="{ox + AMB_BATT_TEXT_X}" y="{oy + 22}" fill="#fff" font-size="20" '
+               f'font-weight="600">{battery.preview_text}</text></g>')
+    return "".join(out)
 
 
 def preview_thermometer(single: str | None) -> str:
@@ -1072,7 +1135,8 @@ def write_previews() -> None:
     # Pre-tinted copies of metric icons for the SVG preview.
     for metric in METRICS.values():
         base = Image.open(drawables / f"{metric.icon}.png").convert("RGBA")
-        cols = {lerp_color(metric.colors, min(metric.preview_value, 0.999))} | {hex6(a[2]) for a in ACCENTS}
+        cols = ({lerp_color(metric.colors, min(metric.preview_value, 0.999))} | {hex6(a[2]) for a in ACCENTS}
+                | {"#BDBDBD"})
         for col in cols:
             r, g, b = (int(col[i:i + 2], 16) for i in (1, 3, 5))
             tinted = Image.new("RGBA", base.size, (r, g, b, 255))
