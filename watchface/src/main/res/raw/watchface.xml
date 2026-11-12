@@ -537,11 +537,21 @@
             <ListConfiguration id="color_mode">
               <ListOption id="multi">
                 <Group name="tl_stress_multi" x="0" y="0" width="450" height="450">
-                  <PartDraw x="0" y="0" width="450" height="450">
-                    <Arc centerX="225" centerY="225" width="420" height="420" startAngle="276" endAngle="354">
-                      <Stroke color="#33E53935" thickness="14" cap="ROUND"/>
-                    </Arc>
-                  </PartDraw>
+                  <PartImage x="164" y="10" width="22" height="22" tintColor="#FF43A047" alpha="60">
+                    <Image resource="ic_stress_0"/>
+                  </PartImage>
+                  <PartImage x="111" y="31" width="22" height="22" tintColor="#FFA0BC3E" alpha="60">
+                    <Image resource="ic_stress_1"/>
+                  </PartImage>
+                  <PartImage x="66" y="66" width="22" height="22" tintColor="#FFFDD835" alpha="60">
+                    <Image resource="ic_stress_2"/>
+                  </PartImage>
+                  <PartImage x="31" y="111" width="22" height="22" tintColor="#FFF18835" alpha="60">
+                    <Image resource="ic_stress_3"/>
+                  </PartImage>
+                  <PartImage x="10" y="164" width="22" height="22" tintColor="#FFE53935" alpha="60">
+                    <Image resource="ic_stress_4"/>
+                  </PartImage>
                   <Group name="badge_tl_stress" x="37" y="160" width="48" height="42">
                     <PartImage x="14" y="0" width="20" height="20" tintColor="#FF43A047">
                       <Image resource="ic_metric_stress"/>
@@ -561,11 +571,21 @@
               </ListOption>
               <ListOption id="single">
                 <Group name="tl_stress_single" x="0" y="0" width="450" height="450">
-                  <PartDraw x="0" y="0" width="450" height="450">
-                    <Arc centerX="225" centerY="225" width="420" height="420" startAngle="276" endAngle="354">
-                      <Stroke color="#26FFFFFF" thickness="14" cap="ROUND"/>
-                    </Arc>
-                  </PartDraw>
+                  <PartImage x="164" y="10" width="22" height="22" tintColor="[CONFIGURATION.accent.0]" alpha="60">
+                    <Image resource="ic_stress_0"/>
+                  </PartImage>
+                  <PartImage x="111" y="31" width="22" height="22" tintColor="[CONFIGURATION.accent.0]" alpha="60">
+                    <Image resource="ic_stress_1"/>
+                  </PartImage>
+                  <PartImage x="66" y="66" width="22" height="22" tintColor="[CONFIGURATION.accent.0]" alpha="60">
+                    <Image resource="ic_stress_2"/>
+                  </PartImage>
+                  <PartImage x="31" y="111" width="22" height="22" tintColor="[CONFIGURATION.accent.0]" alpha="60">
+                    <Image resource="ic_stress_3"/>
+                  </PartImage>
+                  <PartImage x="10" y="164" width="22" height="22" tintColor="[CONFIGURATION.accent.0]" alpha="60">
+                    <Image resource="ic_stress_4"/>
+                  </PartImage>
                   <Group name="badge_tl_stress" x="37" y="160" width="48" height="42">
                     <PartImage x="14" y="0" width="20" height="20" tintColor="[CONFIGURATION.accent.0]">
                       <Image resource="ic_metric_stress"/>
@@ -591,25 +611,38 @@
             <ListConfiguration id="color_mode">
               <ListOption id="multi">
                 <Group name="tl_heart_multi" x="0" y="0" width="450" height="450">
-                  <PartDraw x="0" y="0" width="450" height="450">
-                    <Arc centerX="225" centerY="225" width="420" height="420" startAngle="276" endAngle="354">
-                      <Stroke color="#33FF1744" thickness="14" cap="ROUND"/>
-                    </Arc>
-                  </PartDraw>
-                  <PartDraw x="0" y="0" width="450" height="450">
-                    <Arc centerX="225" centerY="225" width="420" height="420" startAngle="276" endAngle="354">
-                      <Stroke color="#FFFFFFFF" thickness="14" cap="ROUND">
-                        <SweepGradient centerX="225" centerY="225" startAngle="276" endAngle="354" colors="#FFFF1744 #FFC2575A" positions="0 1"/>
-                      </Stroke>
-                      <Transform target="startAngle" value="354 - 78 * (clamp(([HEART_RATE] - 40) / 140, 0, 1))"/>
-                    </Arc>
-                  </PartDraw>
-                  <PartDraw x="0" y="0" width="450" height="450">
-                    <Ellipse x="220" y="10" width="10" height="10">
-                      <Fill color="#FFFFFFFF"/>
-                    </Ellipse>
-                    <Transform target="angle" value="354 - 78 * (clamp(([HEART_RATE] - 40) / 140, 0, 1))"/>
-                  </PartDraw>
+                  <PartImage x="167" y="7" width="36" height="24" angle="169.12" tintColor="#FFC2575A">
+                    <Transform target="alpha" value="(clamp(([HEART_RATE] - 40) / 140, 0, 1)) &gt; 0 ? 255 : 60"/>
+                    <Image resource="ic_ecg_0"/>
+                  </PartImage>
+                  <PartImage x="133" y="16" width="36" height="24" angle="159.38" tintColor="#FFCB4E57">
+                    <Transform target="alpha" value="(clamp(([HEART_RATE] - 40) / 140, 0, 1)) &gt; 0.125 ? 255 : 60"/>
+                    <Image resource="ic_ecg_1"/>
+                  </PartImage>
+                  <PartImage x="101" y="32" width="36" height="24" angle="149.62" tintColor="#FFD34554">
+                    <Transform target="alpha" value="(clamp(([HEART_RATE] - 40) / 140, 0, 1)) &gt; 0.25 ? 255 : 60"/>
+                    <Image resource="ic_ecg_2"/>
+                  </PartImage>
+                  <PartImage x="72" y="52" width="36" height="24" angle="139.88" tintColor="#FFDC3C51">
+                    <Transform target="alpha" value="(clamp(([HEART_RATE] - 40) / 140, 0, 1)) &gt; 0.375 ? 255 : 60"/>
+                    <Image resource="ic_ecg_3"/>
+                  </PartImage>
+                  <PartImage x="46" y="78" width="36" height="24" angle="130.12" tintColor="#FFE5324D">
+                    <Transform target="alpha" value="(clamp(([HEART_RATE] - 40) / 140, 0, 1)) &gt; 0.5 ? 255 : 60"/>
+                    <Image resource="ic_ecg_4"/>
+                  </PartImage>
+                  <PartImage x="26" y="107" width="36" height="24" angle="120.38" tintColor="#FFEE294A">
+                    <Transform target="alpha" value="(clamp(([HEART_RATE] - 40) / 140, 0, 1)) &gt; 0.625 ? 255 : 60"/>
+                    <Image resource="ic_ecg_5"/>
+                  </PartImage>
+                  <PartImage x="10" y="139" width="36" height="24" angle="110.62" tintColor="#FFF62047">
+                    <Transform target="alpha" value="(clamp(([HEART_RATE] - 40) / 140, 0, 1)) &gt; 0.75 ? 255 : 60"/>
+                    <Image resource="ic_ecg_6"/>
+                  </PartImage>
+                  <PartImage x="1" y="173" width="36" height="24" angle="100.88" tintColor="#FFFF1744">
+                    <Transform target="alpha" value="(clamp(([HEART_RATE] - 40) / 140, 0, 1)) &gt; 0.875 ? 255 : 60"/>
+                    <Image resource="ic_ecg_7"/>
+                  </PartImage>
                   <Group name="badge_tl_heart" x="37" y="160" width="48" height="42">
                     <Condition>
                       <Expressions>
@@ -647,24 +680,38 @@
               </ListOption>
               <ListOption id="single">
                 <Group name="tl_heart_single" x="0" y="0" width="450" height="450">
-                  <PartDraw x="0" y="0" width="450" height="450">
-                    <Arc centerX="225" centerY="225" width="420" height="420" startAngle="276" endAngle="354">
-                      <Stroke color="#26FFFFFF" thickness="14" cap="ROUND"/>
-                    </Arc>
-                  </PartDraw>
-                  <PartDraw x="0" y="0" width="450" height="450">
-                    <Transform target="alpha" value="90 + 165 * (clamp(([HEART_RATE] - 40) / 140, 0, 1))"/>
-                    <Arc centerX="225" centerY="225" width="420" height="420" startAngle="276" endAngle="354">
-                      <Stroke color="[CONFIGURATION.accent.0]" thickness="14" cap="ROUND"/>
-                      <Transform target="startAngle" value="354 - 78 * (clamp(([HEART_RATE] - 40) / 140, 0, 1))"/>
-                    </Arc>
-                  </PartDraw>
-                  <PartDraw x="0" y="0" width="450" height="450">
-                    <Ellipse x="220" y="10" width="10" height="10">
-                      <Fill color="#FFFFFFFF"/>
-                    </Ellipse>
-                    <Transform target="angle" value="354 - 78 * (clamp(([HEART_RATE] - 40) / 140, 0, 1))"/>
-                  </PartDraw>
+                  <PartImage x="167" y="7" width="36" height="24" angle="169.12" tintColor="[CONFIGURATION.accent.0]">
+                    <Transform target="alpha" value="(clamp(([HEART_RATE] - 40) / 140, 0, 1)) &gt; 0 ? (90 + 165 * (clamp(([HEART_RATE] - 40) / 140, 0, 1))) : 60"/>
+                    <Image resource="ic_ecg_0"/>
+                  </PartImage>
+                  <PartImage x="133" y="16" width="36" height="24" angle="159.38" tintColor="[CONFIGURATION.accent.0]">
+                    <Transform target="alpha" value="(clamp(([HEART_RATE] - 40) / 140, 0, 1)) &gt; 0.125 ? (90 + 165 * (clamp(([HEART_RATE] - 40) / 140, 0, 1))) : 60"/>
+                    <Image resource="ic_ecg_1"/>
+                  </PartImage>
+                  <PartImage x="101" y="32" width="36" height="24" angle="149.62" tintColor="[CONFIGURATION.accent.0]">
+                    <Transform target="alpha" value="(clamp(([HEART_RATE] - 40) / 140, 0, 1)) &gt; 0.25 ? (90 + 165 * (clamp(([HEART_RATE] - 40) / 140, 0, 1))) : 60"/>
+                    <Image resource="ic_ecg_2"/>
+                  </PartImage>
+                  <PartImage x="72" y="52" width="36" height="24" angle="139.88" tintColor="[CONFIGURATION.accent.0]">
+                    <Transform target="alpha" value="(clamp(([HEART_RATE] - 40) / 140, 0, 1)) &gt; 0.375 ? (90 + 165 * (clamp(([HEART_RATE] - 40) / 140, 0, 1))) : 60"/>
+                    <Image resource="ic_ecg_3"/>
+                  </PartImage>
+                  <PartImage x="46" y="78" width="36" height="24" angle="130.12" tintColor="[CONFIGURATION.accent.0]">
+                    <Transform target="alpha" value="(clamp(([HEART_RATE] - 40) / 140, 0, 1)) &gt; 0.5 ? (90 + 165 * (clamp(([HEART_RATE] - 40) / 140, 0, 1))) : 60"/>
+                    <Image resource="ic_ecg_4"/>
+                  </PartImage>
+                  <PartImage x="26" y="107" width="36" height="24" angle="120.38" tintColor="[CONFIGURATION.accent.0]">
+                    <Transform target="alpha" value="(clamp(([HEART_RATE] - 40) / 140, 0, 1)) &gt; 0.625 ? (90 + 165 * (clamp(([HEART_RATE] - 40) / 140, 0, 1))) : 60"/>
+                    <Image resource="ic_ecg_5"/>
+                  </PartImage>
+                  <PartImage x="10" y="139" width="36" height="24" angle="110.62" tintColor="[CONFIGURATION.accent.0]">
+                    <Transform target="alpha" value="(clamp(([HEART_RATE] - 40) / 140, 0, 1)) &gt; 0.75 ? (90 + 165 * (clamp(([HEART_RATE] - 40) / 140, 0, 1))) : 60"/>
+                    <Image resource="ic_ecg_6"/>
+                  </PartImage>
+                  <PartImage x="1" y="173" width="36" height="24" angle="100.88" tintColor="[CONFIGURATION.accent.0]">
+                    <Transform target="alpha" value="(clamp(([HEART_RATE] - 40) / 140, 0, 1)) &gt; 0.875 ? (90 + 165 * (clamp(([HEART_RATE] - 40) / 140, 0, 1))) : 60"/>
+                    <Image resource="ic_ecg_7"/>
+                  </PartImage>
                   <Group name="badge_tl_heart" x="37" y="160" width="48" height="42">
                     <PartImage x="14" y="0" width="20" height="20" tintColor="[CONFIGURATION.accent.0]">
                       <Image resource="ic_metric_heart"/>
@@ -1119,11 +1166,21 @@
             <ListConfiguration id="color_mode">
               <ListOption id="multi">
                 <Group name="tr_stress_multi" x="0" y="0" width="450" height="450">
-                  <PartDraw x="0" y="0" width="450" height="450">
-                    <Arc centerX="225" centerY="225" width="420" height="420" startAngle="6" endAngle="84">
-                      <Stroke color="#33E53935" thickness="14" cap="ROUND"/>
-                    </Arc>
-                  </PartDraw>
+                  <PartImage x="264" y="10" width="22" height="22" tintColor="#FF43A047" alpha="60">
+                    <Image resource="ic_stress_0"/>
+                  </PartImage>
+                  <PartImage x="317" y="31" width="22" height="22" tintColor="#FFA0BC3E" alpha="60">
+                    <Image resource="ic_stress_1"/>
+                  </PartImage>
+                  <PartImage x="362" y="66" width="22" height="22" tintColor="#FFFDD835" alpha="60">
+                    <Image resource="ic_stress_2"/>
+                  </PartImage>
+                  <PartImage x="397" y="111" width="22" height="22" tintColor="#FFF18835" alpha="60">
+                    <Image resource="ic_stress_3"/>
+                  </PartImage>
+                  <PartImage x="418" y="164" width="22" height="22" tintColor="#FFE53935" alpha="60">
+                    <Image resource="ic_stress_4"/>
+                  </PartImage>
                   <Group name="badge_tr_stress" x="365" y="160" width="48" height="42">
                     <PartImage x="14" y="0" width="20" height="20" tintColor="#FF43A047">
                       <Image resource="ic_metric_stress"/>
@@ -1143,11 +1200,21 @@
               </ListOption>
               <ListOption id="single">
                 <Group name="tr_stress_single" x="0" y="0" width="450" height="450">
-                  <PartDraw x="0" y="0" width="450" height="450">
-                    <Arc centerX="225" centerY="225" width="420" height="420" startAngle="6" endAngle="84">
-                      <Stroke color="#26FFFFFF" thickness="14" cap="ROUND"/>
-                    </Arc>
-                  </PartDraw>
+                  <PartImage x="264" y="10" width="22" height="22" tintColor="[CONFIGURATION.accent.0]" alpha="60">
+                    <Image resource="ic_stress_0"/>
+                  </PartImage>
+                  <PartImage x="317" y="31" width="22" height="22" tintColor="[CONFIGURATION.accent.0]" alpha="60">
+                    <Image resource="ic_stress_1"/>
+                  </PartImage>
+                  <PartImage x="362" y="66" width="22" height="22" tintColor="[CONFIGURATION.accent.0]" alpha="60">
+                    <Image resource="ic_stress_2"/>
+                  </PartImage>
+                  <PartImage x="397" y="111" width="22" height="22" tintColor="[CONFIGURATION.accent.0]" alpha="60">
+                    <Image resource="ic_stress_3"/>
+                  </PartImage>
+                  <PartImage x="418" y="164" width="22" height="22" tintColor="[CONFIGURATION.accent.0]" alpha="60">
+                    <Image resource="ic_stress_4"/>
+                  </PartImage>
                   <Group name="badge_tr_stress" x="365" y="160" width="48" height="42">
                     <PartImage x="14" y="0" width="20" height="20" tintColor="[CONFIGURATION.accent.0]">
                       <Image resource="ic_metric_stress"/>
@@ -1173,25 +1240,38 @@
             <ListConfiguration id="color_mode">
               <ListOption id="multi">
                 <Group name="tr_heart_multi" x="0" y="0" width="450" height="450">
-                  <PartDraw x="0" y="0" width="450" height="450">
-                    <Arc centerX="225" centerY="225" width="420" height="420" startAngle="6" endAngle="84">
-                      <Stroke color="#33FF1744" thickness="14" cap="ROUND"/>
-                    </Arc>
-                  </PartDraw>
-                  <PartDraw x="0" y="0" width="450" height="450">
-                    <Arc centerX="225" centerY="225" width="420" height="420" startAngle="6" endAngle="84">
-                      <Stroke color="#FFFFFFFF" thickness="14" cap="ROUND">
-                        <SweepGradient centerX="225" centerY="225" startAngle="6" endAngle="84" colors="#FFC2575A #FFFF1744" positions="0 1"/>
-                      </Stroke>
-                      <Transform target="endAngle" value="6 + 78 * (clamp(([HEART_RATE] - 40) / 140, 0, 1))"/>
-                    </Arc>
-                  </PartDraw>
-                  <PartDraw x="0" y="0" width="450" height="450">
-                    <Ellipse x="220" y="10" width="10" height="10">
-                      <Fill color="#FFFFFFFF"/>
-                    </Ellipse>
-                    <Transform target="angle" value="6 + 78 * (clamp(([HEART_RATE] - 40) / 140, 0, 1))"/>
-                  </PartDraw>
+                  <PartImage x="247" y="7" width="36" height="24" angle="190.88" tintColor="#FFC2575A">
+                    <Transform target="alpha" value="(clamp(([HEART_RATE] - 40) / 140, 0, 1)) &gt; 0 ? 255 : 60"/>
+                    <Image resource="ic_ecg_0"/>
+                  </PartImage>
+                  <PartImage x="281" y="16" width="36" height="24" angle="200.62" tintColor="#FFCB4E57">
+                    <Transform target="alpha" value="(clamp(([HEART_RATE] - 40) / 140, 0, 1)) &gt; 0.125 ? 255 : 60"/>
+                    <Image resource="ic_ecg_1"/>
+                  </PartImage>
+                  <PartImage x="313" y="32" width="36" height="24" angle="210.38" tintColor="#FFD34554">
+                    <Transform target="alpha" value="(clamp(([HEART_RATE] - 40) / 140, 0, 1)) &gt; 0.25 ? 255 : 60"/>
+                    <Image resource="ic_ecg_2"/>
+                  </PartImage>
+                  <PartImage x="342" y="52" width="36" height="24" angle="220.12" tintColor="#FFDC3C51">
+                    <Transform target="alpha" value="(clamp(([HEART_RATE] - 40) / 140, 0, 1)) &gt; 0.375 ? 255 : 60"/>
+                    <Image resource="ic_ecg_3"/>
+                  </PartImage>
+                  <PartImage x="368" y="78" width="36" height="24" angle="229.88" tintColor="#FFE5324D">
+                    <Transform target="alpha" value="(clamp(([HEART_RATE] - 40) / 140, 0, 1)) &gt; 0.5 ? 255 : 60"/>
+                    <Image resource="ic_ecg_4"/>
+                  </PartImage>
+                  <PartImage x="388" y="107" width="36" height="24" angle="239.62" tintColor="#FFEE294A">
+                    <Transform target="alpha" value="(clamp(([HEART_RATE] - 40) / 140, 0, 1)) &gt; 0.625 ? 255 : 60"/>
+                    <Image resource="ic_ecg_5"/>
+                  </PartImage>
+                  <PartImage x="404" y="139" width="36" height="24" angle="249.38" tintColor="#FFF62047">
+                    <Transform target="alpha" value="(clamp(([HEART_RATE] - 40) / 140, 0, 1)) &gt; 0.75 ? 255 : 60"/>
+                    <Image resource="ic_ecg_6"/>
+                  </PartImage>
+                  <PartImage x="413" y="173" width="36" height="24" angle="259.12" tintColor="#FFFF1744">
+                    <Transform target="alpha" value="(clamp(([HEART_RATE] - 40) / 140, 0, 1)) &gt; 0.875 ? 255 : 60"/>
+                    <Image resource="ic_ecg_7"/>
+                  </PartImage>
                   <Group name="badge_tr_heart" x="365" y="160" width="48" height="42">
                     <Condition>
                       <Expressions>
@@ -1229,24 +1309,38 @@
               </ListOption>
               <ListOption id="single">
                 <Group name="tr_heart_single" x="0" y="0" width="450" height="450">
-                  <PartDraw x="0" y="0" width="450" height="450">
-                    <Arc centerX="225" centerY="225" width="420" height="420" startAngle="6" endAngle="84">
-                      <Stroke color="#26FFFFFF" thickness="14" cap="ROUND"/>
-                    </Arc>
-                  </PartDraw>
-                  <PartDraw x="0" y="0" width="450" height="450">
-                    <Transform target="alpha" value="90 + 165 * (clamp(([HEART_RATE] - 40) / 140, 0, 1))"/>
-                    <Arc centerX="225" centerY="225" width="420" height="420" startAngle="6" endAngle="84">
-                      <Stroke color="[CONFIGURATION.accent.0]" thickness="14" cap="ROUND"/>
-                      <Transform target="endAngle" value="6 + 78 * (clamp(([HEART_RATE] - 40) / 140, 0, 1))"/>
-                    </Arc>
-                  </PartDraw>
-                  <PartDraw x="0" y="0" width="450" height="450">
-                    <Ellipse x="220" y="10" width="10" height="10">
-                      <Fill color="#FFFFFFFF"/>
-                    </Ellipse>
-                    <Transform target="angle" value="6 + 78 * (clamp(([HEART_RATE] - 40) / 140, 0, 1))"/>
-                  </PartDraw>
+                  <PartImage x="247" y="7" width="36" height="24" angle="190.88" tintColor="[CONFIGURATION.accent.0]">
+                    <Transform target="alpha" value="(clamp(([HEART_RATE] - 40) / 140, 0, 1)) &gt; 0 ? (90 + 165 * (clamp(([HEART_RATE] - 40) / 140, 0, 1))) : 60"/>
+                    <Image resource="ic_ecg_0"/>
+                  </PartImage>
+                  <PartImage x="281" y="16" width="36" height="24" angle="200.62" tintColor="[CONFIGURATION.accent.0]">
+                    <Transform target="alpha" value="(clamp(([HEART_RATE] - 40) / 140, 0, 1)) &gt; 0.125 ? (90 + 165 * (clamp(([HEART_RATE] - 40) / 140, 0, 1))) : 60"/>
+                    <Image resource="ic_ecg_1"/>
+                  </PartImage>
+                  <PartImage x="313" y="32" width="36" height="24" angle="210.38" tintColor="[CONFIGURATION.accent.0]">
+                    <Transform target="alpha" value="(clamp(([HEART_RATE] - 40) / 140, 0, 1)) &gt; 0.25 ? (90 + 165 * (clamp(([HEART_RATE] - 40) / 140, 0, 1))) : 60"/>
+                    <Image resource="ic_ecg_2"/>
+                  </PartImage>
+                  <PartImage x="342" y="52" width="36" height="24" angle="220.12" tintColor="[CONFIGURATION.accent.0]">
+                    <Transform target="alpha" value="(clamp(([HEART_RATE] - 40) / 140, 0, 1)) &gt; 0.375 ? (90 + 165 * (clamp(([HEART_RATE] - 40) / 140, 0, 1))) : 60"/>
+                    <Image resource="ic_ecg_3"/>
+                  </PartImage>
+                  <PartImage x="368" y="78" width="36" height="24" angle="229.88" tintColor="[CONFIGURATION.accent.0]">
+                    <Transform target="alpha" value="(clamp(([HEART_RATE] - 40) / 140, 0, 1)) &gt; 0.5 ? (90 + 165 * (clamp(([HEART_RATE] - 40) / 140, 0, 1))) : 60"/>
+                    <Image resource="ic_ecg_4"/>
+                  </PartImage>
+                  <PartImage x="388" y="107" width="36" height="24" angle="239.62" tintColor="[CONFIGURATION.accent.0]">
+                    <Transform target="alpha" value="(clamp(([HEART_RATE] - 40) / 140, 0, 1)) &gt; 0.625 ? (90 + 165 * (clamp(([HEART_RATE] - 40) / 140, 0, 1))) : 60"/>
+                    <Image resource="ic_ecg_5"/>
+                  </PartImage>
+                  <PartImage x="404" y="139" width="36" height="24" angle="249.38" tintColor="[CONFIGURATION.accent.0]">
+                    <Transform target="alpha" value="(clamp(([HEART_RATE] - 40) / 140, 0, 1)) &gt; 0.75 ? (90 + 165 * (clamp(([HEART_RATE] - 40) / 140, 0, 1))) : 60"/>
+                    <Image resource="ic_ecg_6"/>
+                  </PartImage>
+                  <PartImage x="413" y="173" width="36" height="24" angle="259.12" tintColor="[CONFIGURATION.accent.0]">
+                    <Transform target="alpha" value="(clamp(([HEART_RATE] - 40) / 140, 0, 1)) &gt; 0.875 ? (90 + 165 * (clamp(([HEART_RATE] - 40) / 140, 0, 1))) : 60"/>
+                    <Image resource="ic_ecg_7"/>
+                  </PartImage>
                   <Group name="badge_tr_heart" x="365" y="160" width="48" height="42">
                     <PartImage x="14" y="0" width="20" height="20" tintColor="[CONFIGURATION.accent.0]">
                       <Image resource="ic_metric_heart"/>
@@ -1701,11 +1795,21 @@
             <ListConfiguration id="color_mode">
               <ListOption id="multi">
                 <Group name="bl_stress_multi" x="0" y="0" width="450" height="450">
-                  <PartDraw x="0" y="0" width="450" height="450">
-                    <Arc centerX="225" centerY="225" width="420" height="420" startAngle="186" endAngle="264">
-                      <Stroke color="#33E53935" thickness="14" cap="ROUND"/>
-                    </Arc>
-                  </PartDraw>
+                  <PartImage x="164" y="418" width="22" height="22" tintColor="#FF43A047" alpha="60">
+                    <Image resource="ic_stress_0"/>
+                  </PartImage>
+                  <PartImage x="111" y="397" width="22" height="22" tintColor="#FFA0BC3E" alpha="60">
+                    <Image resource="ic_stress_1"/>
+                  </PartImage>
+                  <PartImage x="66" y="362" width="22" height="22" tintColor="#FFFDD835" alpha="60">
+                    <Image resource="ic_stress_2"/>
+                  </PartImage>
+                  <PartImage x="31" y="317" width="22" height="22" tintColor="#FFF18835" alpha="60">
+                    <Image resource="ic_stress_3"/>
+                  </PartImage>
+                  <PartImage x="10" y="264" width="22" height="22" tintColor="#FFE53935" alpha="60">
+                    <Image resource="ic_stress_4"/>
+                  </PartImage>
                   <Group name="badge_bl_stress" x="37" y="248" width="48" height="42">
                     <PartImage x="14" y="0" width="20" height="20" tintColor="#FF43A047">
                       <Image resource="ic_metric_stress"/>
@@ -1725,11 +1829,21 @@
               </ListOption>
               <ListOption id="single">
                 <Group name="bl_stress_single" x="0" y="0" width="450" height="450">
-                  <PartDraw x="0" y="0" width="450" height="450">
-                    <Arc centerX="225" centerY="225" width="420" height="420" startAngle="186" endAngle="264">
-                      <Stroke color="#26FFFFFF" thickness="14" cap="ROUND"/>
-                    </Arc>
-                  </PartDraw>
+                  <PartImage x="164" y="418" width="22" height="22" tintColor="[CONFIGURATION.accent.0]" alpha="60">
+                    <Image resource="ic_stress_0"/>
+                  </PartImage>
+                  <PartImage x="111" y="397" width="22" height="22" tintColor="[CONFIGURATION.accent.0]" alpha="60">
+                    <Image resource="ic_stress_1"/>
+                  </PartImage>
+                  <PartImage x="66" y="362" width="22" height="22" tintColor="[CONFIGURATION.accent.0]" alpha="60">
+                    <Image resource="ic_stress_2"/>
+                  </PartImage>
+                  <PartImage x="31" y="317" width="22" height="22" tintColor="[CONFIGURATION.accent.0]" alpha="60">
+                    <Image resource="ic_stress_3"/>
+                  </PartImage>
+                  <PartImage x="10" y="264" width="22" height="22" tintColor="[CONFIGURATION.accent.0]" alpha="60">
+                    <Image resource="ic_stress_4"/>
+                  </PartImage>
                   <Group name="badge_bl_stress" x="37" y="248" width="48" height="42">
                     <PartImage x="14" y="0" width="20" height="20" tintColor="[CONFIGURATION.accent.0]">
                       <Image resource="ic_metric_stress"/>
@@ -1755,25 +1869,38 @@
             <ListConfiguration id="color_mode">
               <ListOption id="multi">
                 <Group name="bl_heart_multi" x="0" y="0" width="450" height="450">
-                  <PartDraw x="0" y="0" width="450" height="450">
-                    <Arc centerX="225" centerY="225" width="420" height="420" startAngle="186" endAngle="264">
-                      <Stroke color="#33FF1744" thickness="14" cap="ROUND"/>
-                    </Arc>
-                  </PartDraw>
-                  <PartDraw x="0" y="0" width="450" height="450">
-                    <Arc centerX="225" centerY="225" width="420" height="420" startAngle="186" endAngle="264">
-                      <Stroke color="#FFFFFFFF" thickness="14" cap="ROUND">
-                        <SweepGradient centerX="225" centerY="225" startAngle="186" endAngle="264" colors="#FFC2575A #FFFF1744" positions="0 1"/>
-                      </Stroke>
-                      <Transform target="endAngle" value="186 + 78 * (clamp(([HEART_RATE] - 40) / 140, 0, 1))"/>
-                    </Arc>
-                  </PartDraw>
-                  <PartDraw x="0" y="0" width="450" height="450">
-                    <Ellipse x="220" y="10" width="10" height="10">
-                      <Fill color="#FFFFFFFF"/>
-                    </Ellipse>
-                    <Transform target="angle" value="186 + 78 * (clamp(([HEART_RATE] - 40) / 140, 0, 1))"/>
-                  </PartDraw>
+                  <PartImage x="167" y="419" width="36" height="24" angle="10.88" tintColor="#FFC2575A">
+                    <Transform target="alpha" value="(clamp(([HEART_RATE] - 40) / 140, 0, 1)) &gt; 0 ? 255 : 60"/>
+                    <Image resource="ic_ecg_0"/>
+                  </PartImage>
+                  <PartImage x="133" y="410" width="36" height="24" angle="20.62" tintColor="#FFCB4E57">
+                    <Transform target="alpha" value="(clamp(([HEART_RATE] - 40) / 140, 0, 1)) &gt; 0.125 ? 255 : 60"/>
+                    <Image resource="ic_ecg_1"/>
+                  </PartImage>
+                  <PartImage x="101" y="394" width="36" height="24" angle="30.38" tintColor="#FFD34554">
+                    <Transform target="alpha" value="(clamp(([HEART_RATE] - 40) / 140, 0, 1)) &gt; 0.25 ? 255 : 60"/>
+                    <Image resource="ic_ecg_2"/>
+                  </PartImage>
+                  <PartImage x="72" y="374" width="36" height="24" angle="40.12" tintColor="#FFDC3C51">
+                    <Transform target="alpha" value="(clamp(([HEART_RATE] - 40) / 140, 0, 1)) &gt; 0.375 ? 255 : 60"/>
+                    <Image resource="ic_ecg_3"/>
+                  </PartImage>
+                  <PartImage x="46" y="348" width="36" height="24" angle="49.88" tintColor="#FFE5324D">
+                    <Transform target="alpha" value="(clamp(([HEART_RATE] - 40) / 140, 0, 1)) &gt; 0.5 ? 255 : 60"/>
+                    <Image resource="ic_ecg_4"/>
+                  </PartImage>
+                  <PartImage x="26" y="319" width="36" height="24" angle="59.62" tintColor="#FFEE294A">
+                    <Transform target="alpha" value="(clamp(([HEART_RATE] - 40) / 140, 0, 1)) &gt; 0.625 ? 255 : 60"/>
+                    <Image resource="ic_ecg_5"/>
+                  </PartImage>
+                  <PartImage x="10" y="287" width="36" height="24" angle="69.38" tintColor="#FFF62047">
+                    <Transform target="alpha" value="(clamp(([HEART_RATE] - 40) / 140, 0, 1)) &gt; 0.75 ? 255 : 60"/>
+                    <Image resource="ic_ecg_6"/>
+                  </PartImage>
+                  <PartImage x="1" y="253" width="36" height="24" angle="79.12" tintColor="#FFFF1744">
+                    <Transform target="alpha" value="(clamp(([HEART_RATE] - 40) / 140, 0, 1)) &gt; 0.875 ? 255 : 60"/>
+                    <Image resource="ic_ecg_7"/>
+                  </PartImage>
                   <Group name="badge_bl_heart" x="37" y="248" width="48" height="42">
                     <Condition>
                       <Expressions>
@@ -1811,24 +1938,38 @@
               </ListOption>
               <ListOption id="single">
                 <Group name="bl_heart_single" x="0" y="0" width="450" height="450">
-                  <PartDraw x="0" y="0" width="450" height="450">
-                    <Arc centerX="225" centerY="225" width="420" height="420" startAngle="186" endAngle="264">
-                      <Stroke color="#26FFFFFF" thickness="14" cap="ROUND"/>
-                    </Arc>
-                  </PartDraw>
-                  <PartDraw x="0" y="0" width="450" height="450">
-                    <Transform target="alpha" value="90 + 165 * (clamp(([HEART_RATE] - 40) / 140, 0, 1))"/>
-                    <Arc centerX="225" centerY="225" width="420" height="420" startAngle="186" endAngle="264">
-                      <Stroke color="[CONFIGURATION.accent.0]" thickness="14" cap="ROUND"/>
-                      <Transform target="endAngle" value="186 + 78 * (clamp(([HEART_RATE] - 40) / 140, 0, 1))"/>
-                    </Arc>
-                  </PartDraw>
-                  <PartDraw x="0" y="0" width="450" height="450">
-                    <Ellipse x="220" y="10" width="10" height="10">
-                      <Fill color="#FFFFFFFF"/>
-                    </Ellipse>
-                    <Transform target="angle" value="186 + 78 * (clamp(([HEART_RATE] - 40) / 140, 0, 1))"/>
-                  </PartDraw>
+                  <PartImage x="167" y="419" width="36" height="24" angle="10.88" tintColor="[CONFIGURATION.accent.0]">
+                    <Transform target="alpha" value="(clamp(([HEART_RATE] - 40) / 140, 0, 1)) &gt; 0 ? (90 + 165 * (clamp(([HEART_RATE] - 40) / 140, 0, 1))) : 60"/>
+                    <Image resource="ic_ecg_0"/>
+                  </PartImage>
+                  <PartImage x="133" y="410" width="36" height="24" angle="20.62" tintColor="[CONFIGURATION.accent.0]">
+                    <Transform target="alpha" value="(clamp(([HEART_RATE] - 40) / 140, 0, 1)) &gt; 0.125 ? (90 + 165 * (clamp(([HEART_RATE] - 40) / 140, 0, 1))) : 60"/>
+                    <Image resource="ic_ecg_1"/>
+                  </PartImage>
+                  <PartImage x="101" y="394" width="36" height="24" angle="30.38" tintColor="[CONFIGURATION.accent.0]">
+                    <Transform target="alpha" value="(clamp(([HEART_RATE] - 40) / 140, 0, 1)) &gt; 0.25 ? (90 + 165 * (clamp(([HEART_RATE] - 40) / 140, 0, 1))) : 60"/>
+                    <Image resource="ic_ecg_2"/>
+                  </PartImage>
+                  <PartImage x="72" y="374" width="36" height="24" angle="40.12" tintColor="[CONFIGURATION.accent.0]">
+                    <Transform target="alpha" value="(clamp(([HEART_RATE] - 40) / 140, 0, 1)) &gt; 0.375 ? (90 + 165 * (clamp(([HEART_RATE] - 40) / 140, 0, 1))) : 60"/>
+                    <Image resource="ic_ecg_3"/>
+                  </PartImage>
+                  <PartImage x="46" y="348" width="36" height="24" angle="49.88" tintColor="[CONFIGURATION.accent.0]">
+                    <Transform target="alpha" value="(clamp(([HEART_RATE] - 40) / 140, 0, 1)) &gt; 0.5 ? (90 + 165 * (clamp(([HEART_RATE] - 40) / 140, 0, 1))) : 60"/>
+                    <Image resource="ic_ecg_4"/>
+                  </PartImage>
+                  <PartImage x="26" y="319" width="36" height="24" angle="59.62" tintColor="[CONFIGURATION.accent.0]">
+                    <Transform target="alpha" value="(clamp(([HEART_RATE] - 40) / 140, 0, 1)) &gt; 0.625 ? (90 + 165 * (clamp(([HEART_RATE] - 40) / 140, 0, 1))) : 60"/>
+                    <Image resource="ic_ecg_5"/>
+                  </PartImage>
+                  <PartImage x="10" y="287" width="36" height="24" angle="69.38" tintColor="[CONFIGURATION.accent.0]">
+                    <Transform target="alpha" value="(clamp(([HEART_RATE] - 40) / 140, 0, 1)) &gt; 0.75 ? (90 + 165 * (clamp(([HEART_RATE] - 40) / 140, 0, 1))) : 60"/>
+                    <Image resource="ic_ecg_6"/>
+                  </PartImage>
+                  <PartImage x="1" y="253" width="36" height="24" angle="79.12" tintColor="[CONFIGURATION.accent.0]">
+                    <Transform target="alpha" value="(clamp(([HEART_RATE] - 40) / 140, 0, 1)) &gt; 0.875 ? (90 + 165 * (clamp(([HEART_RATE] - 40) / 140, 0, 1))) : 60"/>
+                    <Image resource="ic_ecg_7"/>
+                  </PartImage>
                   <Group name="badge_bl_heart" x="37" y="248" width="48" height="42">
                     <PartImage x="14" y="0" width="20" height="20" tintColor="[CONFIGURATION.accent.0]">
                       <Image resource="ic_metric_heart"/>
@@ -2283,11 +2424,21 @@
             <ListConfiguration id="color_mode">
               <ListOption id="multi">
                 <Group name="br_stress_multi" x="0" y="0" width="450" height="450">
-                  <PartDraw x="0" y="0" width="450" height="450">
-                    <Arc centerX="225" centerY="225" width="420" height="420" startAngle="96" endAngle="174">
-                      <Stroke color="#33E53935" thickness="14" cap="ROUND"/>
-                    </Arc>
-                  </PartDraw>
+                  <PartImage x="264" y="418" width="22" height="22" tintColor="#FF43A047" alpha="60">
+                    <Image resource="ic_stress_0"/>
+                  </PartImage>
+                  <PartImage x="317" y="397" width="22" height="22" tintColor="#FFA0BC3E" alpha="60">
+                    <Image resource="ic_stress_1"/>
+                  </PartImage>
+                  <PartImage x="362" y="362" width="22" height="22" tintColor="#FFFDD835" alpha="60">
+                    <Image resource="ic_stress_2"/>
+                  </PartImage>
+                  <PartImage x="397" y="317" width="22" height="22" tintColor="#FFF18835" alpha="60">
+                    <Image resource="ic_stress_3"/>
+                  </PartImage>
+                  <PartImage x="418" y="264" width="22" height="22" tintColor="#FFE53935" alpha="60">
+                    <Image resource="ic_stress_4"/>
+                  </PartImage>
                   <Group name="badge_br_stress" x="365" y="248" width="48" height="42">
                     <PartImage x="14" y="0" width="20" height="20" tintColor="#FF43A047">
                       <Image resource="ic_metric_stress"/>
@@ -2307,11 +2458,21 @@
               </ListOption>
               <ListOption id="single">
                 <Group name="br_stress_single" x="0" y="0" width="450" height="450">
-                  <PartDraw x="0" y="0" width="450" height="450">
-                    <Arc centerX="225" centerY="225" width="420" height="420" startAngle="96" endAngle="174">
-                      <Stroke color="#26FFFFFF" thickness="14" cap="ROUND"/>
-                    </Arc>
-                  </PartDraw>
+                  <PartImage x="264" y="418" width="22" height="22" tintColor="[CONFIGURATION.accent.0]" alpha="60">
+                    <Image resource="ic_stress_0"/>
+                  </PartImage>
+                  <PartImage x="317" y="397" width="22" height="22" tintColor="[CONFIGURATION.accent.0]" alpha="60">
+                    <Image resource="ic_stress_1"/>
+                  </PartImage>
+                  <PartImage x="362" y="362" width="22" height="22" tintColor="[CONFIGURATION.accent.0]" alpha="60">
+                    <Image resource="ic_stress_2"/>
+                  </PartImage>
+                  <PartImage x="397" y="317" width="22" height="22" tintColor="[CONFIGURATION.accent.0]" alpha="60">
+                    <Image resource="ic_stress_3"/>
+                  </PartImage>
+                  <PartImage x="418" y="264" width="22" height="22" tintColor="[CONFIGURATION.accent.0]" alpha="60">
+                    <Image resource="ic_stress_4"/>
+                  </PartImage>
                   <Group name="badge_br_stress" x="365" y="248" width="48" height="42">
                     <PartImage x="14" y="0" width="20" height="20" tintColor="[CONFIGURATION.accent.0]">
                       <Image resource="ic_metric_stress"/>
@@ -2337,25 +2498,38 @@
             <ListConfiguration id="color_mode">
               <ListOption id="multi">
                 <Group name="br_heart_multi" x="0" y="0" width="450" height="450">
-                  <PartDraw x="0" y="0" width="450" height="450">
-                    <Arc centerX="225" centerY="225" width="420" height="420" startAngle="96" endAngle="174">
-                      <Stroke color="#33FF1744" thickness="14" cap="ROUND"/>
-                    </Arc>
-                  </PartDraw>
-                  <PartDraw x="0" y="0" width="450" height="450">
-                    <Arc centerX="225" centerY="225" width="420" height="420" startAngle="96" endAngle="174">
-                      <Stroke color="#FFFFFFFF" thickness="14" cap="ROUND">
-                        <SweepGradient centerX="225" centerY="225" startAngle="96" endAngle="174" colors="#FFFF1744 #FFC2575A" positions="0 1"/>
-                      </Stroke>
-                      <Transform target="startAngle" value="174 - 78 * (clamp(([HEART_RATE] - 40) / 140, 0, 1))"/>
-                    </Arc>
-                  </PartDraw>
-                  <PartDraw x="0" y="0" width="450" height="450">
-                    <Ellipse x="220" y="10" width="10" height="10">
-                      <Fill color="#FFFFFFFF"/>
-                    </Ellipse>
-                    <Transform target="angle" value="174 - 78 * (clamp(([HEART_RATE] - 40) / 140, 0, 1))"/>
-                  </PartDraw>
+                  <PartImage x="247" y="419" width="36" height="24" angle="349.12" tintColor="#FFC2575A">
+                    <Transform target="alpha" value="(clamp(([HEART_RATE] - 40) / 140, 0, 1)) &gt; 0 ? 255 : 60"/>
+                    <Image resource="ic_ecg_0"/>
+                  </PartImage>
+                  <PartImage x="281" y="410" width="36" height="24" angle="339.38" tintColor="#FFCB4E57">
+                    <Transform target="alpha" value="(clamp(([HEART_RATE] - 40) / 140, 0, 1)) &gt; 0.125 ? 255 : 60"/>
+                    <Image resource="ic_ecg_1"/>
+                  </PartImage>
+                  <PartImage x="313" y="394" width="36" height="24" angle="329.62" tintColor="#FFD34554">
+                    <Transform target="alpha" value="(clamp(([HEART_RATE] - 40) / 140, 0, 1)) &gt; 0.25 ? 255 : 60"/>
+                    <Image resource="ic_ecg_2"/>
+                  </PartImage>
+                  <PartImage x="342" y="374" width="36" height="24" angle="319.88" tintColor="#FFDC3C51">
+                    <Transform target="alpha" value="(clamp(([HEART_RATE] - 40) / 140, 0, 1)) &gt; 0.375 ? 255 : 60"/>
+                    <Image resource="ic_ecg_3"/>
+                  </PartImage>
+                  <PartImage x="368" y="348" width="36" height="24" angle="310.12" tintColor="#FFE5324D">
+                    <Transform target="alpha" value="(clamp(([HEART_RATE] - 40) / 140, 0, 1)) &gt; 0.5 ? 255 : 60"/>
+                    <Image resource="ic_ecg_4"/>
+                  </PartImage>
+                  <PartImage x="388" y="319" width="36" height="24" angle="300.38" tintColor="#FFEE294A">
+                    <Transform target="alpha" value="(clamp(([HEART_RATE] - 40) / 140, 0, 1)) &gt; 0.625 ? 255 : 60"/>
+                    <Image resource="ic_ecg_5"/>
+                  </PartImage>
+                  <PartImage x="404" y="287" width="36" height="24" angle="290.62" tintColor="#FFF62047">
+                    <Transform target="alpha" value="(clamp(([HEART_RATE] - 40) / 140, 0, 1)) &gt; 0.75 ? 255 : 60"/>
+                    <Image resource="ic_ecg_6"/>
+                  </PartImage>
+                  <PartImage x="413" y="253" width="36" height="24" angle="280.88" tintColor="#FFFF1744">
+                    <Transform target="alpha" value="(clamp(([HEART_RATE] - 40) / 140, 0, 1)) &gt; 0.875 ? 255 : 60"/>
+                    <Image resource="ic_ecg_7"/>
+                  </PartImage>
                   <Group name="badge_br_heart" x="365" y="248" width="48" height="42">
                     <Condition>
                       <Expressions>
@@ -2393,24 +2567,38 @@
               </ListOption>
               <ListOption id="single">
                 <Group name="br_heart_single" x="0" y="0" width="450" height="450">
-                  <PartDraw x="0" y="0" width="450" height="450">
-                    <Arc centerX="225" centerY="225" width="420" height="420" startAngle="96" endAngle="174">
-                      <Stroke color="#26FFFFFF" thickness="14" cap="ROUND"/>
-                    </Arc>
-                  </PartDraw>
-                  <PartDraw x="0" y="0" width="450" height="450">
-                    <Transform target="alpha" value="90 + 165 * (clamp(([HEART_RATE] - 40) / 140, 0, 1))"/>
-                    <Arc centerX="225" centerY="225" width="420" height="420" startAngle="96" endAngle="174">
-                      <Stroke color="[CONFIGURATION.accent.0]" thickness="14" cap="ROUND"/>
-                      <Transform target="startAngle" value="174 - 78 * (clamp(([HEART_RATE] - 40) / 140, 0, 1))"/>
-                    </Arc>
-                  </PartDraw>
-                  <PartDraw x="0" y="0" width="450" height="450">
-                    <Ellipse x="220" y="10" width="10" height="10">
-                      <Fill color="#FFFFFFFF"/>
-                    </Ellipse>
-                    <Transform target="angle" value="174 - 78 * (clamp(([HEART_RATE] - 40) / 140, 0, 1))"/>
-                  </PartDraw>
+                  <PartImage x="247" y="419" width="36" height="24" angle="349.12" tintColor="[CONFIGURATION.accent.0]">
+                    <Transform target="alpha" value="(clamp(([HEART_RATE] - 40) / 140, 0, 1)) &gt; 0 ? (90 + 165 * (clamp(([HEART_RATE] - 40) / 140, 0, 1))) : 60"/>
+                    <Image resource="ic_ecg_0"/>
+                  </PartImage>
+                  <PartImage x="281" y="410" width="36" height="24" angle="339.38" tintColor="[CONFIGURATION.accent.0]">
+                    <Transform target="alpha" value="(clamp(([HEART_RATE] - 40) / 140, 0, 1)) &gt; 0.125 ? (90 + 165 * (clamp(([HEART_RATE] - 40) / 140, 0, 1))) : 60"/>
+                    <Image resource="ic_ecg_1"/>
+                  </PartImage>
+                  <PartImage x="313" y="394" width="36" height="24" angle="329.62" tintColor="[CONFIGURATION.accent.0]">
+                    <Transform target="alpha" value="(clamp(([HEART_RATE] - 40) / 140, 0, 1)) &gt; 0.25 ? (90 + 165 * (clamp(([HEART_RATE] - 40) / 140, 0, 1))) : 60"/>
+                    <Image resource="ic_ecg_2"/>
+                  </PartImage>
+                  <PartImage x="342" y="374" width="36" height="24" angle="319.88" tintColor="[CONFIGURATION.accent.0]">
+                    <Transform target="alpha" value="(clamp(([HEART_RATE] - 40) / 140, 0, 1)) &gt; 0.375 ? (90 + 165 * (clamp(([HEART_RATE] - 40) / 140, 0, 1))) : 60"/>
+                    <Image resource="ic_ecg_3"/>
+                  </PartImage>
+                  <PartImage x="368" y="348" width="36" height="24" angle="310.12" tintColor="[CONFIGURATION.accent.0]">
+                    <Transform target="alpha" value="(clamp(([HEART_RATE] - 40) / 140, 0, 1)) &gt; 0.5 ? (90 + 165 * (clamp(([HEART_RATE] - 40) / 140, 0, 1))) : 60"/>
+                    <Image resource="ic_ecg_4"/>
+                  </PartImage>
+                  <PartImage x="388" y="319" width="36" height="24" angle="300.38" tintColor="[CONFIGURATION.accent.0]">
+                    <Transform target="alpha" value="(clamp(([HEART_RATE] - 40) / 140, 0, 1)) &gt; 0.625 ? (90 + 165 * (clamp(([HEART_RATE] - 40) / 140, 0, 1))) : 60"/>
+                    <Image resource="ic_ecg_5"/>
+                  </PartImage>
+                  <PartImage x="404" y="287" width="36" height="24" angle="290.62" tintColor="[CONFIGURATION.accent.0]">
+                    <Transform target="alpha" value="(clamp(([HEART_RATE] - 40) / 140, 0, 1)) &gt; 0.75 ? (90 + 165 * (clamp(([HEART_RATE] - 40) / 140, 0, 1))) : 60"/>
+                    <Image resource="ic_ecg_6"/>
+                  </PartImage>
+                  <PartImage x="413" y="253" width="36" height="24" angle="280.88" tintColor="[CONFIGURATION.accent.0]">
+                    <Transform target="alpha" value="(clamp(([HEART_RATE] - 40) / 140, 0, 1)) &gt; 0.875 ? (90 + 165 * (clamp(([HEART_RATE] - 40) / 140, 0, 1))) : 60"/>
+                    <Image resource="ic_ecg_7"/>
+                  </PartImage>
                   <Group name="badge_br_heart" x="365" y="248" width="48" height="42">
                     <PartImage x="14" y="0" width="20" height="20" tintColor="[CONFIGURATION.accent.0]">
                       <Image resource="ic_metric_heart"/>
@@ -2456,25 +2644,26 @@
                   <ListConfiguration id="color_mode">
                     <ListOption id="multi">
                       <Group name="tl_stress_multi" x="0" y="0" width="450" height="450">
-                        <PartDraw x="0" y="0" width="450" height="450">
-                          <Arc centerX="225" centerY="225" width="420" height="420" startAngle="276" endAngle="354">
-                            <Stroke color="#33E53935" thickness="14" cap="ROUND"/>
-                          </Arc>
-                        </PartDraw>
-                        <PartDraw x="0" y="0" width="450" height="450">
-                          <Arc centerX="225" centerY="225" width="420" height="420" startAngle="276" endAngle="354">
-                            <Stroke color="#FFFFFFFF" thickness="14" cap="ROUND">
-                              <SweepGradient centerX="225" centerY="225" startAngle="276" endAngle="354" colors="#FFE53935 #FFFDD835 #FF43A047" positions="0 0.5 1"/>
-                            </Stroke>
-                            <Transform target="startAngle" value="354 - 78 * (clamp(([COMPLICATION.RANGED_VALUE_VALUE] - [COMPLICATION.RANGED_VALUE_MIN]) / (([COMPLICATION.RANGED_VALUE_MAX] - [COMPLICATION.RANGED_VALUE_MIN]) == 0 ? 1 : ([COMPLICATION.RANGED_VALUE_MAX] - [COMPLICATION.RANGED_VALUE_MIN])), 0, 1))"/>
-                          </Arc>
-                        </PartDraw>
-                        <PartDraw x="0" y="0" width="450" height="450">
-                          <Ellipse x="220" y="10" width="10" height="10">
-                            <Fill color="#FFFFFFFF"/>
-                          </Ellipse>
-                          <Transform target="angle" value="354 - 78 * (clamp(([COMPLICATION.RANGED_VALUE_VALUE] - [COMPLICATION.RANGED_VALUE_MIN]) / (([COMPLICATION.RANGED_VALUE_MAX] - [COMPLICATION.RANGED_VALUE_MIN]) == 0 ? 1 : ([COMPLICATION.RANGED_VALUE_MAX] - [COMPLICATION.RANGED_VALUE_MIN])), 0, 1))"/>
-                        </PartDraw>
+                        <PartImage x="164" y="10" width="22" height="22" tintColor="#FF43A047">
+                          <Transform target="alpha" value="(clamp(([COMPLICATION.RANGED_VALUE_VALUE] - [COMPLICATION.RANGED_VALUE_MIN]) / (([COMPLICATION.RANGED_VALUE_MAX] - [COMPLICATION.RANGED_VALUE_MIN]) == 0 ? 1 : ([COMPLICATION.RANGED_VALUE_MAX] - [COMPLICATION.RANGED_VALUE_MIN])), 0, 1)) &gt; 0 ? 255 : 60"/>
+                          <Image resource="ic_stress_0"/>
+                        </PartImage>
+                        <PartImage x="111" y="31" width="22" height="22" tintColor="#FFA0BC3E">
+                          <Transform target="alpha" value="(clamp(([COMPLICATION.RANGED_VALUE_VALUE] - [COMPLICATION.RANGED_VALUE_MIN]) / (([COMPLICATION.RANGED_VALUE_MAX] - [COMPLICATION.RANGED_VALUE_MIN]) == 0 ? 1 : ([COMPLICATION.RANGED_VALUE_MAX] - [COMPLICATION.RANGED_VALUE_MIN])), 0, 1)) &gt; 0.2 ? 255 : 60"/>
+                          <Image resource="ic_stress_1"/>
+                        </PartImage>
+                        <PartImage x="66" y="66" width="22" height="22" tintColor="#FFFDD835">
+                          <Transform target="alpha" value="(clamp(([COMPLICATION.RANGED_VALUE_VALUE] - [COMPLICATION.RANGED_VALUE_MIN]) / (([COMPLICATION.RANGED_VALUE_MAX] - [COMPLICATION.RANGED_VALUE_MIN]) == 0 ? 1 : ([COMPLICATION.RANGED_VALUE_MAX] - [COMPLICATION.RANGED_VALUE_MIN])), 0, 1)) &gt; 0.4 ? 255 : 60"/>
+                          <Image resource="ic_stress_2"/>
+                        </PartImage>
+                        <PartImage x="31" y="111" width="22" height="22" tintColor="#FFF18835">
+                          <Transform target="alpha" value="(clamp(([COMPLICATION.RANGED_VALUE_VALUE] - [COMPLICATION.RANGED_VALUE_MIN]) / (([COMPLICATION.RANGED_VALUE_MAX] - [COMPLICATION.RANGED_VALUE_MIN]) == 0 ? 1 : ([COMPLICATION.RANGED_VALUE_MAX] - [COMPLICATION.RANGED_VALUE_MIN])), 0, 1)) &gt; 0.6 ? 255 : 60"/>
+                          <Image resource="ic_stress_3"/>
+                        </PartImage>
+                        <PartImage x="10" y="164" width="22" height="22" tintColor="#FFE53935">
+                          <Transform target="alpha" value="(clamp(([COMPLICATION.RANGED_VALUE_VALUE] - [COMPLICATION.RANGED_VALUE_MIN]) / (([COMPLICATION.RANGED_VALUE_MAX] - [COMPLICATION.RANGED_VALUE_MIN]) == 0 ? 1 : ([COMPLICATION.RANGED_VALUE_MAX] - [COMPLICATION.RANGED_VALUE_MIN])), 0, 1)) &gt; 0.8 ? 255 : 60"/>
+                          <Image resource="ic_stress_4"/>
+                        </PartImage>
                         <Group name="badge_tl_stress" x="37" y="160" width="48" height="42">
                           <Condition>
                             <Expressions>
@@ -2512,24 +2701,26 @@
                     </ListOption>
                     <ListOption id="single">
                       <Group name="tl_stress_single" x="0" y="0" width="450" height="450">
-                        <PartDraw x="0" y="0" width="450" height="450">
-                          <Arc centerX="225" centerY="225" width="420" height="420" startAngle="276" endAngle="354">
-                            <Stroke color="#26FFFFFF" thickness="14" cap="ROUND"/>
-                          </Arc>
-                        </PartDraw>
-                        <PartDraw x="0" y="0" width="450" height="450">
-                          <Transform target="alpha" value="90 + 165 * (clamp(([COMPLICATION.RANGED_VALUE_VALUE] - [COMPLICATION.RANGED_VALUE_MIN]) / (([COMPLICATION.RANGED_VALUE_MAX] - [COMPLICATION.RANGED_VALUE_MIN]) == 0 ? 1 : ([COMPLICATION.RANGED_VALUE_MAX] - [COMPLICATION.RANGED_VALUE_MIN])), 0, 1))"/>
-                          <Arc centerX="225" centerY="225" width="420" height="420" startAngle="276" endAngle="354">
-                            <Stroke color="[CONFIGURATION.accent.0]" thickness="14" cap="ROUND"/>
-                            <Transform target="startAngle" value="354 - 78 * (clamp(([COMPLICATION.RANGED_VALUE_VALUE] - [COMPLICATION.RANGED_VALUE_MIN]) / (([COMPLICATION.RANGED_VALUE_MAX] - [COMPLICATION.RANGED_VALUE_MIN]) == 0 ? 1 : ([COMPLICATION.RANGED_VALUE_MAX] - [COMPLICATION.RANGED_VALUE_MIN])), 0, 1))"/>
-                          </Arc>
-                        </PartDraw>
-                        <PartDraw x="0" y="0" width="450" height="450">
-                          <Ellipse x="220" y="10" width="10" height="10">
-                            <Fill color="#FFFFFFFF"/>
-                          </Ellipse>
-                          <Transform target="angle" value="354 - 78 * (clamp(([COMPLICATION.RANGED_VALUE_VALUE] - [COMPLICATION.RANGED_VALUE_MIN]) / (([COMPLICATION.RANGED_VALUE_MAX] - [COMPLICATION.RANGED_VALUE_MIN]) == 0 ? 1 : ([COMPLICATION.RANGED_VALUE_MAX] - [COMPLICATION.RANGED_VALUE_MIN])), 0, 1))"/>
-                        </PartDraw>
+                        <PartImage x="164" y="10" width="22" height="22" tintColor="[CONFIGURATION.accent.0]">
+                          <Transform target="alpha" value="(clamp(([COMPLICATION.RANGED_VALUE_VALUE] - [COMPLICATION.RANGED_VALUE_MIN]) / (([COMPLICATION.RANGED_VALUE_MAX] - [COMPLICATION.RANGED_VALUE_MIN]) == 0 ? 1 : ([COMPLICATION.RANGED_VALUE_MAX] - [COMPLICATION.RANGED_VALUE_MIN])), 0, 1)) &gt; 0 ? (90 + 165 * (clamp(([COMPLICATION.RANGED_VALUE_VALUE] - [COMPLICATION.RANGED_VALUE_MIN]) / (([COMPLICATION.RANGED_VALUE_MAX] - [COMPLICATION.RANGED_VALUE_MIN]) == 0 ? 1 : ([COMPLICATION.RANGED_VALUE_MAX] - [COMPLICATION.RANGED_VALUE_MIN])), 0, 1))) : 60"/>
+                          <Image resource="ic_stress_0"/>
+                        </PartImage>
+                        <PartImage x="111" y="31" width="22" height="22" tintColor="[CONFIGURATION.accent.0]">
+                          <Transform target="alpha" value="(clamp(([COMPLICATION.RANGED_VALUE_VALUE] - [COMPLICATION.RANGED_VALUE_MIN]) / (([COMPLICATION.RANGED_VALUE_MAX] - [COMPLICATION.RANGED_VALUE_MIN]) == 0 ? 1 : ([COMPLICATION.RANGED_VALUE_MAX] - [COMPLICATION.RANGED_VALUE_MIN])), 0, 1)) &gt; 0.2 ? (90 + 165 * (clamp(([COMPLICATION.RANGED_VALUE_VALUE] - [COMPLICATION.RANGED_VALUE_MIN]) / (([COMPLICATION.RANGED_VALUE_MAX] - [COMPLICATION.RANGED_VALUE_MIN]) == 0 ? 1 : ([COMPLICATION.RANGED_VALUE_MAX] - [COMPLICATION.RANGED_VALUE_MIN])), 0, 1))) : 60"/>
+                          <Image resource="ic_stress_1"/>
+                        </PartImage>
+                        <PartImage x="66" y="66" width="22" height="22" tintColor="[CONFIGURATION.accent.0]">
+                          <Transform target="alpha" value="(clamp(([COMPLICATION.RANGED_VALUE_VALUE] - [COMPLICATION.RANGED_VALUE_MIN]) / (([COMPLICATION.RANGED_VALUE_MAX] - [COMPLICATION.RANGED_VALUE_MIN]) == 0 ? 1 : ([COMPLICATION.RANGED_VALUE_MAX] - [COMPLICATION.RANGED_VALUE_MIN])), 0, 1)) &gt; 0.4 ? (90 + 165 * (clamp(([COMPLICATION.RANGED_VALUE_VALUE] - [COMPLICATION.RANGED_VALUE_MIN]) / (([COMPLICATION.RANGED_VALUE_MAX] - [COMPLICATION.RANGED_VALUE_MIN]) == 0 ? 1 : ([COMPLICATION.RANGED_VALUE_MAX] - [COMPLICATION.RANGED_VALUE_MIN])), 0, 1))) : 60"/>
+                          <Image resource="ic_stress_2"/>
+                        </PartImage>
+                        <PartImage x="31" y="111" width="22" height="22" tintColor="[CONFIGURATION.accent.0]">
+                          <Transform target="alpha" value="(clamp(([COMPLICATION.RANGED_VALUE_VALUE] - [COMPLICATION.RANGED_VALUE_MIN]) / (([COMPLICATION.RANGED_VALUE_MAX] - [COMPLICATION.RANGED_VALUE_MIN]) == 0 ? 1 : ([COMPLICATION.RANGED_VALUE_MAX] - [COMPLICATION.RANGED_VALUE_MIN])), 0, 1)) &gt; 0.6 ? (90 + 165 * (clamp(([COMPLICATION.RANGED_VALUE_VALUE] - [COMPLICATION.RANGED_VALUE_MIN]) / (([COMPLICATION.RANGED_VALUE_MAX] - [COMPLICATION.RANGED_VALUE_MIN]) == 0 ? 1 : ([COMPLICATION.RANGED_VALUE_MAX] - [COMPLICATION.RANGED_VALUE_MIN])), 0, 1))) : 60"/>
+                          <Image resource="ic_stress_3"/>
+                        </PartImage>
+                        <PartImage x="10" y="164" width="22" height="22" tintColor="[CONFIGURATION.accent.0]">
+                          <Transform target="alpha" value="(clamp(([COMPLICATION.RANGED_VALUE_VALUE] - [COMPLICATION.RANGED_VALUE_MIN]) / (([COMPLICATION.RANGED_VALUE_MAX] - [COMPLICATION.RANGED_VALUE_MIN]) == 0 ? 1 : ([COMPLICATION.RANGED_VALUE_MAX] - [COMPLICATION.RANGED_VALUE_MIN])), 0, 1)) &gt; 0.8 ? (90 + 165 * (clamp(([COMPLICATION.RANGED_VALUE_VALUE] - [COMPLICATION.RANGED_VALUE_MIN]) / (([COMPLICATION.RANGED_VALUE_MAX] - [COMPLICATION.RANGED_VALUE_MIN]) == 0 ? 1 : ([COMPLICATION.RANGED_VALUE_MAX] - [COMPLICATION.RANGED_VALUE_MIN])), 0, 1))) : 60"/>
+                          <Image resource="ic_stress_4"/>
+                        </PartImage>
                         <Group name="badge_tl_stress" x="37" y="160" width="48" height="42">
                           <PartImage x="14" y="0" width="20" height="20" tintColor="[CONFIGURATION.accent.0]">
                             <Image resource="ic_metric_stress"/>
@@ -2584,25 +2775,26 @@
                   <ListConfiguration id="color_mode">
                     <ListOption id="multi">
                       <Group name="tr_stress_multi" x="0" y="0" width="450" height="450">
-                        <PartDraw x="0" y="0" width="450" height="450">
-                          <Arc centerX="225" centerY="225" width="420" height="420" startAngle="6" endAngle="84">
-                            <Stroke color="#33E53935" thickness="14" cap="ROUND"/>
-                          </Arc>
-                        </PartDraw>
-                        <PartDraw x="0" y="0" width="450" height="450">
-                          <Arc centerX="225" centerY="225" width="420" height="420" startAngle="6" endAngle="84">
-                            <Stroke color="#FFFFFFFF" thickness="14" cap="ROUND">
-                              <SweepGradient centerX="225" centerY="225" startAngle="6" endAngle="84" colors="#FF43A047 #FFFDD835 #FFE53935" positions="0 0.5 1"/>
-                            </Stroke>
-                            <Transform target="endAngle" value="6 + 78 * (clamp(([COMPLICATION.RANGED_VALUE_VALUE] - [COMPLICATION.RANGED_VALUE_MIN]) / (([COMPLICATION.RANGED_VALUE_MAX] - [COMPLICATION.RANGED_VALUE_MIN]) == 0 ? 1 : ([COMPLICATION.RANGED_VALUE_MAX] - [COMPLICATION.RANGED_VALUE_MIN])), 0, 1))"/>
-                          </Arc>
-                        </PartDraw>
-                        <PartDraw x="0" y="0" width="450" height="450">
-                          <Ellipse x="220" y="10" width="10" height="10">
-                            <Fill color="#FFFFFFFF"/>
-                          </Ellipse>
-                          <Transform target="angle" value="6 + 78 * (clamp(([COMPLICATION.RANGED_VALUE_VALUE] - [COMPLICATION.RANGED_VALUE_MIN]) / (([COMPLICATION.RANGED_VALUE_MAX] - [COMPLICATION.RANGED_VALUE_MIN]) == 0 ? 1 : ([COMPLICATION.RANGED_VALUE_MAX] - [COMPLICATION.RANGED_VALUE_MIN])), 0, 1))"/>
-                        </PartDraw>
+                        <PartImage x="264" y="10" width="22" height="22" tintColor="#FF43A047">
+                          <Transform target="alpha" value="(clamp(([COMPLICATION.RANGED_VALUE_VALUE] - [COMPLICATION.RANGED_VALUE_MIN]) / (([COMPLICATION.RANGED_VALUE_MAX] - [COMPLICATION.RANGED_VALUE_MIN]) == 0 ? 1 : ([COMPLICATION.RANGED_VALUE_MAX] - [COMPLICATION.RANGED_VALUE_MIN])), 0, 1)) &gt; 0 ? 255 : 60"/>
+                          <Image resource="ic_stress_0"/>
+                        </PartImage>
+                        <PartImage x="317" y="31" width="22" height="22" tintColor="#FFA0BC3E">
+                          <Transform target="alpha" value="(clamp(([COMPLICATION.RANGED_VALUE_VALUE] - [COMPLICATION.RANGED_VALUE_MIN]) / (([COMPLICATION.RANGED_VALUE_MAX] - [COMPLICATION.RANGED_VALUE_MIN]) == 0 ? 1 : ([COMPLICATION.RANGED_VALUE_MAX] - [COMPLICATION.RANGED_VALUE_MIN])), 0, 1)) &gt; 0.2 ? 255 : 60"/>
+                          <Image resource="ic_stress_1"/>
+                        </PartImage>
+                        <PartImage x="362" y="66" width="22" height="22" tintColor="#FFFDD835">
+                          <Transform target="alpha" value="(clamp(([COMPLICATION.RANGED_VALUE_VALUE] - [COMPLICATION.RANGED_VALUE_MIN]) / (([COMPLICATION.RANGED_VALUE_MAX] - [COMPLICATION.RANGED_VALUE_MIN]) == 0 ? 1 : ([COMPLICATION.RANGED_VALUE_MAX] - [COMPLICATION.RANGED_VALUE_MIN])), 0, 1)) &gt; 0.4 ? 255 : 60"/>
+                          <Image resource="ic_stress_2"/>
+                        </PartImage>
+                        <PartImage x="397" y="111" width="22" height="22" tintColor="#FFF18835">
+                          <Transform target="alpha" value="(clamp(([COMPLICATION.RANGED_VALUE_VALUE] - [COMPLICATION.RANGED_VALUE_MIN]) / (([COMPLICATION.RANGED_VALUE_MAX] - [COMPLICATION.RANGED_VALUE_MIN]) == 0 ? 1 : ([COMPLICATION.RANGED_VALUE_MAX] - [COMPLICATION.RANGED_VALUE_MIN])), 0, 1)) &gt; 0.6 ? 255 : 60"/>
+                          <Image resource="ic_stress_3"/>
+                        </PartImage>
+                        <PartImage x="418" y="164" width="22" height="22" tintColor="#FFE53935">
+                          <Transform target="alpha" value="(clamp(([COMPLICATION.RANGED_VALUE_VALUE] - [COMPLICATION.RANGED_VALUE_MIN]) / (([COMPLICATION.RANGED_VALUE_MAX] - [COMPLICATION.RANGED_VALUE_MIN]) == 0 ? 1 : ([COMPLICATION.RANGED_VALUE_MAX] - [COMPLICATION.RANGED_VALUE_MIN])), 0, 1)) &gt; 0.8 ? 255 : 60"/>
+                          <Image resource="ic_stress_4"/>
+                        </PartImage>
                         <Group name="badge_tr_stress" x="365" y="160" width="48" height="42">
                           <Condition>
                             <Expressions>
@@ -2640,24 +2832,26 @@
                     </ListOption>
                     <ListOption id="single">
                       <Group name="tr_stress_single" x="0" y="0" width="450" height="450">
-                        <PartDraw x="0" y="0" width="450" height="450">
-                          <Arc centerX="225" centerY="225" width="420" height="420" startAngle="6" endAngle="84">
-                            <Stroke color="#26FFFFFF" thickness="14" cap="ROUND"/>
-                          </Arc>
-                        </PartDraw>
-                        <PartDraw x="0" y="0" width="450" height="450">
-                          <Transform target="alpha" value="90 + 165 * (clamp(([COMPLICATION.RANGED_VALUE_VALUE] - [COMPLICATION.RANGED_VALUE_MIN]) / (([COMPLICATION.RANGED_VALUE_MAX] - [COMPLICATION.RANGED_VALUE_MIN]) == 0 ? 1 : ([COMPLICATION.RANGED_VALUE_MAX] - [COMPLICATION.RANGED_VALUE_MIN])), 0, 1))"/>
-                          <Arc centerX="225" centerY="225" width="420" height="420" startAngle="6" endAngle="84">
-                            <Stroke color="[CONFIGURATION.accent.0]" thickness="14" cap="ROUND"/>
-                            <Transform target="endAngle" value="6 + 78 * (clamp(([COMPLICATION.RANGED_VALUE_VALUE] - [COMPLICATION.RANGED_VALUE_MIN]) / (([COMPLICATION.RANGED_VALUE_MAX] - [COMPLICATION.RANGED_VALUE_MIN]) == 0 ? 1 : ([COMPLICATION.RANGED_VALUE_MAX] - [COMPLICATION.RANGED_VALUE_MIN])), 0, 1))"/>
-                          </Arc>
-                        </PartDraw>
-                        <PartDraw x="0" y="0" width="450" height="450">
-                          <Ellipse x="220" y="10" width="10" height="10">
-                            <Fill color="#FFFFFFFF"/>
-                          </Ellipse>
-                          <Transform target="angle" value="6 + 78 * (clamp(([COMPLICATION.RANGED_VALUE_VALUE] - [COMPLICATION.RANGED_VALUE_MIN]) / (([COMPLICATION.RANGED_VALUE_MAX] - [COMPLICATION.RANGED_VALUE_MIN]) == 0 ? 1 : ([COMPLICATION.RANGED_VALUE_MAX] - [COMPLICATION.RANGED_VALUE_MIN])), 0, 1))"/>
-                        </PartDraw>
+                        <PartImage x="264" y="10" width="22" height="22" tintColor="[CONFIGURATION.accent.0]">
+                          <Transform target="alpha" value="(clamp(([COMPLICATION.RANGED_VALUE_VALUE] - [COMPLICATION.RANGED_VALUE_MIN]) / (([COMPLICATION.RANGED_VALUE_MAX] - [COMPLICATION.RANGED_VALUE_MIN]) == 0 ? 1 : ([COMPLICATION.RANGED_VALUE_MAX] - [COMPLICATION.RANGED_VALUE_MIN])), 0, 1)) &gt; 0 ? (90 + 165 * (clamp(([COMPLICATION.RANGED_VALUE_VALUE] - [COMPLICATION.RANGED_VALUE_MIN]) / (([COMPLICATION.RANGED_VALUE_MAX] - [COMPLICATION.RANGED_VALUE_MIN]) == 0 ? 1 : ([COMPLICATION.RANGED_VALUE_MAX] - [COMPLICATION.RANGED_VALUE_MIN])), 0, 1))) : 60"/>
+                          <Image resource="ic_stress_0"/>
+                        </PartImage>
+                        <PartImage x="317" y="31" width="22" height="22" tintColor="[CONFIGURATION.accent.0]">
+                          <Transform target="alpha" value="(clamp(([COMPLICATION.RANGED_VALUE_VALUE] - [COMPLICATION.RANGED_VALUE_MIN]) / (([COMPLICATION.RANGED_VALUE_MAX] - [COMPLICATION.RANGED_VALUE_MIN]) == 0 ? 1 : ([COMPLICATION.RANGED_VALUE_MAX] - [COMPLICATION.RANGED_VALUE_MIN])), 0, 1)) &gt; 0.2 ? (90 + 165 * (clamp(([COMPLICATION.RANGED_VALUE_VALUE] - [COMPLICATION.RANGED_VALUE_MIN]) / (([COMPLICATION.RANGED_VALUE_MAX] - [COMPLICATION.RANGED_VALUE_MIN]) == 0 ? 1 : ([COMPLICATION.RANGED_VALUE_MAX] - [COMPLICATION.RANGED_VALUE_MIN])), 0, 1))) : 60"/>
+                          <Image resource="ic_stress_1"/>
+                        </PartImage>
+                        <PartImage x="362" y="66" width="22" height="22" tintColor="[CONFIGURATION.accent.0]">
+                          <Transform target="alpha" value="(clamp(([COMPLICATION.RANGED_VALUE_VALUE] - [COMPLICATION.RANGED_VALUE_MIN]) / (([COMPLICATION.RANGED_VALUE_MAX] - [COMPLICATION.RANGED_VALUE_MIN]) == 0 ? 1 : ([COMPLICATION.RANGED_VALUE_MAX] - [COMPLICATION.RANGED_VALUE_MIN])), 0, 1)) &gt; 0.4 ? (90 + 165 * (clamp(([COMPLICATION.RANGED_VALUE_VALUE] - [COMPLICATION.RANGED_VALUE_MIN]) / (([COMPLICATION.RANGED_VALUE_MAX] - [COMPLICATION.RANGED_VALUE_MIN]) == 0 ? 1 : ([COMPLICATION.RANGED_VALUE_MAX] - [COMPLICATION.RANGED_VALUE_MIN])), 0, 1))) : 60"/>
+                          <Image resource="ic_stress_2"/>
+                        </PartImage>
+                        <PartImage x="397" y="111" width="22" height="22" tintColor="[CONFIGURATION.accent.0]">
+                          <Transform target="alpha" value="(clamp(([COMPLICATION.RANGED_VALUE_VALUE] - [COMPLICATION.RANGED_VALUE_MIN]) / (([COMPLICATION.RANGED_VALUE_MAX] - [COMPLICATION.RANGED_VALUE_MIN]) == 0 ? 1 : ([COMPLICATION.RANGED_VALUE_MAX] - [COMPLICATION.RANGED_VALUE_MIN])), 0, 1)) &gt; 0.6 ? (90 + 165 * (clamp(([COMPLICATION.RANGED_VALUE_VALUE] - [COMPLICATION.RANGED_VALUE_MIN]) / (([COMPLICATION.RANGED_VALUE_MAX] - [COMPLICATION.RANGED_VALUE_MIN]) == 0 ? 1 : ([COMPLICATION.RANGED_VALUE_MAX] - [COMPLICATION.RANGED_VALUE_MIN])), 0, 1))) : 60"/>
+                          <Image resource="ic_stress_3"/>
+                        </PartImage>
+                        <PartImage x="418" y="164" width="22" height="22" tintColor="[CONFIGURATION.accent.0]">
+                          <Transform target="alpha" value="(clamp(([COMPLICATION.RANGED_VALUE_VALUE] - [COMPLICATION.RANGED_VALUE_MIN]) / (([COMPLICATION.RANGED_VALUE_MAX] - [COMPLICATION.RANGED_VALUE_MIN]) == 0 ? 1 : ([COMPLICATION.RANGED_VALUE_MAX] - [COMPLICATION.RANGED_VALUE_MIN])), 0, 1)) &gt; 0.8 ? (90 + 165 * (clamp(([COMPLICATION.RANGED_VALUE_VALUE] - [COMPLICATION.RANGED_VALUE_MIN]) / (([COMPLICATION.RANGED_VALUE_MAX] - [COMPLICATION.RANGED_VALUE_MIN]) == 0 ? 1 : ([COMPLICATION.RANGED_VALUE_MAX] - [COMPLICATION.RANGED_VALUE_MIN])), 0, 1))) : 60"/>
+                          <Image resource="ic_stress_4"/>
+                        </PartImage>
                         <Group name="badge_tr_stress" x="365" y="160" width="48" height="42">
                           <PartImage x="14" y="0" width="20" height="20" tintColor="[CONFIGURATION.accent.0]">
                             <Image resource="ic_metric_stress"/>
@@ -2713,25 +2907,26 @@
                   <ListConfiguration id="color_mode">
                     <ListOption id="multi">
                       <Group name="bl_stress_multi" x="0" y="0" width="450" height="450">
-                        <PartDraw x="0" y="0" width="450" height="450">
-                          <Arc centerX="225" centerY="225" width="420" height="420" startAngle="186" endAngle="264">
-                            <Stroke color="#33E53935" thickness="14" cap="ROUND"/>
-                          </Arc>
-                        </PartDraw>
-                        <PartDraw x="0" y="0" width="450" height="450">
-                          <Arc centerX="225" centerY="225" width="420" height="420" startAngle="186" endAngle="264">
-                            <Stroke color="#FFFFFFFF" thickness="14" cap="ROUND">
-                              <SweepGradient centerX="225" centerY="225" startAngle="186" endAngle="264" colors="#FF43A047 #FFFDD835 #FFE53935" positions="0 0.5 1"/>
-                            </Stroke>
-                            <Transform target="endAngle" value="186 + 78 * (clamp(([COMPLICATION.RANGED_VALUE_VALUE] - [COMPLICATION.RANGED_VALUE_MIN]) / (([COMPLICATION.RANGED_VALUE_MAX] - [COMPLICATION.RANGED_VALUE_MIN]) == 0 ? 1 : ([COMPLICATION.RANGED_VALUE_MAX] - [COMPLICATION.RANGED_VALUE_MIN])), 0, 1))"/>
-                          </Arc>
-                        </PartDraw>
-                        <PartDraw x="0" y="0" width="450" height="450">
-                          <Ellipse x="220" y="10" width="10" height="10">
-                            <Fill color="#FFFFFFFF"/>
-                          </Ellipse>
-                          <Transform target="angle" value="186 + 78 * (clamp(([COMPLICATION.RANGED_VALUE_VALUE] - [COMPLICATION.RANGED_VALUE_MIN]) / (([COMPLICATION.RANGED_VALUE_MAX] - [COMPLICATION.RANGED_VALUE_MIN]) == 0 ? 1 : ([COMPLICATION.RANGED_VALUE_MAX] - [COMPLICATION.RANGED_VALUE_MIN])), 0, 1))"/>
-                        </PartDraw>
+                        <PartImage x="164" y="418" width="22" height="22" tintColor="#FF43A047">
+                          <Transform target="alpha" value="(clamp(([COMPLICATION.RANGED_VALUE_VALUE] - [COMPLICATION.RANGED_VALUE_MIN]) / (([COMPLICATION.RANGED_VALUE_MAX] - [COMPLICATION.RANGED_VALUE_MIN]) == 0 ? 1 : ([COMPLICATION.RANGED_VALUE_MAX] - [COMPLICATION.RANGED_VALUE_MIN])), 0, 1)) &gt; 0 ? 255 : 60"/>
+                          <Image resource="ic_stress_0"/>
+                        </PartImage>
+                        <PartImage x="111" y="397" width="22" height="22" tintColor="#FFA0BC3E">
+                          <Transform target="alpha" value="(clamp(([COMPLICATION.RANGED_VALUE_VALUE] - [COMPLICATION.RANGED_VALUE_MIN]) / (([COMPLICATION.RANGED_VALUE_MAX] - [COMPLICATION.RANGED_VALUE_MIN]) == 0 ? 1 : ([COMPLICATION.RANGED_VALUE_MAX] - [COMPLICATION.RANGED_VALUE_MIN])), 0, 1)) &gt; 0.2 ? 255 : 60"/>
+                          <Image resource="ic_stress_1"/>
+                        </PartImage>
+                        <PartImage x="66" y="362" width="22" height="22" tintColor="#FFFDD835">
+                          <Transform target="alpha" value="(clamp(([COMPLICATION.RANGED_VALUE_VALUE] - [COMPLICATION.RANGED_VALUE_MIN]) / (([COMPLICATION.RANGED_VALUE_MAX] - [COMPLICATION.RANGED_VALUE_MIN]) == 0 ? 1 : ([COMPLICATION.RANGED_VALUE_MAX] - [COMPLICATION.RANGED_VALUE_MIN])), 0, 1)) &gt; 0.4 ? 255 : 60"/>
+                          <Image resource="ic_stress_2"/>
+                        </PartImage>
+                        <PartImage x="31" y="317" width="22" height="22" tintColor="#FFF18835">
+                          <Transform target="alpha" value="(clamp(([COMPLICATION.RANGED_VALUE_VALUE] - [COMPLICATION.RANGED_VALUE_MIN]) / (([COMPLICATION.RANGED_VALUE_MAX] - [COMPLICATION.RANGED_VALUE_MIN]) == 0 ? 1 : ([COMPLICATION.RANGED_VALUE_MAX] - [COMPLICATION.RANGED_VALUE_MIN])), 0, 1)) &gt; 0.6 ? 255 : 60"/>
+                          <Image resource="ic_stress_3"/>
+                        </PartImage>
+                        <PartImage x="10" y="264" width="22" height="22" tintColor="#FFE53935">
+                          <Transform target="alpha" value="(clamp(([COMPLICATION.RANGED_VALUE_VALUE] - [COMPLICATION.RANGED_VALUE_MIN]) / (([COMPLICATION.RANGED_VALUE_MAX] - [COMPLICATION.RANGED_VALUE_MIN]) == 0 ? 1 : ([COMPLICATION.RANGED_VALUE_MAX] - [COMPLICATION.RANGED_VALUE_MIN])), 0, 1)) &gt; 0.8 ? 255 : 60"/>
+                          <Image resource="ic_stress_4"/>
+                        </PartImage>
                         <Group name="badge_bl_stress" x="37" y="248" width="48" height="42">
                           <Condition>
                             <Expressions>
@@ -2769,24 +2964,26 @@
                     </ListOption>
                     <ListOption id="single">
                       <Group name="bl_stress_single" x="0" y="0" width="450" height="450">
-                        <PartDraw x="0" y="0" width="450" height="450">
-                          <Arc centerX="225" centerY="225" width="420" height="420" startAngle="186" endAngle="264">
-                            <Stroke color="#26FFFFFF" thickness="14" cap="ROUND"/>
-                          </Arc>
-                        </PartDraw>
-                        <PartDraw x="0" y="0" width="450" height="450">
-                          <Transform target="alpha" value="90 + 165 * (clamp(([COMPLICATION.RANGED_VALUE_VALUE] - [COMPLICATION.RANGED_VALUE_MIN]) / (([COMPLICATION.RANGED_VALUE_MAX] - [COMPLICATION.RANGED_VALUE_MIN]) == 0 ? 1 : ([COMPLICATION.RANGED_VALUE_MAX] - [COMPLICATION.RANGED_VALUE_MIN])), 0, 1))"/>
-                          <Arc centerX="225" centerY="225" width="420" height="420" startAngle="186" endAngle="264">
-                            <Stroke color="[CONFIGURATION.accent.0]" thickness="14" cap="ROUND"/>
-                            <Transform target="endAngle" value="186 + 78 * (clamp(([COMPLICATION.RANGED_VALUE_VALUE] - [COMPLICATION.RANGED_VALUE_MIN]) / (([COMPLICATION.RANGED_VALUE_MAX] - [COMPLICATION.RANGED_VALUE_MIN]) == 0 ? 1 : ([COMPLICATION.RANGED_VALUE_MAX] - [COMPLICATION.RANGED_VALUE_MIN])), 0, 1))"/>
-                          </Arc>
-                        </PartDraw>
-                        <PartDraw x="0" y="0" width="450" height="450">
-                          <Ellipse x="220" y="10" width="10" height="10">
-                            <Fill color="#FFFFFFFF"/>
-                          </Ellipse>
-                          <Transform target="angle" value="186 + 78 * (clamp(([COMPLICATION.RANGED_VALUE_VALUE] - [COMPLICATION.RANGED_VALUE_MIN]) / (([COMPLICATION.RANGED_VALUE_MAX] - [COMPLICATION.RANGED_VALUE_MIN]) == 0 ? 1 : ([COMPLICATION.RANGED_VALUE_MAX] - [COMPLICATION.RANGED_VALUE_MIN])), 0, 1))"/>
-                        </PartDraw>
+                        <PartImage x="164" y="418" width="22" height="22" tintColor="[CONFIGURATION.accent.0]">
+                          <Transform target="alpha" value="(clamp(([COMPLICATION.RANGED_VALUE_VALUE] - [COMPLICATION.RANGED_VALUE_MIN]) / (([COMPLICATION.RANGED_VALUE_MAX] - [COMPLICATION.RANGED_VALUE_MIN]) == 0 ? 1 : ([COMPLICATION.RANGED_VALUE_MAX] - [COMPLICATION.RANGED_VALUE_MIN])), 0, 1)) &gt; 0 ? (90 + 165 * (clamp(([COMPLICATION.RANGED_VALUE_VALUE] - [COMPLICATION.RANGED_VALUE_MIN]) / (([COMPLICATION.RANGED_VALUE_MAX] - [COMPLICATION.RANGED_VALUE_MIN]) == 0 ? 1 : ([COMPLICATION.RANGED_VALUE_MAX] - [COMPLICATION.RANGED_VALUE_MIN])), 0, 1))) : 60"/>
+                          <Image resource="ic_stress_0"/>
+                        </PartImage>
+                        <PartImage x="111" y="397" width="22" height="22" tintColor="[CONFIGURATION.accent.0]">
+                          <Transform target="alpha" value="(clamp(([COMPLICATION.RANGED_VALUE_VALUE] - [COMPLICATION.RANGED_VALUE_MIN]) / (([COMPLICATION.RANGED_VALUE_MAX] - [COMPLICATION.RANGED_VALUE_MIN]) == 0 ? 1 : ([COMPLICATION.RANGED_VALUE_MAX] - [COMPLICATION.RANGED_VALUE_MIN])), 0, 1)) &gt; 0.2 ? (90 + 165 * (clamp(([COMPLICATION.RANGED_VALUE_VALUE] - [COMPLICATION.RANGED_VALUE_MIN]) / (([COMPLICATION.RANGED_VALUE_MAX] - [COMPLICATION.RANGED_VALUE_MIN]) == 0 ? 1 : ([COMPLICATION.RANGED_VALUE_MAX] - [COMPLICATION.RANGED_VALUE_MIN])), 0, 1))) : 60"/>
+                          <Image resource="ic_stress_1"/>
+                        </PartImage>
+                        <PartImage x="66" y="362" width="22" height="22" tintColor="[CONFIGURATION.accent.0]">
+                          <Transform target="alpha" value="(clamp(([COMPLICATION.RANGED_VALUE_VALUE] - [COMPLICATION.RANGED_VALUE_MIN]) / (([COMPLICATION.RANGED_VALUE_MAX] - [COMPLICATION.RANGED_VALUE_MIN]) == 0 ? 1 : ([COMPLICATION.RANGED_VALUE_MAX] - [COMPLICATION.RANGED_VALUE_MIN])), 0, 1)) &gt; 0.4 ? (90 + 165 * (clamp(([COMPLICATION.RANGED_VALUE_VALUE] - [COMPLICATION.RANGED_VALUE_MIN]) / (([COMPLICATION.RANGED_VALUE_MAX] - [COMPLICATION.RANGED_VALUE_MIN]) == 0 ? 1 : ([COMPLICATION.RANGED_VALUE_MAX] - [COMPLICATION.RANGED_VALUE_MIN])), 0, 1))) : 60"/>
+                          <Image resource="ic_stress_2"/>
+                        </PartImage>
+                        <PartImage x="31" y="317" width="22" height="22" tintColor="[CONFIGURATION.accent.0]">
+                          <Transform target="alpha" value="(clamp(([COMPLICATION.RANGED_VALUE_VALUE] - [COMPLICATION.RANGED_VALUE_MIN]) / (([COMPLICATION.RANGED_VALUE_MAX] - [COMPLICATION.RANGED_VALUE_MIN]) == 0 ? 1 : ([COMPLICATION.RANGED_VALUE_MAX] - [COMPLICATION.RANGED_VALUE_MIN])), 0, 1)) &gt; 0.6 ? (90 + 165 * (clamp(([COMPLICATION.RANGED_VALUE_VALUE] - [COMPLICATION.RANGED_VALUE_MIN]) / (([COMPLICATION.RANGED_VALUE_MAX] - [COMPLICATION.RANGED_VALUE_MIN]) == 0 ? 1 : ([COMPLICATION.RANGED_VALUE_MAX] - [COMPLICATION.RANGED_VALUE_MIN])), 0, 1))) : 60"/>
+                          <Image resource="ic_stress_3"/>
+                        </PartImage>
+                        <PartImage x="10" y="264" width="22" height="22" tintColor="[CONFIGURATION.accent.0]">
+                          <Transform target="alpha" value="(clamp(([COMPLICATION.RANGED_VALUE_VALUE] - [COMPLICATION.RANGED_VALUE_MIN]) / (([COMPLICATION.RANGED_VALUE_MAX] - [COMPLICATION.RANGED_VALUE_MIN]) == 0 ? 1 : ([COMPLICATION.RANGED_VALUE_MAX] - [COMPLICATION.RANGED_VALUE_MIN])), 0, 1)) &gt; 0.8 ? (90 + 165 * (clamp(([COMPLICATION.RANGED_VALUE_VALUE] - [COMPLICATION.RANGED_VALUE_MIN]) / (([COMPLICATION.RANGED_VALUE_MAX] - [COMPLICATION.RANGED_VALUE_MIN]) == 0 ? 1 : ([COMPLICATION.RANGED_VALUE_MAX] - [COMPLICATION.RANGED_VALUE_MIN])), 0, 1))) : 60"/>
+                          <Image resource="ic_stress_4"/>
+                        </PartImage>
                         <Group name="badge_bl_stress" x="37" y="248" width="48" height="42">
                           <PartImage x="14" y="0" width="20" height="20" tintColor="[CONFIGURATION.accent.0]">
                             <Image resource="ic_metric_stress"/>
@@ -2841,25 +3038,26 @@
                   <ListConfiguration id="color_mode">
                     <ListOption id="multi">
                       <Group name="br_stress_multi" x="0" y="0" width="450" height="450">
-                        <PartDraw x="0" y="0" width="450" height="450">
-                          <Arc centerX="225" centerY="225" width="420" height="420" startAngle="96" endAngle="174">
-                            <Stroke color="#33E53935" thickness="14" cap="ROUND"/>
-                          </Arc>
-                        </PartDraw>
-                        <PartDraw x="0" y="0" width="450" height="450">
-                          <Arc centerX="225" centerY="225" width="420" height="420" startAngle="96" endAngle="174">
-                            <Stroke color="#FFFFFFFF" thickness="14" cap="ROUND">
-                              <SweepGradient centerX="225" centerY="225" startAngle="96" endAngle="174" colors="#FFE53935 #FFFDD835 #FF43A047" positions="0 0.5 1"/>
-                            </Stroke>
-                            <Transform target="startAngle" value="174 - 78 * (clamp(([COMPLICATION.RANGED_VALUE_VALUE] - [COMPLICATION.RANGED_VALUE_MIN]) / (([COMPLICATION.RANGED_VALUE_MAX] - [COMPLICATION.RANGED_VALUE_MIN]) == 0 ? 1 : ([COMPLICATION.RANGED_VALUE_MAX] - [COMPLICATION.RANGED_VALUE_MIN])), 0, 1))"/>
-                          </Arc>
-                        </PartDraw>
-                        <PartDraw x="0" y="0" width="450" height="450">
-                          <Ellipse x="220" y="10" width="10" height="10">
-                            <Fill color="#FFFFFFFF"/>
-                          </Ellipse>
-                          <Transform target="angle" value="174 - 78 * (clamp(([COMPLICATION.RANGED_VALUE_VALUE] - [COMPLICATION.RANGED_VALUE_MIN]) / (([COMPLICATION.RANGED_VALUE_MAX] - [COMPLICATION.RANGED_VALUE_MIN]) == 0 ? 1 : ([COMPLICATION.RANGED_VALUE_MAX] - [COMPLICATION.RANGED_VALUE_MIN])), 0, 1))"/>
-                        </PartDraw>
+                        <PartImage x="264" y="418" width="22" height="22" tintColor="#FF43A047">
+                          <Transform target="alpha" value="(clamp(([COMPLICATION.RANGED_VALUE_VALUE] - [COMPLICATION.RANGED_VALUE_MIN]) / (([COMPLICATION.RANGED_VALUE_MAX] - [COMPLICATION.RANGED_VALUE_MIN]) == 0 ? 1 : ([COMPLICATION.RANGED_VALUE_MAX] - [COMPLICATION.RANGED_VALUE_MIN])), 0, 1)) &gt; 0 ? 255 : 60"/>
+                          <Image resource="ic_stress_0"/>
+                        </PartImage>
+                        <PartImage x="317" y="397" width="22" height="22" tintColor="#FFA0BC3E">
+                          <Transform target="alpha" value="(clamp(([COMPLICATION.RANGED_VALUE_VALUE] - [COMPLICATION.RANGED_VALUE_MIN]) / (([COMPLICATION.RANGED_VALUE_MAX] - [COMPLICATION.RANGED_VALUE_MIN]) == 0 ? 1 : ([COMPLICATION.RANGED_VALUE_MAX] - [COMPLICATION.RANGED_VALUE_MIN])), 0, 1)) &gt; 0.2 ? 255 : 60"/>
+                          <Image resource="ic_stress_1"/>
+                        </PartImage>
+                        <PartImage x="362" y="362" width="22" height="22" tintColor="#FFFDD835">
+                          <Transform target="alpha" value="(clamp(([COMPLICATION.RANGED_VALUE_VALUE] - [COMPLICATION.RANGED_VALUE_MIN]) / (([COMPLICATION.RANGED_VALUE_MAX] - [COMPLICATION.RANGED_VALUE_MIN]) == 0 ? 1 : ([COMPLICATION.RANGED_VALUE_MAX] - [COMPLICATION.RANGED_VALUE_MIN])), 0, 1)) &gt; 0.4 ? 255 : 60"/>
+                          <Image resource="ic_stress_2"/>
+                        </PartImage>
+                        <PartImage x="397" y="317" width="22" height="22" tintColor="#FFF18835">
+                          <Transform target="alpha" value="(clamp(([COMPLICATION.RANGED_VALUE_VALUE] - [COMPLICATION.RANGED_VALUE_MIN]) / (([COMPLICATION.RANGED_VALUE_MAX] - [COMPLICATION.RANGED_VALUE_MIN]) == 0 ? 1 : ([COMPLICATION.RANGED_VALUE_MAX] - [COMPLICATION.RANGED_VALUE_MIN])), 0, 1)) &gt; 0.6 ? 255 : 60"/>
+                          <Image resource="ic_stress_3"/>
+                        </PartImage>
+                        <PartImage x="418" y="264" width="22" height="22" tintColor="#FFE53935">
+                          <Transform target="alpha" value="(clamp(([COMPLICATION.RANGED_VALUE_VALUE] - [COMPLICATION.RANGED_VALUE_MIN]) / (([COMPLICATION.RANGED_VALUE_MAX] - [COMPLICATION.RANGED_VALUE_MIN]) == 0 ? 1 : ([COMPLICATION.RANGED_VALUE_MAX] - [COMPLICATION.RANGED_VALUE_MIN])), 0, 1)) &gt; 0.8 ? 255 : 60"/>
+                          <Image resource="ic_stress_4"/>
+                        </PartImage>
                         <Group name="badge_br_stress" x="365" y="248" width="48" height="42">
                           <Condition>
                             <Expressions>
@@ -2897,24 +3095,26 @@
                     </ListOption>
                     <ListOption id="single">
                       <Group name="br_stress_single" x="0" y="0" width="450" height="450">
-                        <PartDraw x="0" y="0" width="450" height="450">
-                          <Arc centerX="225" centerY="225" width="420" height="420" startAngle="96" endAngle="174">
-                            <Stroke color="#26FFFFFF" thickness="14" cap="ROUND"/>
-                          </Arc>
-                        </PartDraw>
-                        <PartDraw x="0" y="0" width="450" height="450">
-                          <Transform target="alpha" value="90 + 165 * (clamp(([COMPLICATION.RANGED_VALUE_VALUE] - [COMPLICATION.RANGED_VALUE_MIN]) / (([COMPLICATION.RANGED_VALUE_MAX] - [COMPLICATION.RANGED_VALUE_MIN]) == 0 ? 1 : ([COMPLICATION.RANGED_VALUE_MAX] - [COMPLICATION.RANGED_VALUE_MIN])), 0, 1))"/>
-                          <Arc centerX="225" centerY="225" width="420" height="420" startAngle="96" endAngle="174">
-                            <Stroke color="[CONFIGURATION.accent.0]" thickness="14" cap="ROUND"/>
-                            <Transform target="startAngle" value="174 - 78 * (clamp(([COMPLICATION.RANGED_VALUE_VALUE] - [COMPLICATION.RANGED_VALUE_MIN]) / (([COMPLICATION.RANGED_VALUE_MAX] - [COMPLICATION.RANGED_VALUE_MIN]) == 0 ? 1 : ([COMPLICATION.RANGED_VALUE_MAX] - [COMPLICATION.RANGED_VALUE_MIN])), 0, 1))"/>
-                          </Arc>
-                        </PartDraw>
-                        <PartDraw x="0" y="0" width="450" height="450">
-                          <Ellipse x="220" y="10" width="10" height="10">
-                            <Fill color="#FFFFFFFF"/>
-                          </Ellipse>
-                          <Transform target="angle" value="174 - 78 * (clamp(([COMPLICATION.RANGED_VALUE_VALUE] - [COMPLICATION.RANGED_VALUE_MIN]) / (([COMPLICATION.RANGED_VALUE_MAX] - [COMPLICATION.RANGED_VALUE_MIN]) == 0 ? 1 : ([COMPLICATION.RANGED_VALUE_MAX] - [COMPLICATION.RANGED_VALUE_MIN])), 0, 1))"/>
-                        </PartDraw>
+                        <PartImage x="264" y="418" width="22" height="22" tintColor="[CONFIGURATION.accent.0]">
+                          <Transform target="alpha" value="(clamp(([COMPLICATION.RANGED_VALUE_VALUE] - [COMPLICATION.RANGED_VALUE_MIN]) / (([COMPLICATION.RANGED_VALUE_MAX] - [COMPLICATION.RANGED_VALUE_MIN]) == 0 ? 1 : ([COMPLICATION.RANGED_VALUE_MAX] - [COMPLICATION.RANGED_VALUE_MIN])), 0, 1)) &gt; 0 ? (90 + 165 * (clamp(([COMPLICATION.RANGED_VALUE_VALUE] - [COMPLICATION.RANGED_VALUE_MIN]) / (([COMPLICATION.RANGED_VALUE_MAX] - [COMPLICATION.RANGED_VALUE_MIN]) == 0 ? 1 : ([COMPLICATION.RANGED_VALUE_MAX] - [COMPLICATION.RANGED_VALUE_MIN])), 0, 1))) : 60"/>
+                          <Image resource="ic_stress_0"/>
+                        </PartImage>
+                        <PartImage x="317" y="397" width="22" height="22" tintColor="[CONFIGURATION.accent.0]">
+                          <Transform target="alpha" value="(clamp(([COMPLICATION.RANGED_VALUE_VALUE] - [COMPLICATION.RANGED_VALUE_MIN]) / (([COMPLICATION.RANGED_VALUE_MAX] - [COMPLICATION.RANGED_VALUE_MIN]) == 0 ? 1 : ([COMPLICATION.RANGED_VALUE_MAX] - [COMPLICATION.RANGED_VALUE_MIN])), 0, 1)) &gt; 0.2 ? (90 + 165 * (clamp(([COMPLICATION.RANGED_VALUE_VALUE] - [COMPLICATION.RANGED_VALUE_MIN]) / (([COMPLICATION.RANGED_VALUE_MAX] - [COMPLICATION.RANGED_VALUE_MIN]) == 0 ? 1 : ([COMPLICATION.RANGED_VALUE_MAX] - [COMPLICATION.RANGED_VALUE_MIN])), 0, 1))) : 60"/>
+                          <Image resource="ic_stress_1"/>
+                        </PartImage>
+                        <PartImage x="362" y="362" width="22" height="22" tintColor="[CONFIGURATION.accent.0]">
+                          <Transform target="alpha" value="(clamp(([COMPLICATION.RANGED_VALUE_VALUE] - [COMPLICATION.RANGED_VALUE_MIN]) / (([COMPLICATION.RANGED_VALUE_MAX] - [COMPLICATION.RANGED_VALUE_MIN]) == 0 ? 1 : ([COMPLICATION.RANGED_VALUE_MAX] - [COMPLICATION.RANGED_VALUE_MIN])), 0, 1)) &gt; 0.4 ? (90 + 165 * (clamp(([COMPLICATION.RANGED_VALUE_VALUE] - [COMPLICATION.RANGED_VALUE_MIN]) / (([COMPLICATION.RANGED_VALUE_MAX] - [COMPLICATION.RANGED_VALUE_MIN]) == 0 ? 1 : ([COMPLICATION.RANGED_VALUE_MAX] - [COMPLICATION.RANGED_VALUE_MIN])), 0, 1))) : 60"/>
+                          <Image resource="ic_stress_2"/>
+                        </PartImage>
+                        <PartImage x="397" y="317" width="22" height="22" tintColor="[CONFIGURATION.accent.0]">
+                          <Transform target="alpha" value="(clamp(([COMPLICATION.RANGED_VALUE_VALUE] - [COMPLICATION.RANGED_VALUE_MIN]) / (([COMPLICATION.RANGED_VALUE_MAX] - [COMPLICATION.RANGED_VALUE_MIN]) == 0 ? 1 : ([COMPLICATION.RANGED_VALUE_MAX] - [COMPLICATION.RANGED_VALUE_MIN])), 0, 1)) &gt; 0.6 ? (90 + 165 * (clamp(([COMPLICATION.RANGED_VALUE_VALUE] - [COMPLICATION.RANGED_VALUE_MIN]) / (([COMPLICATION.RANGED_VALUE_MAX] - [COMPLICATION.RANGED_VALUE_MIN]) == 0 ? 1 : ([COMPLICATION.RANGED_VALUE_MAX] - [COMPLICATION.RANGED_VALUE_MIN])), 0, 1))) : 60"/>
+                          <Image resource="ic_stress_3"/>
+                        </PartImage>
+                        <PartImage x="418" y="264" width="22" height="22" tintColor="[CONFIGURATION.accent.0]">
+                          <Transform target="alpha" value="(clamp(([COMPLICATION.RANGED_VALUE_VALUE] - [COMPLICATION.RANGED_VALUE_MIN]) / (([COMPLICATION.RANGED_VALUE_MAX] - [COMPLICATION.RANGED_VALUE_MIN]) == 0 ? 1 : ([COMPLICATION.RANGED_VALUE_MAX] - [COMPLICATION.RANGED_VALUE_MIN])), 0, 1)) &gt; 0.8 ? (90 + 165 * (clamp(([COMPLICATION.RANGED_VALUE_VALUE] - [COMPLICATION.RANGED_VALUE_MIN]) / (([COMPLICATION.RANGED_VALUE_MAX] - [COMPLICATION.RANGED_VALUE_MIN]) == 0 ? 1 : ([COMPLICATION.RANGED_VALUE_MAX] - [COMPLICATION.RANGED_VALUE_MIN])), 0, 1))) : 60"/>
+                          <Image resource="ic_stress_4"/>
+                        </PartImage>
                         <Group name="badge_br_stress" x="365" y="248" width="48" height="42">
                           <PartImage x="14" y="0" width="20" height="20" tintColor="[CONFIGURATION.accent.0]">
                             <Image resource="ic_metric_stress"/>

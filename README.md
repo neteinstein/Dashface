@@ -64,8 +64,8 @@ your **skin temperature** on watches that measure it.
 |---|---|---|
 | 🔋 Top-left bar | Battery, as 10 bars that light up as it charges | Light blue for the low bars → darker blue for the full ones |
 | 👣 Top-right footprints | Steps toward your daily goal | A trail of 10 footprints; one lights up per 10 % of the goal |
-| 〰️ Bottom-left bar | Stress | Green → yellow → red |
-| ❤️ Bottom-right bar | Heart rate (40–180 bpm) | Calm red → urgent red |
+| ⛈️ Bottom-left weather | Stress, as 5 icons from sun to thunderstorm that light up as it rises | Green → yellow → red |
+| ❤️ Bottom-right heartbeat | Heart rate (40–180 bpm), as a heart-monitor line whose spikes grow taller along the arc | Calm red → urgent red |
 | ⛅ Top row | Weather icon and temperature for **morning · afternoon · night** | – |
 | 📅 Under it | Weekday and day, `THU 12` | Weekday in your accent color |
 | 🕙 Center | The time, in 12 or 24 h like your watch | – |
