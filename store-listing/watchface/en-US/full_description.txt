@@ -4,9 +4,9 @@ Dashface is a battery-friendly watch face for Wear OS. Battery, steps, stress an
 
 WHAT IT SHOWS
 • Battery: 10 bars that light up as it charges
-• Steps: toward your daily goal, from red to yellow to green
-• Stress: from green to yellow to red
-• Heart rate: 40–180 bpm
+• Steps: a trail of footprints that lights up as you walk toward your daily goal
+• Stress: weather from sunny to stormy, from green to yellow to red
+• Heart rate: a heartbeat line, 40–180 bpm
 • Weather: icon and temperature for morning, afternoon and night
 • Date: weekday and day, in your accent color
 • Time: large and clear, in 12 or 24 h like your watch

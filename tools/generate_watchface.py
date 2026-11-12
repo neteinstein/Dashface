@@ -83,7 +83,15 @@ class Metric:
     preview_value: float
     preview_text: str
     segments: int = 0  # > 0: drawn as that many separate bars instead of a continuous fill
+    # Non-empty: drawn as a row of these images along the arc (from the anchor outward) instead
+    # of a bar. Image i lights up once the value is above i/n. See TRAIL_* for the styles.
+    trail: tuple[str, ...] = ()
+    trail_style: str = ""
+    trail_size: tuple[int, int] = (20, 20)
 
+
+ECG_PIECES = 8  # heart-rate line: number of beats along the arc
+ECG_W, ECG_H = 36, 24  # one beat image; ~SPAN / ECG_PIECES of arc length wide
 
 COMP_NORM = (
     "clamp(([COMPLICATION.RANGED_VALUE_VALUE] - [COMPLICATION.RANGED_VALUE_MIN]) / "
@@ -104,21 +112,28 @@ METRICS = {
     ),
     "steps": Metric(
         "steps", "Steps", "ic_metric_steps",
-        ("#FFE53935", "#FFFDD835", "#FF43A047"),
+        # Footprints: the first steps of the day are pale green, the last ones vivid.
+        ("#FFC8E6C9", "#FF81C784", "#FF43A047"),
         "clamp([STEP_PERCENT], 0, 100) / 100",
         "[STEP_COUNT]", "%s", 0.48, "4821",
+        trail=("ic_step_left", "ic_step_right") * 5, trail_style="walk",
     ),
     "stress": Metric(
         "stress", "Stress", "ic_metric_stress",
         ("#FF43A047", "#FFFDD835", "#FFE53935"),
         COMP_NORM,
         "round([COMPLICATION.RANGED_VALUE_VALUE])", "%s", 0.27, "27",
+        # Weather from calm to stormy: sun, sun + cloud, cloud, rain, thunderstorm.
+        trail=tuple(f"ic_stress_{i}" for i in range(5)), trail_style="upright", trail_size=(22, 22),
     ),
     "heart": Metric(
         "heart", "Heart rate", "ic_metric_heart",
         ("#FFC2575A", "#FFFF1744"),
         "clamp(([HEART_RATE] - 40) / 140, 0, 1)",
         "[HEART_RATE] > 0 ? [HEART_RATE] : \"--\"", "%s", 0.16, "62",
+        # A heart-monitor line: one beat per piece, the spikes taller further along the arc.
+        trail=tuple(f"ic_ecg_{i}" for i in range(ECG_PIECES)), trail_style="tangent",
+        trail_size=(ECG_W, ECG_H),
     ),
 }
 
@@ -307,7 +322,7 @@ def segment_angles(corner: Corner, i: int, n: int) -> tuple[float, float]:
 
 def segment_color(metric: Metric, i: int) -> str:
     """Bar i's color along the metric's colors (first bar = first color, last = last)."""
-    n = metric.segments
+    n = metric.segments or len(metric.trail)
     return "#FF" + lerp_color(metric.colors, i / (n - 1) if n > 1 else 1)[1:]
 
 
@@ -336,6 +351,58 @@ def draw_segments(x: Xml, corner: Corner, metric: Metric, single: bool, placehol
         x.leaf("Stroke", color=lit, thickness=STROKE, cap="BUTT")
         x.close("Arc")
         x.close("PartDraw")
+
+
+# Trail styles: how each image of a Metric.trail sits on the arc.
+TRAIL_WALK = "walk"  # footprints: toes along the walking direction, alternating sides
+TRAIL_TANGENT = "tangent"  # lies along the arc, image top toward the screen center
+TRAIL_UPRIGHT = "upright"  # not rotated, on the arc's center line
+FOOT_SIDE = 3.5  # px each footprint sits off the arc's center line (left / right foot)
+TRAIL_DIM_ALPHA = 60  # alpha of trail images not reached yet
+
+
+def trail_spots(corner: Corner, metric: Metric) -> list[tuple[float, float, float, str]]:
+    """(x, y, rotation, image) of each trail image, from the corner's anchor outward."""
+    out = []
+    n = len(metric.trail)
+    w, h = metric.trail_size
+    seg = SPAN / n
+    sign = -1 if corner.anchor_at_end else 1
+    for i, image in enumerate(metric.trail):
+        a = corner.anchor + sign * (i + 0.5) * seg
+        r, rot = ARC_R, 0.0
+        if metric.trail_style == TRAIL_WALK:
+            rot = a + 90 * sign  # tangent to the arc, in the walking direction
+            # Left and right feet alternate; the walker's left is outside the ring when walking
+            # clockwise.
+            left = i % 2 == 0
+            r += FOOT_SIDE if left == (sign > 0) else -FOOT_SIDE
+        elif metric.trail_style == TRAIL_TANGENT:
+            rot = a + 180  # image top points at the screen center
+        px, py = polar(a, r)
+        out.append((round(px - w / 2), round(py - h / 2), rot % 360, image))
+    return out
+
+
+def draw_trail(x: Xml, corner: Corner, metric: Metric, single: bool, placeholder: bool) -> None:
+    """Image trail: image i (of n) lights up once the value is above i/n.
+
+    Every image is always drawn; ones not reached yet are dim. Colors are static tints, only
+    the alpha depends on the value. The placeholder (no data source yet) is the dim trail.
+    """
+    n = len(metric.trail)
+    w, h = metric.trail_size
+    for i, (ix, iy, rot, image) in enumerate(trail_spots(corner, metric)):
+        tint = "[CONFIGURATION.accent.0]" if single else segment_color(metric, i)
+        on = f"(90 + 165 * ({metric.value}))" if single else "255"
+        x.open("PartImage", x=ix, y=iy, width=w, height=h,
+               angle=round(rot, 2) if rot else None, tintColor=tint,
+               alpha=TRAIL_DIM_ALPHA if placeholder else None)
+        if not placeholder:
+            x.leaf("Transform", target="alpha",
+                   value=f"({metric.value}) > {i / n:g} ? {on} : {TRAIL_DIM_ALPHA}")
+        x.leaf("Image", resource=image)
+        x.close("PartImage")
 
 
 def draw_knob(x: Xml, corner: Corner, metric: Metric) -> None:
@@ -401,6 +468,8 @@ def draw_metric(x: Xml, corner: Corner, metric: Metric, placeholder: bool = Fals
         full_group(x, f"{corner.id}_{metric.id}_{mode}")
         if metric.segments:
             draw_segments(x, corner, metric, single, placeholder)
+        elif metric.trail:
+            draw_trail(x, corner, metric, single, placeholder)
         else:
             track = "#26FFFFFF" if single else with_alpha(metric.colors[-1], 0x33)
             draw_track(x, corner, track)
@@ -930,6 +999,14 @@ def make_icons() -> None:
     d.ellipse([14 * s, 7 * s, 20 * s, 17 * s], fill=w)
     d.ellipse([14.5 * s, 18 * s, 19 * s, 22 * s], fill=w)
     save(img, "ic_metric_steps")
+    # One footprint (toes up) for the steps trail, plus its mirror for the other foot.
+    img, d = canvas()
+    d.ellipse([6.5 * s, 1 * s, 16.5 * s, 14.5 * s], fill=w)
+    d.ellipse([8 * s, 15.5 * s, 14.5 * s, 23 * s], fill=w)
+    save(img, "ic_step_left")
+    img.transpose(Image.FLIP_LEFT_RIGHT).resize((24, 24), Image.LANCZOS).save(
+        out / "ic_step_right.png", optimize=True)
+    make_trail_icons(out)
     # Heart
     img, d = canvas()
     d.ellipse([2.5 * s, 4 * s, 12.5 * s, 14 * s], fill=w)
@@ -953,6 +1030,80 @@ def make_icons() -> None:
     d.ellipse([m * 0.18, m * 0.14, m * 0.82, m * 0.78], fill=(255, 236, 179, 255))
     d.ellipse([m * 0.36, m * 0.04, m * 1.0, m * 0.68], fill=(0, 0, 0, 0))
     img.resize((WEATHER_PX, WEATHER_PX), Image.LANCZOS).save(out / "ic_wx_clear_night.png", optimize=True)
+
+
+def make_trail_icons(out: Path) -> None:
+    """White trail images (tinted at runtime): heart-rate beats and stress weather."""
+    from PIL import Image, ImageDraw
+
+    s = 4
+    w = (255, 255, 255, 255)
+    clear = (0, 0, 0, 0)
+
+    # Heart-rate beats: a symmetric P-QRS-T blip on a baseline, taller for later pieces, so the
+    # same image reads the same whichever way the arc runs.
+    for k in range(ECG_PIECES):
+        img = Image.new("RGBA", (ECG_W * s, ECG_H * s), clear)
+        d = ImageDraw.Draw(img)
+        amp = 3.5 + 6.0 * k / (ECG_PIECES - 1)
+        base = ECG_H / 2 + 2  # same baseline in every piece; room above for the spikes
+
+        def y(u: float) -> float:
+            m = min(u, 1 - u)  # mirror around the middle
+            if 0.14 < m < 0.30:
+                return 0.25 * amp * math.sin((m - 0.14) / 0.16 * math.pi)
+            if 0.38 < m < 0.43:
+                return -0.3 * amp * (m - 0.38) / 0.05
+            if 0.43 <= m <= 0.5:
+                return -0.3 * amp + 1.3 * amp * (m - 0.43) / 0.07
+            return 0.0
+
+        pts = [(u / 200 * ECG_W * s, (base - y(u / 200)) * s) for u in range(201)]
+        d.line(pts, fill=w, width=int(2.6 * s), joint="curve")
+        img.resize((ECG_W, ECG_H), Image.LANCZOS).save(out / f"ic_ecg_{k}.png", optimize=True)
+
+    # Stress weather, calm to stormy. Shapes in a 24 px box; a 1 px gap separates overlaps.
+    def canvas():
+        img = Image.new("RGBA", (24 * s, 24 * s), clear)
+        return img, ImageDraw.Draw(img)
+
+    def circle(d, cx, cy, r, fill):
+        d.ellipse([(cx - r) * s, (cy - r) * s, (cx + r) * s, (cy + r) * s], fill=fill)
+
+    def cloud(d, cx, cy, fill, grow=0.0):
+        for ox, oy, r in ((-4, 1, 3.8), (1, -1.8, 5), (5.5, 1.6, 3.3)):
+            circle(d, cx + ox, cy + oy, r + grow, fill)
+        d.rounded_rectangle([(cx - 7.8 - grow) * s, (cy + 1 - grow) * s, (cx + 8.8 + grow) * s,
+                             (cy + 5 + grow) * s], radius=(2 + grow) * s, fill=fill)
+
+    def save(img, name):
+        img.resize((24, 24), Image.LANCZOS).save(out / f"{name}.png", optimize=True)
+
+    img, d = canvas()  # 0: sun
+    circle(d, 12, 12, 5, w)
+    for j in range(8):
+        a = j * math.pi / 4
+        d.line([((12 + 7.2 * math.cos(a)) * s, (12 + 7.2 * math.sin(a)) * s),
+                ((12 + 10.2 * math.cos(a)) * s, (12 + 10.2 * math.sin(a)) * s)], fill=w, width=2 * s)
+    save(img, "ic_stress_0")
+    img, d = canvas()  # 1: sun behind a cloud
+    circle(d, 9, 8, 5.5, w)
+    cloud(d, 13.5, 13, clear, grow=1.2)
+    cloud(d, 13.5, 13, w)
+    save(img, "ic_stress_1")
+    img, d = canvas()  # 2: cloud
+    cloud(d, 12, 11, w)
+    save(img, "ic_stress_2")
+    img, d = canvas()  # 3: rain
+    cloud(d, 12, 7.5, w)
+    for dx in (-4.5, 0, 4.5):
+        d.line([((12 + dx) * s, 15.5 * s), ((10.5 + dx) * s, 20.5 * s)], fill=w, width=2 * s)
+    save(img, "ic_stress_3")
+    img, d = canvas()  # 4: thunderstorm
+    cloud(d, 12, 7.5, w)
+    bolt = [(13.5, 11), (8.5, 17), (12, 17), (10, 23), (16.5, 15), (13, 15), (15, 11)]
+    d.polygon([(px * s, py * s) for px, py in bolt], fill=w)
+    save(img, "ic_stress_4")
 
 
 # --------------------------------------------------------------------------------------
@@ -1038,6 +1189,16 @@ def build_preview_svg(layout: dict[str, str], single_accent: str | None = None,
                         col = tip_col or hex6(segment_color(metric, k))
                         parts.append(f'<path d="{svg_arc(a0, a1, ARC_R)}" stroke="{col}" '
                                      f'stroke-opacity="{fill_opacity:.2f}" stroke-width="{STROKE}" fill="none"/>')
+            elif metric.trail:
+                n = len(metric.trail)
+                w, h = metric.trail_size
+                for k, (ix, iy, rot, image) in enumerate(trail_spots(corner, metric)):
+                    col = tip_col or hex6(segment_color(metric, k))
+                    op = (fill_opacity if v > k / n else TRAIL_DIM_ALPHA / 255)
+                    parts.append(
+                        f'<image x="{ix}" y="{iy}" width="{w}" height="{h}" opacity="{op:.2f}" '
+                        f'transform="rotate({rot:.2f} {ix + w / 2} {iy + h / 2})" '
+                        f'href="{icons_dir}{image}_{col[1:]}.png"/>')
             else:
                 parts.extend(preview_continuous(corner, metric, v, track, tip_col, fill_opacity, single_accent))
             bx, by = badge_origin(corner)
@@ -1142,6 +1303,19 @@ def write_previews() -> None:
             tinted = Image.new("RGBA", base.size, (r, g, b, 255))
             tinted.putalpha(base.getchannel("A"))
             tinted.save(icons / f"{metric.icon}_{col[1:]}.png")
+    # Pre-tinted trail images: one per trail color and accent.
+    for metric in METRICS.values():
+        if not metric.trail:
+            continue
+        cols = ({hex6(segment_color(metric, k)) for k in range(len(metric.trail))}
+                | {hex6(a[2]) for a in ACCENTS})
+        for image in set(metric.trail):
+            base = Image.open(drawables / f"{image}.png").convert("RGBA")
+            for col in cols:
+                r, g, b = (int(col[i:i + 2], 16) for i in (1, 3, 5))
+                tinted = Image.new("RGBA", base.size, (r, g, b, 255))
+                tinted.putalpha(base.getchannel("A"))
+                tinted.save(icons / f"{image}_{col[1:]}.png")
     for png in drawables.glob("ic_wx_*.png"):
         (icons / png.name).write_bytes(png.read_bytes())
 

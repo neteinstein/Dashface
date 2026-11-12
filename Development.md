@@ -87,12 +87,23 @@ flowchart LR
 - **Skin temperature is a one-shot read.** `UPDATE_PERIOD_SECONDS = 900` (the platform
   minimum), which the system honors only while the face is visible. Each request registers a
   listener, takes the first plausible sample (5 s timeout) and unregisters.
-- **Cheap colors.** The fading colors are a static `SweepGradient` across the whole arc. The
-  fill's sweep follows the value, so the color at the tip reflects it, with no color math at
-  draw time. In single-color mode only the fill's alpha changes.
+- **Cheap colors.** Every bar, footprint, beat and weather icon has a static color (or tint);
+  only its `alpha` follows the value, with no color math at draw time. A metric without
+  `segments` or `trail` falls back to a continuous arc with a static `SweepGradient`.
 - **Segmented battery.** Battery (`segments=10` in the generator) is drawn as 10 short arcs,
   each with a static color from light (low) to darker (full). Bar *i* is shown when the level is
   above *i*/10 through an `alpha` transform, so 1–10 % lights the first bar. No knob.
+- **Image trails for steps, heart rate and stress.** A metric's `trail` is a row of small white
+  images along its arc, tinted at runtime. Image *i* of *n* goes from dim to lit once the value
+  is above *i*/*n*, through the same `alpha` transform as the battery bars. The stress
+  placeholder (no source yet) is the dim trail.
+  - Steps: 10 footprints (`ic_step_left` / `ic_step_right`) walking outward, alternating feet,
+    rotated to the walking direction, pale to vivid green.
+  - Heart rate: 8 heartbeat pieces (`ic_ecg_0..7`, `ECG_*` in the generator) laid along the
+    arc with the spike toward the center, each taller than the last. The beat is symmetric so
+    the same image works whichever way a corner's arc runs.
+  - Stress: 5 upright weather icons (`ic_stress_0..4`): sun, sun and cloud, cloud, rain,
+    thunderstorm.
 - **Ambient mode** keeps only the time, the date and a small battery bar (10 rounded bars and
   the percentage) in the first meeting row's place. Both meeting rows, the bezel bars, the
   weather, the thermometer and gradients are hidden. The battery bar is a top-level group with
