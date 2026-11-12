@@ -6,6 +6,7 @@
     <string name="source_next_meeting">Next meeting</string>
     <string name="source_second_meeting">Following meeting</string>
     <string name="source_stress">Stress (heart-rate estimate)</string>
+    <string name="source_skin_temperature">Skin temperature</string>
 
     <!-- Meetings -->
     <string name="no_more_meetings">No more meetings today</string>
@@ -20,11 +21,19 @@
     <string name="tap_short">Tap</string>
     <string name="tap_to_allow_stress">Tap to allow heart-rate access for the stress estimate</string>
 
+    <!-- Skin temperature -->
+    <string name="skin_temperature_title">Skin</string>
+    <string name="skin_temperature_description">Skin temperature %1$s</string>
+    <string name="tap_to_allow_skin_temperature">Tap to allow sensor access for skin temperature</string>
+
     <!-- Permission flow -->
     <string name="perm_calendar_title">Show your meetings</string>
     <string name="perm_calendar_body">Dashface reads the calendar synced to this watch to show your next meetings under the time. Events never leave the watch.</string>
     <string name="perm_stress_title">Estimate stress</string>
     <string name="perm_stress_body">Dashface uses heart-rate readings the watch already takes to estimate stress. It is a wellness hint, not a medical measurement, and data never leaves the watch.</string>
+    <string name="perm_skin_title">Show skin temperature</string>
+    <string name="perm_skin_body">Dashface reads the watch\'s skin temperature sensor to show a thermometer under your meetings. It is a wellness hint, not a medical measurement, and data never leaves the watch.</string>
+    <string name="perm_skin_background_body">Allow access all the time so the thermometer can update while the watch face is showing. The sensor is read once per update, at most every 15 minutes.</string>
     <string name="perm_background_title">Keep it up to date</string>
     <string name="perm_background_body">Allow access all the time so the estimate keeps updating while the screen is off. No extra sensor use: it only reuses readings the watch already takes.</string>
     <string name="perm_denied_title">Access is off</string>
@@ -34,10 +43,12 @@
     <string name="perm_open_settings">Open settings</string>
 
     <!-- Home -->
-    <string name="home_body">Provides next meetings and an optional stress estimate to the Dashface watch face.</string>
+    <string name="home_body">Provides next meetings, an optional stress estimate and skin temperature (on watches with the sensor) to the Dashface watch face.</string>
     <string name="home_calendar_on">Calendar: allowed</string>
     <string name="home_calendar_off">Calendar: tap to allow</string>
     <string name="home_stress_on">Stress estimate: allowed</string>
     <string name="home_stress_off">Stress estimate: tap to allow</string>
-    <string name="privacy_note">Privacy: no internet access, no analytics. Calendar and heart-rate data stay on the watch.</string>
+    <string name="home_skin_on">Skin temperature: allowed</string>
+    <string name="home_skin_off">Skin temperature: tap to allow</string>
+    <string name="privacy_note">Privacy: no internet access, no analytics. Calendar, heart-rate and temperature data stay on the watch.</string>
 </resources>

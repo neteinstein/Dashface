@@ -8,12 +8,14 @@ import android.widget.ScrollView
 import android.widget.TextView
 import androidx.activity.ComponentActivity
 import com.neteinstein.dashface.provider.R
+import com.neteinstein.dashface.provider.skin.SkinTemperatureSensor
 
 /** Launcher screen: what this companion does, privacy note, and shortcuts to grant access. */
 class HomeActivity : ComponentActivity() {
 
     private lateinit var calendarButton: Button
     private lateinit var stressButton: Button
+    private var skinButton: Button? = null
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
@@ -36,6 +38,12 @@ class HomeActivity : ComponentActivity() {
         }
         column.addView(calendarButton)
         column.addView(stressButton)
+        // Only offered on watches that actually have a skin temperature sensor.
+        if (SkinTemperatureSensor.find(this) != null) {
+            skinButton = Button(this).apply {
+                setOnClickListener { startActivity(Feature.SKIN_TEMPERATURE.requestIntent(this@HomeActivity)) }
+            }.also(column::addView)
+        }
         column.addView(TextView(this).apply {
             setText(R.string.privacy_note)
             textSize = 12f
@@ -52,6 +60,9 @@ class HomeActivity : ComponentActivity() {
         )
         stressButton.setText(
             if (Feature.STRESS.hasForeground(this)) R.string.home_stress_on else R.string.home_stress_off,
+        )
+        skinButton?.setText(
+            if (Feature.SKIN_TEMPERATURE.hasForeground(this)) R.string.home_skin_on else R.string.home_skin_off,
         )
     }
 }

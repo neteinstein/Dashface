@@ -12,7 +12,10 @@ enum class Feature {
     CALENDAR,
 
     /** Stress estimate: passive heart-rate samples, also while the screen is off. */
-    STRESS;
+    STRESS,
+
+    /** Skin temperature: one-shot reads of the watch's skin temperature sensor, if it has one. */
+    SKIN_TEMPERATURE;
 
     /** Permissions needed while the app is in use. */
     fun foreground(): Array<String> = when (this) {
@@ -23,12 +26,18 @@ enum class Feature {
             @Suppress("DEPRECATION")
             arrayOf(Manifest.permission.BODY_SENSORS)
         }
+        SKIN_TEMPERATURE -> if (isWearOs6OrLater()) {
+            arrayOf(READ_SKIN_TEMPERATURE)
+        } else {
+            @Suppress("DEPRECATION")
+            arrayOf(Manifest.permission.BODY_SENSORS)
+        }
     }
 
     /** Permissions that must be requested separately, after [foreground] is granted. */
     fun background(): Array<String> = when (this) {
         CALENDAR -> emptyArray()
-        STRESS -> if (isWearOs6OrLater()) {
+        STRESS, SKIN_TEMPERATURE -> if (isWearOs6OrLater()) {
             arrayOf(READ_HEALTH_DATA_IN_BACKGROUND)
         } else {
             @Suppress("DEPRECATION")
@@ -47,6 +56,7 @@ enum class Feature {
     companion object {
         // Literal names: the HealthPermissions constants only exist from API 36.
         const val READ_HEART_RATE = "android.permission.health.READ_HEART_RATE"
+        const val READ_SKIN_TEMPERATURE = "android.permission.health.READ_SKIN_TEMPERATURE"
         const val READ_HEALTH_DATA_IN_BACKGROUND =
             "android.permission.health.READ_HEALTH_DATA_IN_BACKGROUND"
 

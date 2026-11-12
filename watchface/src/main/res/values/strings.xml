@@ -41,4 +41,5 @@
     <string name="slot_stress_br">Stress source (bottom-right)</string>
     <string name="slot_meeting_1">Next meeting</string>
     <string name="slot_meeting_2">Following meeting</string>
+    <string name="slot_skin_temperature">Skin temperature</string>
 </resources>

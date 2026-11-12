@@ -1,210 +1,171 @@
+<div align="center">
+
+<img src="docs/screenshots/preview.png" width="300" height="300" alt="Dashface: health bars around the bezel, weather for morning, afternoon and night, the date, a large digital time, the next two meetings and a skin temperature thermometer">
+
 # Dashface
 
-A battery-friendly Wear OS watch face built with **Watch Face Format (WFF)**. Four health
-bars hug the bezel, and the center shows the weather for morning, afternoon and night, the
-date, a large digital time, and your **next calendar meetings**.
+**Your day at a glance, on your wrist.**
 
-| Default | Single color (amber) | Health on top | Ambient |
-|---|---|---|---|
-| ![Default](docs/screenshots/preview.png) | ![Single color](docs/screenshots/preview_single_amber.png) | ![Health on top](docs/screenshots/preview_health_top.png) | ![Ambient](docs/screenshots/preview_ambient.png) |
+A battery-friendly Wear OS watch face. Battery, steps, stress and heart rate hug the bezel.
+The center shows the weather for the rest of the day, the time, your **next meetings**, and
+your **skin temperature** on watches that measure it.
 
-> The screenshots are rendered from the same geometry by `tools/generate_watchface.py`
-> (desktop fonts, sample data). On a watch, the system font and live data are used.
+[![Build](https://github.com/neteinstein/Dashface/actions/workflows/build.yml/badge.svg)](https://github.com/neteinstein/Dashface/actions/workflows/build.yml)
+![Wear OS 5+](https://img.shields.io/badge/Wear%20OS-5%2B-4285F4?logo=wearos&logoColor=white)
+![Watch Face Format v2](https://img.shields.io/badge/Watch%20Face%20Format-v2-34A853)
+![Kotlin](https://img.shields.io/badge/Kotlin-2.2-7F52FF?logo=kotlin&logoColor=white)
+![No internet access](https://img.shields.io/badge/privacy-no%20internet%20%C2%B7%20no%20analytics-111)
+[![Donate](https://img.shields.io/badge/donate-%E2%99%A5-EC4899)](https://www.pedrovicente.pt/donate)
 
-The prompt this was built from is in [`docs/WATCHFACE_PROMPT.md`](docs/WATCHFACE_PROMPT.md).
+</div>
+
+---
+
+## A look around
+
+<table>
+<tr>
+<td width="33%" align="center" valign="top">
+<img src="docs/screenshots/preview.png" width="220" alt="Default look: multicolor bars"><br>
+<b>Multicolor.</b> Each bar fades through its own colors as it fills.
+</td>
+<td width="33%" align="center" valign="top">
+<img src="docs/screenshots/preview_single_amber.png" width="220" alt="Single color mode in amber"><br>
+<b>Single color.</b> One accent everywhere; a bar gets brighter as it fills.
+</td>
+<td width="33%" align="center" valign="top">
+<img src="docs/screenshots/preview_health_top.png" width="220" alt="Health on top preset: heart rate and steps at the top"><br>
+<b>Health on top.</b> Put any metric in any corner.
+</td>
+</tr>
+<tr>
+<td width="33%" align="center" valign="top">
+<img src="docs/screenshots/preview_mirrored.png" width="220" alt="Mirrored preset"><br>
+<b>Mirrored.</b> One of three ready-made layouts.
+</td>
+<td width="33%" align="center" valign="top">
+<img src="docs/screenshots/preview_no_meetings.png" width="220" alt="No more meetings today"><br>
+<b>Free afternoon.</b> When the calendar is clear, it says so.
+</td>
+<td width="33%" align="center" valign="top">
+<img src="docs/screenshots/preview_ambient.png" width="220" alt="Ambient mode: only date, time and the next meeting"><br>
+<b>Ambient.</b> Only the date, time and next meeting, to save battery.
+</td>
+</tr>
+</table>
+
+<sub>Previews use sample data and desktop fonts. On the watch you see your own data in the system font.</sub>
 
 ## What it shows
 
-| Area | Content | Color behavior |
+| Where | What | Colors |
 |---|---|---|
-| Top-left bar | Battery | Dim blue when low → vivid cyan when full |
-| Top-right bar | Steps (toward your step goal) | Red → yellow → green as it fills |
-| Bottom-left bar | Stress (complication) | Green → yellow → red |
-| Bottom-right bar | Heart rate (40–180 bpm) | Calm red → urgent red |
-| Top row | Weather icon + temperature for **Morning · Afternoon · Night** | – |
-| Under it | `THU 12` (weekday in accent color) | – |
-| Center | `HH:mm`, follows the 12/24 h system setting | – |
-| Under the time | Next meeting and the one after it (`10:30  Team standup`; `Now` while it runs; `No more meetings today`) | Time in accent color |
+| 🔋 Top-left bar | Battery | Dim blue when low → vivid cyan when full |
+| 👣 Top-right bar | Steps toward your daily goal | Red → yellow → green as you walk |
+| 〰️ Bottom-left bar | Stress | Green → yellow → red |
+| ❤️ Bottom-right bar | Heart rate (40–180 bpm) | Calm red → urgent red |
+| ⛅ Top row | Weather icon and temperature for **morning · afternoon · night** | – |
+| 📅 Under it | Weekday and day, `THU 12` | Weekday in your accent color |
+| 🕙 Center | The time, in 12 or 24 h like your watch | – |
+| 🗓️ Under the time | Your next meeting and the one after it: `10:30  Team standup`, `Now` while it runs, or *No more meetings today* | Time in your accent color |
+| 🌡️ At the bottom | **Skin temperature** as a thermometer, e.g. `33.6°` | Cool blue → green → warm orange |
 
-Top bars grow outward from 12 o'clock and bottom bars from 6 o'clock. Each bar has a dim
-track, a gradient fill, a white knob at the tip, and an icon + value badge near its end. The
-badge icon takes the color of the bar's current range.
+Each bar has a white dot at its tip and a small icon with the value next to it. The icon takes
+the color of the bar.
 
-## Customization (long-press the face → Customize)
+### Skin temperature
 
-- **Bar positions**: pick Battery / Steps / Stress / Heart rate for each corner. Presets:
+The thermometer appears only on watches with a **skin temperature sensor**. On other watches
+nothing is drawn there. It shows °C or °F, following your watch's settings, and the bar spans
+28–38 °C (82–100 °F), where wrist skin usually sits.
+
+It's a wellness hint, not a medical measurement: wrist skin is cooler than your body, and it
+changes with the room, exercise and how tight the strap is. The first time, tap the thermometer
+(it says **Tap**) to allow access to the sensor.
+
+### Stress
+
+Wear OS has no built-in stress reading. On Galaxy watches, you can pick Samsung Health's stress
+complication if it's offered. Otherwise Dashface's companion app gives an **estimate** from your
+heart rate: how far it is above your usual resting rate. Exercise raises it too.
+
+## Make it yours
+
+Long-press the watch face, then tap **Customize**.
+
+- **Bar positions.** Pick Battery, Steps, Stress or Heart rate for each corner, or a preset:
   *Classic*, *Mirrored*, *Health on top*.
-- **Color mode**: *Multicolor* (per-metric gradients) or *Single color*. Single color uses
-  one accent (cyan, white, green, amber, purple), and the bar's brightness follows its value.
-  The accent also colors the weekday and meeting times.
-- **Show weather**: on/off.
-- **Meetings shown**: next meeting only, or next two.
-- **Complications**: the meeting rows and the stress source accept any compatible
-  provider. The meeting rows fall back to the system's *Next event* if the companion app isn't
-  installed.
+- **Color mode.** *Multicolor* or *Single color*, with five accents: cyan, white, green, amber
+  and purple. The accent also colors the weekday, meeting times and the thermometer.
+- **Show weather.** On or off.
+- **Meetings shown.** Just the next meeting, or the next two.
+- **Complications.** The meeting rows, the stress bar and the thermometer accept other
+  compatible apps' data. Set the thermometer to *Empty* to hide it.
 
-## Architecture
+## Install
 
-```mermaid
-flowchart LR
-  subgraph WFA["Watch face APK (no code)"]
-    WFF[res/raw/watchface.xml<br/>Watch Face Format v2]
-  end
-  subgraph PDS["Platform data sources"]
-    B[BATTERY_PERCENT]
-    S[STEP_COUNT / STEP_PERCENT]
-    H[HEART_RATE]
-    W[WEATHER.*]
-  end
-  subgraph CMP["Companion APK: dataprovider"]
-    CAL[Next / Following meeting<br/>timeline complications]
-    ST[Stress estimate<br/>RANGED_VALUE complication]
-    PHR[Passive heart-rate listener]
-    PERM[Permission flow]
-  end
-  B & S & H & W --> WFF
-  CAL -- LONG_TEXT timeline --> WFF
-  ST -- RANGED_VALUE --> WFF
-  PHR --> ST
-  CALDB[(Wear calendar<br/>synced from phone)] --> CAL
-  HS[(Health Services<br/>passive data)] --> PHR
-```
+Dashface is two small apps that go on your watch:
 
-| Module | What it is |
-|---|---|
-| `:watchface` | The WFF package: `android:hasCode="false"`, XML, small PNG icons, no font files (uses the system font). |
-| `:dataprovider` | Kotlin complication data sources: `NextMeetingDataSourceService`, `SecondMeetingDataSourceService`, `StressDataSourceService`, plus the permission screens. |
-| `:wff-validator` | A small JVM tool that validates `watchface.xml` against the official WFF XSD (XSD 1.1, via Xerces). |
-| `tools/generate_watchface.py` | Generates `watchface.xml`, the icons and preview SVGs from one geometry/color definition. |
-| `tools/render_previews.js` | Renders the preview SVGs to PNG with Playwright. |
+1. **Dashface** – the watch face itself.
+2. **Dashface data** – a companion that provides your meetings, the stress estimate and skin
+   temperature. Without it, the meeting rows fall back to the watch's own *Next event*, and the
+   stress bar and thermometer stay empty.
 
-### Why some things are built the way they are
+Install both on a Wear OS 5 or later watch (see [Development](Development.md) for building and
+installing them). Then long-press your current watch face and choose **Dashface**.
 
-- **Corner swapping and complications.** WFF only allows `ComplicationSlot` at the top
-  level of the scene, never inside a `ListConfiguration`. So each corner has its own stress
-  slot, shaped to that corner's arc. It draws only when that corner is set to *Stress*.
-  Battery, steps and heart rate come from built-in WFF data sources and are drawn by the scene.
-  Only the bottom-left slot (the default stress corner) has a default provider. If you move
-  Stress to another corner, pick a stress source for that corner's slot in the editor.
-- **Morning / afternoon / night weather.** WFF exposes current weather, 8 hourly forecasts
-  (`WEATHER.HOURS.1..8`) and daily forecasts. Each period uses current conditions while
-  you're inside it (06–12, 12–18, 18–06). Otherwise it uses the hourly forecast for 09:00,
-  15:00 or 21:00 when that is within 8 hours, and the daily day or night forecast after that.
-- **Stress.** Wear OS has no public stress data type. On Galaxy watches, pick Samsung
-  Health's stress complication if it's offered. Otherwise the companion app gives an
-  **estimate** from passive heart rate: how far your current heart rate is above a slowly
-  adapting resting baseline. It's a wellness hint, not a medical measurement, and exercise
-  raises it too.
+### First run
 
-## Battery & performance
+Dashface asks only for what it uses, and only when you tap:
 
-- **No code in the watch face.** The WFF runtime renders it. Time updates once a minute, with
-  no seconds, animations or per-frame work.
-- **Meetings never wake the app on a timer.** Each request returns a *timeline* of entries
-  for the next 36 h, and the system switches between them when meetings start and end. The
-  app runs only when:
-  - the calendar syncs (`PROVIDER_CHANGED`),
-  - the time, time zone or locale changes,
-  - the hourly safety refresh fires. The system batches it and skips it while the screen is off.
-- **Stress uses passive monitoring only.** It reuses heart-rate samples the watch already
-  takes, in batches, and never turns sensors on by itself. Monitoring is registered only
-  while a stress complication is on the active watch face, and removed when the last one goes.
-  The face is asked to redraw only when the score changes by 3 points or more.
-- **Cheap colors.** The fading colors are a static `SweepGradient` across the whole arc. The
-  fill's sweep follows the value, so the color at the tip reflects it, with no color math at
-  draw time. In single-color mode only the fill's alpha changes.
-- **Ambient mode** keeps only the time, date and next meeting. All bars, the weather and
-  gradients are hidden.
-- **Small assets.** Weather icons are 48 px, metric icons 24 px, and the images that can be
-  on screen total well under 1 MB.
+| To show | Dashface needs | How you're asked |
+|---|---|---|
+| Heart rate and steps | Body sensors, physical activity | By the watch when you pick the face |
+| Your meetings | Calendar | Tap **Tap to show meetings** under the time |
+| Stress | Heart rate (and, optionally, in the background) | Tap the stress bar while it says **Tap** |
+| Skin temperature | Skin temperature sensor (and, optionally, in the background) | Tap the thermometer while it says **Tap** |
 
-## Permissions
+A short explanation comes before each system prompt. If you choose *Don't ask again*, the button
+opens the app's settings instead. You can also open **Dashface data** from the app list to see
+and grant everything in one place.
 
-| Package | Permission | Why | When it's asked |
-|---|---|---|---|
-| watch face | `BODY_SENSORS` (≤ API 35) / `health.READ_HEART_RATE` (API 36+) | `[HEART_RATE]` | By the system when the face is selected |
-| watch face | `ACTIVITY_RECOGNITION` | `[STEP_COUNT]` | By the system when the face is selected |
-| dataprovider | `READ_CALENDAR` | Next meetings | Tap the "Tap to show meetings" row |
-| dataprovider | `BODY_SENSORS` (≤ 35) / `health.READ_HEART_RATE` (36+) | Stress estimate | Tap the "Tap" stress bar |
-| dataprovider | `BODY_SENSORS_BACKGROUND` (≤ 35) / `health.READ_HEALTH_DATA_IN_BACKGROUND` (36+) | Stress estimate updates while the screen is off | Asked as a separate, optional second step |
-| dataprovider | `RECEIVE_BOOT_COMPLETED` | Re-register the passive heart-rate listener after a reboot (only if stress is in use) | Install time |
+## Privacy
 
-Flow: a short rationale screen comes first, then the system dialog. If you choose "Don't
-ask again", the button opens the app's settings page instead. While a permission is missing,
-the matching row or bar shows a tappable "allow" state or a `--` placeholder. It never shows
-stale values as current.
+- **No internet access and no analytics.** Neither app can connect to the internet.
+- Your calendar, heart rate and temperature **never leave the watch**.
+- Missing access shows a tappable *allow* state or `--`, never old values passed off as current.
 
-**Privacy:** neither app has internet access or analytics, and calendar and heart-rate data
-never leave the watch.
+## Battery
 
-## Build, install, test
+Dashface is built to sip power:
 
-Requirements: JDK 17+, Android SDK with platform 36. Python 3 + Pillow and Node + Playwright
-are only needed to regenerate the XML or the previews.
+- The face has **no code** of its own; the watch draws it. The time updates once a minute.
+- **Meetings never wake the watch on a timer.** The companion hands over the whole day at once,
+  and the watch switches rows when meetings start and end.
+- **Stress reuses heart-rate readings the watch already takes**, and only while stress is on
+  your face.
+- **Skin temperature takes one quick reading every 15 minutes at most**, only while the face is
+  showing, and lets go of the sensor right away.
+- **Ambient mode** hides the bars, weather and thermometer.
 
-```bash
-./gradlew :watchface:check                      # WFF XSD validation + lint
-./gradlew :dataprovider:testDebugUnitTest       # timeline + stress estimator tests
-./gradlew assembleDebug                         # both APKs
+## Common questions
 
-# Install both on a Wear OS 5+ watch or emulator (API 34+)
-adb install -r dataprovider/build/outputs/apk/debug/dataprovider-debug.apk
-adb install -r watchface/build/outputs/apk/debug/watchface-debug.apk
-```
+**The thermometer doesn't show.** Your watch probably has no skin temperature sensor, or it hasn't
+given a reading in the last two hours (for example, the watch is off your wrist). Check that
+**Dashface data** is installed and that the thermometer slot isn't set to *Empty*.
 
-Then long-press the current watch face and choose **Dashface**. To debug WFF runtime errors:
+**I moved Stress to another corner and it shows `--`.** Each corner has its own stress source.
+In **Customize**, pick a stress source for the new corner.
 
-```bash
-adb logcat --pid=$(adb shell pidof -s com.google.wear.watchface.runtime)
-```
+**My meetings don't show.** Tap the meeting row to allow calendar access. Meetings come from the
+calendar synced to your watch from your phone.
 
-Both APKs must be signed with the **same key** so the watch face can default to the
-companion's complications (see `SAFE_WATCH_FACES` in the companion manifest). Replace the
-debug signing configs before publishing.
+**The weather is missing.** Weather comes from your watch's own weather service. Open the
+watch's weather app once and check that it has a location.
 
-### Changing the design
+## Learn more
 
-Edit `tools/generate_watchface.py` (geometry, colors, metrics, accents, presets), then:
-
-```bash
-python3 tools/generate_watchface.py
-node tools/render_previews.js     # needs Playwright; updates docs/screenshots + picker preview
-./gradlew :watchface:validateWatchFace
-```
-
-### Memory footprint (Play requirement)
-
-Google's evaluator lives in [google/watchface](https://github.com/google/watchface)
-(`play-validations/memory-footprint`). Build it there, then run:
-
-```bash
-java -jar memory-footprint.jar --watch-face watchface/build/outputs/apk/release/watchface-release.apk \
-  --schema-version 2 --ambient-limit-mb 10 --active-limit-mb 100 --apply-v1-offload-limitations --estimate-optimization
-```
-
-## Verified vs. still to check on a device
-
-Verified in this repo:
-
-- `watchface.xml` validates against the official WFF v2 XSD.
-- Expressions use only operators and functions in Google's WFF expression grammar.
-- Both modules build (debug and release), lint passes, and 15 unit tests pass. They cover
-  meeting ordering, overlaps, in-progress meetings, midnight splits, DST changes and the
-  stress estimator.
-
-Not yet run on hardware (no emulator in the build environment). Please check:
-
-1. **Sweep gradient angles.** The gradient must line up with the arc. Both use the WFF
-   convention, 0° = 12 o'clock, clockwise.
-2. **Reused configuration.** The face reuses the same `ListConfiguration` id (`color_mode`,
-   `arc_*`) in several places, and the runtime must accept that.
-3. **Default providers.** The face defaults to the companion's complications through
-   `SAFE_WATCH_FACES`, which is set to the watch face package name. If they don't attach by
-   default, pick them once in the editor.
-4. **Permission names.** Check `READ_HEART_RATE`, `ACTIVITY_RECOGNITION` and the background
-   variants against the current Wear OS 6 behavior-change docs.
-5. **Battery.** Leave the face on for an hour with the screen off, then check
-   `adb shell dumpsys batterystats --charged com.neteinstein.dashface.provider` for zero
-   wakeups from the companion.
-
-See [`NOTICE.md`](NOTICE.md) for third-party assets.
+- [Development](Development.md): how it's built, tests, design tools and what still needs
+  checking on a real watch.
+- [The original prompt](docs/WATCHFACE_PROMPT.md) the watch face was built from.
+- [Third-party material](NOTICE.md): the weather icons and the Watch Face Format schema.
