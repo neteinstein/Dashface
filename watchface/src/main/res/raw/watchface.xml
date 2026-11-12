@@ -395,25 +395,46 @@
             <ListConfiguration id="color_mode">
               <ListOption id="multi">
                 <Group name="tl_steps_multi" x="0" y="0" width="450" height="450">
-                  <PartDraw x="0" y="0" width="450" height="450">
-                    <Arc centerX="225" centerY="225" width="420" height="420" startAngle="276" endAngle="354">
-                      <Stroke color="#3343A047" thickness="14" cap="ROUND"/>
-                    </Arc>
-                  </PartDraw>
-                  <PartDraw x="0" y="0" width="450" height="450">
-                    <Arc centerX="225" centerY="225" width="420" height="420" startAngle="276" endAngle="354">
-                      <Stroke color="#FFFFFFFF" thickness="14" cap="ROUND">
-                        <SweepGradient centerX="225" centerY="225" startAngle="276" endAngle="354" colors="#FF43A047 #FFFDD835 #FFE53935" positions="0 0.5 1"/>
-                      </Stroke>
-                      <Transform target="startAngle" value="354 - 78 * (clamp([STEP_PERCENT], 0, 100) / 100)"/>
-                    </Arc>
-                  </PartDraw>
-                  <PartDraw x="0" y="0" width="450" height="450">
-                    <Ellipse x="220" y="10" width="10" height="10">
-                      <Fill color="#FFFFFFFF"/>
-                    </Ellipse>
-                    <Transform target="angle" value="354 - 78 * (clamp([STEP_PERCENT], 0, 100) / 100)"/>
-                  </PartDraw>
+                  <PartImage x="179" y="12" width="20" height="20" angle="260.1" tintColor="#FFC8E6C9">
+                    <Transform target="alpha" value="(clamp([STEP_PERCENT], 0, 100) / 100) &gt; 0 ? 255 : 60"/>
+                    <Image resource="ic_step_left"/>
+                  </PartImage>
+                  <PartImage x="150" y="12" width="20" height="20" angle="252.3" tintColor="#FFB8DFBA">
+                    <Transform target="alpha" value="(clamp([STEP_PERCENT], 0, 100) / 100) &gt; 0.1 ? 255 : 60"/>
+                    <Image resource="ic_step_right"/>
+                  </PartImage>
+                  <PartImage x="126" y="29" width="20" height="20" angle="244.5" tintColor="#FFA8D8AA">
+                    <Transform target="alpha" value="(clamp([STEP_PERCENT], 0, 100) / 100) &gt; 0.2 ? 255 : 60"/>
+                    <Image resource="ic_step_left"/>
+                  </PartImage>
+                  <PartImage x="98" y="37" width="20" height="20" angle="236.7" tintColor="#FF99D19B">
+                    <Transform target="alpha" value="(clamp([STEP_PERCENT], 0, 100) / 100) &gt; 0.3 ? 255 : 60"/>
+                    <Image resource="ic_step_right"/>
+                  </PartImage>
+                  <PartImage x="79" y="59" width="20" height="20" angle="228.9" tintColor="#FF89CA8C">
+                    <Transform target="alpha" value="(clamp([STEP_PERCENT], 0, 100) / 100) &gt; 0.4 ? 255 : 60"/>
+                    <Image resource="ic_step_left"/>
+                  </PartImage>
+                  <PartImage x="54" y="75" width="20" height="20" angle="221.1" tintColor="#FF7AC37D">
+                    <Transform target="alpha" value="(clamp([STEP_PERCENT], 0, 100) / 100) &gt; 0.5 ? 255 : 60"/>
+                    <Image resource="ic_step_right"/>
+                  </PartImage>
+                  <PartImage x="42" y="102" width="20" height="20" angle="213.3" tintColor="#FF6CBA70">
+                    <Transform target="alpha" value="(clamp([STEP_PERCENT], 0, 100) / 100) &gt; 0.6 ? 255 : 60"/>
+                    <Image resource="ic_step_left"/>
+                  </PartImage>
+                  <PartImage x="22" y="123" width="20" height="20" angle="205.5" tintColor="#FF5FB162">
+                    <Transform target="alpha" value="(clamp([STEP_PERCENT], 0, 100) / 100) &gt; 0.7 ? 255 : 60"/>
+                    <Image resource="ic_step_right"/>
+                  </PartImage>
+                  <PartImage x="18" y="152" width="20" height="20" angle="197.7" tintColor="#FF51A955">
+                    <Transform target="alpha" value="(clamp([STEP_PERCENT], 0, 100) / 100) &gt; 0.8 ? 255 : 60"/>
+                    <Image resource="ic_step_left"/>
+                  </PartImage>
+                  <PartImage x="5" y="178" width="20" height="20" angle="189.9" tintColor="#FF43A047">
+                    <Transform target="alpha" value="(clamp([STEP_PERCENT], 0, 100) / 100) &gt; 0.9 ? 255 : 60"/>
+                    <Image resource="ic_step_right"/>
+                  </PartImage>
                   <Group name="badge_tl_steps" x="37" y="160" width="48" height="42">
                     <Condition>
                       <Expressions>
@@ -421,12 +442,12 @@
                         <Expression name="c1"><![CDATA[(clamp([STEP_PERCENT], 0, 100) / 100) < 0.67]]></Expression>
                       </Expressions>
                       <Compare expression="c0">
-                        <PartImage x="14" y="0" width="20" height="20" tintColor="#FFE53935">
+                        <PartImage x="14" y="0" width="20" height="20" tintColor="#FFC8E6C9">
                           <Image resource="ic_metric_steps"/>
                         </PartImage>
                       </Compare>
                       <Compare expression="c1">
-                        <PartImage x="14" y="0" width="20" height="20" tintColor="#FFFDD835">
+                        <PartImage x="14" y="0" width="20" height="20" tintColor="#FF81C784">
                           <Image resource="ic_metric_steps"/>
                         </PartImage>
                       </Compare>
@@ -451,24 +472,46 @@
               </ListOption>
               <ListOption id="single">
                 <Group name="tl_steps_single" x="0" y="0" width="450" height="450">
-                  <PartDraw x="0" y="0" width="450" height="450">
-                    <Arc centerX="225" centerY="225" width="420" height="420" startAngle="276" endAngle="354">
-                      <Stroke color="#26FFFFFF" thickness="14" cap="ROUND"/>
-                    </Arc>
-                  </PartDraw>
-                  <PartDraw x="0" y="0" width="450" height="450">
-                    <Transform target="alpha" value="90 + 165 * (clamp([STEP_PERCENT], 0, 100) / 100)"/>
-                    <Arc centerX="225" centerY="225" width="420" height="420" startAngle="276" endAngle="354">
-                      <Stroke color="[CONFIGURATION.accent.0]" thickness="14" cap="ROUND"/>
-                      <Transform target="startAngle" value="354 - 78 * (clamp([STEP_PERCENT], 0, 100) / 100)"/>
-                    </Arc>
-                  </PartDraw>
-                  <PartDraw x="0" y="0" width="450" height="450">
-                    <Ellipse x="220" y="10" width="10" height="10">
-                      <Fill color="#FFFFFFFF"/>
-                    </Ellipse>
-                    <Transform target="angle" value="354 - 78 * (clamp([STEP_PERCENT], 0, 100) / 100)"/>
-                  </PartDraw>
+                  <PartImage x="179" y="12" width="20" height="20" angle="260.1" tintColor="[CONFIGURATION.accent.0]">
+                    <Transform target="alpha" value="(clamp([STEP_PERCENT], 0, 100) / 100) &gt; 0 ? (90 + 165 * (clamp([STEP_PERCENT], 0, 100) / 100)) : 60"/>
+                    <Image resource="ic_step_left"/>
+                  </PartImage>
+                  <PartImage x="150" y="12" width="20" height="20" angle="252.3" tintColor="[CONFIGURATION.accent.0]">
+                    <Transform target="alpha" value="(clamp([STEP_PERCENT], 0, 100) / 100) &gt; 0.1 ? (90 + 165 * (clamp([STEP_PERCENT], 0, 100) / 100)) : 60"/>
+                    <Image resource="ic_step_right"/>
+                  </PartImage>
+                  <PartImage x="126" y="29" width="20" height="20" angle="244.5" tintColor="[CONFIGURATION.accent.0]">
+                    <Transform target="alpha" value="(clamp([STEP_PERCENT], 0, 100) / 100) &gt; 0.2 ? (90 + 165 * (clamp([STEP_PERCENT], 0, 100) / 100)) : 60"/>
+                    <Image resource="ic_step_left"/>
+                  </PartImage>
+                  <PartImage x="98" y="37" width="20" height="20" angle="236.7" tintColor="[CONFIGURATION.accent.0]">
+                    <Transform target="alpha" value="(clamp([STEP_PERCENT], 0, 100) / 100) &gt; 0.3 ? (90 + 165 * (clamp([STEP_PERCENT], 0, 100) / 100)) : 60"/>
+                    <Image resource="ic_step_right"/>
+                  </PartImage>
+                  <PartImage x="79" y="59" width="20" height="20" angle="228.9" tintColor="[CONFIGURATION.accent.0]">
+                    <Transform target="alpha" value="(clamp([STEP_PERCENT], 0, 100) / 100) &gt; 0.4 ? (90 + 165 * (clamp([STEP_PERCENT], 0, 100) / 100)) : 60"/>
+                    <Image resource="ic_step_left"/>
+                  </PartImage>
+                  <PartImage x="54" y="75" width="20" height="20" angle="221.1" tintColor="[CONFIGURATION.accent.0]">
+                    <Transform target="alpha" value="(clamp([STEP_PERCENT], 0, 100) / 100) &gt; 0.5 ? (90 + 165 * (clamp([STEP_PERCENT], 0, 100) / 100)) : 60"/>
+                    <Image resource="ic_step_right"/>
+                  </PartImage>
+                  <PartImage x="42" y="102" width="20" height="20" angle="213.3" tintColor="[CONFIGURATION.accent.0]">
+                    <Transform target="alpha" value="(clamp([STEP_PERCENT], 0, 100) / 100) &gt; 0.6 ? (90 + 165 * (clamp([STEP_PERCENT], 0, 100) / 100)) : 60"/>
+                    <Image resource="ic_step_left"/>
+                  </PartImage>
+                  <PartImage x="22" y="123" width="20" height="20" angle="205.5" tintColor="[CONFIGURATION.accent.0]">
+                    <Transform target="alpha" value="(clamp([STEP_PERCENT], 0, 100) / 100) &gt; 0.7 ? (90 + 165 * (clamp([STEP_PERCENT], 0, 100) / 100)) : 60"/>
+                    <Image resource="ic_step_right"/>
+                  </PartImage>
+                  <PartImage x="18" y="152" width="20" height="20" angle="197.7" tintColor="[CONFIGURATION.accent.0]">
+                    <Transform target="alpha" value="(clamp([STEP_PERCENT], 0, 100) / 100) &gt; 0.8 ? (90 + 165 * (clamp([STEP_PERCENT], 0, 100) / 100)) : 60"/>
+                    <Image resource="ic_step_left"/>
+                  </PartImage>
+                  <PartImage x="5" y="178" width="20" height="20" angle="189.9" tintColor="[CONFIGURATION.accent.0]">
+                    <Transform target="alpha" value="(clamp([STEP_PERCENT], 0, 100) / 100) &gt; 0.9 ? (90 + 165 * (clamp([STEP_PERCENT], 0, 100) / 100)) : 60"/>
+                    <Image resource="ic_step_right"/>
+                  </PartImage>
                   <Group name="badge_tl_steps" x="37" y="160" width="48" height="42">
                     <PartImage x="14" y="0" width="20" height="20" tintColor="[CONFIGURATION.accent.0]">
                       <Image resource="ic_metric_steps"/>
@@ -934,25 +977,46 @@
             <ListConfiguration id="color_mode">
               <ListOption id="multi">
                 <Group name="tr_steps_multi" x="0" y="0" width="450" height="450">
-                  <PartDraw x="0" y="0" width="450" height="450">
-                    <Arc centerX="225" centerY="225" width="420" height="420" startAngle="6" endAngle="84">
-                      <Stroke color="#3343A047" thickness="14" cap="ROUND"/>
-                    </Arc>
-                  </PartDraw>
-                  <PartDraw x="0" y="0" width="450" height="450">
-                    <Arc centerX="225" centerY="225" width="420" height="420" startAngle="6" endAngle="84">
-                      <Stroke color="#FFFFFFFF" thickness="14" cap="ROUND">
-                        <SweepGradient centerX="225" centerY="225" startAngle="6" endAngle="84" colors="#FFE53935 #FFFDD835 #FF43A047" positions="0 0.5 1"/>
-                      </Stroke>
-                      <Transform target="endAngle" value="6 + 78 * (clamp([STEP_PERCENT], 0, 100) / 100)"/>
-                    </Arc>
-                  </PartDraw>
-                  <PartDraw x="0" y="0" width="450" height="450">
-                    <Ellipse x="220" y="10" width="10" height="10">
-                      <Fill color="#FFFFFFFF"/>
-                    </Ellipse>
-                    <Transform target="angle" value="6 + 78 * (clamp([STEP_PERCENT], 0, 100) / 100)"/>
-                  </PartDraw>
+                  <PartImage x="252" y="5" width="20" height="20" angle="99.9" tintColor="#FFC8E6C9">
+                    <Transform target="alpha" value="(clamp([STEP_PERCENT], 0, 100) / 100) &gt; 0 ? 255 : 60"/>
+                    <Image resource="ic_step_left"/>
+                  </PartImage>
+                  <PartImage x="278" y="18" width="20" height="20" angle="107.7" tintColor="#FFB8DFBA">
+                    <Transform target="alpha" value="(clamp([STEP_PERCENT], 0, 100) / 100) &gt; 0.1 ? 255 : 60"/>
+                    <Image resource="ic_step_right"/>
+                  </PartImage>
+                  <PartImage x="307" y="22" width="20" height="20" angle="115.5" tintColor="#FFA8D8AA">
+                    <Transform target="alpha" value="(clamp([STEP_PERCENT], 0, 100) / 100) &gt; 0.2 ? 255 : 60"/>
+                    <Image resource="ic_step_left"/>
+                  </PartImage>
+                  <PartImage x="328" y="42" width="20" height="20" angle="123.3" tintColor="#FF99D19B">
+                    <Transform target="alpha" value="(clamp([STEP_PERCENT], 0, 100) / 100) &gt; 0.3 ? 255 : 60"/>
+                    <Image resource="ic_step_right"/>
+                  </PartImage>
+                  <PartImage x="355" y="54" width="20" height="20" angle="131.1" tintColor="#FF89CA8C">
+                    <Transform target="alpha" value="(clamp([STEP_PERCENT], 0, 100) / 100) &gt; 0.4 ? 255 : 60"/>
+                    <Image resource="ic_step_left"/>
+                  </PartImage>
+                  <PartImage x="371" y="79" width="20" height="20" angle="138.9" tintColor="#FF7AC37D">
+                    <Transform target="alpha" value="(clamp([STEP_PERCENT], 0, 100) / 100) &gt; 0.5 ? 255 : 60"/>
+                    <Image resource="ic_step_right"/>
+                  </PartImage>
+                  <PartImage x="393" y="98" width="20" height="20" angle="146.7" tintColor="#FF6CBA70">
+                    <Transform target="alpha" value="(clamp([STEP_PERCENT], 0, 100) / 100) &gt; 0.6 ? 255 : 60"/>
+                    <Image resource="ic_step_left"/>
+                  </PartImage>
+                  <PartImage x="401" y="126" width="20" height="20" angle="154.5" tintColor="#FF5FB162">
+                    <Transform target="alpha" value="(clamp([STEP_PERCENT], 0, 100) / 100) &gt; 0.7 ? 255 : 60"/>
+                    <Image resource="ic_step_right"/>
+                  </PartImage>
+                  <PartImage x="418" y="150" width="20" height="20" angle="162.3" tintColor="#FF51A955">
+                    <Transform target="alpha" value="(clamp([STEP_PERCENT], 0, 100) / 100) &gt; 0.8 ? 255 : 60"/>
+                    <Image resource="ic_step_left"/>
+                  </PartImage>
+                  <PartImage x="418" y="179" width="20" height="20" angle="170.1" tintColor="#FF43A047">
+                    <Transform target="alpha" value="(clamp([STEP_PERCENT], 0, 100) / 100) &gt; 0.9 ? 255 : 60"/>
+                    <Image resource="ic_step_right"/>
+                  </PartImage>
                   <Group name="badge_tr_steps" x="365" y="160" width="48" height="42">
                     <Condition>
                       <Expressions>
@@ -960,12 +1024,12 @@
                         <Expression name="c1"><![CDATA[(clamp([STEP_PERCENT], 0, 100) / 100) < 0.67]]></Expression>
                       </Expressions>
                       <Compare expression="c0">
-                        <PartImage x="14" y="0" width="20" height="20" tintColor="#FFE53935">
+                        <PartImage x="14" y="0" width="20" height="20" tintColor="#FFC8E6C9">
                           <Image resource="ic_metric_steps"/>
                         </PartImage>
                       </Compare>
                       <Compare expression="c1">
-                        <PartImage x="14" y="0" width="20" height="20" tintColor="#FFFDD835">
+                        <PartImage x="14" y="0" width="20" height="20" tintColor="#FF81C784">
                           <Image resource="ic_metric_steps"/>
                         </PartImage>
                       </Compare>
@@ -990,24 +1054,46 @@
               </ListOption>
               <ListOption id="single">
                 <Group name="tr_steps_single" x="0" y="0" width="450" height="450">
-                  <PartDraw x="0" y="0" width="450" height="450">
-                    <Arc centerX="225" centerY="225" width="420" height="420" startAngle="6" endAngle="84">
-                      <Stroke color="#26FFFFFF" thickness="14" cap="ROUND"/>
-                    </Arc>
-                  </PartDraw>
-                  <PartDraw x="0" y="0" width="450" height="450">
-                    <Transform target="alpha" value="90 + 165 * (clamp([STEP_PERCENT], 0, 100) / 100)"/>
-                    <Arc centerX="225" centerY="225" width="420" height="420" startAngle="6" endAngle="84">
-                      <Stroke color="[CONFIGURATION.accent.0]" thickness="14" cap="ROUND"/>
-                      <Transform target="endAngle" value="6 + 78 * (clamp([STEP_PERCENT], 0, 100) / 100)"/>
-                    </Arc>
-                  </PartDraw>
-                  <PartDraw x="0" y="0" width="450" height="450">
-                    <Ellipse x="220" y="10" width="10" height="10">
-                      <Fill color="#FFFFFFFF"/>
-                    </Ellipse>
-                    <Transform target="angle" value="6 + 78 * (clamp([STEP_PERCENT], 0, 100) / 100)"/>
-                  </PartDraw>
+                  <PartImage x="252" y="5" width="20" height="20" angle="99.9" tintColor="[CONFIGURATION.accent.0]">
+                    <Transform target="alpha" value="(clamp([STEP_PERCENT], 0, 100) / 100) &gt; 0 ? (90 + 165 * (clamp([STEP_PERCENT], 0, 100) / 100)) : 60"/>
+                    <Image resource="ic_step_left"/>
+                  </PartImage>
+                  <PartImage x="278" y="18" width="20" height="20" angle="107.7" tintColor="[CONFIGURATION.accent.0]">
+                    <Transform target="alpha" value="(clamp([STEP_PERCENT], 0, 100) / 100) &gt; 0.1 ? (90 + 165 * (clamp([STEP_PERCENT], 0, 100) / 100)) : 60"/>
+                    <Image resource="ic_step_right"/>
+                  </PartImage>
+                  <PartImage x="307" y="22" width="20" height="20" angle="115.5" tintColor="[CONFIGURATION.accent.0]">
+                    <Transform target="alpha" value="(clamp([STEP_PERCENT], 0, 100) / 100) &gt; 0.2 ? (90 + 165 * (clamp([STEP_PERCENT], 0, 100) / 100)) : 60"/>
+                    <Image resource="ic_step_left"/>
+                  </PartImage>
+                  <PartImage x="328" y="42" width="20" height="20" angle="123.3" tintColor="[CONFIGURATION.accent.0]">
+                    <Transform target="alpha" value="(clamp([STEP_PERCENT], 0, 100) / 100) &gt; 0.3 ? (90 + 165 * (clamp([STEP_PERCENT], 0, 100) / 100)) : 60"/>
+                    <Image resource="ic_step_right"/>
+                  </PartImage>
+                  <PartImage x="355" y="54" width="20" height="20" angle="131.1" tintColor="[CONFIGURATION.accent.0]">
+                    <Transform target="alpha" value="(clamp([STEP_PERCENT], 0, 100) / 100) &gt; 0.4 ? (90 + 165 * (clamp([STEP_PERCENT], 0, 100) / 100)) : 60"/>
+                    <Image resource="ic_step_left"/>
+                  </PartImage>
+                  <PartImage x="371" y="79" width="20" height="20" angle="138.9" tintColor="[CONFIGURATION.accent.0]">
+                    <Transform target="alpha" value="(clamp([STEP_PERCENT], 0, 100) / 100) &gt; 0.5 ? (90 + 165 * (clamp([STEP_PERCENT], 0, 100) / 100)) : 60"/>
+                    <Image resource="ic_step_right"/>
+                  </PartImage>
+                  <PartImage x="393" y="98" width="20" height="20" angle="146.7" tintColor="[CONFIGURATION.accent.0]">
+                    <Transform target="alpha" value="(clamp([STEP_PERCENT], 0, 100) / 100) &gt; 0.6 ? (90 + 165 * (clamp([STEP_PERCENT], 0, 100) / 100)) : 60"/>
+                    <Image resource="ic_step_left"/>
+                  </PartImage>
+                  <PartImage x="401" y="126" width="20" height="20" angle="154.5" tintColor="[CONFIGURATION.accent.0]">
+                    <Transform target="alpha" value="(clamp([STEP_PERCENT], 0, 100) / 100) &gt; 0.7 ? (90 + 165 * (clamp([STEP_PERCENT], 0, 100) / 100)) : 60"/>
+                    <Image resource="ic_step_right"/>
+                  </PartImage>
+                  <PartImage x="418" y="150" width="20" height="20" angle="162.3" tintColor="[CONFIGURATION.accent.0]">
+                    <Transform target="alpha" value="(clamp([STEP_PERCENT], 0, 100) / 100) &gt; 0.8 ? (90 + 165 * (clamp([STEP_PERCENT], 0, 100) / 100)) : 60"/>
+                    <Image resource="ic_step_left"/>
+                  </PartImage>
+                  <PartImage x="418" y="179" width="20" height="20" angle="170.1" tintColor="[CONFIGURATION.accent.0]">
+                    <Transform target="alpha" value="(clamp([STEP_PERCENT], 0, 100) / 100) &gt; 0.9 ? (90 + 165 * (clamp([STEP_PERCENT], 0, 100) / 100)) : 60"/>
+                    <Image resource="ic_step_right"/>
+                  </PartImage>
                   <Group name="badge_tr_steps" x="365" y="160" width="48" height="42">
                     <PartImage x="14" y="0" width="20" height="20" tintColor="[CONFIGURATION.accent.0]">
                       <Image resource="ic_metric_steps"/>
@@ -1473,25 +1559,46 @@
             <ListConfiguration id="color_mode">
               <ListOption id="multi">
                 <Group name="bl_steps_multi" x="0" y="0" width="450" height="450">
-                  <PartDraw x="0" y="0" width="450" height="450">
-                    <Arc centerX="225" centerY="225" width="420" height="420" startAngle="186" endAngle="264">
-                      <Stroke color="#3343A047" thickness="14" cap="ROUND"/>
-                    </Arc>
-                  </PartDraw>
-                  <PartDraw x="0" y="0" width="450" height="450">
-                    <Arc centerX="225" centerY="225" width="420" height="420" startAngle="186" endAngle="264">
-                      <Stroke color="#FFFFFFFF" thickness="14" cap="ROUND">
-                        <SweepGradient centerX="225" centerY="225" startAngle="186" endAngle="264" colors="#FFE53935 #FFFDD835 #FF43A047" positions="0 0.5 1"/>
-                      </Stroke>
-                      <Transform target="endAngle" value="186 + 78 * (clamp([STEP_PERCENT], 0, 100) / 100)"/>
-                    </Arc>
-                  </PartDraw>
-                  <PartDraw x="0" y="0" width="450" height="450">
-                    <Ellipse x="220" y="10" width="10" height="10">
-                      <Fill color="#FFFFFFFF"/>
-                    </Ellipse>
-                    <Transform target="angle" value="186 + 78 * (clamp([STEP_PERCENT], 0, 100) / 100)"/>
-                  </PartDraw>
+                  <PartImage x="178" y="425" width="20" height="20" angle="279.9" tintColor="#FFC8E6C9">
+                    <Transform target="alpha" value="(clamp([STEP_PERCENT], 0, 100) / 100) &gt; 0 ? 255 : 60"/>
+                    <Image resource="ic_step_left"/>
+                  </PartImage>
+                  <PartImage x="152" y="412" width="20" height="20" angle="287.7" tintColor="#FFB8DFBA">
+                    <Transform target="alpha" value="(clamp([STEP_PERCENT], 0, 100) / 100) &gt; 0.1 ? 255 : 60"/>
+                    <Image resource="ic_step_right"/>
+                  </PartImage>
+                  <PartImage x="123" y="408" width="20" height="20" angle="295.5" tintColor="#FFA8D8AA">
+                    <Transform target="alpha" value="(clamp([STEP_PERCENT], 0, 100) / 100) &gt; 0.2 ? 255 : 60"/>
+                    <Image resource="ic_step_left"/>
+                  </PartImage>
+                  <PartImage x="102" y="388" width="20" height="20" angle="303.3" tintColor="#FF99D19B">
+                    <Transform target="alpha" value="(clamp([STEP_PERCENT], 0, 100) / 100) &gt; 0.3 ? 255 : 60"/>
+                    <Image resource="ic_step_right"/>
+                  </PartImage>
+                  <PartImage x="75" y="376" width="20" height="20" angle="311.1" tintColor="#FF89CA8C">
+                    <Transform target="alpha" value="(clamp([STEP_PERCENT], 0, 100) / 100) &gt; 0.4 ? 255 : 60"/>
+                    <Image resource="ic_step_left"/>
+                  </PartImage>
+                  <PartImage x="59" y="351" width="20" height="20" angle="318.9" tintColor="#FF7AC37D">
+                    <Transform target="alpha" value="(clamp([STEP_PERCENT], 0, 100) / 100) &gt; 0.5 ? 255 : 60"/>
+                    <Image resource="ic_step_right"/>
+                  </PartImage>
+                  <PartImage x="37" y="332" width="20" height="20" angle="326.7" tintColor="#FF6CBA70">
+                    <Transform target="alpha" value="(clamp([STEP_PERCENT], 0, 100) / 100) &gt; 0.6 ? 255 : 60"/>
+                    <Image resource="ic_step_left"/>
+                  </PartImage>
+                  <PartImage x="29" y="304" width="20" height="20" angle="334.5" tintColor="#FF5FB162">
+                    <Transform target="alpha" value="(clamp([STEP_PERCENT], 0, 100) / 100) &gt; 0.7 ? 255 : 60"/>
+                    <Image resource="ic_step_right"/>
+                  </PartImage>
+                  <PartImage x="12" y="280" width="20" height="20" angle="342.3" tintColor="#FF51A955">
+                    <Transform target="alpha" value="(clamp([STEP_PERCENT], 0, 100) / 100) &gt; 0.8 ? 255 : 60"/>
+                    <Image resource="ic_step_left"/>
+                  </PartImage>
+                  <PartImage x="12" y="251" width="20" height="20" angle="350.1" tintColor="#FF43A047">
+                    <Transform target="alpha" value="(clamp([STEP_PERCENT], 0, 100) / 100) &gt; 0.9 ? 255 : 60"/>
+                    <Image resource="ic_step_right"/>
+                  </PartImage>
                   <Group name="badge_bl_steps" x="37" y="248" width="48" height="42">
                     <Condition>
                       <Expressions>
@@ -1499,12 +1606,12 @@
                         <Expression name="c1"><![CDATA[(clamp([STEP_PERCENT], 0, 100) / 100) < 0.67]]></Expression>
                       </Expressions>
                       <Compare expression="c0">
-                        <PartImage x="14" y="0" width="20" height="20" tintColor="#FFE53935">
+                        <PartImage x="14" y="0" width="20" height="20" tintColor="#FFC8E6C9">
                           <Image resource="ic_metric_steps"/>
                         </PartImage>
                       </Compare>
                       <Compare expression="c1">
-                        <PartImage x="14" y="0" width="20" height="20" tintColor="#FFFDD835">
+                        <PartImage x="14" y="0" width="20" height="20" tintColor="#FF81C784">
                           <Image resource="ic_metric_steps"/>
                         </PartImage>
                       </Compare>
@@ -1529,24 +1636,46 @@
               </ListOption>
               <ListOption id="single">
                 <Group name="bl_steps_single" x="0" y="0" width="450" height="450">
-                  <PartDraw x="0" y="0" width="450" height="450">
-                    <Arc centerX="225" centerY="225" width="420" height="420" startAngle="186" endAngle="264">
-                      <Stroke color="#26FFFFFF" thickness="14" cap="ROUND"/>
-                    </Arc>
-                  </PartDraw>
-                  <PartDraw x="0" y="0" width="450" height="450">
-                    <Transform target="alpha" value="90 + 165 * (clamp([STEP_PERCENT], 0, 100) / 100)"/>
-                    <Arc centerX="225" centerY="225" width="420" height="420" startAngle="186" endAngle="264">
-                      <Stroke color="[CONFIGURATION.accent.0]" thickness="14" cap="ROUND"/>
-                      <Transform target="endAngle" value="186 + 78 * (clamp([STEP_PERCENT], 0, 100) / 100)"/>
-                    </Arc>
-                  </PartDraw>
-                  <PartDraw x="0" y="0" width="450" height="450">
-                    <Ellipse x="220" y="10" width="10" height="10">
-                      <Fill color="#FFFFFFFF"/>
-                    </Ellipse>
-                    <Transform target="angle" value="186 + 78 * (clamp([STEP_PERCENT], 0, 100) / 100)"/>
-                  </PartDraw>
+                  <PartImage x="178" y="425" width="20" height="20" angle="279.9" tintColor="[CONFIGURATION.accent.0]">
+                    <Transform target="alpha" value="(clamp([STEP_PERCENT], 0, 100) / 100) &gt; 0 ? (90 + 165 * (clamp([STEP_PERCENT], 0, 100) / 100)) : 60"/>
+                    <Image resource="ic_step_left"/>
+                  </PartImage>
+                  <PartImage x="152" y="412" width="20" height="20" angle="287.7" tintColor="[CONFIGURATION.accent.0]">
+                    <Transform target="alpha" value="(clamp([STEP_PERCENT], 0, 100) / 100) &gt; 0.1 ? (90 + 165 * (clamp([STEP_PERCENT], 0, 100) / 100)) : 60"/>
+                    <Image resource="ic_step_right"/>
+                  </PartImage>
+                  <PartImage x="123" y="408" width="20" height="20" angle="295.5" tintColor="[CONFIGURATION.accent.0]">
+                    <Transform target="alpha" value="(clamp([STEP_PERCENT], 0, 100) / 100) &gt; 0.2 ? (90 + 165 * (clamp([STEP_PERCENT], 0, 100) / 100)) : 60"/>
+                    <Image resource="ic_step_left"/>
+                  </PartImage>
+                  <PartImage x="102" y="388" width="20" height="20" angle="303.3" tintColor="[CONFIGURATION.accent.0]">
+                    <Transform target="alpha" value="(clamp([STEP_PERCENT], 0, 100) / 100) &gt; 0.3 ? (90 + 165 * (clamp([STEP_PERCENT], 0, 100) / 100)) : 60"/>
+                    <Image resource="ic_step_right"/>
+                  </PartImage>
+                  <PartImage x="75" y="376" width="20" height="20" angle="311.1" tintColor="[CONFIGURATION.accent.0]">
+                    <Transform target="alpha" value="(clamp([STEP_PERCENT], 0, 100) / 100) &gt; 0.4 ? (90 + 165 * (clamp([STEP_PERCENT], 0, 100) / 100)) : 60"/>
+                    <Image resource="ic_step_left"/>
+                  </PartImage>
+                  <PartImage x="59" y="351" width="20" height="20" angle="318.9" tintColor="[CONFIGURATION.accent.0]">
+                    <Transform target="alpha" value="(clamp([STEP_PERCENT], 0, 100) / 100) &gt; 0.5 ? (90 + 165 * (clamp([STEP_PERCENT], 0, 100) / 100)) : 60"/>
+                    <Image resource="ic_step_right"/>
+                  </PartImage>
+                  <PartImage x="37" y="332" width="20" height="20" angle="326.7" tintColor="[CONFIGURATION.accent.0]">
+                    <Transform target="alpha" value="(clamp([STEP_PERCENT], 0, 100) / 100) &gt; 0.6 ? (90 + 165 * (clamp([STEP_PERCENT], 0, 100) / 100)) : 60"/>
+                    <Image resource="ic_step_left"/>
+                  </PartImage>
+                  <PartImage x="29" y="304" width="20" height="20" angle="334.5" tintColor="[CONFIGURATION.accent.0]">
+                    <Transform target="alpha" value="(clamp([STEP_PERCENT], 0, 100) / 100) &gt; 0.7 ? (90 + 165 * (clamp([STEP_PERCENT], 0, 100) / 100)) : 60"/>
+                    <Image resource="ic_step_right"/>
+                  </PartImage>
+                  <PartImage x="12" y="280" width="20" height="20" angle="342.3" tintColor="[CONFIGURATION.accent.0]">
+                    <Transform target="alpha" value="(clamp([STEP_PERCENT], 0, 100) / 100) &gt; 0.8 ? (90 + 165 * (clamp([STEP_PERCENT], 0, 100) / 100)) : 60"/>
+                    <Image resource="ic_step_left"/>
+                  </PartImage>
+                  <PartImage x="12" y="251" width="20" height="20" angle="350.1" tintColor="[CONFIGURATION.accent.0]">
+                    <Transform target="alpha" value="(clamp([STEP_PERCENT], 0, 100) / 100) &gt; 0.9 ? (90 + 165 * (clamp([STEP_PERCENT], 0, 100) / 100)) : 60"/>
+                    <Image resource="ic_step_right"/>
+                  </PartImage>
                   <Group name="badge_bl_steps" x="37" y="248" width="48" height="42">
                     <PartImage x="14" y="0" width="20" height="20" tintColor="[CONFIGURATION.accent.0]">
                       <Image resource="ic_metric_steps"/>
@@ -2012,25 +2141,46 @@
             <ListConfiguration id="color_mode">
               <ListOption id="multi">
                 <Group name="br_steps_multi" x="0" y="0" width="450" height="450">
-                  <PartDraw x="0" y="0" width="450" height="450">
-                    <Arc centerX="225" centerY="225" width="420" height="420" startAngle="96" endAngle="174">
-                      <Stroke color="#3343A047" thickness="14" cap="ROUND"/>
-                    </Arc>
-                  </PartDraw>
-                  <PartDraw x="0" y="0" width="450" height="450">
-                    <Arc centerX="225" centerY="225" width="420" height="420" startAngle="96" endAngle="174">
-                      <Stroke color="#FFFFFFFF" thickness="14" cap="ROUND">
-                        <SweepGradient centerX="225" centerY="225" startAngle="96" endAngle="174" colors="#FF43A047 #FFFDD835 #FFE53935" positions="0 0.5 1"/>
-                      </Stroke>
-                      <Transform target="startAngle" value="174 - 78 * (clamp([STEP_PERCENT], 0, 100) / 100)"/>
-                    </Arc>
-                  </PartDraw>
-                  <PartDraw x="0" y="0" width="450" height="450">
-                    <Ellipse x="220" y="10" width="10" height="10">
-                      <Fill color="#FFFFFFFF"/>
-                    </Ellipse>
-                    <Transform target="angle" value="174 - 78 * (clamp([STEP_PERCENT], 0, 100) / 100)"/>
-                  </PartDraw>
+                  <PartImage x="251" y="418" width="20" height="20" angle="80.1" tintColor="#FFC8E6C9">
+                    <Transform target="alpha" value="(clamp([STEP_PERCENT], 0, 100) / 100) &gt; 0 ? 255 : 60"/>
+                    <Image resource="ic_step_left"/>
+                  </PartImage>
+                  <PartImage x="280" y="418" width="20" height="20" angle="72.3" tintColor="#FFB8DFBA">
+                    <Transform target="alpha" value="(clamp([STEP_PERCENT], 0, 100) / 100) &gt; 0.1 ? 255 : 60"/>
+                    <Image resource="ic_step_right"/>
+                  </PartImage>
+                  <PartImage x="304" y="401" width="20" height="20" angle="64.5" tintColor="#FFA8D8AA">
+                    <Transform target="alpha" value="(clamp([STEP_PERCENT], 0, 100) / 100) &gt; 0.2 ? 255 : 60"/>
+                    <Image resource="ic_step_left"/>
+                  </PartImage>
+                  <PartImage x="332" y="393" width="20" height="20" angle="56.7" tintColor="#FF99D19B">
+                    <Transform target="alpha" value="(clamp([STEP_PERCENT], 0, 100) / 100) &gt; 0.3 ? 255 : 60"/>
+                    <Image resource="ic_step_right"/>
+                  </PartImage>
+                  <PartImage x="351" y="371" width="20" height="20" angle="48.9" tintColor="#FF89CA8C">
+                    <Transform target="alpha" value="(clamp([STEP_PERCENT], 0, 100) / 100) &gt; 0.4 ? 255 : 60"/>
+                    <Image resource="ic_step_left"/>
+                  </PartImage>
+                  <PartImage x="376" y="355" width="20" height="20" angle="41.1" tintColor="#FF7AC37D">
+                    <Transform target="alpha" value="(clamp([STEP_PERCENT], 0, 100) / 100) &gt; 0.5 ? 255 : 60"/>
+                    <Image resource="ic_step_right"/>
+                  </PartImage>
+                  <PartImage x="388" y="328" width="20" height="20" angle="33.3" tintColor="#FF6CBA70">
+                    <Transform target="alpha" value="(clamp([STEP_PERCENT], 0, 100) / 100) &gt; 0.6 ? 255 : 60"/>
+                    <Image resource="ic_step_left"/>
+                  </PartImage>
+                  <PartImage x="408" y="307" width="20" height="20" angle="25.5" tintColor="#FF5FB162">
+                    <Transform target="alpha" value="(clamp([STEP_PERCENT], 0, 100) / 100) &gt; 0.7 ? 255 : 60"/>
+                    <Image resource="ic_step_right"/>
+                  </PartImage>
+                  <PartImage x="412" y="278" width="20" height="20" angle="17.7" tintColor="#FF51A955">
+                    <Transform target="alpha" value="(clamp([STEP_PERCENT], 0, 100) / 100) &gt; 0.8 ? 255 : 60"/>
+                    <Image resource="ic_step_left"/>
+                  </PartImage>
+                  <PartImage x="425" y="252" width="20" height="20" angle="9.9" tintColor="#FF43A047">
+                    <Transform target="alpha" value="(clamp([STEP_PERCENT], 0, 100) / 100) &gt; 0.9 ? 255 : 60"/>
+                    <Image resource="ic_step_right"/>
+                  </PartImage>
                   <Group name="badge_br_steps" x="365" y="248" width="48" height="42">
                     <Condition>
                       <Expressions>
@@ -2038,12 +2188,12 @@
                         <Expression name="c1"><![CDATA[(clamp([STEP_PERCENT], 0, 100) / 100) < 0.67]]></Expression>
                       </Expressions>
                       <Compare expression="c0">
-                        <PartImage x="14" y="0" width="20" height="20" tintColor="#FFE53935">
+                        <PartImage x="14" y="0" width="20" height="20" tintColor="#FFC8E6C9">
                           <Image resource="ic_metric_steps"/>
                         </PartImage>
                       </Compare>
                       <Compare expression="c1">
-                        <PartImage x="14" y="0" width="20" height="20" tintColor="#FFFDD835">
+                        <PartImage x="14" y="0" width="20" height="20" tintColor="#FF81C784">
                           <Image resource="ic_metric_steps"/>
                         </PartImage>
                       </Compare>
@@ -2068,24 +2218,46 @@
               </ListOption>
               <ListOption id="single">
                 <Group name="br_steps_single" x="0" y="0" width="450" height="450">
-                  <PartDraw x="0" y="0" width="450" height="450">
-                    <Arc centerX="225" centerY="225" width="420" height="420" startAngle="96" endAngle="174">
-                      <Stroke color="#26FFFFFF" thickness="14" cap="ROUND"/>
-                    </Arc>
-                  </PartDraw>
-                  <PartDraw x="0" y="0" width="450" height="450">
-                    <Transform target="alpha" value="90 + 165 * (clamp([STEP_PERCENT], 0, 100) / 100)"/>
-                    <Arc centerX="225" centerY="225" width="420" height="420" startAngle="96" endAngle="174">
-                      <Stroke color="[CONFIGURATION.accent.0]" thickness="14" cap="ROUND"/>
-                      <Transform target="startAngle" value="174 - 78 * (clamp([STEP_PERCENT], 0, 100) / 100)"/>
-                    </Arc>
-                  </PartDraw>
-                  <PartDraw x="0" y="0" width="450" height="450">
-                    <Ellipse x="220" y="10" width="10" height="10">
-                      <Fill color="#FFFFFFFF"/>
-                    </Ellipse>
-                    <Transform target="angle" value="174 - 78 * (clamp([STEP_PERCENT], 0, 100) / 100)"/>
-                  </PartDraw>
+                  <PartImage x="251" y="418" width="20" height="20" angle="80.1" tintColor="[CONFIGURATION.accent.0]">
+                    <Transform target="alpha" value="(clamp([STEP_PERCENT], 0, 100) / 100) &gt; 0 ? (90 + 165 * (clamp([STEP_PERCENT], 0, 100) / 100)) : 60"/>
+                    <Image resource="ic_step_left"/>
+                  </PartImage>
+                  <PartImage x="280" y="418" width="20" height="20" angle="72.3" tintColor="[CONFIGURATION.accent.0]">
+                    <Transform target="alpha" value="(clamp([STEP_PERCENT], 0, 100) / 100) &gt; 0.1 ? (90 + 165 * (clamp([STEP_PERCENT], 0, 100) / 100)) : 60"/>
+                    <Image resource="ic_step_right"/>
+                  </PartImage>
+                  <PartImage x="304" y="401" width="20" height="20" angle="64.5" tintColor="[CONFIGURATION.accent.0]">
+                    <Transform target="alpha" value="(clamp([STEP_PERCENT], 0, 100) / 100) &gt; 0.2 ? (90 + 165 * (clamp([STEP_PERCENT], 0, 100) / 100)) : 60"/>
+                    <Image resource="ic_step_left"/>
+                  </PartImage>
+                  <PartImage x="332" y="393" width="20" height="20" angle="56.7" tintColor="[CONFIGURATION.accent.0]">
+                    <Transform target="alpha" value="(clamp([STEP_PERCENT], 0, 100) / 100) &gt; 0.3 ? (90 + 165 * (clamp([STEP_PERCENT], 0, 100) / 100)) : 60"/>
+                    <Image resource="ic_step_right"/>
+                  </PartImage>
+                  <PartImage x="351" y="371" width="20" height="20" angle="48.9" tintColor="[CONFIGURATION.accent.0]">
+                    <Transform target="alpha" value="(clamp([STEP_PERCENT], 0, 100) / 100) &gt; 0.4 ? (90 + 165 * (clamp([STEP_PERCENT], 0, 100) / 100)) : 60"/>
+                    <Image resource="ic_step_left"/>
+                  </PartImage>
+                  <PartImage x="376" y="355" width="20" height="20" angle="41.1" tintColor="[CONFIGURATION.accent.0]">
+                    <Transform target="alpha" value="(clamp([STEP_PERCENT], 0, 100) / 100) &gt; 0.5 ? (90 + 165 * (clamp([STEP_PERCENT], 0, 100) / 100)) : 60"/>
+                    <Image resource="ic_step_right"/>
+                  </PartImage>
+                  <PartImage x="388" y="328" width="20" height="20" angle="33.3" tintColor="[CONFIGURATION.accent.0]">
+                    <Transform target="alpha" value="(clamp([STEP_PERCENT], 0, 100) / 100) &gt; 0.6 ? (90 + 165 * (clamp([STEP_PERCENT], 0, 100) / 100)) : 60"/>
+                    <Image resource="ic_step_left"/>
+                  </PartImage>
+                  <PartImage x="408" y="307" width="20" height="20" angle="25.5" tintColor="[CONFIGURATION.accent.0]">
+                    <Transform target="alpha" value="(clamp([STEP_PERCENT], 0, 100) / 100) &gt; 0.7 ? (90 + 165 * (clamp([STEP_PERCENT], 0, 100) / 100)) : 60"/>
+                    <Image resource="ic_step_right"/>
+                  </PartImage>
+                  <PartImage x="412" y="278" width="20" height="20" angle="17.7" tintColor="[CONFIGURATION.accent.0]">
+                    <Transform target="alpha" value="(clamp([STEP_PERCENT], 0, 100) / 100) &gt; 0.8 ? (90 + 165 * (clamp([STEP_PERCENT], 0, 100) / 100)) : 60"/>
+                    <Image resource="ic_step_left"/>
+                  </PartImage>
+                  <PartImage x="425" y="252" width="20" height="20" angle="9.9" tintColor="[CONFIGURATION.accent.0]">
+                    <Transform target="alpha" value="(clamp([STEP_PERCENT], 0, 100) / 100) &gt; 0.9 ? (90 + 165 * (clamp([STEP_PERCENT], 0, 100) / 100)) : 60"/>
+                    <Image resource="ic_step_right"/>
+                  </PartImage>
                   <Group name="badge_br_steps" x="365" y="248" width="48" height="42">
                     <PartImage x="14" y="0" width="20" height="20" tintColor="[CONFIGURATION.accent.0]">
                       <Image resource="ic_metric_steps"/>

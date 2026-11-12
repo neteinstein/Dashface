@@ -63,7 +63,7 @@ your **skin temperature** on watches that measure it.
 | Where | What | Colors |
 |---|---|---|
 | 🔋 Top-left bar | Battery, as 10 bars that light up as it charges | Light blue for the low bars → darker blue for the full ones |
-| 👣 Top-right bar | Steps toward your daily goal | Red → yellow → green as you walk |
+| 👣 Top-right footprints | Steps toward your daily goal | A trail of 10 footprints; one lights up per 10 % of the goal |
 | 〰️ Bottom-left bar | Stress | Green → yellow → red |
 | ❤️ Bottom-right bar | Heart rate (40–180 bpm) | Calm red → urgent red |
 | ⛅ Top row | Weather icon and temperature for **morning · afternoon · night** | – |

@@ -93,6 +93,11 @@ flowchart LR
 - **Segmented battery.** Battery (`segments=10` in the generator) is drawn as 10 short arcs,
   each with a static color from light (low) to darker (full). Bar *i* is shown when the level is
   above *i*/10 through an `alpha` transform, so 1–10 % lights the first bar. No knob.
+- **Footprint trail for steps.** Steps (`footprints=10` in the generator) is drawn as 10
+  footprint images walking outward along the arc, alternating left and right foot
+  (`ic_step_left` / `ic_step_right`, rotated to follow the arc). Each has a static tint from pale
+  to vivid green, and footprint *i* goes from dim to fully lit when the goal progress is above
+  *i*/10, through the same `alpha` transform as the battery bars.
 - **Ambient mode** keeps only the time, the date and a small battery bar (10 rounded bars and
   the percentage) in the first meeting row's place. Both meeting rows, the bezel bars, the
   weather, the thermometer and gradients are hidden. The battery bar is a top-level group with

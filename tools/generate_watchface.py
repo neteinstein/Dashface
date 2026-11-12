@@ -83,6 +83,7 @@ class Metric:
     preview_value: float
     preview_text: str
     segments: int = 0  # > 0: drawn as that many separate bars instead of a continuous fill
+    footprints: int = 0  # > 0: drawn as a trail of that many footprints instead of a bar
 
 
 COMP_NORM = (
@@ -104,9 +105,10 @@ METRICS = {
     ),
     "steps": Metric(
         "steps", "Steps", "ic_metric_steps",
-        ("#FFE53935", "#FFFDD835", "#FF43A047"),
+        # Footprints: the first steps of the day are pale green, the last ones vivid.
+        ("#FFC8E6C9", "#FF81C784", "#FF43A047"),
         "clamp([STEP_PERCENT], 0, 100) / 100",
-        "[STEP_COUNT]", "%s", 0.48, "4821",
+        "[STEP_COUNT]", "%s", 0.48, "4821", footprints=10,
     ),
     "stress": Metric(
         "stress", "Stress", "ic_metric_stress",
@@ -307,7 +309,7 @@ def segment_angles(corner: Corner, i: int, n: int) -> tuple[float, float]:
 
 def segment_color(metric: Metric, i: int) -> str:
     """Bar i's color along the metric's colors (first bar = first color, last = last)."""
-    n = metric.segments
+    n = metric.segments or metric.footprints
     return "#FF" + lerp_color(metric.colors, i / (n - 1) if n > 1 else 1)[1:]
 
 
@@ -336,6 +338,50 @@ def draw_segments(x: Xml, corner: Corner, metric: Metric, single: bool, placehol
         x.leaf("Stroke", color=lit, thickness=STROKE, cap="BUTT")
         x.close("Arc")
         x.close("PartDraw")
+
+
+FOOT_PX = 20  # drawn size of one footprint image
+FOOT_SIDE = 3.5  # px each footprint sits off the arc's center line (left / right foot)
+FOOT_DIM_ALPHA = 60  # alpha of footprints not reached yet
+
+
+def footprint_spots(corner: Corner, n: int) -> list[tuple[float, float, float, str]]:
+    """(x, y, rotation, image) of footprint i of n, walking from the corner's anchor outward.
+
+    Footprints alternate left/right foot, sit slightly off the arc's center line on their side,
+    and are rotated so their toes point along the walking direction.
+    """
+    out = []
+    seg = SPAN / n
+    sign = -1 if corner.anchor_at_end else 1
+    for i in range(n):
+        a = corner.anchor + sign * (i + 0.5) * seg
+        heading = a + 90 * sign  # tangent to the arc, in the walking direction
+        left = i % 2 == 0
+        # The walker's left is toward the outside of the ring when walking clockwise.
+        r = ARC_R + (FOOT_SIDE if left == (sign > 0) else -FOOT_SIDE)
+        px, py = polar(a, r)
+        out.append((px - FOOT_PX / 2, py - FOOT_PX / 2, heading % 360,
+                    "ic_step_left" if left else "ic_step_right"))
+    return out
+
+
+def draw_footprints(x: Xml, corner: Corner, metric: Metric, single: bool) -> None:
+    """Footprint trail: footprint i (of n) lights up once the value is above i/n.
+
+    Every footprint is always drawn; ones not reached yet are dim. Colors are static tints,
+    only the alpha depends on the value.
+    """
+    n = metric.footprints
+    for i, (fx, fy, rot, image) in enumerate(footprint_spots(corner, n)):
+        tint = "[CONFIGURATION.accent.0]" if single else segment_color(metric, i)
+        on = f"(90 + 165 * ({metric.value}))" if single else "255"
+        x.open("PartImage", x=round(fx), y=round(fy), width=FOOT_PX, height=FOOT_PX,
+               angle=round(rot, 2), tintColor=tint)
+        x.leaf("Transform", target="alpha",
+               value=f"({metric.value}) > {i / n:g} ? {on} : {FOOT_DIM_ALPHA}")
+        x.leaf("Image", resource=image)
+        x.close("PartImage")
 
 
 def draw_knob(x: Xml, corner: Corner, metric: Metric) -> None:
@@ -401,6 +447,8 @@ def draw_metric(x: Xml, corner: Corner, metric: Metric, placeholder: bool = Fals
         full_group(x, f"{corner.id}_{metric.id}_{mode}")
         if metric.segments:
             draw_segments(x, corner, metric, single, placeholder)
+        elif metric.footprints:
+            draw_footprints(x, corner, metric, single)
         else:
             track = "#26FFFFFF" if single else with_alpha(metric.colors[-1], 0x33)
             draw_track(x, corner, track)
@@ -930,6 +978,13 @@ def make_icons() -> None:
     d.ellipse([14 * s, 7 * s, 20 * s, 17 * s], fill=w)
     d.ellipse([14.5 * s, 18 * s, 19 * s, 22 * s], fill=w)
     save(img, "ic_metric_steps")
+    # One footprint (toes up) for the steps trail, plus its mirror for the other foot.
+    img, d = canvas()
+    d.ellipse([6.5 * s, 1 * s, 16.5 * s, 14.5 * s], fill=w)
+    d.ellipse([8 * s, 15.5 * s, 14.5 * s, 23 * s], fill=w)
+    save(img, "ic_step_left")
+    img.transpose(Image.FLIP_LEFT_RIGHT).resize((24, 24), Image.LANCZOS).save(
+        out / "ic_step_right.png", optimize=True)
     # Heart
     img, d = canvas()
     d.ellipse([2.5 * s, 4 * s, 12.5 * s, 14 * s], fill=w)
@@ -1038,6 +1093,15 @@ def build_preview_svg(layout: dict[str, str], single_accent: str | None = None,
                         col = tip_col or hex6(segment_color(metric, k))
                         parts.append(f'<path d="{svg_arc(a0, a1, ARC_R)}" stroke="{col}" '
                                      f'stroke-opacity="{fill_opacity:.2f}" stroke-width="{STROKE}" fill="none"/>')
+            elif metric.footprints:
+                n = metric.footprints
+                for k, (fx, fy, rot, image) in enumerate(footprint_spots(corner, n)):
+                    col = tip_col or hex6(segment_color(metric, k))
+                    op = (fill_opacity if v > k / n else FOOT_DIM_ALPHA / 255)
+                    parts.append(
+                        f'<image x="{round(fx)}" y="{round(fy)}" width="{FOOT_PX}" height="{FOOT_PX}" '
+                        f'opacity="{op:.2f}" transform="rotate({rot:.2f} {round(fx) + FOOT_PX / 2} '
+                        f'{round(fy) + FOOT_PX / 2})" href="{icons_dir}{image}_{col[1:]}.png"/>')
             else:
                 parts.extend(preview_continuous(corner, metric, v, track, tip_col, fill_opacity, single_accent))
             bx, by = badge_origin(corner)
@@ -1142,6 +1206,19 @@ def write_previews() -> None:
             tinted = Image.new("RGBA", base.size, (r, g, b, 255))
             tinted.putalpha(base.getchannel("A"))
             tinted.save(icons / f"{metric.icon}_{col[1:]}.png")
+    # Pre-tinted footprints: one per trail color and accent.
+    for metric in METRICS.values():
+        if not metric.footprints:
+            continue
+        cols = ({hex6(segment_color(metric, k)) for k in range(metric.footprints)}
+                | {hex6(a[2]) for a in ACCENTS})
+        for image in ("ic_step_left", "ic_step_right"):
+            base = Image.open(drawables / f"{image}.png").convert("RGBA")
+            for col in cols:
+                r, g, b = (int(col[i:i + 2], 16) for i in (1, 3, 5))
+                tinted = Image.new("RGBA", base.size, (r, g, b, 255))
+                tinted.putalpha(base.getchannel("A"))
+                tinted.save(icons / f"{image}_{col[1:]}.png")
     for png in drawables.glob("ic_wx_*.png"):
         (icons / png.name).write_bytes(png.read_bytes())
 
