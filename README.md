@@ -1,6 +1,8 @@
 <div align="center">
 
-<img src="docs/screenshots/preview.png" width="300" height="300" alt="Dashface: health bars around the bezel, weather for morning, afternoon and night, the date, a large digital time, the next two meetings and a skin temperature thermometer">
+<a href="docs/video/dashface.mp4"><img src="docs/video/dashface.gif" width="720" alt="Dashface in 22 seconds: health bars sweep in around the bezel; the next meetings switch to Now and then No more meetings today; the layout and accent colors change; the skin temperature thermometer turns from blue to orange to red; ambient mode"></a>
+
+<sub>Plays on its own, without sound. <a href="docs/video/dashface.mp4">Watch with sound (MP4)</a>.</sub>
 
 # Dashface
 
