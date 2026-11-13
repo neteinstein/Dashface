@@ -87,23 +87,27 @@ flowchart LR
 - **Skin temperature is a one-shot read.** `UPDATE_PERIOD_SECONDS = 900` (the platform
   minimum), which the system honors only while the face is visible. Each request registers a
   listener, takes the first plausible sample (5 s timeout) and unregisters.
-- **Cheap colors.** Every bar, footprint, beat and weather icon has a static color (or tint);
-  only its `alpha` follows the value, with no color math at draw time. A metric without
-  `segments` or `trail` falls back to a continuous arc with a static `SweepGradient`.
+- **Cheap colors.** Every bar, footprint and beat has a static color (or tint); only its
+  `alpha` follows the value, with no color math at draw time. The stress bar picks one of four
+  static colors through a `Condition`. A metric without `segments`, `trail` or `bands` falls
+  back to a continuous arc with a static `SweepGradient`.
 - **Segmented battery.** Battery (`segments=10` in the generator) is drawn as 10 short arcs,
   each with a static color from light (low) to darker (full). Bar *i* is shown when the level is
   above *i*/10 through an `alpha` transform, so 1–10 % lights the first bar. No knob.
-- **Image trails for steps, heart rate and stress.** A metric's `trail` is a row of small white
+- **Banded stress bar.** Stress (`STRESS_BANDS` in the generator) is one solid arc from the
+  anchor to the value, with no track: the rest of the arc stays black. Its color comes from the
+  level, for the whole bar: green up to 25, yellow up to 50, red up to 75, dark red above. One
+  `Condition` branch per band, so only one arc is drawn, and the badge icon takes the same
+  color. At 0 nothing is drawn (a round cap would leave a dot). The placeholder (no source yet)
+  draws no bar, only `--`. In single color mode the bar is the accent, brighter as it fills.
+- **Image trails for steps and heart rate.** A metric's `trail` is a row of small white
   images along its arc, tinted at runtime. Image *i* of *n* goes from dim to lit once the value
-  is above *i*/*n*, through the same `alpha` transform as the battery bars. The stress
-  placeholder (no source yet) is the dim trail.
+  is above *i*/*n*, through the same `alpha` transform as the battery bars.
   - Steps: 10 footprints (`ic_step_left` / `ic_step_right`) walking outward, alternating feet,
     rotated to the walking direction, pale to vivid green.
   - Heart rate: 8 heartbeat pieces (`ic_ecg_0..7`, `ECG_*` in the generator) laid along the
     arc with the spike toward the center, each taller than the last. The beat is symmetric so
     the same image works whichever way a corner's arc runs.
-  - Stress: 5 upright weather icons (`ic_stress_0..4`): sun, sun and cloud, cloud, rain,
-    thunderstorm.
 - **Ambient mode** keeps only the time, the date and a small battery bar (10 rounded bars and
   the percentage) in the first meeting row's place. Both meeting rows, the bezel bars, the
   weather, the thermometer and gradients are hidden. The battery bar is a top-level group with
