@@ -223,31 +223,31 @@
                       <Stroke color="#FF1E88E5" thickness="14" cap="BUTT"/>
                     </Arc>
                   </PartDraw>
-                  <Group name="badge_tl_battery" x="37" y="160" width="48" height="42">
+                  <Group name="badge_tl_battery" x="29" y="157" width="64" height="48">
                     <Condition>
                       <Expressions>
                         <Expression name="c0"><![CDATA[(clamp([BATTERY_PERCENT], 0, 100) / 100) < 0.34]]></Expression>
                         <Expression name="c1"><![CDATA[(clamp([BATTERY_PERCENT], 0, 100) / 100) < 0.67]]></Expression>
                       </Expressions>
                       <Compare expression="c0">
-                        <PartImage x="14" y="0" width="20" height="20" tintColor="#FFB3E5FC">
+                        <PartImage x="22" y="0" width="20" height="20" tintColor="#FFB3E5FC">
                           <Image resource="ic_metric_battery"/>
                         </PartImage>
                       </Compare>
                       <Compare expression="c1">
-                        <PartImage x="14" y="0" width="20" height="20" tintColor="#FF4FC3F7">
+                        <PartImage x="22" y="0" width="20" height="20" tintColor="#FF4FC3F7">
                           <Image resource="ic_metric_battery"/>
                         </PartImage>
                       </Compare>
                       <Default>
-                        <PartImage x="14" y="0" width="20" height="20" tintColor="#FF1E88E5">
+                        <PartImage x="22" y="0" width="20" height="20" tintColor="#FF1E88E5">
                           <Image resource="ic_metric_battery"/>
                         </PartImage>
                       </Default>
                     </Condition>
-                    <PartText x="0" y="22" width="48" height="22">
+                    <PartText x="0" y="22" width="64" height="26">
                       <Text align="CENTER">
-                        <Font family="SYNC_TO_DEVICE" size="16" color="#FFFFFFFF" weight="SEMI_BOLD">
+                        <Font family="SYNC_TO_DEVICE" size="20" color="#FFFFFFFF" weight="SEMI_BOLD">
                           <Template>
                             <![CDATA[%s%%]]>
                             <Parameter expression="[BATTERY_PERCENT]"/>
@@ -370,13 +370,13 @@
                       <Stroke color="[CONFIGURATION.accent.0]" thickness="14" cap="BUTT"/>
                     </Arc>
                   </PartDraw>
-                  <Group name="badge_tl_battery" x="37" y="160" width="48" height="42">
-                    <PartImage x="14" y="0" width="20" height="20" tintColor="[CONFIGURATION.accent.0]">
+                  <Group name="badge_tl_battery" x="29" y="157" width="64" height="48">
+                    <PartImage x="22" y="0" width="20" height="20" tintColor="[CONFIGURATION.accent.0]">
                       <Image resource="ic_metric_battery"/>
                     </PartImage>
-                    <PartText x="0" y="22" width="48" height="22">
+                    <PartText x="0" y="22" width="64" height="26">
                       <Text align="CENTER">
-                        <Font family="SYNC_TO_DEVICE" size="16" color="#FFFFFFFF" weight="SEMI_BOLD">
+                        <Font family="SYNC_TO_DEVICE" size="20" color="#FFFFFFFF" weight="SEMI_BOLD">
                           <Template>
                             <![CDATA[%s%%]]>
                             <Parameter expression="[BATTERY_PERCENT]"/>
@@ -435,31 +435,31 @@
                     <Transform target="alpha" value="(clamp([STEP_PERCENT], 0, 100) / 100) &gt; 0.9 ? 255 : 60"/>
                     <Image resource="ic_step_right"/>
                   </PartImage>
-                  <Group name="badge_tl_steps" x="37" y="160" width="48" height="42">
+                  <Group name="badge_tl_steps" x="29" y="157" width="64" height="48">
                     <Condition>
                       <Expressions>
                         <Expression name="c0"><![CDATA[(clamp([STEP_PERCENT], 0, 100) / 100) < 0.34]]></Expression>
                         <Expression name="c1"><![CDATA[(clamp([STEP_PERCENT], 0, 100) / 100) < 0.67]]></Expression>
                       </Expressions>
                       <Compare expression="c0">
-                        <PartImage x="14" y="0" width="20" height="20" tintColor="#FFC8E6C9">
+                        <PartImage x="22" y="0" width="20" height="20" tintColor="#FFC8E6C9">
                           <Image resource="ic_metric_steps"/>
                         </PartImage>
                       </Compare>
                       <Compare expression="c1">
-                        <PartImage x="14" y="0" width="20" height="20" tintColor="#FF81C784">
+                        <PartImage x="22" y="0" width="20" height="20" tintColor="#FF81C784">
                           <Image resource="ic_metric_steps"/>
                         </PartImage>
                       </Compare>
                       <Default>
-                        <PartImage x="14" y="0" width="20" height="20" tintColor="#FF43A047">
+                        <PartImage x="22" y="0" width="20" height="20" tintColor="#FF43A047">
                           <Image resource="ic_metric_steps"/>
                         </PartImage>
                       </Default>
                     </Condition>
-                    <PartText x="0" y="22" width="48" height="22">
+                    <PartText x="0" y="22" width="64" height="26">
                       <Text align="CENTER">
-                        <Font family="SYNC_TO_DEVICE" size="16" color="#FFFFFFFF" weight="SEMI_BOLD">
+                        <Font family="SYNC_TO_DEVICE" size="20" color="#FFFFFFFF" weight="SEMI_BOLD">
                           <Template>
                             <![CDATA[%s]]>
                             <Parameter expression="[STEP_COUNT]"/>
@@ -512,13 +512,13 @@
                     <Transform target="alpha" value="(clamp([STEP_PERCENT], 0, 100) / 100) &gt; 0.9 ? (90 + 165 * (clamp([STEP_PERCENT], 0, 100) / 100)) : 60"/>
                     <Image resource="ic_step_right"/>
                   </PartImage>
-                  <Group name="badge_tl_steps" x="37" y="160" width="48" height="42">
-                    <PartImage x="14" y="0" width="20" height="20" tintColor="[CONFIGURATION.accent.0]">
+                  <Group name="badge_tl_steps" x="29" y="157" width="64" height="48">
+                    <PartImage x="22" y="0" width="20" height="20" tintColor="[CONFIGURATION.accent.0]">
                       <Image resource="ic_metric_steps"/>
                     </PartImage>
-                    <PartText x="0" y="22" width="48" height="22">
+                    <PartText x="0" y="22" width="64" height="26">
                       <Text align="CENTER">
-                        <Font family="SYNC_TO_DEVICE" size="16" color="#FFFFFFFF" weight="SEMI_BOLD">
+                        <Font family="SYNC_TO_DEVICE" size="20" color="#FFFFFFFF" weight="SEMI_BOLD">
                           <Template>
                             <![CDATA[%s]]>
                             <Parameter expression="[STEP_COUNT]"/>
@@ -537,28 +537,13 @@
             <ListConfiguration id="color_mode">
               <ListOption id="multi">
                 <Group name="tl_stress_multi" x="0" y="0" width="450" height="450">
-                  <PartImage x="164" y="10" width="22" height="22" tintColor="#FF43A047" alpha="60">
-                    <Image resource="ic_stress_0"/>
-                  </PartImage>
-                  <PartImage x="111" y="31" width="22" height="22" tintColor="#FFA0BC3E" alpha="60">
-                    <Image resource="ic_stress_1"/>
-                  </PartImage>
-                  <PartImage x="66" y="66" width="22" height="22" tintColor="#FFFDD835" alpha="60">
-                    <Image resource="ic_stress_2"/>
-                  </PartImage>
-                  <PartImage x="31" y="111" width="22" height="22" tintColor="#FFF18835" alpha="60">
-                    <Image resource="ic_stress_3"/>
-                  </PartImage>
-                  <PartImage x="10" y="164" width="22" height="22" tintColor="#FFE53935" alpha="60">
-                    <Image resource="ic_stress_4"/>
-                  </PartImage>
-                  <Group name="badge_tl_stress" x="37" y="160" width="48" height="42">
-                    <PartImage x="14" y="0" width="20" height="20" tintColor="#FF43A047">
+                  <Group name="badge_tl_stress" x="29" y="157" width="64" height="48">
+                    <PartImage x="22" y="0" width="20" height="20" tintColor="#FF43A047">
                       <Image resource="ic_metric_stress"/>
                     </PartImage>
-                    <PartText x="0" y="22" width="48" height="22">
+                    <PartText x="0" y="22" width="64" height="26">
                       <Text align="CENTER">
-                        <Font family="SYNC_TO_DEVICE" size="16" color="#FF9E9E9E" weight="SEMI_BOLD">
+                        <Font family="SYNC_TO_DEVICE" size="20" color="#FF9E9E9E" weight="SEMI_BOLD">
                           <Template>
                             <![CDATA[%s]]>
                             <Parameter expression="&quot;--&quot;"/>
@@ -571,28 +556,13 @@
               </ListOption>
               <ListOption id="single">
                 <Group name="tl_stress_single" x="0" y="0" width="450" height="450">
-                  <PartImage x="164" y="10" width="22" height="22" tintColor="[CONFIGURATION.accent.0]" alpha="60">
-                    <Image resource="ic_stress_0"/>
-                  </PartImage>
-                  <PartImage x="111" y="31" width="22" height="22" tintColor="[CONFIGURATION.accent.0]" alpha="60">
-                    <Image resource="ic_stress_1"/>
-                  </PartImage>
-                  <PartImage x="66" y="66" width="22" height="22" tintColor="[CONFIGURATION.accent.0]" alpha="60">
-                    <Image resource="ic_stress_2"/>
-                  </PartImage>
-                  <PartImage x="31" y="111" width="22" height="22" tintColor="[CONFIGURATION.accent.0]" alpha="60">
-                    <Image resource="ic_stress_3"/>
-                  </PartImage>
-                  <PartImage x="10" y="164" width="22" height="22" tintColor="[CONFIGURATION.accent.0]" alpha="60">
-                    <Image resource="ic_stress_4"/>
-                  </PartImage>
-                  <Group name="badge_tl_stress" x="37" y="160" width="48" height="42">
-                    <PartImage x="14" y="0" width="20" height="20" tintColor="[CONFIGURATION.accent.0]">
+                  <Group name="badge_tl_stress" x="29" y="157" width="64" height="48">
+                    <PartImage x="22" y="0" width="20" height="20" tintColor="[CONFIGURATION.accent.0]">
                       <Image resource="ic_metric_stress"/>
                     </PartImage>
-                    <PartText x="0" y="22" width="48" height="22">
+                    <PartText x="0" y="22" width="64" height="26">
                       <Text align="CENTER">
-                        <Font family="SYNC_TO_DEVICE" size="16" color="#FF9E9E9E" weight="SEMI_BOLD">
+                        <Font family="SYNC_TO_DEVICE" size="20" color="#FF9E9E9E" weight="SEMI_BOLD">
                           <Template>
                             <![CDATA[%s]]>
                             <Parameter expression="&quot;--&quot;"/>
@@ -643,31 +613,31 @@
                     <Transform target="alpha" value="(clamp(([HEART_RATE] - 40) / 140, 0, 1)) &gt; 0.875 ? 255 : 60"/>
                     <Image resource="ic_ecg_7"/>
                   </PartImage>
-                  <Group name="badge_tl_heart" x="37" y="160" width="48" height="42">
+                  <Group name="badge_tl_heart" x="29" y="157" width="64" height="48">
                     <Condition>
                       <Expressions>
                         <Expression name="c0"><![CDATA[(clamp(([HEART_RATE] - 40) / 140, 0, 1)) < 0.34]]></Expression>
                         <Expression name="c1"><![CDATA[(clamp(([HEART_RATE] - 40) / 140, 0, 1)) < 0.67]]></Expression>
                       </Expressions>
                       <Compare expression="c0">
-                        <PartImage x="14" y="0" width="20" height="20" tintColor="#FFC2575A">
+                        <PartImage x="22" y="0" width="20" height="20" tintColor="#FFC2575A">
                           <Image resource="ic_metric_heart"/>
                         </PartImage>
                       </Compare>
                       <Compare expression="c1">
-                        <PartImage x="14" y="0" width="20" height="20" tintColor="#FFC2575A">
+                        <PartImage x="22" y="0" width="20" height="20" tintColor="#FFC2575A">
                           <Image resource="ic_metric_heart"/>
                         </PartImage>
                       </Compare>
                       <Default>
-                        <PartImage x="14" y="0" width="20" height="20" tintColor="#FFFF1744">
+                        <PartImage x="22" y="0" width="20" height="20" tintColor="#FFFF1744">
                           <Image resource="ic_metric_heart"/>
                         </PartImage>
                       </Default>
                     </Condition>
-                    <PartText x="0" y="22" width="48" height="22">
+                    <PartText x="0" y="22" width="64" height="26">
                       <Text align="CENTER">
-                        <Font family="SYNC_TO_DEVICE" size="16" color="#FFFFFFFF" weight="SEMI_BOLD">
+                        <Font family="SYNC_TO_DEVICE" size="20" color="#FFFFFFFF" weight="SEMI_BOLD">
                           <Template>
                             <![CDATA[%s]]>
                             <Parameter expression="[HEART_RATE] &gt; 0 ? [HEART_RATE] : &quot;--&quot;"/>
@@ -712,13 +682,13 @@
                     <Transform target="alpha" value="(clamp(([HEART_RATE] - 40) / 140, 0, 1)) &gt; 0.875 ? (90 + 165 * (clamp(([HEART_RATE] - 40) / 140, 0, 1))) : 60"/>
                     <Image resource="ic_ecg_7"/>
                   </PartImage>
-                  <Group name="badge_tl_heart" x="37" y="160" width="48" height="42">
-                    <PartImage x="14" y="0" width="20" height="20" tintColor="[CONFIGURATION.accent.0]">
+                  <Group name="badge_tl_heart" x="29" y="157" width="64" height="48">
+                    <PartImage x="22" y="0" width="20" height="20" tintColor="[CONFIGURATION.accent.0]">
                       <Image resource="ic_metric_heart"/>
                     </PartImage>
-                    <PartText x="0" y="22" width="48" height="22">
+                    <PartText x="0" y="22" width="64" height="26">
                       <Text align="CENTER">
-                        <Font family="SYNC_TO_DEVICE" size="16" color="#FFFFFFFF" weight="SEMI_BOLD">
+                        <Font family="SYNC_TO_DEVICE" size="20" color="#FFFFFFFF" weight="SEMI_BOLD">
                           <Template>
                             <![CDATA[%s]]>
                             <Parameter expression="[HEART_RATE] &gt; 0 ? [HEART_RATE] : &quot;--&quot;"/>
@@ -852,31 +822,31 @@
                       <Stroke color="#FF1E88E5" thickness="14" cap="BUTT"/>
                     </Arc>
                   </PartDraw>
-                  <Group name="badge_tr_battery" x="365" y="160" width="48" height="42">
+                  <Group name="badge_tr_battery" x="357" y="157" width="64" height="48">
                     <Condition>
                       <Expressions>
                         <Expression name="c0"><![CDATA[(clamp([BATTERY_PERCENT], 0, 100) / 100) < 0.34]]></Expression>
                         <Expression name="c1"><![CDATA[(clamp([BATTERY_PERCENT], 0, 100) / 100) < 0.67]]></Expression>
                       </Expressions>
                       <Compare expression="c0">
-                        <PartImage x="14" y="0" width="20" height="20" tintColor="#FFB3E5FC">
+                        <PartImage x="22" y="0" width="20" height="20" tintColor="#FFB3E5FC">
                           <Image resource="ic_metric_battery"/>
                         </PartImage>
                       </Compare>
                       <Compare expression="c1">
-                        <PartImage x="14" y="0" width="20" height="20" tintColor="#FF4FC3F7">
+                        <PartImage x="22" y="0" width="20" height="20" tintColor="#FF4FC3F7">
                           <Image resource="ic_metric_battery"/>
                         </PartImage>
                       </Compare>
                       <Default>
-                        <PartImage x="14" y="0" width="20" height="20" tintColor="#FF1E88E5">
+                        <PartImage x="22" y="0" width="20" height="20" tintColor="#FF1E88E5">
                           <Image resource="ic_metric_battery"/>
                         </PartImage>
                       </Default>
                     </Condition>
-                    <PartText x="0" y="22" width="48" height="22">
+                    <PartText x="0" y="22" width="64" height="26">
                       <Text align="CENTER">
-                        <Font family="SYNC_TO_DEVICE" size="16" color="#FFFFFFFF" weight="SEMI_BOLD">
+                        <Font family="SYNC_TO_DEVICE" size="20" color="#FFFFFFFF" weight="SEMI_BOLD">
                           <Template>
                             <![CDATA[%s%%]]>
                             <Parameter expression="[BATTERY_PERCENT]"/>
@@ -999,13 +969,13 @@
                       <Stroke color="[CONFIGURATION.accent.0]" thickness="14" cap="BUTT"/>
                     </Arc>
                   </PartDraw>
-                  <Group name="badge_tr_battery" x="365" y="160" width="48" height="42">
-                    <PartImage x="14" y="0" width="20" height="20" tintColor="[CONFIGURATION.accent.0]">
+                  <Group name="badge_tr_battery" x="357" y="157" width="64" height="48">
+                    <PartImage x="22" y="0" width="20" height="20" tintColor="[CONFIGURATION.accent.0]">
                       <Image resource="ic_metric_battery"/>
                     </PartImage>
-                    <PartText x="0" y="22" width="48" height="22">
+                    <PartText x="0" y="22" width="64" height="26">
                       <Text align="CENTER">
-                        <Font family="SYNC_TO_DEVICE" size="16" color="#FFFFFFFF" weight="SEMI_BOLD">
+                        <Font family="SYNC_TO_DEVICE" size="20" color="#FFFFFFFF" weight="SEMI_BOLD">
                           <Template>
                             <![CDATA[%s%%]]>
                             <Parameter expression="[BATTERY_PERCENT]"/>
@@ -1064,31 +1034,31 @@
                     <Transform target="alpha" value="(clamp([STEP_PERCENT], 0, 100) / 100) &gt; 0.9 ? 255 : 60"/>
                     <Image resource="ic_step_right"/>
                   </PartImage>
-                  <Group name="badge_tr_steps" x="365" y="160" width="48" height="42">
+                  <Group name="badge_tr_steps" x="357" y="157" width="64" height="48">
                     <Condition>
                       <Expressions>
                         <Expression name="c0"><![CDATA[(clamp([STEP_PERCENT], 0, 100) / 100) < 0.34]]></Expression>
                         <Expression name="c1"><![CDATA[(clamp([STEP_PERCENT], 0, 100) / 100) < 0.67]]></Expression>
                       </Expressions>
                       <Compare expression="c0">
-                        <PartImage x="14" y="0" width="20" height="20" tintColor="#FFC8E6C9">
+                        <PartImage x="22" y="0" width="20" height="20" tintColor="#FFC8E6C9">
                           <Image resource="ic_metric_steps"/>
                         </PartImage>
                       </Compare>
                       <Compare expression="c1">
-                        <PartImage x="14" y="0" width="20" height="20" tintColor="#FF81C784">
+                        <PartImage x="22" y="0" width="20" height="20" tintColor="#FF81C784">
                           <Image resource="ic_metric_steps"/>
                         </PartImage>
                       </Compare>
                       <Default>
-                        <PartImage x="14" y="0" width="20" height="20" tintColor="#FF43A047">
+                        <PartImage x="22" y="0" width="20" height="20" tintColor="#FF43A047">
                           <Image resource="ic_metric_steps"/>
                         </PartImage>
                       </Default>
                     </Condition>
-                    <PartText x="0" y="22" width="48" height="22">
+                    <PartText x="0" y="22" width="64" height="26">
                       <Text align="CENTER">
-                        <Font family="SYNC_TO_DEVICE" size="16" color="#FFFFFFFF" weight="SEMI_BOLD">
+                        <Font family="SYNC_TO_DEVICE" size="20" color="#FFFFFFFF" weight="SEMI_BOLD">
                           <Template>
                             <![CDATA[%s]]>
                             <Parameter expression="[STEP_COUNT]"/>
@@ -1141,13 +1111,13 @@
                     <Transform target="alpha" value="(clamp([STEP_PERCENT], 0, 100) / 100) &gt; 0.9 ? (90 + 165 * (clamp([STEP_PERCENT], 0, 100) / 100)) : 60"/>
                     <Image resource="ic_step_right"/>
                   </PartImage>
-                  <Group name="badge_tr_steps" x="365" y="160" width="48" height="42">
-                    <PartImage x="14" y="0" width="20" height="20" tintColor="[CONFIGURATION.accent.0]">
+                  <Group name="badge_tr_steps" x="357" y="157" width="64" height="48">
+                    <PartImage x="22" y="0" width="20" height="20" tintColor="[CONFIGURATION.accent.0]">
                       <Image resource="ic_metric_steps"/>
                     </PartImage>
-                    <PartText x="0" y="22" width="48" height="22">
+                    <PartText x="0" y="22" width="64" height="26">
                       <Text align="CENTER">
-                        <Font family="SYNC_TO_DEVICE" size="16" color="#FFFFFFFF" weight="SEMI_BOLD">
+                        <Font family="SYNC_TO_DEVICE" size="20" color="#FFFFFFFF" weight="SEMI_BOLD">
                           <Template>
                             <![CDATA[%s]]>
                             <Parameter expression="[STEP_COUNT]"/>
@@ -1166,28 +1136,13 @@
             <ListConfiguration id="color_mode">
               <ListOption id="multi">
                 <Group name="tr_stress_multi" x="0" y="0" width="450" height="450">
-                  <PartImage x="264" y="10" width="22" height="22" tintColor="#FF43A047" alpha="60">
-                    <Image resource="ic_stress_0"/>
-                  </PartImage>
-                  <PartImage x="317" y="31" width="22" height="22" tintColor="#FFA0BC3E" alpha="60">
-                    <Image resource="ic_stress_1"/>
-                  </PartImage>
-                  <PartImage x="362" y="66" width="22" height="22" tintColor="#FFFDD835" alpha="60">
-                    <Image resource="ic_stress_2"/>
-                  </PartImage>
-                  <PartImage x="397" y="111" width="22" height="22" tintColor="#FFF18835" alpha="60">
-                    <Image resource="ic_stress_3"/>
-                  </PartImage>
-                  <PartImage x="418" y="164" width="22" height="22" tintColor="#FFE53935" alpha="60">
-                    <Image resource="ic_stress_4"/>
-                  </PartImage>
-                  <Group name="badge_tr_stress" x="365" y="160" width="48" height="42">
-                    <PartImage x="14" y="0" width="20" height="20" tintColor="#FF43A047">
+                  <Group name="badge_tr_stress" x="357" y="157" width="64" height="48">
+                    <PartImage x="22" y="0" width="20" height="20" tintColor="#FF43A047">
                       <Image resource="ic_metric_stress"/>
                     </PartImage>
-                    <PartText x="0" y="22" width="48" height="22">
+                    <PartText x="0" y="22" width="64" height="26">
                       <Text align="CENTER">
-                        <Font family="SYNC_TO_DEVICE" size="16" color="#FF9E9E9E" weight="SEMI_BOLD">
+                        <Font family="SYNC_TO_DEVICE" size="20" color="#FF9E9E9E" weight="SEMI_BOLD">
                           <Template>
                             <![CDATA[%s]]>
                             <Parameter expression="&quot;--&quot;"/>
@@ -1200,28 +1155,13 @@
               </ListOption>
               <ListOption id="single">
                 <Group name="tr_stress_single" x="0" y="0" width="450" height="450">
-                  <PartImage x="264" y="10" width="22" height="22" tintColor="[CONFIGURATION.accent.0]" alpha="60">
-                    <Image resource="ic_stress_0"/>
-                  </PartImage>
-                  <PartImage x="317" y="31" width="22" height="22" tintColor="[CONFIGURATION.accent.0]" alpha="60">
-                    <Image resource="ic_stress_1"/>
-                  </PartImage>
-                  <PartImage x="362" y="66" width="22" height="22" tintColor="[CONFIGURATION.accent.0]" alpha="60">
-                    <Image resource="ic_stress_2"/>
-                  </PartImage>
-                  <PartImage x="397" y="111" width="22" height="22" tintColor="[CONFIGURATION.accent.0]" alpha="60">
-                    <Image resource="ic_stress_3"/>
-                  </PartImage>
-                  <PartImage x="418" y="164" width="22" height="22" tintColor="[CONFIGURATION.accent.0]" alpha="60">
-                    <Image resource="ic_stress_4"/>
-                  </PartImage>
-                  <Group name="badge_tr_stress" x="365" y="160" width="48" height="42">
-                    <PartImage x="14" y="0" width="20" height="20" tintColor="[CONFIGURATION.accent.0]">
+                  <Group name="badge_tr_stress" x="357" y="157" width="64" height="48">
+                    <PartImage x="22" y="0" width="20" height="20" tintColor="[CONFIGURATION.accent.0]">
                       <Image resource="ic_metric_stress"/>
                     </PartImage>
-                    <PartText x="0" y="22" width="48" height="22">
+                    <PartText x="0" y="22" width="64" height="26">
                       <Text align="CENTER">
-                        <Font family="SYNC_TO_DEVICE" size="16" color="#FF9E9E9E" weight="SEMI_BOLD">
+                        <Font family="SYNC_TO_DEVICE" size="20" color="#FF9E9E9E" weight="SEMI_BOLD">
                           <Template>
                             <![CDATA[%s]]>
                             <Parameter expression="&quot;--&quot;"/>
@@ -1272,31 +1212,31 @@
                     <Transform target="alpha" value="(clamp(([HEART_RATE] - 40) / 140, 0, 1)) &gt; 0.875 ? 255 : 60"/>
                     <Image resource="ic_ecg_7"/>
                   </PartImage>
-                  <Group name="badge_tr_heart" x="365" y="160" width="48" height="42">
+                  <Group name="badge_tr_heart" x="357" y="157" width="64" height="48">
                     <Condition>
                       <Expressions>
                         <Expression name="c0"><![CDATA[(clamp(([HEART_RATE] - 40) / 140, 0, 1)) < 0.34]]></Expression>
                         <Expression name="c1"><![CDATA[(clamp(([HEART_RATE] - 40) / 140, 0, 1)) < 0.67]]></Expression>
                       </Expressions>
                       <Compare expression="c0">
-                        <PartImage x="14" y="0" width="20" height="20" tintColor="#FFC2575A">
+                        <PartImage x="22" y="0" width="20" height="20" tintColor="#FFC2575A">
                           <Image resource="ic_metric_heart"/>
                         </PartImage>
                       </Compare>
                       <Compare expression="c1">
-                        <PartImage x="14" y="0" width="20" height="20" tintColor="#FFC2575A">
+                        <PartImage x="22" y="0" width="20" height="20" tintColor="#FFC2575A">
                           <Image resource="ic_metric_heart"/>
                         </PartImage>
                       </Compare>
                       <Default>
-                        <PartImage x="14" y="0" width="20" height="20" tintColor="#FFFF1744">
+                        <PartImage x="22" y="0" width="20" height="20" tintColor="#FFFF1744">
                           <Image resource="ic_metric_heart"/>
                         </PartImage>
                       </Default>
                     </Condition>
-                    <PartText x="0" y="22" width="48" height="22">
+                    <PartText x="0" y="22" width="64" height="26">
                       <Text align="CENTER">
-                        <Font family="SYNC_TO_DEVICE" size="16" color="#FFFFFFFF" weight="SEMI_BOLD">
+                        <Font family="SYNC_TO_DEVICE" size="20" color="#FFFFFFFF" weight="SEMI_BOLD">
                           <Template>
                             <![CDATA[%s]]>
                             <Parameter expression="[HEART_RATE] &gt; 0 ? [HEART_RATE] : &quot;--&quot;"/>
@@ -1341,13 +1281,13 @@
                     <Transform target="alpha" value="(clamp(([HEART_RATE] - 40) / 140, 0, 1)) &gt; 0.875 ? (90 + 165 * (clamp(([HEART_RATE] - 40) / 140, 0, 1))) : 60"/>
                     <Image resource="ic_ecg_7"/>
                   </PartImage>
-                  <Group name="badge_tr_heart" x="365" y="160" width="48" height="42">
-                    <PartImage x="14" y="0" width="20" height="20" tintColor="[CONFIGURATION.accent.0]">
+                  <Group name="badge_tr_heart" x="357" y="157" width="64" height="48">
+                    <PartImage x="22" y="0" width="20" height="20" tintColor="[CONFIGURATION.accent.0]">
                       <Image resource="ic_metric_heart"/>
                     </PartImage>
-                    <PartText x="0" y="22" width="48" height="22">
+                    <PartText x="0" y="22" width="64" height="26">
                       <Text align="CENTER">
-                        <Font family="SYNC_TO_DEVICE" size="16" color="#FFFFFFFF" weight="SEMI_BOLD">
+                        <Font family="SYNC_TO_DEVICE" size="20" color="#FFFFFFFF" weight="SEMI_BOLD">
                           <Template>
                             <![CDATA[%s]]>
                             <Parameter expression="[HEART_RATE] &gt; 0 ? [HEART_RATE] : &quot;--&quot;"/>
@@ -1481,31 +1421,31 @@
                       <Stroke color="#FF1E88E5" thickness="14" cap="BUTT"/>
                     </Arc>
                   </PartDraw>
-                  <Group name="badge_bl_battery" x="37" y="248" width="48" height="42">
+                  <Group name="badge_bl_battery" x="29" y="245" width="64" height="48">
                     <Condition>
                       <Expressions>
                         <Expression name="c0"><![CDATA[(clamp([BATTERY_PERCENT], 0, 100) / 100) < 0.34]]></Expression>
                         <Expression name="c1"><![CDATA[(clamp([BATTERY_PERCENT], 0, 100) / 100) < 0.67]]></Expression>
                       </Expressions>
                       <Compare expression="c0">
-                        <PartImage x="14" y="0" width="20" height="20" tintColor="#FFB3E5FC">
+                        <PartImage x="22" y="0" width="20" height="20" tintColor="#FFB3E5FC">
                           <Image resource="ic_metric_battery"/>
                         </PartImage>
                       </Compare>
                       <Compare expression="c1">
-                        <PartImage x="14" y="0" width="20" height="20" tintColor="#FF4FC3F7">
+                        <PartImage x="22" y="0" width="20" height="20" tintColor="#FF4FC3F7">
                           <Image resource="ic_metric_battery"/>
                         </PartImage>
                       </Compare>
                       <Default>
-                        <PartImage x="14" y="0" width="20" height="20" tintColor="#FF1E88E5">
+                        <PartImage x="22" y="0" width="20" height="20" tintColor="#FF1E88E5">
                           <Image resource="ic_metric_battery"/>
                         </PartImage>
                       </Default>
                     </Condition>
-                    <PartText x="0" y="22" width="48" height="22">
+                    <PartText x="0" y="22" width="64" height="26">
                       <Text align="CENTER">
-                        <Font family="SYNC_TO_DEVICE" size="16" color="#FFFFFFFF" weight="SEMI_BOLD">
+                        <Font family="SYNC_TO_DEVICE" size="20" color="#FFFFFFFF" weight="SEMI_BOLD">
                           <Template>
                             <![CDATA[%s%%]]>
                             <Parameter expression="[BATTERY_PERCENT]"/>
@@ -1628,13 +1568,13 @@
                       <Stroke color="[CONFIGURATION.accent.0]" thickness="14" cap="BUTT"/>
                     </Arc>
                   </PartDraw>
-                  <Group name="badge_bl_battery" x="37" y="248" width="48" height="42">
-                    <PartImage x="14" y="0" width="20" height="20" tintColor="[CONFIGURATION.accent.0]">
+                  <Group name="badge_bl_battery" x="29" y="245" width="64" height="48">
+                    <PartImage x="22" y="0" width="20" height="20" tintColor="[CONFIGURATION.accent.0]">
                       <Image resource="ic_metric_battery"/>
                     </PartImage>
-                    <PartText x="0" y="22" width="48" height="22">
+                    <PartText x="0" y="22" width="64" height="26">
                       <Text align="CENTER">
-                        <Font family="SYNC_TO_DEVICE" size="16" color="#FFFFFFFF" weight="SEMI_BOLD">
+                        <Font family="SYNC_TO_DEVICE" size="20" color="#FFFFFFFF" weight="SEMI_BOLD">
                           <Template>
                             <![CDATA[%s%%]]>
                             <Parameter expression="[BATTERY_PERCENT]"/>
@@ -1693,31 +1633,31 @@
                     <Transform target="alpha" value="(clamp([STEP_PERCENT], 0, 100) / 100) &gt; 0.9 ? 255 : 60"/>
                     <Image resource="ic_step_right"/>
                   </PartImage>
-                  <Group name="badge_bl_steps" x="37" y="248" width="48" height="42">
+                  <Group name="badge_bl_steps" x="29" y="245" width="64" height="48">
                     <Condition>
                       <Expressions>
                         <Expression name="c0"><![CDATA[(clamp([STEP_PERCENT], 0, 100) / 100) < 0.34]]></Expression>
                         <Expression name="c1"><![CDATA[(clamp([STEP_PERCENT], 0, 100) / 100) < 0.67]]></Expression>
                       </Expressions>
                       <Compare expression="c0">
-                        <PartImage x="14" y="0" width="20" height="20" tintColor="#FFC8E6C9">
+                        <PartImage x="22" y="0" width="20" height="20" tintColor="#FFC8E6C9">
                           <Image resource="ic_metric_steps"/>
                         </PartImage>
                       </Compare>
                       <Compare expression="c1">
-                        <PartImage x="14" y="0" width="20" height="20" tintColor="#FF81C784">
+                        <PartImage x="22" y="0" width="20" height="20" tintColor="#FF81C784">
                           <Image resource="ic_metric_steps"/>
                         </PartImage>
                       </Compare>
                       <Default>
-                        <PartImage x="14" y="0" width="20" height="20" tintColor="#FF43A047">
+                        <PartImage x="22" y="0" width="20" height="20" tintColor="#FF43A047">
                           <Image resource="ic_metric_steps"/>
                         </PartImage>
                       </Default>
                     </Condition>
-                    <PartText x="0" y="22" width="48" height="22">
+                    <PartText x="0" y="22" width="64" height="26">
                       <Text align="CENTER">
-                        <Font family="SYNC_TO_DEVICE" size="16" color="#FFFFFFFF" weight="SEMI_BOLD">
+                        <Font family="SYNC_TO_DEVICE" size="20" color="#FFFFFFFF" weight="SEMI_BOLD">
                           <Template>
                             <![CDATA[%s]]>
                             <Parameter expression="[STEP_COUNT]"/>
@@ -1770,13 +1710,13 @@
                     <Transform target="alpha" value="(clamp([STEP_PERCENT], 0, 100) / 100) &gt; 0.9 ? (90 + 165 * (clamp([STEP_PERCENT], 0, 100) / 100)) : 60"/>
                     <Image resource="ic_step_right"/>
                   </PartImage>
-                  <Group name="badge_bl_steps" x="37" y="248" width="48" height="42">
-                    <PartImage x="14" y="0" width="20" height="20" tintColor="[CONFIGURATION.accent.0]">
+                  <Group name="badge_bl_steps" x="29" y="245" width="64" height="48">
+                    <PartImage x="22" y="0" width="20" height="20" tintColor="[CONFIGURATION.accent.0]">
                       <Image resource="ic_metric_steps"/>
                     </PartImage>
-                    <PartText x="0" y="22" width="48" height="22">
+                    <PartText x="0" y="22" width="64" height="26">
                       <Text align="CENTER">
-                        <Font family="SYNC_TO_DEVICE" size="16" color="#FFFFFFFF" weight="SEMI_BOLD">
+                        <Font family="SYNC_TO_DEVICE" size="20" color="#FFFFFFFF" weight="SEMI_BOLD">
                           <Template>
                             <![CDATA[%s]]>
                             <Parameter expression="[STEP_COUNT]"/>
@@ -1795,28 +1735,13 @@
             <ListConfiguration id="color_mode">
               <ListOption id="multi">
                 <Group name="bl_stress_multi" x="0" y="0" width="450" height="450">
-                  <PartImage x="164" y="418" width="22" height="22" tintColor="#FF43A047" alpha="60">
-                    <Image resource="ic_stress_0"/>
-                  </PartImage>
-                  <PartImage x="111" y="397" width="22" height="22" tintColor="#FFA0BC3E" alpha="60">
-                    <Image resource="ic_stress_1"/>
-                  </PartImage>
-                  <PartImage x="66" y="362" width="22" height="22" tintColor="#FFFDD835" alpha="60">
-                    <Image resource="ic_stress_2"/>
-                  </PartImage>
-                  <PartImage x="31" y="317" width="22" height="22" tintColor="#FFF18835" alpha="60">
-                    <Image resource="ic_stress_3"/>
-                  </PartImage>
-                  <PartImage x="10" y="264" width="22" height="22" tintColor="#FFE53935" alpha="60">
-                    <Image resource="ic_stress_4"/>
-                  </PartImage>
-                  <Group name="badge_bl_stress" x="37" y="248" width="48" height="42">
-                    <PartImage x="14" y="0" width="20" height="20" tintColor="#FF43A047">
+                  <Group name="badge_bl_stress" x="29" y="245" width="64" height="48">
+                    <PartImage x="22" y="0" width="20" height="20" tintColor="#FF43A047">
                       <Image resource="ic_metric_stress"/>
                     </PartImage>
-                    <PartText x="0" y="22" width="48" height="22">
+                    <PartText x="0" y="22" width="64" height="26">
                       <Text align="CENTER">
-                        <Font family="SYNC_TO_DEVICE" size="16" color="#FF9E9E9E" weight="SEMI_BOLD">
+                        <Font family="SYNC_TO_DEVICE" size="20" color="#FF9E9E9E" weight="SEMI_BOLD">
                           <Template>
                             <![CDATA[%s]]>
                             <Parameter expression="&quot;--&quot;"/>
@@ -1829,28 +1754,13 @@
               </ListOption>
               <ListOption id="single">
                 <Group name="bl_stress_single" x="0" y="0" width="450" height="450">
-                  <PartImage x="164" y="418" width="22" height="22" tintColor="[CONFIGURATION.accent.0]" alpha="60">
-                    <Image resource="ic_stress_0"/>
-                  </PartImage>
-                  <PartImage x="111" y="397" width="22" height="22" tintColor="[CONFIGURATION.accent.0]" alpha="60">
-                    <Image resource="ic_stress_1"/>
-                  </PartImage>
-                  <PartImage x="66" y="362" width="22" height="22" tintColor="[CONFIGURATION.accent.0]" alpha="60">
-                    <Image resource="ic_stress_2"/>
-                  </PartImage>
-                  <PartImage x="31" y="317" width="22" height="22" tintColor="[CONFIGURATION.accent.0]" alpha="60">
-                    <Image resource="ic_stress_3"/>
-                  </PartImage>
-                  <PartImage x="10" y="264" width="22" height="22" tintColor="[CONFIGURATION.accent.0]" alpha="60">
-                    <Image resource="ic_stress_4"/>
-                  </PartImage>
-                  <Group name="badge_bl_stress" x="37" y="248" width="48" height="42">
-                    <PartImage x="14" y="0" width="20" height="20" tintColor="[CONFIGURATION.accent.0]">
+                  <Group name="badge_bl_stress" x="29" y="245" width="64" height="48">
+                    <PartImage x="22" y="0" width="20" height="20" tintColor="[CONFIGURATION.accent.0]">
                       <Image resource="ic_metric_stress"/>
                     </PartImage>
-                    <PartText x="0" y="22" width="48" height="22">
+                    <PartText x="0" y="22" width="64" height="26">
                       <Text align="CENTER">
-                        <Font family="SYNC_TO_DEVICE" size="16" color="#FF9E9E9E" weight="SEMI_BOLD">
+                        <Font family="SYNC_TO_DEVICE" size="20" color="#FF9E9E9E" weight="SEMI_BOLD">
                           <Template>
                             <![CDATA[%s]]>
                             <Parameter expression="&quot;--&quot;"/>
@@ -1901,31 +1811,31 @@
                     <Transform target="alpha" value="(clamp(([HEART_RATE] - 40) / 140, 0, 1)) &gt; 0.875 ? 255 : 60"/>
                     <Image resource="ic_ecg_7"/>
                   </PartImage>
-                  <Group name="badge_bl_heart" x="37" y="248" width="48" height="42">
+                  <Group name="badge_bl_heart" x="29" y="245" width="64" height="48">
                     <Condition>
                       <Expressions>
                         <Expression name="c0"><![CDATA[(clamp(([HEART_RATE] - 40) / 140, 0, 1)) < 0.34]]></Expression>
                         <Expression name="c1"><![CDATA[(clamp(([HEART_RATE] - 40) / 140, 0, 1)) < 0.67]]></Expression>
                       </Expressions>
                       <Compare expression="c0">
-                        <PartImage x="14" y="0" width="20" height="20" tintColor="#FFC2575A">
+                        <PartImage x="22" y="0" width="20" height="20" tintColor="#FFC2575A">
                           <Image resource="ic_metric_heart"/>
                         </PartImage>
                       </Compare>
                       <Compare expression="c1">
-                        <PartImage x="14" y="0" width="20" height="20" tintColor="#FFC2575A">
+                        <PartImage x="22" y="0" width="20" height="20" tintColor="#FFC2575A">
                           <Image resource="ic_metric_heart"/>
                         </PartImage>
                       </Compare>
                       <Default>
-                        <PartImage x="14" y="0" width="20" height="20" tintColor="#FFFF1744">
+                        <PartImage x="22" y="0" width="20" height="20" tintColor="#FFFF1744">
                           <Image resource="ic_metric_heart"/>
                         </PartImage>
                       </Default>
                     </Condition>
-                    <PartText x="0" y="22" width="48" height="22">
+                    <PartText x="0" y="22" width="64" height="26">
                       <Text align="CENTER">
-                        <Font family="SYNC_TO_DEVICE" size="16" color="#FFFFFFFF" weight="SEMI_BOLD">
+                        <Font family="SYNC_TO_DEVICE" size="20" color="#FFFFFFFF" weight="SEMI_BOLD">
                           <Template>
                             <![CDATA[%s]]>
                             <Parameter expression="[HEART_RATE] &gt; 0 ? [HEART_RATE] : &quot;--&quot;"/>
@@ -1970,13 +1880,13 @@
                     <Transform target="alpha" value="(clamp(([HEART_RATE] - 40) / 140, 0, 1)) &gt; 0.875 ? (90 + 165 * (clamp(([HEART_RATE] - 40) / 140, 0, 1))) : 60"/>
                     <Image resource="ic_ecg_7"/>
                   </PartImage>
-                  <Group name="badge_bl_heart" x="37" y="248" width="48" height="42">
-                    <PartImage x="14" y="0" width="20" height="20" tintColor="[CONFIGURATION.accent.0]">
+                  <Group name="badge_bl_heart" x="29" y="245" width="64" height="48">
+                    <PartImage x="22" y="0" width="20" height="20" tintColor="[CONFIGURATION.accent.0]">
                       <Image resource="ic_metric_heart"/>
                     </PartImage>
-                    <PartText x="0" y="22" width="48" height="22">
+                    <PartText x="0" y="22" width="64" height="26">
                       <Text align="CENTER">
-                        <Font family="SYNC_TO_DEVICE" size="16" color="#FFFFFFFF" weight="SEMI_BOLD">
+                        <Font family="SYNC_TO_DEVICE" size="20" color="#FFFFFFFF" weight="SEMI_BOLD">
                           <Template>
                             <![CDATA[%s]]>
                             <Parameter expression="[HEART_RATE] &gt; 0 ? [HEART_RATE] : &quot;--&quot;"/>
@@ -2110,31 +2020,31 @@
                       <Stroke color="#FF1E88E5" thickness="14" cap="BUTT"/>
                     </Arc>
                   </PartDraw>
-                  <Group name="badge_br_battery" x="365" y="248" width="48" height="42">
+                  <Group name="badge_br_battery" x="357" y="245" width="64" height="48">
                     <Condition>
                       <Expressions>
                         <Expression name="c0"><![CDATA[(clamp([BATTERY_PERCENT], 0, 100) / 100) < 0.34]]></Expression>
                         <Expression name="c1"><![CDATA[(clamp([BATTERY_PERCENT], 0, 100) / 100) < 0.67]]></Expression>
                       </Expressions>
                       <Compare expression="c0">
-                        <PartImage x="14" y="0" width="20" height="20" tintColor="#FFB3E5FC">
+                        <PartImage x="22" y="0" width="20" height="20" tintColor="#FFB3E5FC">
                           <Image resource="ic_metric_battery"/>
                         </PartImage>
                       </Compare>
                       <Compare expression="c1">
-                        <PartImage x="14" y="0" width="20" height="20" tintColor="#FF4FC3F7">
+                        <PartImage x="22" y="0" width="20" height="20" tintColor="#FF4FC3F7">
                           <Image resource="ic_metric_battery"/>
                         </PartImage>
                       </Compare>
                       <Default>
-                        <PartImage x="14" y="0" width="20" height="20" tintColor="#FF1E88E5">
+                        <PartImage x="22" y="0" width="20" height="20" tintColor="#FF1E88E5">
                           <Image resource="ic_metric_battery"/>
                         </PartImage>
                       </Default>
                     </Condition>
-                    <PartText x="0" y="22" width="48" height="22">
+                    <PartText x="0" y="22" width="64" height="26">
                       <Text align="CENTER">
-                        <Font family="SYNC_TO_DEVICE" size="16" color="#FFFFFFFF" weight="SEMI_BOLD">
+                        <Font family="SYNC_TO_DEVICE" size="20" color="#FFFFFFFF" weight="SEMI_BOLD">
                           <Template>
                             <![CDATA[%s%%]]>
                             <Parameter expression="[BATTERY_PERCENT]"/>
@@ -2257,13 +2167,13 @@
                       <Stroke color="[CONFIGURATION.accent.0]" thickness="14" cap="BUTT"/>
                     </Arc>
                   </PartDraw>
-                  <Group name="badge_br_battery" x="365" y="248" width="48" height="42">
-                    <PartImage x="14" y="0" width="20" height="20" tintColor="[CONFIGURATION.accent.0]">
+                  <Group name="badge_br_battery" x="357" y="245" width="64" height="48">
+                    <PartImage x="22" y="0" width="20" height="20" tintColor="[CONFIGURATION.accent.0]">
                       <Image resource="ic_metric_battery"/>
                     </PartImage>
-                    <PartText x="0" y="22" width="48" height="22">
+                    <PartText x="0" y="22" width="64" height="26">
                       <Text align="CENTER">
-                        <Font family="SYNC_TO_DEVICE" size="16" color="#FFFFFFFF" weight="SEMI_BOLD">
+                        <Font family="SYNC_TO_DEVICE" size="20" color="#FFFFFFFF" weight="SEMI_BOLD">
                           <Template>
                             <![CDATA[%s%%]]>
                             <Parameter expression="[BATTERY_PERCENT]"/>
@@ -2322,31 +2232,31 @@
                     <Transform target="alpha" value="(clamp([STEP_PERCENT], 0, 100) / 100) &gt; 0.9 ? 255 : 60"/>
                     <Image resource="ic_step_right"/>
                   </PartImage>
-                  <Group name="badge_br_steps" x="365" y="248" width="48" height="42">
+                  <Group name="badge_br_steps" x="357" y="245" width="64" height="48">
                     <Condition>
                       <Expressions>
                         <Expression name="c0"><![CDATA[(clamp([STEP_PERCENT], 0, 100) / 100) < 0.34]]></Expression>
                         <Expression name="c1"><![CDATA[(clamp([STEP_PERCENT], 0, 100) / 100) < 0.67]]></Expression>
                       </Expressions>
                       <Compare expression="c0">
-                        <PartImage x="14" y="0" width="20" height="20" tintColor="#FFC8E6C9">
+                        <PartImage x="22" y="0" width="20" height="20" tintColor="#FFC8E6C9">
                           <Image resource="ic_metric_steps"/>
                         </PartImage>
                       </Compare>
                       <Compare expression="c1">
-                        <PartImage x="14" y="0" width="20" height="20" tintColor="#FF81C784">
+                        <PartImage x="22" y="0" width="20" height="20" tintColor="#FF81C784">
                           <Image resource="ic_metric_steps"/>
                         </PartImage>
                       </Compare>
                       <Default>
-                        <PartImage x="14" y="0" width="20" height="20" tintColor="#FF43A047">
+                        <PartImage x="22" y="0" width="20" height="20" tintColor="#FF43A047">
                           <Image resource="ic_metric_steps"/>
                         </PartImage>
                       </Default>
                     </Condition>
-                    <PartText x="0" y="22" width="48" height="22">
+                    <PartText x="0" y="22" width="64" height="26">
                       <Text align="CENTER">
-                        <Font family="SYNC_TO_DEVICE" size="16" color="#FFFFFFFF" weight="SEMI_BOLD">
+                        <Font family="SYNC_TO_DEVICE" size="20" color="#FFFFFFFF" weight="SEMI_BOLD">
                           <Template>
                             <![CDATA[%s]]>
                             <Parameter expression="[STEP_COUNT]"/>
@@ -2399,13 +2309,13 @@
                     <Transform target="alpha" value="(clamp([STEP_PERCENT], 0, 100) / 100) &gt; 0.9 ? (90 + 165 * (clamp([STEP_PERCENT], 0, 100) / 100)) : 60"/>
                     <Image resource="ic_step_right"/>
                   </PartImage>
-                  <Group name="badge_br_steps" x="365" y="248" width="48" height="42">
-                    <PartImage x="14" y="0" width="20" height="20" tintColor="[CONFIGURATION.accent.0]">
+                  <Group name="badge_br_steps" x="357" y="245" width="64" height="48">
+                    <PartImage x="22" y="0" width="20" height="20" tintColor="[CONFIGURATION.accent.0]">
                       <Image resource="ic_metric_steps"/>
                     </PartImage>
-                    <PartText x="0" y="22" width="48" height="22">
+                    <PartText x="0" y="22" width="64" height="26">
                       <Text align="CENTER">
-                        <Font family="SYNC_TO_DEVICE" size="16" color="#FFFFFFFF" weight="SEMI_BOLD">
+                        <Font family="SYNC_TO_DEVICE" size="20" color="#FFFFFFFF" weight="SEMI_BOLD">
                           <Template>
                             <![CDATA[%s]]>
                             <Parameter expression="[STEP_COUNT]"/>
@@ -2424,28 +2334,13 @@
             <ListConfiguration id="color_mode">
               <ListOption id="multi">
                 <Group name="br_stress_multi" x="0" y="0" width="450" height="450">
-                  <PartImage x="264" y="418" width="22" height="22" tintColor="#FF43A047" alpha="60">
-                    <Image resource="ic_stress_0"/>
-                  </PartImage>
-                  <PartImage x="317" y="397" width="22" height="22" tintColor="#FFA0BC3E" alpha="60">
-                    <Image resource="ic_stress_1"/>
-                  </PartImage>
-                  <PartImage x="362" y="362" width="22" height="22" tintColor="#FFFDD835" alpha="60">
-                    <Image resource="ic_stress_2"/>
-                  </PartImage>
-                  <PartImage x="397" y="317" width="22" height="22" tintColor="#FFF18835" alpha="60">
-                    <Image resource="ic_stress_3"/>
-                  </PartImage>
-                  <PartImage x="418" y="264" width="22" height="22" tintColor="#FFE53935" alpha="60">
-                    <Image resource="ic_stress_4"/>
-                  </PartImage>
-                  <Group name="badge_br_stress" x="365" y="248" width="48" height="42">
-                    <PartImage x="14" y="0" width="20" height="20" tintColor="#FF43A047">
+                  <Group name="badge_br_stress" x="357" y="245" width="64" height="48">
+                    <PartImage x="22" y="0" width="20" height="20" tintColor="#FF43A047">
                       <Image resource="ic_metric_stress"/>
                     </PartImage>
-                    <PartText x="0" y="22" width="48" height="22">
+                    <PartText x="0" y="22" width="64" height="26">
                       <Text align="CENTER">
-                        <Font family="SYNC_TO_DEVICE" size="16" color="#FF9E9E9E" weight="SEMI_BOLD">
+                        <Font family="SYNC_TO_DEVICE" size="20" color="#FF9E9E9E" weight="SEMI_BOLD">
                           <Template>
                             <![CDATA[%s]]>
                             <Parameter expression="&quot;--&quot;"/>
@@ -2458,28 +2353,13 @@
               </ListOption>
               <ListOption id="single">
                 <Group name="br_stress_single" x="0" y="0" width="450" height="450">
-                  <PartImage x="264" y="418" width="22" height="22" tintColor="[CONFIGURATION.accent.0]" alpha="60">
-                    <Image resource="ic_stress_0"/>
-                  </PartImage>
-                  <PartImage x="317" y="397" width="22" height="22" tintColor="[CONFIGURATION.accent.0]" alpha="60">
-                    <Image resource="ic_stress_1"/>
-                  </PartImage>
-                  <PartImage x="362" y="362" width="22" height="22" tintColor="[CONFIGURATION.accent.0]" alpha="60">
-                    <Image resource="ic_stress_2"/>
-                  </PartImage>
-                  <PartImage x="397" y="317" width="22" height="22" tintColor="[CONFIGURATION.accent.0]" alpha="60">
-                    <Image resource="ic_stress_3"/>
-                  </PartImage>
-                  <PartImage x="418" y="264" width="22" height="22" tintColor="[CONFIGURATION.accent.0]" alpha="60">
-                    <Image resource="ic_stress_4"/>
-                  </PartImage>
-                  <Group name="badge_br_stress" x="365" y="248" width="48" height="42">
-                    <PartImage x="14" y="0" width="20" height="20" tintColor="[CONFIGURATION.accent.0]">
+                  <Group name="badge_br_stress" x="357" y="245" width="64" height="48">
+                    <PartImage x="22" y="0" width="20" height="20" tintColor="[CONFIGURATION.accent.0]">
                       <Image resource="ic_metric_stress"/>
                     </PartImage>
-                    <PartText x="0" y="22" width="48" height="22">
+                    <PartText x="0" y="22" width="64" height="26">
                       <Text align="CENTER">
-                        <Font family="SYNC_TO_DEVICE" size="16" color="#FF9E9E9E" weight="SEMI_BOLD">
+                        <Font family="SYNC_TO_DEVICE" size="20" color="#FF9E9E9E" weight="SEMI_BOLD">
                           <Template>
                             <![CDATA[%s]]>
                             <Parameter expression="&quot;--&quot;"/>
@@ -2530,31 +2410,31 @@
                     <Transform target="alpha" value="(clamp(([HEART_RATE] - 40) / 140, 0, 1)) &gt; 0.875 ? 255 : 60"/>
                     <Image resource="ic_ecg_7"/>
                   </PartImage>
-                  <Group name="badge_br_heart" x="365" y="248" width="48" height="42">
+                  <Group name="badge_br_heart" x="357" y="245" width="64" height="48">
                     <Condition>
                       <Expressions>
                         <Expression name="c0"><![CDATA[(clamp(([HEART_RATE] - 40) / 140, 0, 1)) < 0.34]]></Expression>
                         <Expression name="c1"><![CDATA[(clamp(([HEART_RATE] - 40) / 140, 0, 1)) < 0.67]]></Expression>
                       </Expressions>
                       <Compare expression="c0">
-                        <PartImage x="14" y="0" width="20" height="20" tintColor="#FFC2575A">
+                        <PartImage x="22" y="0" width="20" height="20" tintColor="#FFC2575A">
                           <Image resource="ic_metric_heart"/>
                         </PartImage>
                       </Compare>
                       <Compare expression="c1">
-                        <PartImage x="14" y="0" width="20" height="20" tintColor="#FFC2575A">
+                        <PartImage x="22" y="0" width="20" height="20" tintColor="#FFC2575A">
                           <Image resource="ic_metric_heart"/>
                         </PartImage>
                       </Compare>
                       <Default>
-                        <PartImage x="14" y="0" width="20" height="20" tintColor="#FFFF1744">
+                        <PartImage x="22" y="0" width="20" height="20" tintColor="#FFFF1744">
                           <Image resource="ic_metric_heart"/>
                         </PartImage>
                       </Default>
                     </Condition>
-                    <PartText x="0" y="22" width="48" height="22">
+                    <PartText x="0" y="22" width="64" height="26">
                       <Text align="CENTER">
-                        <Font family="SYNC_TO_DEVICE" size="16" color="#FFFFFFFF" weight="SEMI_BOLD">
+                        <Font family="SYNC_TO_DEVICE" size="20" color="#FFFFFFFF" weight="SEMI_BOLD">
                           <Template>
                             <![CDATA[%s]]>
                             <Parameter expression="[HEART_RATE] &gt; 0 ? [HEART_RATE] : &quot;--&quot;"/>
@@ -2599,13 +2479,13 @@
                     <Transform target="alpha" value="(clamp(([HEART_RATE] - 40) / 140, 0, 1)) &gt; 0.875 ? (90 + 165 * (clamp(([HEART_RATE] - 40) / 140, 0, 1))) : 60"/>
                     <Image resource="ic_ecg_7"/>
                   </PartImage>
-                  <Group name="badge_br_heart" x="365" y="248" width="48" height="42">
-                    <PartImage x="14" y="0" width="20" height="20" tintColor="[CONFIGURATION.accent.0]">
+                  <Group name="badge_br_heart" x="357" y="245" width="64" height="48">
+                    <PartImage x="22" y="0" width="20" height="20" tintColor="[CONFIGURATION.accent.0]">
                       <Image resource="ic_metric_heart"/>
                     </PartImage>
-                    <PartText x="0" y="22" width="48" height="22">
+                    <PartText x="0" y="22" width="64" height="26">
                       <Text align="CENTER">
-                        <Font family="SYNC_TO_DEVICE" size="16" color="#FFFFFFFF" weight="SEMI_BOLD">
+                        <Font family="SYNC_TO_DEVICE" size="20" color="#FFFFFFFF" weight="SEMI_BOLD">
                           <Template>
                             <![CDATA[%s]]>
                             <Parameter expression="[HEART_RATE] &gt; 0 ? [HEART_RATE] : &quot;--&quot;"/>
@@ -2635,8 +2515,8 @@
             </ListOption>
             <ListOption id="stress">
               <Group name="stress_tl_cover" x="0" y="0" width="450" height="450">
-                <PartDraw x="37" y="160" width="48" height="42">
-                  <Rectangle x="0" y="0" width="48" height="42">
+                <PartDraw x="29" y="157" width="64" height="48">
+                  <Rectangle x="0" y="0" width="64" height="48">
                     <Fill color="#FF000000"/>
                   </Rectangle>
                 </PartDraw>
@@ -2644,51 +2524,80 @@
                   <ListConfiguration id="color_mode">
                     <ListOption id="multi">
                       <Group name="tl_stress_multi" x="0" y="0" width="450" height="450">
-                        <PartImage x="164" y="10" width="22" height="22" tintColor="#FF43A047">
-                          <Transform target="alpha" value="(clamp(([COMPLICATION.RANGED_VALUE_VALUE] - [COMPLICATION.RANGED_VALUE_MIN]) / (([COMPLICATION.RANGED_VALUE_MAX] - [COMPLICATION.RANGED_VALUE_MIN]) == 0 ? 1 : ([COMPLICATION.RANGED_VALUE_MAX] - [COMPLICATION.RANGED_VALUE_MIN])), 0, 1)) &gt; 0 ? 255 : 60"/>
-                          <Image resource="ic_stress_0"/>
-                        </PartImage>
-                        <PartImage x="111" y="31" width="22" height="22" tintColor="#FFA0BC3E">
-                          <Transform target="alpha" value="(clamp(([COMPLICATION.RANGED_VALUE_VALUE] - [COMPLICATION.RANGED_VALUE_MIN]) / (([COMPLICATION.RANGED_VALUE_MAX] - [COMPLICATION.RANGED_VALUE_MIN]) == 0 ? 1 : ([COMPLICATION.RANGED_VALUE_MAX] - [COMPLICATION.RANGED_VALUE_MIN])), 0, 1)) &gt; 0.2 ? 255 : 60"/>
-                          <Image resource="ic_stress_1"/>
-                        </PartImage>
-                        <PartImage x="66" y="66" width="22" height="22" tintColor="#FFFDD835">
-                          <Transform target="alpha" value="(clamp(([COMPLICATION.RANGED_VALUE_VALUE] - [COMPLICATION.RANGED_VALUE_MIN]) / (([COMPLICATION.RANGED_VALUE_MAX] - [COMPLICATION.RANGED_VALUE_MIN]) == 0 ? 1 : ([COMPLICATION.RANGED_VALUE_MAX] - [COMPLICATION.RANGED_VALUE_MIN])), 0, 1)) &gt; 0.4 ? 255 : 60"/>
-                          <Image resource="ic_stress_2"/>
-                        </PartImage>
-                        <PartImage x="31" y="111" width="22" height="22" tintColor="#FFF18835">
-                          <Transform target="alpha" value="(clamp(([COMPLICATION.RANGED_VALUE_VALUE] - [COMPLICATION.RANGED_VALUE_MIN]) / (([COMPLICATION.RANGED_VALUE_MAX] - [COMPLICATION.RANGED_VALUE_MIN]) == 0 ? 1 : ([COMPLICATION.RANGED_VALUE_MAX] - [COMPLICATION.RANGED_VALUE_MIN])), 0, 1)) &gt; 0.6 ? 255 : 60"/>
-                          <Image resource="ic_stress_3"/>
-                        </PartImage>
-                        <PartImage x="10" y="164" width="22" height="22" tintColor="#FFE53935">
-                          <Transform target="alpha" value="(clamp(([COMPLICATION.RANGED_VALUE_VALUE] - [COMPLICATION.RANGED_VALUE_MIN]) / (([COMPLICATION.RANGED_VALUE_MAX] - [COMPLICATION.RANGED_VALUE_MIN]) == 0 ? 1 : ([COMPLICATION.RANGED_VALUE_MAX] - [COMPLICATION.RANGED_VALUE_MIN])), 0, 1)) &gt; 0.8 ? 255 : 60"/>
-                          <Image resource="ic_stress_4"/>
-                        </PartImage>
-                        <Group name="badge_tl_stress" x="37" y="160" width="48" height="42">
+                        <Condition>
+                          <Expressions>
+                            <Expression name="c0"><![CDATA[(clamp(([COMPLICATION.RANGED_VALUE_VALUE] - [COMPLICATION.RANGED_VALUE_MIN]) / (([COMPLICATION.RANGED_VALUE_MAX] - [COMPLICATION.RANGED_VALUE_MIN]) == 0 ? 1 : ([COMPLICATION.RANGED_VALUE_MAX] - [COMPLICATION.RANGED_VALUE_MIN])), 0, 1)) <= 0]]></Expression>
+                            <Expression name="c1"><![CDATA[(clamp(([COMPLICATION.RANGED_VALUE_VALUE] - [COMPLICATION.RANGED_VALUE_MIN]) / (([COMPLICATION.RANGED_VALUE_MAX] - [COMPLICATION.RANGED_VALUE_MIN]) == 0 ? 1 : ([COMPLICATION.RANGED_VALUE_MAX] - [COMPLICATION.RANGED_VALUE_MIN])), 0, 1)) <= 0.25]]></Expression>
+                            <Expression name="c2"><![CDATA[(clamp(([COMPLICATION.RANGED_VALUE_VALUE] - [COMPLICATION.RANGED_VALUE_MIN]) / (([COMPLICATION.RANGED_VALUE_MAX] - [COMPLICATION.RANGED_VALUE_MIN]) == 0 ? 1 : ([COMPLICATION.RANGED_VALUE_MAX] - [COMPLICATION.RANGED_VALUE_MIN])), 0, 1)) <= 0.5]]></Expression>
+                            <Expression name="c3"><![CDATA[(clamp(([COMPLICATION.RANGED_VALUE_VALUE] - [COMPLICATION.RANGED_VALUE_MIN]) / (([COMPLICATION.RANGED_VALUE_MAX] - [COMPLICATION.RANGED_VALUE_MIN]) == 0 ? 1 : ([COMPLICATION.RANGED_VALUE_MAX] - [COMPLICATION.RANGED_VALUE_MIN])), 0, 1)) <= 0.75]]></Expression>
+                          </Expressions>
+                          <Compare expression="c0">
+                            <Group name="tl_stress_zero" x="0" y="0" width="1" height="1"/>
+                          </Compare>
+                          <Compare expression="c1">
+                            <PartDraw x="0" y="0" width="450" height="450">
+                              <Arc centerX="225" centerY="225" width="420" height="420" startAngle="276" endAngle="354">
+                                <Stroke color="#FF43A047" thickness="14" cap="ROUND"/>
+                                <Transform target="startAngle" value="354 - 78 * (clamp(([COMPLICATION.RANGED_VALUE_VALUE] - [COMPLICATION.RANGED_VALUE_MIN]) / (([COMPLICATION.RANGED_VALUE_MAX] - [COMPLICATION.RANGED_VALUE_MIN]) == 0 ? 1 : ([COMPLICATION.RANGED_VALUE_MAX] - [COMPLICATION.RANGED_VALUE_MIN])), 0, 1))"/>
+                              </Arc>
+                            </PartDraw>
+                          </Compare>
+                          <Compare expression="c2">
+                            <PartDraw x="0" y="0" width="450" height="450">
+                              <Arc centerX="225" centerY="225" width="420" height="420" startAngle="276" endAngle="354">
+                                <Stroke color="#FFFDD835" thickness="14" cap="ROUND"/>
+                                <Transform target="startAngle" value="354 - 78 * (clamp(([COMPLICATION.RANGED_VALUE_VALUE] - [COMPLICATION.RANGED_VALUE_MIN]) / (([COMPLICATION.RANGED_VALUE_MAX] - [COMPLICATION.RANGED_VALUE_MIN]) == 0 ? 1 : ([COMPLICATION.RANGED_VALUE_MAX] - [COMPLICATION.RANGED_VALUE_MIN])), 0, 1))"/>
+                              </Arc>
+                            </PartDraw>
+                          </Compare>
+                          <Compare expression="c3">
+                            <PartDraw x="0" y="0" width="450" height="450">
+                              <Arc centerX="225" centerY="225" width="420" height="420" startAngle="276" endAngle="354">
+                                <Stroke color="#FFE53935" thickness="14" cap="ROUND"/>
+                                <Transform target="startAngle" value="354 - 78 * (clamp(([COMPLICATION.RANGED_VALUE_VALUE] - [COMPLICATION.RANGED_VALUE_MIN]) / (([COMPLICATION.RANGED_VALUE_MAX] - [COMPLICATION.RANGED_VALUE_MIN]) == 0 ? 1 : ([COMPLICATION.RANGED_VALUE_MAX] - [COMPLICATION.RANGED_VALUE_MIN])), 0, 1))"/>
+                              </Arc>
+                            </PartDraw>
+                          </Compare>
+                          <Default>
+                            <PartDraw x="0" y="0" width="450" height="450">
+                              <Arc centerX="225" centerY="225" width="420" height="420" startAngle="276" endAngle="354">
+                                <Stroke color="#FFB71C1C" thickness="14" cap="ROUND"/>
+                                <Transform target="startAngle" value="354 - 78 * (clamp(([COMPLICATION.RANGED_VALUE_VALUE] - [COMPLICATION.RANGED_VALUE_MIN]) / (([COMPLICATION.RANGED_VALUE_MAX] - [COMPLICATION.RANGED_VALUE_MIN]) == 0 ? 1 : ([COMPLICATION.RANGED_VALUE_MAX] - [COMPLICATION.RANGED_VALUE_MIN])), 0, 1))"/>
+                              </Arc>
+                            </PartDraw>
+                          </Default>
+                        </Condition>
+                        <Group name="badge_tl_stress" x="29" y="157" width="64" height="48">
                           <Condition>
                             <Expressions>
-                              <Expression name="c0"><![CDATA[(clamp(([COMPLICATION.RANGED_VALUE_VALUE] - [COMPLICATION.RANGED_VALUE_MIN]) / (([COMPLICATION.RANGED_VALUE_MAX] - [COMPLICATION.RANGED_VALUE_MIN]) == 0 ? 1 : ([COMPLICATION.RANGED_VALUE_MAX] - [COMPLICATION.RANGED_VALUE_MIN])), 0, 1)) < 0.34]]></Expression>
-                              <Expression name="c1"><![CDATA[(clamp(([COMPLICATION.RANGED_VALUE_VALUE] - [COMPLICATION.RANGED_VALUE_MIN]) / (([COMPLICATION.RANGED_VALUE_MAX] - [COMPLICATION.RANGED_VALUE_MIN]) == 0 ? 1 : ([COMPLICATION.RANGED_VALUE_MAX] - [COMPLICATION.RANGED_VALUE_MIN])), 0, 1)) < 0.67]]></Expression>
+                              <Expression name="c0"><![CDATA[(clamp(([COMPLICATION.RANGED_VALUE_VALUE] - [COMPLICATION.RANGED_VALUE_MIN]) / (([COMPLICATION.RANGED_VALUE_MAX] - [COMPLICATION.RANGED_VALUE_MIN]) == 0 ? 1 : ([COMPLICATION.RANGED_VALUE_MAX] - [COMPLICATION.RANGED_VALUE_MIN])), 0, 1)) <= 0.25]]></Expression>
+                              <Expression name="c1"><![CDATA[(clamp(([COMPLICATION.RANGED_VALUE_VALUE] - [COMPLICATION.RANGED_VALUE_MIN]) / (([COMPLICATION.RANGED_VALUE_MAX] - [COMPLICATION.RANGED_VALUE_MIN]) == 0 ? 1 : ([COMPLICATION.RANGED_VALUE_MAX] - [COMPLICATION.RANGED_VALUE_MIN])), 0, 1)) <= 0.5]]></Expression>
+                              <Expression name="c2"><![CDATA[(clamp(([COMPLICATION.RANGED_VALUE_VALUE] - [COMPLICATION.RANGED_VALUE_MIN]) / (([COMPLICATION.RANGED_VALUE_MAX] - [COMPLICATION.RANGED_VALUE_MIN]) == 0 ? 1 : ([COMPLICATION.RANGED_VALUE_MAX] - [COMPLICATION.RANGED_VALUE_MIN])), 0, 1)) <= 0.75]]></Expression>
                             </Expressions>
                             <Compare expression="c0">
-                              <PartImage x="14" y="0" width="20" height="20" tintColor="#FF43A047">
+                              <PartImage x="22" y="0" width="20" height="20" tintColor="#FF43A047">
                                 <Image resource="ic_metric_stress"/>
                               </PartImage>
                             </Compare>
                             <Compare expression="c1">
-                              <PartImage x="14" y="0" width="20" height="20" tintColor="#FFFDD835">
+                              <PartImage x="22" y="0" width="20" height="20" tintColor="#FFFDD835">
+                                <Image resource="ic_metric_stress"/>
+                              </PartImage>
+                            </Compare>
+                            <Compare expression="c2">
+                              <PartImage x="22" y="0" width="20" height="20" tintColor="#FFE53935">
                                 <Image resource="ic_metric_stress"/>
                               </PartImage>
                             </Compare>
                             <Default>
-                              <PartImage x="14" y="0" width="20" height="20" tintColor="#FFE53935">
+                              <PartImage x="22" y="0" width="20" height="20" tintColor="#FFB71C1C">
                                 <Image resource="ic_metric_stress"/>
                               </PartImage>
                             </Default>
                           </Condition>
-                          <PartText x="0" y="22" width="48" height="22">
+                          <PartText x="0" y="22" width="64" height="26">
                             <Text align="CENTER">
-                              <Font family="SYNC_TO_DEVICE" size="16" color="#FFFFFFFF" weight="SEMI_BOLD">
+                              <Font family="SYNC_TO_DEVICE" size="20" color="#FFFFFFFF" weight="SEMI_BOLD">
                                 <Template>
                                   <![CDATA[%s]]>
                                   <Parameter expression="round([COMPLICATION.RANGED_VALUE_VALUE])"/>
@@ -2701,33 +2610,30 @@
                     </ListOption>
                     <ListOption id="single">
                       <Group name="tl_stress_single" x="0" y="0" width="450" height="450">
-                        <PartImage x="164" y="10" width="22" height="22" tintColor="[CONFIGURATION.accent.0]">
-                          <Transform target="alpha" value="(clamp(([COMPLICATION.RANGED_VALUE_VALUE] - [COMPLICATION.RANGED_VALUE_MIN]) / (([COMPLICATION.RANGED_VALUE_MAX] - [COMPLICATION.RANGED_VALUE_MIN]) == 0 ? 1 : ([COMPLICATION.RANGED_VALUE_MAX] - [COMPLICATION.RANGED_VALUE_MIN])), 0, 1)) &gt; 0 ? (90 + 165 * (clamp(([COMPLICATION.RANGED_VALUE_VALUE] - [COMPLICATION.RANGED_VALUE_MIN]) / (([COMPLICATION.RANGED_VALUE_MAX] - [COMPLICATION.RANGED_VALUE_MIN]) == 0 ? 1 : ([COMPLICATION.RANGED_VALUE_MAX] - [COMPLICATION.RANGED_VALUE_MIN])), 0, 1))) : 60"/>
-                          <Image resource="ic_stress_0"/>
-                        </PartImage>
-                        <PartImage x="111" y="31" width="22" height="22" tintColor="[CONFIGURATION.accent.0]">
-                          <Transform target="alpha" value="(clamp(([COMPLICATION.RANGED_VALUE_VALUE] - [COMPLICATION.RANGED_VALUE_MIN]) / (([COMPLICATION.RANGED_VALUE_MAX] - [COMPLICATION.RANGED_VALUE_MIN]) == 0 ? 1 : ([COMPLICATION.RANGED_VALUE_MAX] - [COMPLICATION.RANGED_VALUE_MIN])), 0, 1)) &gt; 0.2 ? (90 + 165 * (clamp(([COMPLICATION.RANGED_VALUE_VALUE] - [COMPLICATION.RANGED_VALUE_MIN]) / (([COMPLICATION.RANGED_VALUE_MAX] - [COMPLICATION.RANGED_VALUE_MIN]) == 0 ? 1 : ([COMPLICATION.RANGED_VALUE_MAX] - [COMPLICATION.RANGED_VALUE_MIN])), 0, 1))) : 60"/>
-                          <Image resource="ic_stress_1"/>
-                        </PartImage>
-                        <PartImage x="66" y="66" width="22" height="22" tintColor="[CONFIGURATION.accent.0]">
-                          <Transform target="alpha" value="(clamp(([COMPLICATION.RANGED_VALUE_VALUE] - [COMPLICATION.RANGED_VALUE_MIN]) / (([COMPLICATION.RANGED_VALUE_MAX] - [COMPLICATION.RANGED_VALUE_MIN]) == 0 ? 1 : ([COMPLICATION.RANGED_VALUE_MAX] - [COMPLICATION.RANGED_VALUE_MIN])), 0, 1)) &gt; 0.4 ? (90 + 165 * (clamp(([COMPLICATION.RANGED_VALUE_VALUE] - [COMPLICATION.RANGED_VALUE_MIN]) / (([COMPLICATION.RANGED_VALUE_MAX] - [COMPLICATION.RANGED_VALUE_MIN]) == 0 ? 1 : ([COMPLICATION.RANGED_VALUE_MAX] - [COMPLICATION.RANGED_VALUE_MIN])), 0, 1))) : 60"/>
-                          <Image resource="ic_stress_2"/>
-                        </PartImage>
-                        <PartImage x="31" y="111" width="22" height="22" tintColor="[CONFIGURATION.accent.0]">
-                          <Transform target="alpha" value="(clamp(([COMPLICATION.RANGED_VALUE_VALUE] - [COMPLICATION.RANGED_VALUE_MIN]) / (([COMPLICATION.RANGED_VALUE_MAX] - [COMPLICATION.RANGED_VALUE_MIN]) == 0 ? 1 : ([COMPLICATION.RANGED_VALUE_MAX] - [COMPLICATION.RANGED_VALUE_MIN])), 0, 1)) &gt; 0.6 ? (90 + 165 * (clamp(([COMPLICATION.RANGED_VALUE_VALUE] - [COMPLICATION.RANGED_VALUE_MIN]) / (([COMPLICATION.RANGED_VALUE_MAX] - [COMPLICATION.RANGED_VALUE_MIN]) == 0 ? 1 : ([COMPLICATION.RANGED_VALUE_MAX] - [COMPLICATION.RANGED_VALUE_MIN])), 0, 1))) : 60"/>
-                          <Image resource="ic_stress_3"/>
-                        </PartImage>
-                        <PartImage x="10" y="164" width="22" height="22" tintColor="[CONFIGURATION.accent.0]">
-                          <Transform target="alpha" value="(clamp(([COMPLICATION.RANGED_VALUE_VALUE] - [COMPLICATION.RANGED_VALUE_MIN]) / (([COMPLICATION.RANGED_VALUE_MAX] - [COMPLICATION.RANGED_VALUE_MIN]) == 0 ? 1 : ([COMPLICATION.RANGED_VALUE_MAX] - [COMPLICATION.RANGED_VALUE_MIN])), 0, 1)) &gt; 0.8 ? (90 + 165 * (clamp(([COMPLICATION.RANGED_VALUE_VALUE] - [COMPLICATION.RANGED_VALUE_MIN]) / (([COMPLICATION.RANGED_VALUE_MAX] - [COMPLICATION.RANGED_VALUE_MIN]) == 0 ? 1 : ([COMPLICATION.RANGED_VALUE_MAX] - [COMPLICATION.RANGED_VALUE_MIN])), 0, 1))) : 60"/>
-                          <Image resource="ic_stress_4"/>
-                        </PartImage>
-                        <Group name="badge_tl_stress" x="37" y="160" width="48" height="42">
-                          <PartImage x="14" y="0" width="20" height="20" tintColor="[CONFIGURATION.accent.0]">
+                        <Condition>
+                          <Expressions>
+                            <Expression name="c0"><![CDATA[(clamp(([COMPLICATION.RANGED_VALUE_VALUE] - [COMPLICATION.RANGED_VALUE_MIN]) / (([COMPLICATION.RANGED_VALUE_MAX] - [COMPLICATION.RANGED_VALUE_MIN]) == 0 ? 1 : ([COMPLICATION.RANGED_VALUE_MAX] - [COMPLICATION.RANGED_VALUE_MIN])), 0, 1)) <= 0]]></Expression>
+                          </Expressions>
+                          <Compare expression="c0">
+                            <Group name="tl_stress_zero" x="0" y="0" width="1" height="1"/>
+                          </Compare>
+                          <Default>
+                            <PartDraw x="0" y="0" width="450" height="450">
+                              <Transform target="alpha" value="90 + 165 * (clamp(([COMPLICATION.RANGED_VALUE_VALUE] - [COMPLICATION.RANGED_VALUE_MIN]) / (([COMPLICATION.RANGED_VALUE_MAX] - [COMPLICATION.RANGED_VALUE_MIN]) == 0 ? 1 : ([COMPLICATION.RANGED_VALUE_MAX] - [COMPLICATION.RANGED_VALUE_MIN])), 0, 1))"/>
+                              <Arc centerX="225" centerY="225" width="420" height="420" startAngle="276" endAngle="354">
+                                <Stroke color="[CONFIGURATION.accent.0]" thickness="14" cap="ROUND"/>
+                                <Transform target="startAngle" value="354 - 78 * (clamp(([COMPLICATION.RANGED_VALUE_VALUE] - [COMPLICATION.RANGED_VALUE_MIN]) / (([COMPLICATION.RANGED_VALUE_MAX] - [COMPLICATION.RANGED_VALUE_MIN]) == 0 ? 1 : ([COMPLICATION.RANGED_VALUE_MAX] - [COMPLICATION.RANGED_VALUE_MIN])), 0, 1))"/>
+                              </Arc>
+                            </PartDraw>
+                          </Default>
+                        </Condition>
+                        <Group name="badge_tl_stress" x="29" y="157" width="64" height="48">
+                          <PartImage x="22" y="0" width="20" height="20" tintColor="[CONFIGURATION.accent.0]">
                             <Image resource="ic_metric_stress"/>
                           </PartImage>
-                          <PartText x="0" y="22" width="48" height="22">
+                          <PartText x="0" y="22" width="64" height="26">
                             <Text align="CENTER">
-                              <Font family="SYNC_TO_DEVICE" size="16" color="#FFFFFFFF" weight="SEMI_BOLD">
+                              <Font family="SYNC_TO_DEVICE" size="20" color="#FFFFFFFF" weight="SEMI_BOLD">
                                 <Template>
                                   <![CDATA[%s]]>
                                   <Parameter expression="round([COMPLICATION.RANGED_VALUE_VALUE])"/>
@@ -2766,8 +2672,8 @@
             </ListOption>
             <ListOption id="stress">
               <Group name="stress_tr_cover" x="0" y="0" width="450" height="450">
-                <PartDraw x="365" y="160" width="48" height="42">
-                  <Rectangle x="0" y="0" width="48" height="42">
+                <PartDraw x="357" y="157" width="64" height="48">
+                  <Rectangle x="0" y="0" width="64" height="48">
                     <Fill color="#FF000000"/>
                   </Rectangle>
                 </PartDraw>
@@ -2775,51 +2681,80 @@
                   <ListConfiguration id="color_mode">
                     <ListOption id="multi">
                       <Group name="tr_stress_multi" x="0" y="0" width="450" height="450">
-                        <PartImage x="264" y="10" width="22" height="22" tintColor="#FF43A047">
-                          <Transform target="alpha" value="(clamp(([COMPLICATION.RANGED_VALUE_VALUE] - [COMPLICATION.RANGED_VALUE_MIN]) / (([COMPLICATION.RANGED_VALUE_MAX] - [COMPLICATION.RANGED_VALUE_MIN]) == 0 ? 1 : ([COMPLICATION.RANGED_VALUE_MAX] - [COMPLICATION.RANGED_VALUE_MIN])), 0, 1)) &gt; 0 ? 255 : 60"/>
-                          <Image resource="ic_stress_0"/>
-                        </PartImage>
-                        <PartImage x="317" y="31" width="22" height="22" tintColor="#FFA0BC3E">
-                          <Transform target="alpha" value="(clamp(([COMPLICATION.RANGED_VALUE_VALUE] - [COMPLICATION.RANGED_VALUE_MIN]) / (([COMPLICATION.RANGED_VALUE_MAX] - [COMPLICATION.RANGED_VALUE_MIN]) == 0 ? 1 : ([COMPLICATION.RANGED_VALUE_MAX] - [COMPLICATION.RANGED_VALUE_MIN])), 0, 1)) &gt; 0.2 ? 255 : 60"/>
-                          <Image resource="ic_stress_1"/>
-                        </PartImage>
-                        <PartImage x="362" y="66" width="22" height="22" tintColor="#FFFDD835">
-                          <Transform target="alpha" value="(clamp(([COMPLICATION.RANGED_VALUE_VALUE] - [COMPLICATION.RANGED_VALUE_MIN]) / (([COMPLICATION.RANGED_VALUE_MAX] - [COMPLICATION.RANGED_VALUE_MIN]) == 0 ? 1 : ([COMPLICATION.RANGED_VALUE_MAX] - [COMPLICATION.RANGED_VALUE_MIN])), 0, 1)) &gt; 0.4 ? 255 : 60"/>
-                          <Image resource="ic_stress_2"/>
-                        </PartImage>
-                        <PartImage x="397" y="111" width="22" height="22" tintColor="#FFF18835">
-                          <Transform target="alpha" value="(clamp(([COMPLICATION.RANGED_VALUE_VALUE] - [COMPLICATION.RANGED_VALUE_MIN]) / (([COMPLICATION.RANGED_VALUE_MAX] - [COMPLICATION.RANGED_VALUE_MIN]) == 0 ? 1 : ([COMPLICATION.RANGED_VALUE_MAX] - [COMPLICATION.RANGED_VALUE_MIN])), 0, 1)) &gt; 0.6 ? 255 : 60"/>
-                          <Image resource="ic_stress_3"/>
-                        </PartImage>
-                        <PartImage x="418" y="164" width="22" height="22" tintColor="#FFE53935">
-                          <Transform target="alpha" value="(clamp(([COMPLICATION.RANGED_VALUE_VALUE] - [COMPLICATION.RANGED_VALUE_MIN]) / (([COMPLICATION.RANGED_VALUE_MAX] - [COMPLICATION.RANGED_VALUE_MIN]) == 0 ? 1 : ([COMPLICATION.RANGED_VALUE_MAX] - [COMPLICATION.RANGED_VALUE_MIN])), 0, 1)) &gt; 0.8 ? 255 : 60"/>
-                          <Image resource="ic_stress_4"/>
-                        </PartImage>
-                        <Group name="badge_tr_stress" x="365" y="160" width="48" height="42">
+                        <Condition>
+                          <Expressions>
+                            <Expression name="c0"><![CDATA[(clamp(([COMPLICATION.RANGED_VALUE_VALUE] - [COMPLICATION.RANGED_VALUE_MIN]) / (([COMPLICATION.RANGED_VALUE_MAX] - [COMPLICATION.RANGED_VALUE_MIN]) == 0 ? 1 : ([COMPLICATION.RANGED_VALUE_MAX] - [COMPLICATION.RANGED_VALUE_MIN])), 0, 1)) <= 0]]></Expression>
+                            <Expression name="c1"><![CDATA[(clamp(([COMPLICATION.RANGED_VALUE_VALUE] - [COMPLICATION.RANGED_VALUE_MIN]) / (([COMPLICATION.RANGED_VALUE_MAX] - [COMPLICATION.RANGED_VALUE_MIN]) == 0 ? 1 : ([COMPLICATION.RANGED_VALUE_MAX] - [COMPLICATION.RANGED_VALUE_MIN])), 0, 1)) <= 0.25]]></Expression>
+                            <Expression name="c2"><![CDATA[(clamp(([COMPLICATION.RANGED_VALUE_VALUE] - [COMPLICATION.RANGED_VALUE_MIN]) / (([COMPLICATION.RANGED_VALUE_MAX] - [COMPLICATION.RANGED_VALUE_MIN]) == 0 ? 1 : ([COMPLICATION.RANGED_VALUE_MAX] - [COMPLICATION.RANGED_VALUE_MIN])), 0, 1)) <= 0.5]]></Expression>
+                            <Expression name="c3"><![CDATA[(clamp(([COMPLICATION.RANGED_VALUE_VALUE] - [COMPLICATION.RANGED_VALUE_MIN]) / (([COMPLICATION.RANGED_VALUE_MAX] - [COMPLICATION.RANGED_VALUE_MIN]) == 0 ? 1 : ([COMPLICATION.RANGED_VALUE_MAX] - [COMPLICATION.RANGED_VALUE_MIN])), 0, 1)) <= 0.75]]></Expression>
+                          </Expressions>
+                          <Compare expression="c0">
+                            <Group name="tr_stress_zero" x="0" y="0" width="1" height="1"/>
+                          </Compare>
+                          <Compare expression="c1">
+                            <PartDraw x="0" y="0" width="450" height="450">
+                              <Arc centerX="225" centerY="225" width="420" height="420" startAngle="6" endAngle="84">
+                                <Stroke color="#FF43A047" thickness="14" cap="ROUND"/>
+                                <Transform target="endAngle" value="6 + 78 * (clamp(([COMPLICATION.RANGED_VALUE_VALUE] - [COMPLICATION.RANGED_VALUE_MIN]) / (([COMPLICATION.RANGED_VALUE_MAX] - [COMPLICATION.RANGED_VALUE_MIN]) == 0 ? 1 : ([COMPLICATION.RANGED_VALUE_MAX] - [COMPLICATION.RANGED_VALUE_MIN])), 0, 1))"/>
+                              </Arc>
+                            </PartDraw>
+                          </Compare>
+                          <Compare expression="c2">
+                            <PartDraw x="0" y="0" width="450" height="450">
+                              <Arc centerX="225" centerY="225" width="420" height="420" startAngle="6" endAngle="84">
+                                <Stroke color="#FFFDD835" thickness="14" cap="ROUND"/>
+                                <Transform target="endAngle" value="6 + 78 * (clamp(([COMPLICATION.RANGED_VALUE_VALUE] - [COMPLICATION.RANGED_VALUE_MIN]) / (([COMPLICATION.RANGED_VALUE_MAX] - [COMPLICATION.RANGED_VALUE_MIN]) == 0 ? 1 : ([COMPLICATION.RANGED_VALUE_MAX] - [COMPLICATION.RANGED_VALUE_MIN])), 0, 1))"/>
+                              </Arc>
+                            </PartDraw>
+                          </Compare>
+                          <Compare expression="c3">
+                            <PartDraw x="0" y="0" width="450" height="450">
+                              <Arc centerX="225" centerY="225" width="420" height="420" startAngle="6" endAngle="84">
+                                <Stroke color="#FFE53935" thickness="14" cap="ROUND"/>
+                                <Transform target="endAngle" value="6 + 78 * (clamp(([COMPLICATION.RANGED_VALUE_VALUE] - [COMPLICATION.RANGED_VALUE_MIN]) / (([COMPLICATION.RANGED_VALUE_MAX] - [COMPLICATION.RANGED_VALUE_MIN]) == 0 ? 1 : ([COMPLICATION.RANGED_VALUE_MAX] - [COMPLICATION.RANGED_VALUE_MIN])), 0, 1))"/>
+                              </Arc>
+                            </PartDraw>
+                          </Compare>
+                          <Default>
+                            <PartDraw x="0" y="0" width="450" height="450">
+                              <Arc centerX="225" centerY="225" width="420" height="420" startAngle="6" endAngle="84">
+                                <Stroke color="#FFB71C1C" thickness="14" cap="ROUND"/>
+                                <Transform target="endAngle" value="6 + 78 * (clamp(([COMPLICATION.RANGED_VALUE_VALUE] - [COMPLICATION.RANGED_VALUE_MIN]) / (([COMPLICATION.RANGED_VALUE_MAX] - [COMPLICATION.RANGED_VALUE_MIN]) == 0 ? 1 : ([COMPLICATION.RANGED_VALUE_MAX] - [COMPLICATION.RANGED_VALUE_MIN])), 0, 1))"/>
+                              </Arc>
+                            </PartDraw>
+                          </Default>
+                        </Condition>
+                        <Group name="badge_tr_stress" x="357" y="157" width="64" height="48">
                           <Condition>
                             <Expressions>
-                              <Expression name="c0"><![CDATA[(clamp(([COMPLICATION.RANGED_VALUE_VALUE] - [COMPLICATION.RANGED_VALUE_MIN]) / (([COMPLICATION.RANGED_VALUE_MAX] - [COMPLICATION.RANGED_VALUE_MIN]) == 0 ? 1 : ([COMPLICATION.RANGED_VALUE_MAX] - [COMPLICATION.RANGED_VALUE_MIN])), 0, 1)) < 0.34]]></Expression>
-                              <Expression name="c1"><![CDATA[(clamp(([COMPLICATION.RANGED_VALUE_VALUE] - [COMPLICATION.RANGED_VALUE_MIN]) / (([COMPLICATION.RANGED_VALUE_MAX] - [COMPLICATION.RANGED_VALUE_MIN]) == 0 ? 1 : ([COMPLICATION.RANGED_VALUE_MAX] - [COMPLICATION.RANGED_VALUE_MIN])), 0, 1)) < 0.67]]></Expression>
+                              <Expression name="c0"><![CDATA[(clamp(([COMPLICATION.RANGED_VALUE_VALUE] - [COMPLICATION.RANGED_VALUE_MIN]) / (([COMPLICATION.RANGED_VALUE_MAX] - [COMPLICATION.RANGED_VALUE_MIN]) == 0 ? 1 : ([COMPLICATION.RANGED_VALUE_MAX] - [COMPLICATION.RANGED_VALUE_MIN])), 0, 1)) <= 0.25]]></Expression>
+                              <Expression name="c1"><![CDATA[(clamp(([COMPLICATION.RANGED_VALUE_VALUE] - [COMPLICATION.RANGED_VALUE_MIN]) / (([COMPLICATION.RANGED_VALUE_MAX] - [COMPLICATION.RANGED_VALUE_MIN]) == 0 ? 1 : ([COMPLICATION.RANGED_VALUE_MAX] - [COMPLICATION.RANGED_VALUE_MIN])), 0, 1)) <= 0.5]]></Expression>
+                              <Expression name="c2"><![CDATA[(clamp(([COMPLICATION.RANGED_VALUE_VALUE] - [COMPLICATION.RANGED_VALUE_MIN]) / (([COMPLICATION.RANGED_VALUE_MAX] - [COMPLICATION.RANGED_VALUE_MIN]) == 0 ? 1 : ([COMPLICATION.RANGED_VALUE_MAX] - [COMPLICATION.RANGED_VALUE_MIN])), 0, 1)) <= 0.75]]></Expression>
                             </Expressions>
                             <Compare expression="c0">
-                              <PartImage x="14" y="0" width="20" height="20" tintColor="#FF43A047">
+                              <PartImage x="22" y="0" width="20" height="20" tintColor="#FF43A047">
                                 <Image resource="ic_metric_stress"/>
                               </PartImage>
                             </Compare>
                             <Compare expression="c1">
-                              <PartImage x="14" y="0" width="20" height="20" tintColor="#FFFDD835">
+                              <PartImage x="22" y="0" width="20" height="20" tintColor="#FFFDD835">
+                                <Image resource="ic_metric_stress"/>
+                              </PartImage>
+                            </Compare>
+                            <Compare expression="c2">
+                              <PartImage x="22" y="0" width="20" height="20" tintColor="#FFE53935">
                                 <Image resource="ic_metric_stress"/>
                               </PartImage>
                             </Compare>
                             <Default>
-                              <PartImage x="14" y="0" width="20" height="20" tintColor="#FFE53935">
+                              <PartImage x="22" y="0" width="20" height="20" tintColor="#FFB71C1C">
                                 <Image resource="ic_metric_stress"/>
                               </PartImage>
                             </Default>
                           </Condition>
-                          <PartText x="0" y="22" width="48" height="22">
+                          <PartText x="0" y="22" width="64" height="26">
                             <Text align="CENTER">
-                              <Font family="SYNC_TO_DEVICE" size="16" color="#FFFFFFFF" weight="SEMI_BOLD">
+                              <Font family="SYNC_TO_DEVICE" size="20" color="#FFFFFFFF" weight="SEMI_BOLD">
                                 <Template>
                                   <![CDATA[%s]]>
                                   <Parameter expression="round([COMPLICATION.RANGED_VALUE_VALUE])"/>
@@ -2832,33 +2767,30 @@
                     </ListOption>
                     <ListOption id="single">
                       <Group name="tr_stress_single" x="0" y="0" width="450" height="450">
-                        <PartImage x="264" y="10" width="22" height="22" tintColor="[CONFIGURATION.accent.0]">
-                          <Transform target="alpha" value="(clamp(([COMPLICATION.RANGED_VALUE_VALUE] - [COMPLICATION.RANGED_VALUE_MIN]) / (([COMPLICATION.RANGED_VALUE_MAX] - [COMPLICATION.RANGED_VALUE_MIN]) == 0 ? 1 : ([COMPLICATION.RANGED_VALUE_MAX] - [COMPLICATION.RANGED_VALUE_MIN])), 0, 1)) &gt; 0 ? (90 + 165 * (clamp(([COMPLICATION.RANGED_VALUE_VALUE] - [COMPLICATION.RANGED_VALUE_MIN]) / (([COMPLICATION.RANGED_VALUE_MAX] - [COMPLICATION.RANGED_VALUE_MIN]) == 0 ? 1 : ([COMPLICATION.RANGED_VALUE_MAX] - [COMPLICATION.RANGED_VALUE_MIN])), 0, 1))) : 60"/>
-                          <Image resource="ic_stress_0"/>
-                        </PartImage>
-                        <PartImage x="317" y="31" width="22" height="22" tintColor="[CONFIGURATION.accent.0]">
-                          <Transform target="alpha" value="(clamp(([COMPLICATION.RANGED_VALUE_VALUE] - [COMPLICATION.RANGED_VALUE_MIN]) / (([COMPLICATION.RANGED_VALUE_MAX] - [COMPLICATION.RANGED_VALUE_MIN]) == 0 ? 1 : ([COMPLICATION.RANGED_VALUE_MAX] - [COMPLICATION.RANGED_VALUE_MIN])), 0, 1)) &gt; 0.2 ? (90 + 165 * (clamp(([COMPLICATION.RANGED_VALUE_VALUE] - [COMPLICATION.RANGED_VALUE_MIN]) / (([COMPLICATION.RANGED_VALUE_MAX] - [COMPLICATION.RANGED_VALUE_MIN]) == 0 ? 1 : ([COMPLICATION.RANGED_VALUE_MAX] - [COMPLICATION.RANGED_VALUE_MIN])), 0, 1))) : 60"/>
-                          <Image resource="ic_stress_1"/>
-                        </PartImage>
-                        <PartImage x="362" y="66" width="22" height="22" tintColor="[CONFIGURATION.accent.0]">
-                          <Transform target="alpha" value="(clamp(([COMPLICATION.RANGED_VALUE_VALUE] - [COMPLICATION.RANGED_VALUE_MIN]) / (([COMPLICATION.RANGED_VALUE_MAX] - [COMPLICATION.RANGED_VALUE_MIN]) == 0 ? 1 : ([COMPLICATION.RANGED_VALUE_MAX] - [COMPLICATION.RANGED_VALUE_MIN])), 0, 1)) &gt; 0.4 ? (90 + 165 * (clamp(([COMPLICATION.RANGED_VALUE_VALUE] - [COMPLICATION.RANGED_VALUE_MIN]) / (([COMPLICATION.RANGED_VALUE_MAX] - [COMPLICATION.RANGED_VALUE_MIN]) == 0 ? 1 : ([COMPLICATION.RANGED_VALUE_MAX] - [COMPLICATION.RANGED_VALUE_MIN])), 0, 1))) : 60"/>
-                          <Image resource="ic_stress_2"/>
-                        </PartImage>
-                        <PartImage x="397" y="111" width="22" height="22" tintColor="[CONFIGURATION.accent.0]">
-                          <Transform target="alpha" value="(clamp(([COMPLICATION.RANGED_VALUE_VALUE] - [COMPLICATION.RANGED_VALUE_MIN]) / (([COMPLICATION.RANGED_VALUE_MAX] - [COMPLICATION.RANGED_VALUE_MIN]) == 0 ? 1 : ([COMPLICATION.RANGED_VALUE_MAX] - [COMPLICATION.RANGED_VALUE_MIN])), 0, 1)) &gt; 0.6 ? (90 + 165 * (clamp(([COMPLICATION.RANGED_VALUE_VALUE] - [COMPLICATION.RANGED_VALUE_MIN]) / (([COMPLICATION.RANGED_VALUE_MAX] - [COMPLICATION.RANGED_VALUE_MIN]) == 0 ? 1 : ([COMPLICATION.RANGED_VALUE_MAX] - [COMPLICATION.RANGED_VALUE_MIN])), 0, 1))) : 60"/>
-                          <Image resource="ic_stress_3"/>
-                        </PartImage>
-                        <PartImage x="418" y="164" width="22" height="22" tintColor="[CONFIGURATION.accent.0]">
-                          <Transform target="alpha" value="(clamp(([COMPLICATION.RANGED_VALUE_VALUE] - [COMPLICATION.RANGED_VALUE_MIN]) / (([COMPLICATION.RANGED_VALUE_MAX] - [COMPLICATION.RANGED_VALUE_MIN]) == 0 ? 1 : ([COMPLICATION.RANGED_VALUE_MAX] - [COMPLICATION.RANGED_VALUE_MIN])), 0, 1)) &gt; 0.8 ? (90 + 165 * (clamp(([COMPLICATION.RANGED_VALUE_VALUE] - [COMPLICATION.RANGED_VALUE_MIN]) / (([COMPLICATION.RANGED_VALUE_MAX] - [COMPLICATION.RANGED_VALUE_MIN]) == 0 ? 1 : ([COMPLICATION.RANGED_VALUE_MAX] - [COMPLICATION.RANGED_VALUE_MIN])), 0, 1))) : 60"/>
-                          <Image resource="ic_stress_4"/>
-                        </PartImage>
-                        <Group name="badge_tr_stress" x="365" y="160" width="48" height="42">
-                          <PartImage x="14" y="0" width="20" height="20" tintColor="[CONFIGURATION.accent.0]">
+                        <Condition>
+                          <Expressions>
+                            <Expression name="c0"><![CDATA[(clamp(([COMPLICATION.RANGED_VALUE_VALUE] - [COMPLICATION.RANGED_VALUE_MIN]) / (([COMPLICATION.RANGED_VALUE_MAX] - [COMPLICATION.RANGED_VALUE_MIN]) == 0 ? 1 : ([COMPLICATION.RANGED_VALUE_MAX] - [COMPLICATION.RANGED_VALUE_MIN])), 0, 1)) <= 0]]></Expression>
+                          </Expressions>
+                          <Compare expression="c0">
+                            <Group name="tr_stress_zero" x="0" y="0" width="1" height="1"/>
+                          </Compare>
+                          <Default>
+                            <PartDraw x="0" y="0" width="450" height="450">
+                              <Transform target="alpha" value="90 + 165 * (clamp(([COMPLICATION.RANGED_VALUE_VALUE] - [COMPLICATION.RANGED_VALUE_MIN]) / (([COMPLICATION.RANGED_VALUE_MAX] - [COMPLICATION.RANGED_VALUE_MIN]) == 0 ? 1 : ([COMPLICATION.RANGED_VALUE_MAX] - [COMPLICATION.RANGED_VALUE_MIN])), 0, 1))"/>
+                              <Arc centerX="225" centerY="225" width="420" height="420" startAngle="6" endAngle="84">
+                                <Stroke color="[CONFIGURATION.accent.0]" thickness="14" cap="ROUND"/>
+                                <Transform target="endAngle" value="6 + 78 * (clamp(([COMPLICATION.RANGED_VALUE_VALUE] - [COMPLICATION.RANGED_VALUE_MIN]) / (([COMPLICATION.RANGED_VALUE_MAX] - [COMPLICATION.RANGED_VALUE_MIN]) == 0 ? 1 : ([COMPLICATION.RANGED_VALUE_MAX] - [COMPLICATION.RANGED_VALUE_MIN])), 0, 1))"/>
+                              </Arc>
+                            </PartDraw>
+                          </Default>
+                        </Condition>
+                        <Group name="badge_tr_stress" x="357" y="157" width="64" height="48">
+                          <PartImage x="22" y="0" width="20" height="20" tintColor="[CONFIGURATION.accent.0]">
                             <Image resource="ic_metric_stress"/>
                           </PartImage>
-                          <PartText x="0" y="22" width="48" height="22">
+                          <PartText x="0" y="22" width="64" height="26">
                             <Text align="CENTER">
-                              <Font family="SYNC_TO_DEVICE" size="16" color="#FFFFFFFF" weight="SEMI_BOLD">
+                              <Font family="SYNC_TO_DEVICE" size="20" color="#FFFFFFFF" weight="SEMI_BOLD">
                                 <Template>
                                   <![CDATA[%s]]>
                                   <Parameter expression="round([COMPLICATION.RANGED_VALUE_VALUE])"/>
@@ -2898,8 +2830,8 @@
             </ListOption>
             <ListOption id="stress">
               <Group name="stress_bl_cover" x="0" y="0" width="450" height="450">
-                <PartDraw x="37" y="248" width="48" height="42">
-                  <Rectangle x="0" y="0" width="48" height="42">
+                <PartDraw x="29" y="245" width="64" height="48">
+                  <Rectangle x="0" y="0" width="64" height="48">
                     <Fill color="#FF000000"/>
                   </Rectangle>
                 </PartDraw>
@@ -2907,51 +2839,80 @@
                   <ListConfiguration id="color_mode">
                     <ListOption id="multi">
                       <Group name="bl_stress_multi" x="0" y="0" width="450" height="450">
-                        <PartImage x="164" y="418" width="22" height="22" tintColor="#FF43A047">
-                          <Transform target="alpha" value="(clamp(([COMPLICATION.RANGED_VALUE_VALUE] - [COMPLICATION.RANGED_VALUE_MIN]) / (([COMPLICATION.RANGED_VALUE_MAX] - [COMPLICATION.RANGED_VALUE_MIN]) == 0 ? 1 : ([COMPLICATION.RANGED_VALUE_MAX] - [COMPLICATION.RANGED_VALUE_MIN])), 0, 1)) &gt; 0 ? 255 : 60"/>
-                          <Image resource="ic_stress_0"/>
-                        </PartImage>
-                        <PartImage x="111" y="397" width="22" height="22" tintColor="#FFA0BC3E">
-                          <Transform target="alpha" value="(clamp(([COMPLICATION.RANGED_VALUE_VALUE] - [COMPLICATION.RANGED_VALUE_MIN]) / (([COMPLICATION.RANGED_VALUE_MAX] - [COMPLICATION.RANGED_VALUE_MIN]) == 0 ? 1 : ([COMPLICATION.RANGED_VALUE_MAX] - [COMPLICATION.RANGED_VALUE_MIN])), 0, 1)) &gt; 0.2 ? 255 : 60"/>
-                          <Image resource="ic_stress_1"/>
-                        </PartImage>
-                        <PartImage x="66" y="362" width="22" height="22" tintColor="#FFFDD835">
-                          <Transform target="alpha" value="(clamp(([COMPLICATION.RANGED_VALUE_VALUE] - [COMPLICATION.RANGED_VALUE_MIN]) / (([COMPLICATION.RANGED_VALUE_MAX] - [COMPLICATION.RANGED_VALUE_MIN]) == 0 ? 1 : ([COMPLICATION.RANGED_VALUE_MAX] - [COMPLICATION.RANGED_VALUE_MIN])), 0, 1)) &gt; 0.4 ? 255 : 60"/>
-                          <Image resource="ic_stress_2"/>
-                        </PartImage>
-                        <PartImage x="31" y="317" width="22" height="22" tintColor="#FFF18835">
-                          <Transform target="alpha" value="(clamp(([COMPLICATION.RANGED_VALUE_VALUE] - [COMPLICATION.RANGED_VALUE_MIN]) / (([COMPLICATION.RANGED_VALUE_MAX] - [COMPLICATION.RANGED_VALUE_MIN]) == 0 ? 1 : ([COMPLICATION.RANGED_VALUE_MAX] - [COMPLICATION.RANGED_VALUE_MIN])), 0, 1)) &gt; 0.6 ? 255 : 60"/>
-                          <Image resource="ic_stress_3"/>
-                        </PartImage>
-                        <PartImage x="10" y="264" width="22" height="22" tintColor="#FFE53935">
-                          <Transform target="alpha" value="(clamp(([COMPLICATION.RANGED_VALUE_VALUE] - [COMPLICATION.RANGED_VALUE_MIN]) / (([COMPLICATION.RANGED_VALUE_MAX] - [COMPLICATION.RANGED_VALUE_MIN]) == 0 ? 1 : ([COMPLICATION.RANGED_VALUE_MAX] - [COMPLICATION.RANGED_VALUE_MIN])), 0, 1)) &gt; 0.8 ? 255 : 60"/>
-                          <Image resource="ic_stress_4"/>
-                        </PartImage>
-                        <Group name="badge_bl_stress" x="37" y="248" width="48" height="42">
+                        <Condition>
+                          <Expressions>
+                            <Expression name="c0"><![CDATA[(clamp(([COMPLICATION.RANGED_VALUE_VALUE] - [COMPLICATION.RANGED_VALUE_MIN]) / (([COMPLICATION.RANGED_VALUE_MAX] - [COMPLICATION.RANGED_VALUE_MIN]) == 0 ? 1 : ([COMPLICATION.RANGED_VALUE_MAX] - [COMPLICATION.RANGED_VALUE_MIN])), 0, 1)) <= 0]]></Expression>
+                            <Expression name="c1"><![CDATA[(clamp(([COMPLICATION.RANGED_VALUE_VALUE] - [COMPLICATION.RANGED_VALUE_MIN]) / (([COMPLICATION.RANGED_VALUE_MAX] - [COMPLICATION.RANGED_VALUE_MIN]) == 0 ? 1 : ([COMPLICATION.RANGED_VALUE_MAX] - [COMPLICATION.RANGED_VALUE_MIN])), 0, 1)) <= 0.25]]></Expression>
+                            <Expression name="c2"><![CDATA[(clamp(([COMPLICATION.RANGED_VALUE_VALUE] - [COMPLICATION.RANGED_VALUE_MIN]) / (([COMPLICATION.RANGED_VALUE_MAX] - [COMPLICATION.RANGED_VALUE_MIN]) == 0 ? 1 : ([COMPLICATION.RANGED_VALUE_MAX] - [COMPLICATION.RANGED_VALUE_MIN])), 0, 1)) <= 0.5]]></Expression>
+                            <Expression name="c3"><![CDATA[(clamp(([COMPLICATION.RANGED_VALUE_VALUE] - [COMPLICATION.RANGED_VALUE_MIN]) / (([COMPLICATION.RANGED_VALUE_MAX] - [COMPLICATION.RANGED_VALUE_MIN]) == 0 ? 1 : ([COMPLICATION.RANGED_VALUE_MAX] - [COMPLICATION.RANGED_VALUE_MIN])), 0, 1)) <= 0.75]]></Expression>
+                          </Expressions>
+                          <Compare expression="c0">
+                            <Group name="bl_stress_zero" x="0" y="0" width="1" height="1"/>
+                          </Compare>
+                          <Compare expression="c1">
+                            <PartDraw x="0" y="0" width="450" height="450">
+                              <Arc centerX="225" centerY="225" width="420" height="420" startAngle="186" endAngle="264">
+                                <Stroke color="#FF43A047" thickness="14" cap="ROUND"/>
+                                <Transform target="endAngle" value="186 + 78 * (clamp(([COMPLICATION.RANGED_VALUE_VALUE] - [COMPLICATION.RANGED_VALUE_MIN]) / (([COMPLICATION.RANGED_VALUE_MAX] - [COMPLICATION.RANGED_VALUE_MIN]) == 0 ? 1 : ([COMPLICATION.RANGED_VALUE_MAX] - [COMPLICATION.RANGED_VALUE_MIN])), 0, 1))"/>
+                              </Arc>
+                            </PartDraw>
+                          </Compare>
+                          <Compare expression="c2">
+                            <PartDraw x="0" y="0" width="450" height="450">
+                              <Arc centerX="225" centerY="225" width="420" height="420" startAngle="186" endAngle="264">
+                                <Stroke color="#FFFDD835" thickness="14" cap="ROUND"/>
+                                <Transform target="endAngle" value="186 + 78 * (clamp(([COMPLICATION.RANGED_VALUE_VALUE] - [COMPLICATION.RANGED_VALUE_MIN]) / (([COMPLICATION.RANGED_VALUE_MAX] - [COMPLICATION.RANGED_VALUE_MIN]) == 0 ? 1 : ([COMPLICATION.RANGED_VALUE_MAX] - [COMPLICATION.RANGED_VALUE_MIN])), 0, 1))"/>
+                              </Arc>
+                            </PartDraw>
+                          </Compare>
+                          <Compare expression="c3">
+                            <PartDraw x="0" y="0" width="450" height="450">
+                              <Arc centerX="225" centerY="225" width="420" height="420" startAngle="186" endAngle="264">
+                                <Stroke color="#FFE53935" thickness="14" cap="ROUND"/>
+                                <Transform target="endAngle" value="186 + 78 * (clamp(([COMPLICATION.RANGED_VALUE_VALUE] - [COMPLICATION.RANGED_VALUE_MIN]) / (([COMPLICATION.RANGED_VALUE_MAX] - [COMPLICATION.RANGED_VALUE_MIN]) == 0 ? 1 : ([COMPLICATION.RANGED_VALUE_MAX] - [COMPLICATION.RANGED_VALUE_MIN])), 0, 1))"/>
+                              </Arc>
+                            </PartDraw>
+                          </Compare>
+                          <Default>
+                            <PartDraw x="0" y="0" width="450" height="450">
+                              <Arc centerX="225" centerY="225" width="420" height="420" startAngle="186" endAngle="264">
+                                <Stroke color="#FFB71C1C" thickness="14" cap="ROUND"/>
+                                <Transform target="endAngle" value="186 + 78 * (clamp(([COMPLICATION.RANGED_VALUE_VALUE] - [COMPLICATION.RANGED_VALUE_MIN]) / (([COMPLICATION.RANGED_VALUE_MAX] - [COMPLICATION.RANGED_VALUE_MIN]) == 0 ? 1 : ([COMPLICATION.RANGED_VALUE_MAX] - [COMPLICATION.RANGED_VALUE_MIN])), 0, 1))"/>
+                              </Arc>
+                            </PartDraw>
+                          </Default>
+                        </Condition>
+                        <Group name="badge_bl_stress" x="29" y="245" width="64" height="48">
                           <Condition>
                             <Expressions>
-                              <Expression name="c0"><![CDATA[(clamp(([COMPLICATION.RANGED_VALUE_VALUE] - [COMPLICATION.RANGED_VALUE_MIN]) / (([COMPLICATION.RANGED_VALUE_MAX] - [COMPLICATION.RANGED_VALUE_MIN]) == 0 ? 1 : ([COMPLICATION.RANGED_VALUE_MAX] - [COMPLICATION.RANGED_VALUE_MIN])), 0, 1)) < 0.34]]></Expression>
-                              <Expression name="c1"><![CDATA[(clamp(([COMPLICATION.RANGED_VALUE_VALUE] - [COMPLICATION.RANGED_VALUE_MIN]) / (([COMPLICATION.RANGED_VALUE_MAX] - [COMPLICATION.RANGED_VALUE_MIN]) == 0 ? 1 : ([COMPLICATION.RANGED_VALUE_MAX] - [COMPLICATION.RANGED_VALUE_MIN])), 0, 1)) < 0.67]]></Expression>
+                              <Expression name="c0"><![CDATA[(clamp(([COMPLICATION.RANGED_VALUE_VALUE] - [COMPLICATION.RANGED_VALUE_MIN]) / (([COMPLICATION.RANGED_VALUE_MAX] - [COMPLICATION.RANGED_VALUE_MIN]) == 0 ? 1 : ([COMPLICATION.RANGED_VALUE_MAX] - [COMPLICATION.RANGED_VALUE_MIN])), 0, 1)) <= 0.25]]></Expression>
+                              <Expression name="c1"><![CDATA[(clamp(([COMPLICATION.RANGED_VALUE_VALUE] - [COMPLICATION.RANGED_VALUE_MIN]) / (([COMPLICATION.RANGED_VALUE_MAX] - [COMPLICATION.RANGED_VALUE_MIN]) == 0 ? 1 : ([COMPLICATION.RANGED_VALUE_MAX] - [COMPLICATION.RANGED_VALUE_MIN])), 0, 1)) <= 0.5]]></Expression>
+                              <Expression name="c2"><![CDATA[(clamp(([COMPLICATION.RANGED_VALUE_VALUE] - [COMPLICATION.RANGED_VALUE_MIN]) / (([COMPLICATION.RANGED_VALUE_MAX] - [COMPLICATION.RANGED_VALUE_MIN]) == 0 ? 1 : ([COMPLICATION.RANGED_VALUE_MAX] - [COMPLICATION.RANGED_VALUE_MIN])), 0, 1)) <= 0.75]]></Expression>
                             </Expressions>
                             <Compare expression="c0">
-                              <PartImage x="14" y="0" width="20" height="20" tintColor="#FF43A047">
+                              <PartImage x="22" y="0" width="20" height="20" tintColor="#FF43A047">
                                 <Image resource="ic_metric_stress"/>
                               </PartImage>
                             </Compare>
                             <Compare expression="c1">
-                              <PartImage x="14" y="0" width="20" height="20" tintColor="#FFFDD835">
+                              <PartImage x="22" y="0" width="20" height="20" tintColor="#FFFDD835">
+                                <Image resource="ic_metric_stress"/>
+                              </PartImage>
+                            </Compare>
+                            <Compare expression="c2">
+                              <PartImage x="22" y="0" width="20" height="20" tintColor="#FFE53935">
                                 <Image resource="ic_metric_stress"/>
                               </PartImage>
                             </Compare>
                             <Default>
-                              <PartImage x="14" y="0" width="20" height="20" tintColor="#FFE53935">
+                              <PartImage x="22" y="0" width="20" height="20" tintColor="#FFB71C1C">
                                 <Image resource="ic_metric_stress"/>
                               </PartImage>
                             </Default>
                           </Condition>
-                          <PartText x="0" y="22" width="48" height="22">
+                          <PartText x="0" y="22" width="64" height="26">
                             <Text align="CENTER">
-                              <Font family="SYNC_TO_DEVICE" size="16" color="#FFFFFFFF" weight="SEMI_BOLD">
+                              <Font family="SYNC_TO_DEVICE" size="20" color="#FFFFFFFF" weight="SEMI_BOLD">
                                 <Template>
                                   <![CDATA[%s]]>
                                   <Parameter expression="round([COMPLICATION.RANGED_VALUE_VALUE])"/>
@@ -2964,33 +2925,30 @@
                     </ListOption>
                     <ListOption id="single">
                       <Group name="bl_stress_single" x="0" y="0" width="450" height="450">
-                        <PartImage x="164" y="418" width="22" height="22" tintColor="[CONFIGURATION.accent.0]">
-                          <Transform target="alpha" value="(clamp(([COMPLICATION.RANGED_VALUE_VALUE] - [COMPLICATION.RANGED_VALUE_MIN]) / (([COMPLICATION.RANGED_VALUE_MAX] - [COMPLICATION.RANGED_VALUE_MIN]) == 0 ? 1 : ([COMPLICATION.RANGED_VALUE_MAX] - [COMPLICATION.RANGED_VALUE_MIN])), 0, 1)) &gt; 0 ? (90 + 165 * (clamp(([COMPLICATION.RANGED_VALUE_VALUE] - [COMPLICATION.RANGED_VALUE_MIN]) / (([COMPLICATION.RANGED_VALUE_MAX] - [COMPLICATION.RANGED_VALUE_MIN]) == 0 ? 1 : ([COMPLICATION.RANGED_VALUE_MAX] - [COMPLICATION.RANGED_VALUE_MIN])), 0, 1))) : 60"/>
-                          <Image resource="ic_stress_0"/>
-                        </PartImage>
-                        <PartImage x="111" y="397" width="22" height="22" tintColor="[CONFIGURATION.accent.0]">
-                          <Transform target="alpha" value="(clamp(([COMPLICATION.RANGED_VALUE_VALUE] - [COMPLICATION.RANGED_VALUE_MIN]) / (([COMPLICATION.RANGED_VALUE_MAX] - [COMPLICATION.RANGED_VALUE_MIN]) == 0 ? 1 : ([COMPLICATION.RANGED_VALUE_MAX] - [COMPLICATION.RANGED_VALUE_MIN])), 0, 1)) &gt; 0.2 ? (90 + 165 * (clamp(([COMPLICATION.RANGED_VALUE_VALUE] - [COMPLICATION.RANGED_VALUE_MIN]) / (([COMPLICATION.RANGED_VALUE_MAX] - [COMPLICATION.RANGED_VALUE_MIN]) == 0 ? 1 : ([COMPLICATION.RANGED_VALUE_MAX] - [COMPLICATION.RANGED_VALUE_MIN])), 0, 1))) : 60"/>
-                          <Image resource="ic_stress_1"/>
-                        </PartImage>
-                        <PartImage x="66" y="362" width="22" height="22" tintColor="[CONFIGURATION.accent.0]">
-                          <Transform target="alpha" value="(clamp(([COMPLICATION.RANGED_VALUE_VALUE] - [COMPLICATION.RANGED_VALUE_MIN]) / (([COMPLICATION.RANGED_VALUE_MAX] - [COMPLICATION.RANGED_VALUE_MIN]) == 0 ? 1 : ([COMPLICATION.RANGED_VALUE_MAX] - [COMPLICATION.RANGED_VALUE_MIN])), 0, 1)) &gt; 0.4 ? (90 + 165 * (clamp(([COMPLICATION.RANGED_VALUE_VALUE] - [COMPLICATION.RANGED_VALUE_MIN]) / (([COMPLICATION.RANGED_VALUE_MAX] - [COMPLICATION.RANGED_VALUE_MIN]) == 0 ? 1 : ([COMPLICATION.RANGED_VALUE_MAX] - [COMPLICATION.RANGED_VALUE_MIN])), 0, 1))) : 60"/>
-                          <Image resource="ic_stress_2"/>
-                        </PartImage>
-                        <PartImage x="31" y="317" width="22" height="22" tintColor="[CONFIGURATION.accent.0]">
-                          <Transform target="alpha" value="(clamp(([COMPLICATION.RANGED_VALUE_VALUE] - [COMPLICATION.RANGED_VALUE_MIN]) / (([COMPLICATION.RANGED_VALUE_MAX] - [COMPLICATION.RANGED_VALUE_MIN]) == 0 ? 1 : ([COMPLICATION.RANGED_VALUE_MAX] - [COMPLICATION.RANGED_VALUE_MIN])), 0, 1)) &gt; 0.6 ? (90 + 165 * (clamp(([COMPLICATION.RANGED_VALUE_VALUE] - [COMPLICATION.RANGED_VALUE_MIN]) / (([COMPLICATION.RANGED_VALUE_MAX] - [COMPLICATION.RANGED_VALUE_MIN]) == 0 ? 1 : ([COMPLICATION.RANGED_VALUE_MAX] - [COMPLICATION.RANGED_VALUE_MIN])), 0, 1))) : 60"/>
-                          <Image resource="ic_stress_3"/>
-                        </PartImage>
-                        <PartImage x="10" y="264" width="22" height="22" tintColor="[CONFIGURATION.accent.0]">
-                          <Transform target="alpha" value="(clamp(([COMPLICATION.RANGED_VALUE_VALUE] - [COMPLICATION.RANGED_VALUE_MIN]) / (([COMPLICATION.RANGED_VALUE_MAX] - [COMPLICATION.RANGED_VALUE_MIN]) == 0 ? 1 : ([COMPLICATION.RANGED_VALUE_MAX] - [COMPLICATION.RANGED_VALUE_MIN])), 0, 1)) &gt; 0.8 ? (90 + 165 * (clamp(([COMPLICATION.RANGED_VALUE_VALUE] - [COMPLICATION.RANGED_VALUE_MIN]) / (([COMPLICATION.RANGED_VALUE_MAX] - [COMPLICATION.RANGED_VALUE_MIN]) == 0 ? 1 : ([COMPLICATION.RANGED_VALUE_MAX] - [COMPLICATION.RANGED_VALUE_MIN])), 0, 1))) : 60"/>
-                          <Image resource="ic_stress_4"/>
-                        </PartImage>
-                        <Group name="badge_bl_stress" x="37" y="248" width="48" height="42">
-                          <PartImage x="14" y="0" width="20" height="20" tintColor="[CONFIGURATION.accent.0]">
+                        <Condition>
+                          <Expressions>
+                            <Expression name="c0"><![CDATA[(clamp(([COMPLICATION.RANGED_VALUE_VALUE] - [COMPLICATION.RANGED_VALUE_MIN]) / (([COMPLICATION.RANGED_VALUE_MAX] - [COMPLICATION.RANGED_VALUE_MIN]) == 0 ? 1 : ([COMPLICATION.RANGED_VALUE_MAX] - [COMPLICATION.RANGED_VALUE_MIN])), 0, 1)) <= 0]]></Expression>
+                          </Expressions>
+                          <Compare expression="c0">
+                            <Group name="bl_stress_zero" x="0" y="0" width="1" height="1"/>
+                          </Compare>
+                          <Default>
+                            <PartDraw x="0" y="0" width="450" height="450">
+                              <Transform target="alpha" value="90 + 165 * (clamp(([COMPLICATION.RANGED_VALUE_VALUE] - [COMPLICATION.RANGED_VALUE_MIN]) / (([COMPLICATION.RANGED_VALUE_MAX] - [COMPLICATION.RANGED_VALUE_MIN]) == 0 ? 1 : ([COMPLICATION.RANGED_VALUE_MAX] - [COMPLICATION.RANGED_VALUE_MIN])), 0, 1))"/>
+                              <Arc centerX="225" centerY="225" width="420" height="420" startAngle="186" endAngle="264">
+                                <Stroke color="[CONFIGURATION.accent.0]" thickness="14" cap="ROUND"/>
+                                <Transform target="endAngle" value="186 + 78 * (clamp(([COMPLICATION.RANGED_VALUE_VALUE] - [COMPLICATION.RANGED_VALUE_MIN]) / (([COMPLICATION.RANGED_VALUE_MAX] - [COMPLICATION.RANGED_VALUE_MIN]) == 0 ? 1 : ([COMPLICATION.RANGED_VALUE_MAX] - [COMPLICATION.RANGED_VALUE_MIN])), 0, 1))"/>
+                              </Arc>
+                            </PartDraw>
+                          </Default>
+                        </Condition>
+                        <Group name="badge_bl_stress" x="29" y="245" width="64" height="48">
+                          <PartImage x="22" y="0" width="20" height="20" tintColor="[CONFIGURATION.accent.0]">
                             <Image resource="ic_metric_stress"/>
                           </PartImage>
-                          <PartText x="0" y="22" width="48" height="22">
+                          <PartText x="0" y="22" width="64" height="26">
                             <Text align="CENTER">
-                              <Font family="SYNC_TO_DEVICE" size="16" color="#FFFFFFFF" weight="SEMI_BOLD">
+                              <Font family="SYNC_TO_DEVICE" size="20" color="#FFFFFFFF" weight="SEMI_BOLD">
                                 <Template>
                                   <![CDATA[%s]]>
                                   <Parameter expression="round([COMPLICATION.RANGED_VALUE_VALUE])"/>
@@ -3029,8 +2987,8 @@
             </ListOption>
             <ListOption id="stress">
               <Group name="stress_br_cover" x="0" y="0" width="450" height="450">
-                <PartDraw x="365" y="248" width="48" height="42">
-                  <Rectangle x="0" y="0" width="48" height="42">
+                <PartDraw x="357" y="245" width="64" height="48">
+                  <Rectangle x="0" y="0" width="64" height="48">
                     <Fill color="#FF000000"/>
                   </Rectangle>
                 </PartDraw>
@@ -3038,51 +2996,80 @@
                   <ListConfiguration id="color_mode">
                     <ListOption id="multi">
                       <Group name="br_stress_multi" x="0" y="0" width="450" height="450">
-                        <PartImage x="264" y="418" width="22" height="22" tintColor="#FF43A047">
-                          <Transform target="alpha" value="(clamp(([COMPLICATION.RANGED_VALUE_VALUE] - [COMPLICATION.RANGED_VALUE_MIN]) / (([COMPLICATION.RANGED_VALUE_MAX] - [COMPLICATION.RANGED_VALUE_MIN]) == 0 ? 1 : ([COMPLICATION.RANGED_VALUE_MAX] - [COMPLICATION.RANGED_VALUE_MIN])), 0, 1)) &gt; 0 ? 255 : 60"/>
-                          <Image resource="ic_stress_0"/>
-                        </PartImage>
-                        <PartImage x="317" y="397" width="22" height="22" tintColor="#FFA0BC3E">
-                          <Transform target="alpha" value="(clamp(([COMPLICATION.RANGED_VALUE_VALUE] - [COMPLICATION.RANGED_VALUE_MIN]) / (([COMPLICATION.RANGED_VALUE_MAX] - [COMPLICATION.RANGED_VALUE_MIN]) == 0 ? 1 : ([COMPLICATION.RANGED_VALUE_MAX] - [COMPLICATION.RANGED_VALUE_MIN])), 0, 1)) &gt; 0.2 ? 255 : 60"/>
-                          <Image resource="ic_stress_1"/>
-                        </PartImage>
-                        <PartImage x="362" y="362" width="22" height="22" tintColor="#FFFDD835">
-                          <Transform target="alpha" value="(clamp(([COMPLICATION.RANGED_VALUE_VALUE] - [COMPLICATION.RANGED_VALUE_MIN]) / (([COMPLICATION.RANGED_VALUE_MAX] - [COMPLICATION.RANGED_VALUE_MIN]) == 0 ? 1 : ([COMPLICATION.RANGED_VALUE_MAX] - [COMPLICATION.RANGED_VALUE_MIN])), 0, 1)) &gt; 0.4 ? 255 : 60"/>
-                          <Image resource="ic_stress_2"/>
-                        </PartImage>
-                        <PartImage x="397" y="317" width="22" height="22" tintColor="#FFF18835">
-                          <Transform target="alpha" value="(clamp(([COMPLICATION.RANGED_VALUE_VALUE] - [COMPLICATION.RANGED_VALUE_MIN]) / (([COMPLICATION.RANGED_VALUE_MAX] - [COMPLICATION.RANGED_VALUE_MIN]) == 0 ? 1 : ([COMPLICATION.RANGED_VALUE_MAX] - [COMPLICATION.RANGED_VALUE_MIN])), 0, 1)) &gt; 0.6 ? 255 : 60"/>
-                          <Image resource="ic_stress_3"/>
-                        </PartImage>
-                        <PartImage x="418" y="264" width="22" height="22" tintColor="#FFE53935">
-                          <Transform target="alpha" value="(clamp(([COMPLICATION.RANGED_VALUE_VALUE] - [COMPLICATION.RANGED_VALUE_MIN]) / (([COMPLICATION.RANGED_VALUE_MAX] - [COMPLICATION.RANGED_VALUE_MIN]) == 0 ? 1 : ([COMPLICATION.RANGED_VALUE_MAX] - [COMPLICATION.RANGED_VALUE_MIN])), 0, 1)) &gt; 0.8 ? 255 : 60"/>
-                          <Image resource="ic_stress_4"/>
-                        </PartImage>
-                        <Group name="badge_br_stress" x="365" y="248" width="48" height="42">
+                        <Condition>
+                          <Expressions>
+                            <Expression name="c0"><![CDATA[(clamp(([COMPLICATION.RANGED_VALUE_VALUE] - [COMPLICATION.RANGED_VALUE_MIN]) / (([COMPLICATION.RANGED_VALUE_MAX] - [COMPLICATION.RANGED_VALUE_MIN]) == 0 ? 1 : ([COMPLICATION.RANGED_VALUE_MAX] - [COMPLICATION.RANGED_VALUE_MIN])), 0, 1)) <= 0]]></Expression>
+                            <Expression name="c1"><![CDATA[(clamp(([COMPLICATION.RANGED_VALUE_VALUE] - [COMPLICATION.RANGED_VALUE_MIN]) / (([COMPLICATION.RANGED_VALUE_MAX] - [COMPLICATION.RANGED_VALUE_MIN]) == 0 ? 1 : ([COMPLICATION.RANGED_VALUE_MAX] - [COMPLICATION.RANGED_VALUE_MIN])), 0, 1)) <= 0.25]]></Expression>
+                            <Expression name="c2"><![CDATA[(clamp(([COMPLICATION.RANGED_VALUE_VALUE] - [COMPLICATION.RANGED_VALUE_MIN]) / (([COMPLICATION.RANGED_VALUE_MAX] - [COMPLICATION.RANGED_VALUE_MIN]) == 0 ? 1 : ([COMPLICATION.RANGED_VALUE_MAX] - [COMPLICATION.RANGED_VALUE_MIN])), 0, 1)) <= 0.5]]></Expression>
+                            <Expression name="c3"><![CDATA[(clamp(([COMPLICATION.RANGED_VALUE_VALUE] - [COMPLICATION.RANGED_VALUE_MIN]) / (([COMPLICATION.RANGED_VALUE_MAX] - [COMPLICATION.RANGED_VALUE_MIN]) == 0 ? 1 : ([COMPLICATION.RANGED_VALUE_MAX] - [COMPLICATION.RANGED_VALUE_MIN])), 0, 1)) <= 0.75]]></Expression>
+                          </Expressions>
+                          <Compare expression="c0">
+                            <Group name="br_stress_zero" x="0" y="0" width="1" height="1"/>
+                          </Compare>
+                          <Compare expression="c1">
+                            <PartDraw x="0" y="0" width="450" height="450">
+                              <Arc centerX="225" centerY="225" width="420" height="420" startAngle="96" endAngle="174">
+                                <Stroke color="#FF43A047" thickness="14" cap="ROUND"/>
+                                <Transform target="startAngle" value="174 - 78 * (clamp(([COMPLICATION.RANGED_VALUE_VALUE] - [COMPLICATION.RANGED_VALUE_MIN]) / (([COMPLICATION.RANGED_VALUE_MAX] - [COMPLICATION.RANGED_VALUE_MIN]) == 0 ? 1 : ([COMPLICATION.RANGED_VALUE_MAX] - [COMPLICATION.RANGED_VALUE_MIN])), 0, 1))"/>
+                              </Arc>
+                            </PartDraw>
+                          </Compare>
+                          <Compare expression="c2">
+                            <PartDraw x="0" y="0" width="450" height="450">
+                              <Arc centerX="225" centerY="225" width="420" height="420" startAngle="96" endAngle="174">
+                                <Stroke color="#FFFDD835" thickness="14" cap="ROUND"/>
+                                <Transform target="startAngle" value="174 - 78 * (clamp(([COMPLICATION.RANGED_VALUE_VALUE] - [COMPLICATION.RANGED_VALUE_MIN]) / (([COMPLICATION.RANGED_VALUE_MAX] - [COMPLICATION.RANGED_VALUE_MIN]) == 0 ? 1 : ([COMPLICATION.RANGED_VALUE_MAX] - [COMPLICATION.RANGED_VALUE_MIN])), 0, 1))"/>
+                              </Arc>
+                            </PartDraw>
+                          </Compare>
+                          <Compare expression="c3">
+                            <PartDraw x="0" y="0" width="450" height="450">
+                              <Arc centerX="225" centerY="225" width="420" height="420" startAngle="96" endAngle="174">
+                                <Stroke color="#FFE53935" thickness="14" cap="ROUND"/>
+                                <Transform target="startAngle" value="174 - 78 * (clamp(([COMPLICATION.RANGED_VALUE_VALUE] - [COMPLICATION.RANGED_VALUE_MIN]) / (([COMPLICATION.RANGED_VALUE_MAX] - [COMPLICATION.RANGED_VALUE_MIN]) == 0 ? 1 : ([COMPLICATION.RANGED_VALUE_MAX] - [COMPLICATION.RANGED_VALUE_MIN])), 0, 1))"/>
+                              </Arc>
+                            </PartDraw>
+                          </Compare>
+                          <Default>
+                            <PartDraw x="0" y="0" width="450" height="450">
+                              <Arc centerX="225" centerY="225" width="420" height="420" startAngle="96" endAngle="174">
+                                <Stroke color="#FFB71C1C" thickness="14" cap="ROUND"/>
+                                <Transform target="startAngle" value="174 - 78 * (clamp(([COMPLICATION.RANGED_VALUE_VALUE] - [COMPLICATION.RANGED_VALUE_MIN]) / (([COMPLICATION.RANGED_VALUE_MAX] - [COMPLICATION.RANGED_VALUE_MIN]) == 0 ? 1 : ([COMPLICATION.RANGED_VALUE_MAX] - [COMPLICATION.RANGED_VALUE_MIN])), 0, 1))"/>
+                              </Arc>
+                            </PartDraw>
+                          </Default>
+                        </Condition>
+                        <Group name="badge_br_stress" x="357" y="245" width="64" height="48">
                           <Condition>
                             <Expressions>
-                              <Expression name="c0"><![CDATA[(clamp(([COMPLICATION.RANGED_VALUE_VALUE] - [COMPLICATION.RANGED_VALUE_MIN]) / (([COMPLICATION.RANGED_VALUE_MAX] - [COMPLICATION.RANGED_VALUE_MIN]) == 0 ? 1 : ([COMPLICATION.RANGED_VALUE_MAX] - [COMPLICATION.RANGED_VALUE_MIN])), 0, 1)) < 0.34]]></Expression>
-                              <Expression name="c1"><![CDATA[(clamp(([COMPLICATION.RANGED_VALUE_VALUE] - [COMPLICATION.RANGED_VALUE_MIN]) / (([COMPLICATION.RANGED_VALUE_MAX] - [COMPLICATION.RANGED_VALUE_MIN]) == 0 ? 1 : ([COMPLICATION.RANGED_VALUE_MAX] - [COMPLICATION.RANGED_VALUE_MIN])), 0, 1)) < 0.67]]></Expression>
+                              <Expression name="c0"><![CDATA[(clamp(([COMPLICATION.RANGED_VALUE_VALUE] - [COMPLICATION.RANGED_VALUE_MIN]) / (([COMPLICATION.RANGED_VALUE_MAX] - [COMPLICATION.RANGED_VALUE_MIN]) == 0 ? 1 : ([COMPLICATION.RANGED_VALUE_MAX] - [COMPLICATION.RANGED_VALUE_MIN])), 0, 1)) <= 0.25]]></Expression>
+                              <Expression name="c1"><![CDATA[(clamp(([COMPLICATION.RANGED_VALUE_VALUE] - [COMPLICATION.RANGED_VALUE_MIN]) / (([COMPLICATION.RANGED_VALUE_MAX] - [COMPLICATION.RANGED_VALUE_MIN]) == 0 ? 1 : ([COMPLICATION.RANGED_VALUE_MAX] - [COMPLICATION.RANGED_VALUE_MIN])), 0, 1)) <= 0.5]]></Expression>
+                              <Expression name="c2"><![CDATA[(clamp(([COMPLICATION.RANGED_VALUE_VALUE] - [COMPLICATION.RANGED_VALUE_MIN]) / (([COMPLICATION.RANGED_VALUE_MAX] - [COMPLICATION.RANGED_VALUE_MIN]) == 0 ? 1 : ([COMPLICATION.RANGED_VALUE_MAX] - [COMPLICATION.RANGED_VALUE_MIN])), 0, 1)) <= 0.75]]></Expression>
                             </Expressions>
                             <Compare expression="c0">
-                              <PartImage x="14" y="0" width="20" height="20" tintColor="#FF43A047">
+                              <PartImage x="22" y="0" width="20" height="20" tintColor="#FF43A047">
                                 <Image resource="ic_metric_stress"/>
                               </PartImage>
                             </Compare>
                             <Compare expression="c1">
-                              <PartImage x="14" y="0" width="20" height="20" tintColor="#FFFDD835">
+                              <PartImage x="22" y="0" width="20" height="20" tintColor="#FFFDD835">
+                                <Image resource="ic_metric_stress"/>
+                              </PartImage>
+                            </Compare>
+                            <Compare expression="c2">
+                              <PartImage x="22" y="0" width="20" height="20" tintColor="#FFE53935">
                                 <Image resource="ic_metric_stress"/>
                               </PartImage>
                             </Compare>
                             <Default>
-                              <PartImage x="14" y="0" width="20" height="20" tintColor="#FFE53935">
+                              <PartImage x="22" y="0" width="20" height="20" tintColor="#FFB71C1C">
                                 <Image resource="ic_metric_stress"/>
                               </PartImage>
                             </Default>
                           </Condition>
-                          <PartText x="0" y="22" width="48" height="22">
+                          <PartText x="0" y="22" width="64" height="26">
                             <Text align="CENTER">
-                              <Font family="SYNC_TO_DEVICE" size="16" color="#FFFFFFFF" weight="SEMI_BOLD">
+                              <Font family="SYNC_TO_DEVICE" size="20" color="#FFFFFFFF" weight="SEMI_BOLD">
                                 <Template>
                                   <![CDATA[%s]]>
                                   <Parameter expression="round([COMPLICATION.RANGED_VALUE_VALUE])"/>
@@ -3095,33 +3082,30 @@
                     </ListOption>
                     <ListOption id="single">
                       <Group name="br_stress_single" x="0" y="0" width="450" height="450">
-                        <PartImage x="264" y="418" width="22" height="22" tintColor="[CONFIGURATION.accent.0]">
-                          <Transform target="alpha" value="(clamp(([COMPLICATION.RANGED_VALUE_VALUE] - [COMPLICATION.RANGED_VALUE_MIN]) / (([COMPLICATION.RANGED_VALUE_MAX] - [COMPLICATION.RANGED_VALUE_MIN]) == 0 ? 1 : ([COMPLICATION.RANGED_VALUE_MAX] - [COMPLICATION.RANGED_VALUE_MIN])), 0, 1)) &gt; 0 ? (90 + 165 * (clamp(([COMPLICATION.RANGED_VALUE_VALUE] - [COMPLICATION.RANGED_VALUE_MIN]) / (([COMPLICATION.RANGED_VALUE_MAX] - [COMPLICATION.RANGED_VALUE_MIN]) == 0 ? 1 : ([COMPLICATION.RANGED_VALUE_MAX] - [COMPLICATION.RANGED_VALUE_MIN])), 0, 1))) : 60"/>
-                          <Image resource="ic_stress_0"/>
-                        </PartImage>
-                        <PartImage x="317" y="397" width="22" height="22" tintColor="[CONFIGURATION.accent.0]">
-                          <Transform target="alpha" value="(clamp(([COMPLICATION.RANGED_VALUE_VALUE] - [COMPLICATION.RANGED_VALUE_MIN]) / (([COMPLICATION.RANGED_VALUE_MAX] - [COMPLICATION.RANGED_VALUE_MIN]) == 0 ? 1 : ([COMPLICATION.RANGED_VALUE_MAX] - [COMPLICATION.RANGED_VALUE_MIN])), 0, 1)) &gt; 0.2 ? (90 + 165 * (clamp(([COMPLICATION.RANGED_VALUE_VALUE] - [COMPLICATION.RANGED_VALUE_MIN]) / (([COMPLICATION.RANGED_VALUE_MAX] - [COMPLICATION.RANGED_VALUE_MIN]) == 0 ? 1 : ([COMPLICATION.RANGED_VALUE_MAX] - [COMPLICATION.RANGED_VALUE_MIN])), 0, 1))) : 60"/>
-                          <Image resource="ic_stress_1"/>
-                        </PartImage>
-                        <PartImage x="362" y="362" width="22" height="22" tintColor="[CONFIGURATION.accent.0]">
-                          <Transform target="alpha" value="(clamp(([COMPLICATION.RANGED_VALUE_VALUE] - [COMPLICATION.RANGED_VALUE_MIN]) / (([COMPLICATION.RANGED_VALUE_MAX] - [COMPLICATION.RANGED_VALUE_MIN]) == 0 ? 1 : ([COMPLICATION.RANGED_VALUE_MAX] - [COMPLICATION.RANGED_VALUE_MIN])), 0, 1)) &gt; 0.4 ? (90 + 165 * (clamp(([COMPLICATION.RANGED_VALUE_VALUE] - [COMPLICATION.RANGED_VALUE_MIN]) / (([COMPLICATION.RANGED_VALUE_MAX] - [COMPLICATION.RANGED_VALUE_MIN]) == 0 ? 1 : ([COMPLICATION.RANGED_VALUE_MAX] - [COMPLICATION.RANGED_VALUE_MIN])), 0, 1))) : 60"/>
-                          <Image resource="ic_stress_2"/>
-                        </PartImage>
-                        <PartImage x="397" y="317" width="22" height="22" tintColor="[CONFIGURATION.accent.0]">
-                          <Transform target="alpha" value="(clamp(([COMPLICATION.RANGED_VALUE_VALUE] - [COMPLICATION.RANGED_VALUE_MIN]) / (([COMPLICATION.RANGED_VALUE_MAX] - [COMPLICATION.RANGED_VALUE_MIN]) == 0 ? 1 : ([COMPLICATION.RANGED_VALUE_MAX] - [COMPLICATION.RANGED_VALUE_MIN])), 0, 1)) &gt; 0.6 ? (90 + 165 * (clamp(([COMPLICATION.RANGED_VALUE_VALUE] - [COMPLICATION.RANGED_VALUE_MIN]) / (([COMPLICATION.RANGED_VALUE_MAX] - [COMPLICATION.RANGED_VALUE_MIN]) == 0 ? 1 : ([COMPLICATION.RANGED_VALUE_MAX] - [COMPLICATION.RANGED_VALUE_MIN])), 0, 1))) : 60"/>
-                          <Image resource="ic_stress_3"/>
-                        </PartImage>
-                        <PartImage x="418" y="264" width="22" height="22" tintColor="[CONFIGURATION.accent.0]">
-                          <Transform target="alpha" value="(clamp(([COMPLICATION.RANGED_VALUE_VALUE] - [COMPLICATION.RANGED_VALUE_MIN]) / (([COMPLICATION.RANGED_VALUE_MAX] - [COMPLICATION.RANGED_VALUE_MIN]) == 0 ? 1 : ([COMPLICATION.RANGED_VALUE_MAX] - [COMPLICATION.RANGED_VALUE_MIN])), 0, 1)) &gt; 0.8 ? (90 + 165 * (clamp(([COMPLICATION.RANGED_VALUE_VALUE] - [COMPLICATION.RANGED_VALUE_MIN]) / (([COMPLICATION.RANGED_VALUE_MAX] - [COMPLICATION.RANGED_VALUE_MIN]) == 0 ? 1 : ([COMPLICATION.RANGED_VALUE_MAX] - [COMPLICATION.RANGED_VALUE_MIN])), 0, 1))) : 60"/>
-                          <Image resource="ic_stress_4"/>
-                        </PartImage>
-                        <Group name="badge_br_stress" x="365" y="248" width="48" height="42">
-                          <PartImage x="14" y="0" width="20" height="20" tintColor="[CONFIGURATION.accent.0]">
+                        <Condition>
+                          <Expressions>
+                            <Expression name="c0"><![CDATA[(clamp(([COMPLICATION.RANGED_VALUE_VALUE] - [COMPLICATION.RANGED_VALUE_MIN]) / (([COMPLICATION.RANGED_VALUE_MAX] - [COMPLICATION.RANGED_VALUE_MIN]) == 0 ? 1 : ([COMPLICATION.RANGED_VALUE_MAX] - [COMPLICATION.RANGED_VALUE_MIN])), 0, 1)) <= 0]]></Expression>
+                          </Expressions>
+                          <Compare expression="c0">
+                            <Group name="br_stress_zero" x="0" y="0" width="1" height="1"/>
+                          </Compare>
+                          <Default>
+                            <PartDraw x="0" y="0" width="450" height="450">
+                              <Transform target="alpha" value="90 + 165 * (clamp(([COMPLICATION.RANGED_VALUE_VALUE] - [COMPLICATION.RANGED_VALUE_MIN]) / (([COMPLICATION.RANGED_VALUE_MAX] - [COMPLICATION.RANGED_VALUE_MIN]) == 0 ? 1 : ([COMPLICATION.RANGED_VALUE_MAX] - [COMPLICATION.RANGED_VALUE_MIN])), 0, 1))"/>
+                              <Arc centerX="225" centerY="225" width="420" height="420" startAngle="96" endAngle="174">
+                                <Stroke color="[CONFIGURATION.accent.0]" thickness="14" cap="ROUND"/>
+                                <Transform target="startAngle" value="174 - 78 * (clamp(([COMPLICATION.RANGED_VALUE_VALUE] - [COMPLICATION.RANGED_VALUE_MIN]) / (([COMPLICATION.RANGED_VALUE_MAX] - [COMPLICATION.RANGED_VALUE_MIN]) == 0 ? 1 : ([COMPLICATION.RANGED_VALUE_MAX] - [COMPLICATION.RANGED_VALUE_MIN])), 0, 1))"/>
+                              </Arc>
+                            </PartDraw>
+                          </Default>
+                        </Condition>
+                        <Group name="badge_br_stress" x="357" y="245" width="64" height="48">
+                          <PartImage x="22" y="0" width="20" height="20" tintColor="[CONFIGURATION.accent.0]">
                             <Image resource="ic_metric_stress"/>
                           </PartImage>
-                          <PartText x="0" y="22" width="48" height="22">
+                          <PartText x="0" y="22" width="64" height="26">
                             <Text align="CENTER">
-                              <Font family="SYNC_TO_DEVICE" size="16" color="#FFFFFFFF" weight="SEMI_BOLD">
+                              <Font family="SYNC_TO_DEVICE" size="20" color="#FFFFFFFF" weight="SEMI_BOLD">
                                 <Template>
                                   <![CDATA[%s]]>
                                   <Parameter expression="round([COMPLICATION.RANGED_VALUE_VALUE])"/>

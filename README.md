@@ -1,6 +1,6 @@
 <div align="center">
 
-<a href="docs/video/dashface.mp4"><img src="docs/video/dashface.gif" width="720" alt="Dashface in 22 seconds: battery bars, footprints, a heartbeat line and stress weather fill in around the bezel; the next meetings switch to Now and then No more meetings today; the layout and accent colors change; the skin temperature thermometer turns from blue to orange to red; ambient mode"></a>
+<a href="docs/video/dashface.mp4"><img src="docs/video/dashface.gif" width="720" alt="Dashface in 22 seconds: battery bars, footprints, a heartbeat line and the stress bar fill in around the bezel; the next meetings switch to Now and then No more meetings today; the layout and accent colors change; the skin temperature thermometer turns from blue to orange to red; ambient mode"></a>
 
 <sub>Plays on its own, without sound. <a href="docs/video/dashface.mp4">Watch with sound (MP4)</a>.</sub>
 
@@ -28,7 +28,7 @@ your **skin temperature** on watches that measure it.
 <table>
 <tr>
 <td width="33%" align="center" valign="top">
-<img src="docs/screenshots/preview.png" width="220" alt="Default look: battery bars, footprints, heartbeat line and stress weather"><br>
+<img src="docs/screenshots/preview.png" width="220" alt="Default look: battery bars, footprints, heartbeat line and stress bar"><br>
 <b>Multicolor.</b> Each bar fades through its own colors as it fills.
 </td>
 <td width="33%" align="center" valign="top">
@@ -64,7 +64,7 @@ your **skin temperature** on watches that measure it.
 |---|---|---|
 | 🔋 Top-left bar | Battery, as 10 bars that light up as it charges | Light blue for the low bars → darker blue for the full ones |
 | 👣 Top-right footprints | Steps toward your daily goal | A trail of 10 footprints; one lights up per 10 % of the goal |
-| ⛈️ Bottom-left weather | Stress, as 5 icons from sun to thunderstorm that light up as it rises | Green → yellow → red |
+| 📊 Bottom-left bar | Stress, as a bar as long as the level (0–100) | The whole bar is green up to 25, yellow up to 50, red up to 75, dark red above |
 | ❤️ Bottom-right heartbeat | Heart rate (40–180 bpm), as a heart-monitor line whose spikes grow taller along the arc | Calm red → urgent red |
 | ⛅ Top row | Weather icon and temperature for **morning · afternoon · night** | – |
 | 📅 Under it | Weekday and day, `THU 12` | Weekday in your accent color |
@@ -73,8 +73,7 @@ your **skin temperature** on watches that measure it.
 | 🔋 Ambient only | In place of the meetings: a battery bar and the percentage | Light → darker blue |
 | 🌡️ At the bottom | **Skin temperature** as a thermometer, e.g. `33.6°` | Cool blue → warm orange → red, by wrist temperature |
 
-Each continuous bar has a white dot at its tip and a small icon with the value next to it. The icon takes
-the color of the bar.
+Each bar has a small icon with the value next to it. The icon takes the color of the bar.
 
 ### Skin temperature
 

@@ -88,6 +88,10 @@ class Metric:
     trail: tuple[str, ...] = ()
     trail_style: str = ""
     trail_size: tuple[int, int] = (20, 20)
+    # Non-empty: drawn as one solid bar, as long as the value, in a single color picked by the
+    # value: (upper bound on the 0..1 value, inclusive; color), the last band with None. No
+    # track: the rest of the arc stays black. See draw_banded.
+    bands: tuple[tuple[float | None, str], ...] = ()
 
 
 ECG_PIECES = 8  # heart-rate line: number of beats along the arc
@@ -101,6 +105,20 @@ COMP_NORM = (
     "(([COMPLICATION.RANGED_VALUE_MAX] - [COMPLICATION.RANGED_VALUE_MIN]) == 0 ? 1 : "
     "([COMPLICATION.RANGED_VALUE_MAX] - [COMPLICATION.RANGED_VALUE_MIN]))",
 )
+
+# Stress bar: the whole bar takes the color of the level it has reached.
+#   up to 25 %  green     up to 50 %  yellow     up to 75 %  red     above  dark red
+STRESS_BANDS = (
+    (0.25, "#FF43A047"),
+    (0.50, "#FFFDD835"),
+    (0.75, "#FFE53935"),
+    (None, "#FFB71C1C"),
+)
+
+
+def band_color(bands: tuple[tuple[float | None, str], ...], value: float) -> str:
+    return next(c for upper, c in bands if upper is None or value <= upper)
+
 
 METRICS = {
     "battery": Metric(
@@ -120,11 +138,10 @@ METRICS = {
     ),
     "stress": Metric(
         "stress", "Stress", "ic_metric_stress",
-        ("#FF43A047", "#FFFDD835", "#FFE53935"),
+        tuple(color for _, color in STRESS_BANDS),
         COMP_NORM,
         "round([COMPLICATION.RANGED_VALUE_VALUE])", "%s", 0.27, "27",
-        # Weather from calm to stormy: sun, sun + cloud, cloud, rain, thunderstorm.
-        trail=tuple(f"ic_stress_{i}" for i in range(5)), trail_style="upright", trail_size=(22, 22),
+        bands=STRESS_BANDS,
     ),
     "heart": Metric(
         "heart", "Heart rate", "ic_metric_heart",
@@ -308,6 +325,40 @@ def draw_fill(x: Xml, corner: Corner, metric: Metric, single: bool) -> None:
     x.close("PartDraw")
 
 
+def draw_banded(x: Xml, corner: Corner, metric: Metric, single: bool, placeholder: bool) -> None:
+    """Solid bar from the anchor to the value, in one color picked by the value's band.
+
+    No track: the rest of the arc stays black, and nothing is drawn at 0 or with no data.
+    Only the branch that matches is drawn. Single color mode uses the accent instead, brighter
+    as it fills, like the other metrics.
+    """
+    if placeholder:
+        return
+    target = "startAngle" if corner.anchor_at_end else "endAngle"
+    tip = tip_angle(corner, metric.value)
+
+    def bar(color: str, alpha: str | None = None) -> callable:
+        def render() -> None:
+            x.open("PartDraw", x=0, y=0, width=SIZE, height=SIZE)
+            if alpha:
+                x.leaf("Transform", target="alpha", value=alpha)
+            x.open("Arc", **arc_box(), startAngle=corner.start, endAngle=corner.end)
+            x.leaf("Stroke", color=color, thickness=STROKE, cap="ROUND")
+            x.leaf("Transform", target=target, value=tip)
+            x.close("Arc")
+            x.close("PartDraw")
+        return render
+
+    # A round cap would still draw a dot at 0, so 0 gets its own, empty branch.
+    nothing = (f"({metric.value}) <= 0", lambda: empty_group(x, f"{corner.id}_{metric.id}_zero"))
+    if single:
+        condition(x, [nothing], bar("[CONFIGURATION.accent.0]", f"90 + 165 * ({metric.value})"))
+        return
+    *bounded, (_, last) = metric.bands
+    condition(x, [nothing] + [(f"({metric.value}) <= {upper:g}", bar(color)) for upper, color in bounded],
+              bar(last))
+
+
 SEGMENT_GAP = 2.2  # degrees between battery bars
 
 
@@ -416,7 +467,11 @@ def draw_knob(x: Xml, corner: Corner, metric: Metric) -> None:
 
 
 BADGE_R = 170
-BADGE_W, BADGE_H = 48, 42
+BADGE_ICON = 20  # metric icon, px
+BADGE_TEXT = 20  # value under the icon, px. Wide enough for 5-digit step counts at this size.
+BADGE_TEXT_Y = BADGE_ICON + 2
+BADGE_TEXT_H = BADGE_TEXT + 6
+BADGE_W, BADGE_H = 64, BADGE_TEXT_Y + BADGE_TEXT_H
 
 
 def badge_origin(corner: Corner) -> tuple[float, float]:
@@ -432,7 +487,8 @@ def draw_badge(x: Xml, corner: Corner, metric: Metric, single: bool, placeholder
 
     def icon(tint: str) -> callable:
         def render() -> None:
-            x.open("PartImage", x=(BADGE_W - 20) / 2, y=0, width=20, height=20, tintColor=tint)
+            x.open("PartImage", x=(BADGE_W - BADGE_ICON) / 2, y=0, width=BADGE_ICON, height=BADGE_ICON,
+                   tintColor=tint)
             x.leaf("Image", resource=metric.icon)
             x.close("PartImage")
         return render
@@ -441,6 +497,11 @@ def draw_badge(x: Xml, corner: Corner, metric: Metric, single: bool, placeholder
         icon("[CONFIGURATION.accent.0]")()
     elif placeholder:
         icon(metric.colors[0])()
+    elif metric.bands:
+        # Same color as the bar.
+        *bounded, (_, last) = metric.bands
+        condition(x, [(f"({metric.value}) <= {upper:g}", icon(color)) for upper, color in bounded],
+                  icon(last))
     else:
         # Tint the icon with the color of the arc's current bucket (cheap 3-way branch).
         cols = metric.colors if len(metric.colors) == 3 else (metric.colors[0], metric.colors[0], metric.colors[1])
@@ -450,11 +511,11 @@ def draw_badge(x: Xml, corner: Corner, metric: Metric, single: bool, placeholder
         ], icon(cols[2]))
 
     if placeholder:
-        text_part(x, px=0, py=22, w=BADGE_W, h=22, template="--", params=[], size=16,
-                  color="#FF9E9E9E", weight="SEMI_BOLD")
+        text_part(x, px=0, py=BADGE_TEXT_Y, w=BADGE_W, h=BADGE_TEXT_H, template="--", params=[],
+                  size=BADGE_TEXT, color="#FF9E9E9E", weight="SEMI_BOLD")
     else:
-        text_part(x, px=0, py=22, w=BADGE_W, h=22, template=metric.text_format,
-                  params=[metric.text], size=16, weight="SEMI_BOLD")
+        text_part(x, px=0, py=BADGE_TEXT_Y, w=BADGE_W, h=BADGE_TEXT_H, template=metric.text_format,
+                  params=[metric.text], size=BADGE_TEXT, weight="SEMI_BOLD")
     x.close("Group")
 
 
@@ -468,6 +529,8 @@ def draw_metric(x: Xml, corner: Corner, metric: Metric, placeholder: bool = Fals
         full_group(x, f"{corner.id}_{metric.id}_{mode}")
         if metric.segments:
             draw_segments(x, corner, metric, single, placeholder)
+        elif metric.bands:
+            draw_banded(x, corner, metric, single, placeholder)
         elif metric.trail:
             draw_trail(x, corner, metric, single, placeholder)
         else:
@@ -1033,7 +1096,7 @@ def make_icons() -> None:
 
 
 def make_trail_icons(out: Path) -> None:
-    """White trail images (tinted at runtime): heart-rate beats and stress weather."""
+    """White trail images (tinted at runtime): heart-rate beats."""
     from PIL import Image, ImageDraw
 
     s = 4
@@ -1061,49 +1124,6 @@ def make_trail_icons(out: Path) -> None:
         pts = [(u / 200 * ECG_W * s, (base - y(u / 200)) * s) for u in range(201)]
         d.line(pts, fill=w, width=int(2.6 * s), joint="curve")
         img.resize((ECG_W, ECG_H), Image.LANCZOS).save(out / f"ic_ecg_{k}.png", optimize=True)
-
-    # Stress weather, calm to stormy. Shapes in a 24 px box; a 1 px gap separates overlaps.
-    def canvas():
-        img = Image.new("RGBA", (24 * s, 24 * s), clear)
-        return img, ImageDraw.Draw(img)
-
-    def circle(d, cx, cy, r, fill):
-        d.ellipse([(cx - r) * s, (cy - r) * s, (cx + r) * s, (cy + r) * s], fill=fill)
-
-    def cloud(d, cx, cy, fill, grow=0.0):
-        for ox, oy, r in ((-4, 1, 3.8), (1, -1.8, 5), (5.5, 1.6, 3.3)):
-            circle(d, cx + ox, cy + oy, r + grow, fill)
-        d.rounded_rectangle([(cx - 7.8 - grow) * s, (cy + 1 - grow) * s, (cx + 8.8 + grow) * s,
-                             (cy + 5 + grow) * s], radius=(2 + grow) * s, fill=fill)
-
-    def save(img, name):
-        img.resize((24, 24), Image.LANCZOS).save(out / f"{name}.png", optimize=True)
-
-    img, d = canvas()  # 0: sun
-    circle(d, 12, 12, 5, w)
-    for j in range(8):
-        a = j * math.pi / 4
-        d.line([((12 + 7.2 * math.cos(a)) * s, (12 + 7.2 * math.sin(a)) * s),
-                ((12 + 10.2 * math.cos(a)) * s, (12 + 10.2 * math.sin(a)) * s)], fill=w, width=2 * s)
-    save(img, "ic_stress_0")
-    img, d = canvas()  # 1: sun behind a cloud
-    circle(d, 9, 8, 5.5, w)
-    cloud(d, 13.5, 13, clear, grow=1.2)
-    cloud(d, 13.5, 13, w)
-    save(img, "ic_stress_1")
-    img, d = canvas()  # 2: cloud
-    cloud(d, 12, 11, w)
-    save(img, "ic_stress_2")
-    img, d = canvas()  # 3: rain
-    cloud(d, 12, 7.5, w)
-    for dx in (-4.5, 0, 4.5):
-        d.line([((12 + dx) * s, 15.5 * s), ((10.5 + dx) * s, 20.5 * s)], fill=w, width=2 * s)
-    save(img, "ic_stress_3")
-    img, d = canvas()  # 4: thunderstorm
-    cloud(d, 12, 7.5, w)
-    bolt = [(13.5, 11), (8.5, 17), (12, 17), (10, 23), (16.5, 15), (13, 15), (15, 11)]
-    d.polygon([(px * s, py * s) for px, py in bolt], fill=w)
-    save(img, "ic_stress_4")
 
 
 # --------------------------------------------------------------------------------------
@@ -1189,6 +1209,13 @@ def build_preview_svg(layout: dict[str, str], single_accent: str | None = None,
                         col = tip_col or hex6(segment_color(metric, k))
                         parts.append(f'<path d="{svg_arc(a0, a1, ARC_R)}" stroke="{col}" '
                                      f'stroke-opacity="{fill_opacity:.2f}" stroke-width="{STROKE}" fill="none"/>')
+            elif metric.bands:
+                if v > 0:
+                    col = tip_col or hex6(band_color(metric.bands, v))
+                    tip = corner.anchor - SPAN * v if corner.anchor_at_end else corner.anchor + SPAN * v
+                    parts.append(f'<path d="{svg_arc(min(corner.anchor, tip), max(corner.anchor, tip), ARC_R)}" '
+                                 f'stroke="{col}" stroke-opacity="{fill_opacity:.2f}" stroke-width="{STROKE}" '
+                                 f'fill="none" stroke-linecap="round"/>')
             elif metric.trail:
                 n = len(metric.trail)
                 w, h = metric.trail_size
@@ -1202,11 +1229,17 @@ def build_preview_svg(layout: dict[str, str], single_accent: str | None = None,
             else:
                 parts.extend(preview_continuous(corner, metric, v, track, tip_col, fill_opacity, single_accent))
             bx, by = badge_origin(corner)
-            icol = hex6(accent[2]) if single_accent else lerp_color(metric.colors, min(v, 0.999))
+            if single_accent:
+                icol = hex6(accent[2])
+            elif metric.bands:
+                icol = hex6(band_color(metric.bands, v))
+            else:
+                icol = lerp_color(metric.colors, min(v, 0.999))
             parts.append(
-                f'<image x="{bx + (BADGE_W - 20) / 2}" y="{by}" width="20" height="20" '
-                f'href="{icons_dir}{metric.icon}_{icol[1:]}.png"/>')
-            parts.append(f'<text x="{bx + BADGE_W / 2}" y="{by + 38}" fill="#fff" font-size="16" '
+                f'<image x="{bx + (BADGE_W - BADGE_ICON) / 2}" y="{by}" width="{BADGE_ICON}" '
+                f'height="{BADGE_ICON}" href="{icons_dir}{metric.icon}_{icol[1:]}.png"/>')
+            parts.append(f'<text x="{bx + BADGE_W / 2}" y="{by + BADGE_TEXT_Y + BADGE_TEXT}" fill="#fff" '
+                         f'font-size="{BADGE_TEXT}" '
                          f'font-weight="600" text-anchor="middle">{metric.preview_text}</text>')
         # Weather
         for i, (pid, label, *_r, night) in enumerate(PERIODS):
@@ -1297,7 +1330,7 @@ def write_previews() -> None:
     for metric in METRICS.values():
         base = Image.open(drawables / f"{metric.icon}.png").convert("RGBA")
         cols = ({lerp_color(metric.colors, min(metric.preview_value, 0.999))} | {hex6(a[2]) for a in ACCENTS}
-                | {"#BDBDBD"})
+                | {"#BDBDBD"} | {hex6(c) for _, c in metric.bands})
         for col in cols:
             r, g, b = (int(col[i:i + 2], 16) for i in (1, 3, 5))
             tinted = Image.new("RGBA", base.size, (r, g, b, 255))
